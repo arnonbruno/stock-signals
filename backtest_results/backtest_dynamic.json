@@ -1,0 +1,824 @@
+{
+  "config": {
+    "max_positions": 10,
+    "min_confidence": 0.65,
+    "stop_loss": 0.15,
+    "rebalance_freq": 5
+  },
+  "strategy_metrics": {
+    "final_value": 96483.38732167511,
+    "total_return": -3.516612678324893,
+    "sharpe_ratio": -0.4723236191201033,
+    "max_drawdown": -13.909034400519133,
+    "volatility": 12.848833217815656
+  },
+  "passive_metrics": {
+    "final_value": 94900.74560887807,
+    "total_return": -5.099254391121921,
+    "sharpe_ratio": -0.5738761600778928,
+    "max_drawdown": -13.598262859544228,
+    "volatility": 16.249340985056545
+  },
+  "trades": [
+    {
+      "date": "2024-08-19",
+      "action": "BUY",
+      "ticker": "IRBR3.SA",
+      "price": 46.20000076293945,
+      "shares": 216.45021287579206,
+      "value": 10000.0,
+      "confidence": 0.7350000000000001,
+      "score": 0.54424365362527
+    },
+    {
+      "date": "2024-08-19",
+      "action": "BUY",
+      "ticker": "BBDC4.SA",
+      "price": 13.649791717529297,
+      "shares": 732.6119113713529,
+      "value": 10000.0,
+      "confidence": 0.8333333333333335,
+      "score": 0.5310351354515719
+    },
+    {
+      "date": "2024-08-19",
+      "action": "BUY",
+      "ticker": "ENGI11.SA",
+      "price": 42.088985443115234,
+      "shares": 237.59185199451665,
+      "value": 10000.0,
+      "confidence": 0.8666666666666667,
+      "score": 0.5209318492179572
+    },
+    {
+      "date": "2024-08-19",
+      "action": "BUY",
+      "ticker": "LIGT3.SA",
+      "price": 5.900000095367432,
+      "shares": 1694.9152268407267,
+      "value": 10000.0,
+      "confidence": 0.78,
+      "score": 0.5151063640731104
+    },
+    {
+      "date": "2024-08-19",
+      "action": "BUY",
+      "ticker": "DXCO3.SA",
+      "price": 7.372133731842041,
+      "shares": 1356.4593866233822,
+      "value": 10000.0,
+      "confidence": 0.78,
+      "score": 0.5115680903385916
+    },
+    {
+      "date": "2024-08-19",
+      "action": "BUY",
+      "ticker": "PETZ3.SA",
+      "price": 4.391829490661621,
+      "shares": 2276.955428543634,
+      "value": 10000.0,
+      "confidence": 0.78,
+      "score": 0.5078324147316979
+    },
+    {
+      "date": "2024-08-19",
+      "action": "BUY",
+      "ticker": "B3SA3.SA",
+      "price": 12.05774211883545,
+      "shares": 829.3426664332917,
+      "value": 10000.0,
+      "confidence": 0.832583765926745,
+      "score": 0.49906304074176455
+    },
+    {
+      "date": "2024-08-19",
+      "action": "BUY",
+      "ticker": "EQTL3.SA",
+      "price": 33.10466003417969,
+      "shares": 302.0722759175072,
+      "value": 10000.0,
+      "confidence": 0.7326907892066686,
+      "score": 0.4783634865083357
+    },
+    {
+      "date": "2024-08-19",
+      "action": "BUY",
+      "ticker": "RDOR3.SA",
+      "price": 28.583045959472656,
+      "shares": 349.85774483862934,
+      "value": 10000.0,
+      "confidence": 0.7371852767651421,
+      "score": 0.44053510661825307
+    },
+    {
+      "date": "2024-08-19",
+      "action": "BUY",
+      "ticker": "LREN3.SA",
+      "price": 14.28585147857666,
+      "shares": 699.9932776143021,
+      "value": 10000.0,
+      "confidence": 0.7007721123433058,
+      "score": 0.43162793381014697
+    },
+    {
+      "date": "2024-09-02",
+      "action": "SELL",
+      "ticker": "ENGI11.SA",
+      "price": 39.69709014892578,
+      "shares": 237.59185199451665,
+      "proceeds": 9431.70516727656,
+      "pnl_pct": -5.682948327234416,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-09-02",
+      "action": "SELL",
+      "ticker": "EQTL3.SA",
+      "price": 31.985708236694336,
+      "shares": 302.0722759175072,
+      "proceeds": 9661.995683891615,
+      "pnl_pct": -3.3800431610838566,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-09-02",
+      "action": "BUY",
+      "ticker": "PETR4.SA",
+      "price": 32.441261291503906,
+      "shares": 294.2811113230153,
+      "value": 9546.850425584087,
+      "confidence": 0.6660426238812639,
+      "score": 0.3950532798515799
+    },
+    {
+      "date": "2024-09-09",
+      "action": "SELL",
+      "ticker": "DXCO3.SA",
+      "price": 6.832277297973633,
+      "shares": 1356.4593866233822,
+      "proceeds": 9267.706672850174,
+      "pnl_pct": -7.322933271498277,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-09-09",
+      "action": "SELL",
+      "ticker": "B3SA3.SA",
+      "price": 11.595794677734375,
+      "shares": 829.3426664332917,
+      "proceeds": 9616.8872774452,
+      "pnl_pct": -3.8311272255480033,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-09-09",
+      "action": "BUY",
+      "ticker": "FLRY3.SA",
+      "price": 14.505175590515137,
+      "shares": 653.3632127480217,
+      "value": 9477.148125293153,
+      "confidence": 0.7197632119640806,
+      "score": 0.46220401495510066
+    },
+    {
+      "date": "2024-09-09",
+      "action": "BUY",
+      "ticker": "DIRR3.SA",
+      "price": 8.450876235961914,
+      "shares": 1121.439701715668,
+      "value": 9477.148125293155,
+      "confidence": 0.6917975890007447,
+      "score": 0.37749665138992317
+    },
+    {
+      "date": "2024-09-16",
+      "action": "SELL",
+      "ticker": "PETZ3.SA",
+      "price": 4.278977394104004,
+      "shares": 2276.955428543634,
+      "proceeds": 9743.040806120604,
+      "pnl_pct": -2.569591938793969,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-09-16",
+      "action": "SELL",
+      "ticker": "PETR4.SA",
+      "price": 30.952289581298828,
+      "shares": 294.2811113230153,
+      "proceeds": 9108.674175976406,
+      "pnl_pct": -4.589746671147543,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-09-16",
+      "action": "BUY",
+      "ticker": "MULT3.SA",
+      "price": 25.756420135498047,
+      "shares": 366.6252654465585,
+      "value": 9442.954369130055,
+      "confidence": 0.7165553899979318,
+      "score": 0.3540275708307479
+    },
+    {
+      "date": "2024-09-23",
+      "action": "SELL",
+      "ticker": "IRBR3.SA",
+      "price": 45.470001220703125,
+      "shares": 216.45021287579206,
+      "proceeds": 9841.991443683717,
+      "pnl_pct": -1.5800855631628363,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-09-23",
+      "action": "SELL",
+      "ticker": "BBDC4.SA",
+      "price": 12.556673049926758,
+      "shares": 732.6119113713529,
+      "proceeds": 9199.168243571998,
+      "pnl_pct": -8.008317564280032,
+      "reason": "SELL_SIGNAL"
+    },
+    {
+      "date": "2024-09-23",
+      "action": "SELL",
+      "ticker": "RDOR3.SA",
+      "price": 28.35116958618164,
+      "shares": 349.85774483862934,
+      "proceeds": 9918.876254959045,
+      "pnl_pct": -0.8112374504095521,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-09-23",
+      "action": "SELL",
+      "ticker": "MULT3.SA",
+      "price": 24.375280380249023,
+      "shares": 366.6252654465585,
+      "proceeds": 8936.593639743087,
+      "pnl_pct": -5.3623125728777365,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-09-30",
+      "action": "SELL",
+      "ticker": "LIGT3.SA",
+      "price": 7.119999885559082,
+      "shares": 1694.9152268407267,
+      "proceeds": 12067.79622113832,
+      "pnl_pct": 20.677962211383203,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-09-30",
+      "action": "SELL",
+      "ticker": "LREN3.SA",
+      "price": 15.31512451171875,
+      "shares": 699.9932776143021,
+      "proceeds": 10720.484204029146,
+      "pnl_pct": 7.204842040291459,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-09-30",
+      "action": "SELL",
+      "ticker": "FLRY3.SA",
+      "price": 13.458499908447266,
+      "shares": 653.3632127480217,
+      "proceeds": 8793.288738952062,
+      "pnl_pct": -7.215877364161571,
+      "reason": "SELL_SIGNAL"
+    },
+    {
+      "date": "2024-09-30",
+      "action": "SELL",
+      "ticker": "DIRR3.SA",
+      "price": 8.292414665222168,
+      "shares": 1121.439701715668,
+      "proceeds": 9299.443028669379,
+      "pnl_pct": -1.8750904203924779,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-09-30",
+      "action": "BUY",
+      "ticker": "DXCO3.SA",
+      "price": 7.566834926605225,
+      "shares": 1290.6790152064611,
+      "value": 9766.355051300687,
+      "confidence": 0.7875000000000002,
+      "score": 0.5201404985306503
+    },
+    {
+      "date": "2024-09-30",
+      "action": "BUY",
+      "ticker": "VALE3.SA",
+      "price": 55.618133544921875,
+      "shares": 175.5965982463715,
+      "value": 9766.355051300685,
+      "confidence": 0.7556482571810725,
+      "score": 0.40289365480967404
+    },
+    {
+      "date": "2024-10-07",
+      "action": "BUY",
+      "ticker": "EVEN3.SA",
+      "price": 6.262437343597412,
+      "shares": 1559.5134155371002,
+      "value": 9766.355051300685,
+      "confidence": 0.78,
+      "score": 0.5430307413785496
+    },
+    {
+      "date": "2024-10-07",
+      "action": "BUY",
+      "ticker": "PETR4.SA",
+      "price": 31.917207717895508,
+      "shares": 305.9902713803135,
+      "value": 9766.355051300683,
+      "confidence": 0.6863364109014498,
+      "score": 0.3162538469601455
+    },
+    {
+      "date": "2024-10-14",
+      "action": "SELL",
+      "ticker": "VALE3.SA",
+      "price": 54.234466552734375,
+      "shares": 175.5965982463715,
+      "proceeds": 9523.387834366771,
+      "pnl_pct": -2.4877983204343534,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-10-14",
+      "action": "BUY",
+      "ticker": "BBDC4.SA",
+      "price": 13.320619583129883,
+      "shares": 730.5700300312122,
+      "value": 9731.645448881553,
+      "confidence": 0.6570147295634222,
+      "score": 0.3837684119542778
+    },
+    {
+      "date": "2024-10-21",
+      "action": "SELL",
+      "ticker": "DXCO3.SA",
+      "price": 7.177431106567383,
+      "shares": 1290.6790152064611,
+      "proceeds": 9263.75971233661,
+      "pnl_pct": -5.1461915558470235,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-10-21",
+      "action": "SELL",
+      "ticker": "EVEN3.SA",
+      "price": 5.7345123291015625,
+      "shares": 1559.5134155371002,
+      "proceeds": 8943.048908796789,
+      "pnl_pct": -8.430024693749461,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-10-21",
+      "action": "SELL",
+      "ticker": "PETR4.SA",
+      "price": 30.153736114501953,
+      "shares": 305.9902713803135,
+      "proceeds": 9226.749896806814,
+      "pnl_pct": -5.525143737447946,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-10-28",
+      "action": "BUY",
+      "ticker": "SUZB3.SA",
+      "price": 56.24700164794922,
+      "shares": 169.5368023514087,
+      "value": 9535.936801247726,
+      "confidence": 0.7921733330920455,
+      "score": 0.4068833330317235
+    },
+    {
+      "date": "2024-10-28",
+      "action": "BUY",
+      "ticker": "CURY3.SA",
+      "price": 21.147071838378906,
+      "shares": 450.9341470123238,
+      "value": 9535.936801247726,
+      "confidence": 0.6906888110394884,
+      "score": 0.3759566819992894
+    },
+    {
+      "date": "2024-11-04",
+      "action": "SELL",
+      "ticker": "BBDC4.SA",
+      "price": 12.530426025390625,
+      "shares": 730.5700300312122,
+      "proceeds": 9154.353717673512,
+      "pnl_pct": -5.93210813361873,
+      "reason": "SELL_SIGNAL"
+    },
+    {
+      "date": "2024-11-04",
+      "action": "BUY",
+      "ticker": "TOTS3.SA",
+      "price": 32.42776870727539,
+      "shares": 292.5961080286168,
+      "value": 9488.23891580095,
+      "confidence": 0.8666666666666667,
+      "score": 0.5624740194777217
+    },
+    {
+      "date": "2024-11-04",
+      "action": "BUY",
+      "ticker": "KLBN11.SA",
+      "price": 19.423524856567383,
+      "shares": 488.4921241570031,
+      "value": 9488.23891580095,
+      "confidence": 0.91,
+      "score": 0.515049719871314
+    },
+    {
+      "date": "2024-11-04",
+      "action": "BUY",
+      "ticker": "JHSF3.SA",
+      "price": 4.158170700073242,
+      "shares": 2281.8300642717304,
+      "value": 9488.238915800952,
+      "confidence": 0.714877139976581,
+      "score": 0.4512182499674735
+    },
+    {
+      "date": "2024-11-04",
+      "action": "BUY",
+      "ticker": "LAVV3.SA",
+      "price": 6.664829254150391,
+      "shares": 1423.6282062128353,
+      "value": 9488.23891580095,
+      "confidence": 0.6692555933374031,
+      "score": 0.3878549907463933
+    },
+    {
+      "date": "2024-11-04",
+      "action": "BUY",
+      "ticker": "EZTC3.SA",
+      "price": 10.527921676635742,
+      "shares": 901.2452036813568,
+      "value": 9488.23891580095,
+      "confidence": 0.6676580700704066,
+      "score": 0.38563620843112023
+    },
+    {
+      "date": "2024-11-04",
+      "action": "BUY",
+      "ticker": "BLAU3.SA",
+      "price": 11.298047065734863,
+      "shares": 839.8123021258456,
+      "value": 9488.23891580095,
+      "confidence": 0.6506814223735863,
+      "score": 0.3620575310744254
+    },
+    {
+      "date": "2024-11-04",
+      "action": "BUY",
+      "ticker": "CMIG4.SA",
+      "price": 9.79358959197998,
+      "shares": 968.8213730715157,
+      "value": 9488.23891580095,
+      "confidence": 0.6819252748923044,
+      "score": 0.3524065936153805
+    },
+    {
+      "date": "2024-11-11",
+      "action": "SELL",
+      "ticker": "CURY3.SA",
+      "price": 19.41973114013672,
+      "shares": 450.9341470123238,
+      "proceeds": 8757.019896886213,
+      "pnl_pct": -8.168226369323206,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-11-11",
+      "action": "SELL",
+      "ticker": "TOTS3.SA",
+      "price": 29.319860458374023,
+      "shares": 292.5961080286168,
+      "proceeds": 8578.877058062377,
+      "pnl_pct": -9.584095276355187,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-11-11",
+      "action": "SELL",
+      "ticker": "KLBN11.SA",
+      "price": 18.321922302246094,
+      "shares": 488.4921241570031,
+      "proceeds": 8950.114744063763,
+      "pnl_pct": -5.67148631598049,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-11-11",
+      "action": "BUY",
+      "ticker": "GGBR4.SA",
+      "price": 19.42540740966797,
+      "shares": 460.40540952835516,
+      "value": 8943.562653703326,
+      "confidence": 0.7558764102877333,
+      "score": 0.4031788461929998
+    },
+    {
+      "date": "2024-11-11",
+      "action": "BUY",
+      "ticker": "TAEE11.SA",
+      "price": 31.77696418762207,
+      "shares": 281.4479885774321,
+      "value": 8943.562653703326,
+      "confidence": 0.7343212100326884,
+      "score": 0.37623484587419365
+    },
+    {
+      "date": "2024-11-18",
+      "action": "SELL",
+      "ticker": "JHSF3.SA",
+      "price": 4.0038275718688965,
+      "shares": 2281.8300642717304,
+      "proceeds": 9136.054125650531,
+      "pnl_pct": -3.7118035630818835,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-11-18",
+      "action": "SELL",
+      "ticker": "BLAU3.SA",
+      "price": 10.551481246948242,
+      "shares": 839.8123021258456,
+      "proceeds": 8861.26375683729,
+      "pnl_pct": -6.607919177915567,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-11-18",
+      "action": "BUY",
+      "ticker": "PETR4.SA",
+      "price": 31.775800704956055,
+      "shares": 282.3252474665225,
+      "value": 8971.110797473619,
+      "confidence": 0.8288038620941622,
+      "score": 0.45267149428436954
+    },
+    {
+      "date": "2024-11-25",
+      "action": "SELL",
+      "ticker": "EZTC3.SA",
+      "price": 10.110186576843262,
+      "shares": 901.2452036813568,
+      "proceeds": 9111.757160703624,
+      "pnl_pct": -3.9678781113991923,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-12-02",
+      "action": "SELL",
+      "ticker": "LAVV3.SA",
+      "price": 6.325196743011475,
+      "shares": 1423.6282062128353,
+      "proceeds": 9004.728493196693,
+      "pnl_pct": -5.095892155487958,
+      "reason": "SELL_SIGNAL"
+    },
+    {
+      "date": "2024-12-02",
+      "action": "BUY",
+      "ticker": "KLBN11.SA",
+      "price": 20.05147933959961,
+      "shares": 449.1421035194338,
+      "value": 9005.963609264236,
+      "confidence": 0.8379870534731315,
+      "score": 0.4641504835080812
+    },
+    {
+      "date": "2024-12-02",
+      "action": "BUY",
+      "ticker": "ABEV3.SA",
+      "price": 11.045329093933105,
+      "shares": 815.3639907579543,
+      "value": 9005.963609264236,
+      "confidence": 0.8379234678439442,
+      "score": 0.4141946045761241
+    },
+    {
+      "date": "2024-12-16",
+      "action": "SELL",
+      "ticker": "CMIG4.SA",
+      "price": 9.599740982055664,
+      "shares": 968.8213730715157,
+      "proceeds": 9300.43423936607,
+      "pnl_pct": -1.9793417735521568,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-12-16",
+      "action": "SELL",
+      "ticker": "GGBR4.SA",
+      "price": 19.41351890563965,
+      "shares": 460.40540952835516,
+      "proceeds": 8938.089122137488,
+      "pnl_pct": -0.0612007963467609,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2024-12-16",
+      "action": "SELL",
+      "ticker": "ABEV3.SA",
+      "price": 10.7035493850708,
+      "shares": 815.3639907579543,
+      "proceeds": 8727.288741886176,
+      "pnl_pct": -3.094337035643735,
+      "reason": "SELL_SIGNAL"
+    },
+    {
+      "date": "2024-12-23",
+      "action": "SELL",
+      "ticker": "TAEE11.SA",
+      "price": 29.87828254699707,
+      "shares": 281.4479885774321,
+      "proceeds": 8409.18252500052,
+      "pnl_pct": -5.9750252711824,
+      "reason": "SELL_SIGNAL"
+    },
+    {
+      "date": "2024-12-23",
+      "action": "SELL",
+      "ticker": "PETR4.SA",
+      "price": 31.87990951538086,
+      "shares": 282.3252474665225,
+      "proceeds": 9000.503343140246,
+      "pnl_pct": 0.3276355217338933,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2025-01-06",
+      "action": "SELL",
+      "ticker": "KLBN11.SA",
+      "price": 20.334714889526367,
+      "shares": 449.1421035194338,
+      "proceeds": 9133.176619949823,
+      "pnl_pct": 1.4125419133908856,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2025-01-13",
+      "action": "BUY",
+      "ticker": "IRBR3.SA",
+      "price": 48.20000076293945,
+      "shares": 185.6306227400846,
+      "value": 8947.396157697003,
+      "confidence": 0.7466703378278996,
+      "score": 0.4537088025387495
+    },
+    {
+      "date": "2025-01-20",
+      "action": "BUY",
+      "ticker": "SBSP3.SA",
+      "price": 86.21019744873047,
+      "shares": 103.78582142812112,
+      "value": 8947.396157697003,
+      "confidence": 0.6626009926116376,
+      "score": 0.3282512407645469
+    },
+    {
+      "date": "2025-01-27",
+      "action": "BUY",
+      "ticker": "PETZ3.SA",
+      "price": 4.889999866485596,
+      "shares": 1829.7334155404437,
+      "value": 8947.396157697003,
+      "confidence": 0.7757903009206855,
+      "score": 0.49415319572317407
+    },
+    {
+      "date": "2025-01-27",
+      "action": "BUY",
+      "ticker": "LAVV3.SA",
+      "price": 6.647910118103027,
+      "shares": 1345.8960784280475,
+      "value": 8947.396157697003,
+      "confidence": 0.7624151240244729,
+      "score": 0.47557656114510105
+    },
+    {
+      "date": "2025-01-27",
+      "action": "BUY",
+      "ticker": "BBAS3.SA",
+      "price": 26.436275482177734,
+      "shares": 338.451464682647,
+      "value": 8947.396157697003,
+      "confidence": 0.8332961918923283,
+      "score": 0.45828690653207704
+    },
+    {
+      "date": "2025-01-27",
+      "action": "BUY",
+      "ticker": "TOTS3.SA",
+      "price": 30.753101348876953,
+      "shares": 290.94288918030526,
+      "value": 8947.396157697003,
+      "confidence": 0.7430187004072152,
+      "score": 0.4486370838989099
+    },
+    {
+      "date": "2025-01-27",
+      "action": "BUY",
+      "ticker": "VIVT3.SA",
+      "price": 24.936452865600586,
+      "shares": 358.80789484858064,
+      "value": 8947.396157697003,
+      "confidence": 0.8028821901826595,
+      "score": 0.42026940439499105
+    },
+    {
+      "date": "2025-01-27",
+      "action": "BUY",
+      "ticker": "CURY3.SA",
+      "price": 17.923276901245117,
+      "shares": 499.20537449686077,
+      "value": 8947.396157697003,
+      "confidence": 0.6555194516633704,
+      "score": 0.3687770161991254
+    },
+    {
+      "date": "2025-01-27",
+      "action": "BUY",
+      "ticker": "DIRR3.SA",
+      "price": 7.917125225067139,
+      "shares": 1130.1319485724223,
+      "value": 8947.396157697003,
+      "confidence": 0.6529019425630159,
+      "score": 0.36514158689307763
+    },
+    {
+      "date": "2025-02-10",
+      "action": "SELL",
+      "ticker": "SUZB3.SA",
+      "price": 58.0913200378418,
+      "shares": 169.5368023514087,
+      "proceeds": 9848.616643588013,
+      "pnl_pct": 3.2789630306628403,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2025-02-10",
+      "action": "SELL",
+      "ticker": "PETZ3.SA",
+      "price": 4.510000228881836,
+      "shares": 1829.7334155404437,
+      "proceeds": 8252.098122880145,
+      "pnl_pct": -7.770953946402914,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2025-02-10",
+      "action": "SELL",
+      "ticker": "VIVT3.SA",
+      "price": 23.81093406677246,
+      "shares": 358.80789484858064,
+      "proceeds": 8543.55112687698,
+      "pnl_pct": -4.513548117265542,
+      "reason": "LOW_CONFIDENCE"
+    },
+    {
+      "date": "2025-02-17",
+      "action": "BUY",
+      "ticker": "CYRE3.SA",
+      "price": 19.939096450805664,
+      "shares": 445.4275040175913,
+      "value": 8881.42196444838,
+      "confidence": 0.7290477493566941,
+      "score": 0.4917329852176307
+    },
+    {
+      "date": "2025-02-17",
+      "action": "BUY",
+      "ticker": "GMAT3.SA",
+      "price": 7.08019495010376,
+      "shares": 1254.4035901607797,
+      "value": 8881.421964448378,
+      "confidence": 0.8090596912125296,
+      "score": 0.48685144340281694
+    },
+    {
+      "date": "2025-02-17",
+      "action": "BUY",
+      "ticker": "RDOR3.SA",
+      "price": 27.24207878112793,
+      "shares": 326.0185111350982,
+      "value": 8881.421964448378,
+      "confidence": 0.7411941171936598,
+      "score": 0.4461029405467497
+    }
+  ]
+}

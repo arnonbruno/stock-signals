@@ -1,0 +1,63 @@
+{
+  "config": {
+    "top_n": 10,
+    "min_confidence": 0.6,
+    "actual_stocks": 5
+  },
+  "portfolio": [
+    {
+      "ticker": "CYRE3.SA",
+      "signal": "BUY",
+      "confidence": 0.7272351376194759,
+      "trend": "uptrend",
+      "fused_score": 0.4683821355826054,
+      "price": 19.841917037963867
+    },
+    {
+      "ticker": "DIRR3.SA",
+      "signal": "BUY",
+      "confidence": 0.6262997987655088,
+      "trend": "uptrend",
+      "fused_score": 0.3906941649520954,
+      "price": 9.327814102172852
+    },
+    {
+      "ticker": "CURY3.SA",
+      "signal": "BUY",
+      "confidence": 0.6084730094412683,
+      "trend": "uptrend",
+      "fused_score": 0.36593473533509463,
+      "price": 20.8599796295166
+    },
+    {
+      "ticker": "PETR4.SA",
+      "signal": "BUY",
+      "confidence": 0.6136738279675207,
+      "trend": "uptrend",
+      "fused_score": 0.32959228495940074,
+      "price": 34.47218322753906
+    },
+    {
+      "ticker": "VALE3.SA",
+      "signal": "BUY",
+      "confidence": 0.6507807322712273,
+      "trend": "uptrend",
+      "fused_score": 0.27180924867236755,
+      "price": 51.38753128051758
+    }
+  ],
+  "strategy_metrics": {
+    "final_value": 98625.12874151891,
+    "total_return": -1.3748712584810807,
+    "sharpe_ratio": 0.6618812175023369,
+    "max_drawdown": -17.424531389300586,
+    "volatility": 20.431068676383095
+  },
+  "passive_metrics": {
+    "final_value": 94938.6324503514,
+    "total_return": -5.061367549648599,
+    "sharpe_ratio": -0.5666085757964927,
+    "max_drawdown": -13.598262859544228,
+    "volatility": 16.184055396931573
+  }
+}
