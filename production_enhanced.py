@@ -47,7 +47,7 @@ from src.indicators.signal_fusion import SignalFusion, fuse_all_signals
 from src.news.historical_sentiment import get_backtest_sentiment
 
 # Config
-from src.config import get_config
+from src.config import get_config, get_thresholds, ThresholdConfig
 
 # Ticker lists
 IBOV_TICKERS = [
@@ -137,9 +137,20 @@ class EnhancedProductionRunner:
         # Market data for regime detection
         self.market_data = None
         
+        # Thresholds loaded from config
+        self.thresholds = get_thresholds('default')
+        
         print(f"✅ Enhanced Runner initialized")
         print(f"   Fusion: {'ON' if use_fusion else 'OFF'} | Regime: {'ON' if use_regime else 'OFF'}")
         print(f"   News: {'ON' if use_news else 'OFF'} | Workers: {self.n_workers}")
+        print(f"   Buy threshold: {self.thresholds.buy_confidence:.0%} | Sell: {self.thresholds.sell_confidence:.0%}")
+    
+    def reload_thresholds(self):
+        """Reload thresholds from config file."""
+        from src.config import reload_config
+        reload_config()
+        self.thresholds = get_thresholds(self.current_regime or 'default')
+        print(f"✅ Thresholds reloaded for {self.current_regime or 'default'} regime")
     
     def fetch_market_data(self, days: int = 365):
         """Fetch IBOV index for regime detection."""
@@ -173,10 +184,14 @@ class EnhancedProductionRunner:
         self.current_regime = regime_info['regime']
         self.regime_params = params
         
+        # Update thresholds for current regime
+        self.thresholds = get_thresholds(self.current_regime)
+        
         print(f"\n🎯 Market Regime: {regime_info['regime'].upper()} (strength: {regime_info['strength']:.0%})")
         print(f"   Confidence threshold: {params['confidence_threshold']:.0%}")
         print(f"   Max position size: {params['max_position_size']:.0%}")
         print(f"   Cash buffer: {params['max_cash_pct']:.0%}")
+        print(f"   Thresholds - Buy: {self.thresholds.buy_confidence:.0%}, Sell: {self.thresholds.sell_confidence:.0%}")
         
         return {
             'regime': regime_info['regime'],
@@ -342,10 +357,15 @@ class EnhancedProductionRunner:
             # News sentiment
             news_sentiment = self.get_news_sentiment(ticker) if self.use_news else 0.0
             
-            # Get regime-adjusted threshold
-            min_confidence = 0.50
+            # Get regime-specific thresholds from config
+            thresholds = get_thresholds(regime if self.use_regime else 'default')
+            
+            # Get min_confidence for buy signals
+            min_confidence = thresholds.buy_confidence
+            
+            # Adjust based on regime params if available (for backward compatibility)
             if self.use_regime and self.regime_params:
-                min_confidence = self.regime_params.get('confidence_threshold', 0.50)
+                min_confidence = self.regime_params.get('confidence_threshold', thresholds.buy_confidence)
             
             # Position sizing
             position_size = 0.0
@@ -362,7 +382,7 @@ class EnhancedProductionRunner:
                 position_size = min(0.80, position_size)
                 conviction = confidence
             
-            elif signal == 'SELL' and confidence >= min_confidence:
+            elif signal == 'SELL' and confidence >= thresholds.sell_confidence:
                 position_size = 1.0
                 conviction = -confidence
             
