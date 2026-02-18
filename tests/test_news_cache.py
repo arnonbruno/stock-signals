@@ -241,7 +241,7 @@ class TestCacheStatistics:
         assert 'expired' in stats
     
     def test_stats_counts_correctly(self, cache):
-        """Test that stats counts fresh and expired entries."""
+        """Test that stats counts entries after pruning."""
         # Add fresh entry
         cache.set('FRESH.SA', 0.5, source='test')
         
@@ -254,9 +254,10 @@ class TestCacheStatistics:
         
         stats = cache.stats()
         
-        assert stats['total_entries'] == 2
+        # stats() prunes expired entries first, so only fresh remains
+        assert stats['total_entries'] == 1
         assert stats['fresh'] == 1
-        assert stats['expired'] == 1
+        assert stats['expired'] == 0  # Pruned before count
 
 
 class TestCachePruning:

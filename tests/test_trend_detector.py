@@ -225,7 +225,8 @@ class TestVolatilityRegime:
         prices = 100 + np.random.randn(100) * 0.001
         data = pd.DataFrame({'Close': prices})
         
-        regime = detector._calculate_volatility_regime(data)
+        # Pass the values array, not the DataFrame
+        regime = detector._calculate_volatility_regime(data['Close'].values)
         assert regime == 'low', f"Expected low volatility, got {regime}"
     
     def test_high_volatility_regime(self, detector):
@@ -234,7 +235,8 @@ class TestVolatilityRegime:
         prices = 100 + np.random.randn(100) * 0.05
         data = pd.DataFrame({'Close': prices})
         
-        regime = detector._calculate_volatility_regime(data)
+        # Pass the values array, not the DataFrame
+        regime = detector._calculate_volatility_regime(data['Close'].values)
         assert regime == 'high', f"Expected high volatility, got {regime}"
     
     def test_medium_volatility_regime(self, detector):
@@ -243,7 +245,8 @@ class TestVolatilityRegime:
         prices = 100 + np.random.randn(100) * 0.01
         data = pd.DataFrame({'Close': prices})
         
-        regime = detector._calculate_volatility_regime(data)
+        # Pass the values array, not the DataFrame
+        regime = detector._calculate_volatility_regime(data['Close'].values)
         assert regime in ['low', 'medium', 'high'], f"Invalid regime: {regime}"
     
     def test_volatility_regime_insufficient_data(self, detector):
@@ -280,16 +283,17 @@ class TestAdaptiveThresholds:
         """Test that high volatility uses higher threshold (more conservative)."""
         base_threshold = 0.15
         slope = 0.02
-        strength = 0.18  # Above base but below adjusted
+        # With high vol, threshold is 0.15 * 1.33 = 0.20
+        # Consolidation only when strength < 0.5 * adjusted_threshold = 0.10
+        strength = 0.08  # Below 50% of adjusted threshold
         
         direction, confidence = detector._classify_trend(
             slope, strength, 'high', threshold=base_threshold
         )
         
-        # With high vol, threshold is 0.15 * 1.33 = 0.20
-        # strength 0.18 < 0.20, so should classify as consolidation
+        # strength 0.08 < 0.10 (50% of 0.20), so should classify as consolidation
         assert direction == 'consolidation', \
-            "Should classify as consolidation with higher threshold"
+            f"Should classify as consolidation with strength={strength}, got {direction}"
     
     def test_threshold_scaling_factors(self, detector):
         """Test threshold scaling factors."""

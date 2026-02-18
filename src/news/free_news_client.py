@@ -200,8 +200,13 @@ class FreeNewsClient:
         'RDOR3.SA': 'Rede D\'Or',
     }
     
-    def __init__(self, cache_ttl_hours: int = 6):
-        """Initialize free news client with caching."""
+    def __init__(self, cache_ttl_hours: int = 6, cache_file: str = None):
+        """Initialize free news client with caching.
+        
+        Args:
+            cache_ttl_hours: Cache time-to-live in hours
+            cache_file: Optional custom cache file path (for testing)
+        """
         self.session = requests.Session()
         self.session.headers.update({
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
@@ -211,7 +216,10 @@ class FreeNewsClient:
         self.sentiment_analyzer = FinBERTSentimentAnalyzer()
         
         # Initialize news cache (reduces API calls, leaves 50 credits headroom)
-        self.cache = NewsCache(ttl_hours=cache_ttl_hours)
+        cache_kwargs = {'ttl_hours': cache_ttl_hours}
+        if cache_file:
+            cache_kwargs['cache_file'] = cache_file
+        self.cache = NewsCache(**cache_kwargs)
         
         self.last_request_time = 0
         self.min_request_interval = 2.0  # Be polite: 2 seconds between requests

@@ -112,7 +112,9 @@ class EnhancedProductionRunner:
         """
         self.trend_detector = TrendDetectorV2()
         self.use_news = use_news
-        self.n_workers = n_workers or min(cpu_count(), 8)
+        # Cap workers at 8 to prevent resource exhaustion
+        max_workers = min(cpu_count(), 8)
+        self.n_workers = min(n_workers, max_workers) if n_workers else max_workers
         self.use_fusion = use_fusion
         self.use_regime = use_regime
         

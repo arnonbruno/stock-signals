@@ -131,11 +131,11 @@ class APIBudgetTracker:
         }
     
     def reset_daily_budget(self):
-        """Reset budget for new day."""
+        """Reset budget for new day (or force reset current day)."""
         self.today = datetime.now().strftime("%Y-%m-%d")
-        if self.today not in self.budget_data:
-            self.budget_data[self.today] = {'used': 0, 'calls': 0}
-            self._save_budget()
+        # Reset to 0 - this handles both new day and force reset
+        self.budget_data[self.today] = {'used': 0, 'calls': 0}
+        self._save_budget()
 
 
 # Global tracker instance

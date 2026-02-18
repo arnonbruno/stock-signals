@@ -71,7 +71,9 @@ class SimpleProductionRunner:
     def __init__(self, use_news: bool = True, n_workers: int = None):
         self.trend_detector = TrendDetectorV2()
         self.use_news = use_news
-        self.n_workers = n_workers or min(cpu_count(), 8)  # Use up to 8 cores
+        # Cap workers at 8 to prevent resource exhaustion
+        max_workers = min(cpu_count(), 8)
+        self.n_workers = min(n_workers, max_workers) if n_workers else max_workers
         
         if use_news:
             # Check if model already cached

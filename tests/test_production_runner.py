@@ -357,8 +357,13 @@ class TestRunMethod:
             mock_analyze.return_value = {
                 'ticker': 'TEST.SA',
                 'signal': 'HOLD',
+                'trend': 'neutral',
                 'conviction': 0.0,
-                'position_size': 0.0
+                'position_size': 0.0,
+                'confidence': 0.0,
+                'news_sentiment': 0.0,
+                'price': 100.0,
+                'features': {}
             }
             
             results = runner.run(tickers=['TEST.SA'])
