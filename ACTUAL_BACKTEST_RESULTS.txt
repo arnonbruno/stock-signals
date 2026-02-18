@@ -1,9 +1,0 @@
-ACTUAL BACKTEST RESULTS
-Period: Nov 2025 - Feb 2026
-======================================================================
-
-IBOV Return: 23.93%
-Strategy Return: 0.00%
-Alpha: -23.93%
-
-Total Trades: 0
