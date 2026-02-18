@@ -369,101 +369,106 @@ def get_reversal_signals(result: dict, price_data: dict) -> list:
 # ============================================================================
 
 def format_recommendation(result: dict, drivers: dict, levels: dict, 
-                         allocation: dict, reversals: list) -> str:
-    """Format a single recommendation for output."""
+                         allocation: dict, reversals: list, index: int = 1) -> str:
+    """Format a single recommendation in compact Telegram-friendly format."""
     lines = []
     
     ticker = result['ticker']
     signal = result['signal']
     price = result['price']
-    confidence = result['confidence']
+    confidence = result.get('confidence', 0)
+    trend = result.get('trend', 'unknown')
+    fused_score = result.get('fused_score', 0)
+    news_sentiment = result.get('news_sentiment', 0)
     
-    # Header
-    emoji = '🟢' if signal == 'BUY' else '🔴' if signal == 'SELL' else '⚪'
-    lines.append(f"\n{emoji} **{ticker}** - {signal}")
-    lines.append(f"   Price: R$ {price:.2f} | Confidence: {confidence:.0%}")
+    # Number emoji
+    number_emojis = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟']
+    num_emoji = number_emojis[min(index, 9)]
     
-    # Position allocation
-    if allocation.get('allocation_pct', 0) > 0:
-        lines.append(f"\n   📊 **Position Size:** {allocation['allocation_pct']:.0%}")
+    # Signal emoji
+    signal_emoji = '🟢' if signal == 'BUY' else '🔴'
     
-    # Entry/Exit levels
-    if levels:
-        lines.append(f"\n   📍 **Levels:**")
-        if signal == 'BUY':
-            lines.append(f"      Entry: R$ {levels.get('entry', price):.2f}")
-            lines.append(f"      Stop Loss: R$ {levels.get('stop_loss', 0):.2f} ({levels.get('stop_loss_pct', 0):.0%})")
-            lines.append(f"      Target 1: R$ {levels.get('target_1', 0):.2f} (2:1 R:R)")
-            lines.append(f"      Target 2: R$ {levels.get('target_2', 0):.2f} (3:1 R:R)")
-        elif signal == 'SELL':
-            lines.append(f"      Exit: R$ {levels.get('exit_price', price):.2f}")
-            lines.append(f"      Stop Loss: R$ {levels.get('stop_loss', 0):.2f}")
+    # Conviction label
+    if confidence >= 0.8:
+        conviction_label = "VERY HIGH"
+    elif confidence >= 0.7:
+        conviction_label = "HIGH"
+    elif confidence >= 0.6:
+        conviction_label = "MEDIUM-HIGH"
+    else:
+        conviction_label = "MEDIUM"
     
-    # Signal drivers (more descriptive)
-    if drivers.get('primary'):
-        lines.append(f"\n   🔍 **Why this signal:**")
-        for driver in drivers['primary']:
-            lines.append(f"      • {driver['factor']}: {driver['description']}")
+    lines.append(f"\n{num_emoji}  {ticker} - {signal} {signal_emoji}")
+    lines.append(f"    Price: R${price:.2f}")
     
-    if drivers.get('secondary'):
-        lines.append(f"\n   📈 **Supporting factors:**")
-        for driver in drivers['secondary']:
-            lines.append(f"      • {driver['factor']}: {driver['description']}")
+    # Drivers section
+    lines.append(f"    └─ Drivers:")
     
-    # Risk factors
-    if drivers.get('risk_factors'):
-        lines.append(f"\n   ⚠️ **Risks:**")
-        for risk in drivers['risk_factors']:
-            lines.append(f"      • {risk['description']}")
+    # Trend
+    lines.append(f"       • Trend: {trend.upper()} ({confidence:.0%} confidence)")
     
-    # Reversal signals (what to watch for)
+    # Fusion score (real indicator)
+    if abs(fused_score) > 0.3:
+        fusion_label = "Strong" if abs(fused_score) > 0.5 else "Moderate"
+        direction = "bullish" if fused_score > 0 else "bearish"
+        lines.append(f"       • Fusion: {fusion_label} {direction} alignment ({fused_score:+.2f})")
+    
+    # News sentiment
+    lines.append(f"       • News: {news_sentiment:+.2f} sentiment")
+    if abs(news_sentiment) > 0.15:
+        if news_sentiment > 0.15:
+            lines.append(f"         ✅ Positive news boost (+{news_sentiment*0.20:.0%} position)")
+        else:
+            lines.append(f"         ⚠️ Negative news headwind ({news_sentiment*0.15:.0%} position)")
+    else:
+        lines.append(f"         😐 Neutral news (no impact)")
+    
+    # Position size
+    pos_pct = allocation.get('allocation_pct', 0)
+    lines.append(f"       • Position: {pos_pct:.0%} ({conviction_label} conviction)")
+    
+    # Entry/Stop/Target for BUY signals
+    if signal == 'BUY' and levels:
+        lines.append(f"    └─ Levels:")
+        lines.append(f"       Entry: R${levels.get('entry', price):.2f} | Stop: R${levels.get('stop_loss', 0):.2f}")
+        lines.append(f"       Targets: R${levels.get('target_1', 0):.2f} (2:1) | R${levels.get('target_2', 0):.2f} (3:1)")
+    
+    # What to watch for (reversal signals)
     reversal_signals = drivers.get('reversal_signals', [])
     if reversal_signals:
-        lines.append(f"\n   👀 **What could flip this:**")
-        for rev in reversal_signals[:3]:  # Max 3
-            prob_emoji = '🔴' if rev.get('probability') == 'High' else '🟡' if rev.get('probability') == 'Medium' else '⚪'
-            lines.append(f"      {prob_emoji} {rev['trigger']}")
-            lines.append(f"         → {rev['action']}")
-    
-    lines.append("")
+        lines.append(f"    └─ Watch for:")
+        for rev in reversal_signals[:2]:
+            lines.append(f"       ⚠️ {rev['trigger']} → {rev['action']}")
     
     return "\n".join(lines)
 
 
 def format_full_alert(recommendations: list, stats: dict) -> str:
-    """Format the complete alert message."""
+    """Format the complete alert message in compact Telegram-friendly format."""
     lines = []
     
     # Header
     lines.append("=" * 70)
-    lines.append(f"🎯 LIVE MARKET SIGNALS")
-    lines.append(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    lines.append(f"🚨 TOP TRADING OPPORTUNITIES")
+    lines.append(f"Generated: {datetime.now().strftime('%H:%M:%S')}")
     lines.append("=" * 70)
-    
-    # Market summary
-    lines.append(f"\n📊 **Market Summary:**")
-    lines.append(f"   Analyzed: {stats.get('total_analyzed', 0)} stocks")
-    lines.append(f"   BUY signals: {stats.get('buy_count', 0)}")
-    lines.append(f"   SELL signals: {stats.get('sell_count', 0)}")
-    lines.append(f"   News cache: {stats.get('news_cached', 0)} cached, {stats.get('news_fresh', 0)} fresh")
     
     # Recommendations
-    lines.append("\n" + "=" * 70)
-    lines.append("🚨 **TOP RECOMMENDATIONS** (sorted by conviction)")
-    lines.append("=" * 70)
-    
-    for rec in recommendations:
+    for i, rec in enumerate(recommendations, 1):
         lines.append(format_recommendation(
             rec['result'],
             rec['drivers'],
             rec['levels'],
             rec['allocation'],
-            rec['reversals']
+            rec['reversals'],
+            index=i
         ))
     
-    # Footer
+    # Summary
+    buy_count = sum(1 for r in recommendations if r['result']['signal'] == 'BUY')
+    sell_count = sum(1 for r in recommendations if r['result']['signal'] == 'SELL')
     lines.append("=" * 70)
-    lines.append("⏰ Next update in 10 minutes")
+    lines.append(f"📊 Summary: {buy_count} BUY signals | {sell_count} SELL signals")
     lines.append("=" * 70)
     
     return "\n".join(lines)
