@@ -17,6 +17,7 @@ from typing import Dict, List
 
 from src.signals.trend_detector_v2 import TrendDetectorV2
 from src.news.free_news_client import FreeNewsClient
+from src.features.feature_engineering import get_feature_engineer
 
 # IBOV Active Tickers (65 valid stocks - delisted removed)
 IBOV_TICKERS = [
@@ -150,14 +151,21 @@ class SimpleProductionRunner:
         except Exception as e:
             return config.DEFAULT_POSITION_SIZE
     
-    def get_data(self, ticker: str, days: int = 120, max_retries: int = 3) -> pd.DataFrame:
+    def get_data(self, ticker: str, days: int = 120, max_retries: int = 3, 
+                 end_date: datetime = None) -> pd.DataFrame:
         """
         Download recent data with error handling and retries.
         
         Implements exponential backoff for network failures.
         Returns None if all retries fail.
+        
+        Args:
+            ticker: Stock ticker symbol
+            days: Number of days of historical data
+            max_retries: Maximum retry attempts
+            end_date: Optional end date for backtesting (prevents look-ahead bias)
         """
-        end_date = datetime.now()
+        end_date = end_date or datetime.now()
         start_date = end_date - timedelta(days=days)
         
         for attempt in range(max_retries):
@@ -209,17 +217,19 @@ class SimpleProductionRunner:
             print(f"    ⚠️ News error: {e}")
             return {"sentiment": 0.0, "articles": [], "dates": []}
     
-    def analyze_ticker(self, ticker: str, data: pd.DataFrame = None) -> Dict:
+    def analyze_ticker(self, ticker: str, data: pd.DataFrame = None, 
+                       as_of_date: datetime = None) -> Dict:
         """Analyze single ticker
         
         Args:
             ticker: Stock ticker symbol
             data: Optional pre-loaded DataFrame (for backtesting). If None, downloads fresh data.
+            as_of_date: Optional date for backtesting (prevents look-ahead bias by using only historical data)
         """
         try:
             # Download data if not provided (production mode)
             if data is None:
-                data = self.get_data(ticker)
+                data = self.get_data(ticker, end_date=as_of_date)
             
             if len(data) < 50:
                 return None
@@ -232,6 +242,33 @@ class SimpleProductionRunner:
             trend_result = self.trend_detector.detect_trend(data)
             consensus = trend_result.get('consensus', 'unknown')
             confidence = trend_result.get('confidence', 0.0)
+            
+            # Feature engineering: volume, volatility, sector features
+            feature_engineer = get_feature_engineer()
+            features = feature_engineer.generate_all_features(ticker, data)
+            
+            # Adjust confidence based on feature signals
+            volume_features = features.get('volume', {})
+            volatility_features = features.get('volatility', {})
+            
+            # Volume confirmation boost
+            if volume_features.get('unusual_volume', False):
+                confidence *= 1.05  # 5% boost for unusual volume
+                print(f"     [VOL] Unusual volume detected (+5% confidence)")
+            
+            # Volatility regime adjustment
+            vol_regime = volatility_features.get('regime', 'medium')
+            if vol_regime == 'high':
+                confidence *= 0.90  # Reduce confidence in high volatility
+                print(f"     [VOL] High volatility regime (-10% confidence)")
+            
+            # Store features for reporting
+            feature_summary = {
+                'volume_momentum': volume_features.get('volume_momentum', 1.0),
+                'unusual_volume': volume_features.get('unusual_volume', False),
+                'volatility_regime': vol_regime,
+                'vix_equivalent': volatility_features.get('vix_equivalent', 20.0)
+            }
             
             # Print trend details
             print(f"\n     [TREND] {consensus} @ {confidence:.1%} confidence")
@@ -304,7 +341,8 @@ class SimpleProductionRunner:
                 "news_articles": news_articles,
                 "signal": signal,
                 "conviction": conviction,
-                "position_size": position_size
+                "position_size": position_size,
+                "features": feature_summary  # Add feature engineering data
             }
             
         except Exception as e:
@@ -340,8 +378,24 @@ class SimpleProductionRunner:
         
         return top_movers
     
-    def run(self, tickers: List[str] = None):
-        """Run analysis"""
+    def _analyze_ticker_wrapper(self, ticker: str) -> Dict:
+        """Wrapper for parallel processing (needed for Pool.map)."""
+        print(f"📊 {ticker}...", end=" ", flush=True)
+        result = self.analyze_ticker(ticker)
+        if result:
+            print(f"{result['signal']} ({result['trend']})")
+        else:
+            print("SKIP")
+        return result
+    
+    def run(self, tickers: List[str] = None, parallel: bool = True):
+        """
+        Run analysis on all tickers.
+        
+        Args:
+            tickers: List of tickers to analyze (default: all IBOV + SMLL)
+            parallel: Use parallel processing (default: True, ~8x faster)
+        """
         if tickers is None:
             tickers = TICKERS
         
@@ -351,14 +405,24 @@ class SimpleProductionRunner:
         
         results = []
         
-        for ticker in tickers:
-            print(f"📊 {ticker}...", end=" ")
-            result = self.analyze_ticker(ticker)
-            if result:
-                print(f"{result['signal']} ({result['trend']})")
-                results.append(result)
-            else:
-                print("SKIP")
+        if parallel and len(tickers) > 1:
+            # Parallel processing (8x faster for 150 tickers)
+            print(f"⚡ Parallel mode: {self.n_workers} workers\n")
+            
+            with Pool(self.n_workers) as pool:
+                raw_results = pool.map(self._analyze_ticker_wrapper, tickers)
+            
+            results = [r for r in raw_results if r is not None]
+        else:
+            # Sequential processing (for debugging or single ticker)
+            for ticker in tickers:
+                print(f"📊 {ticker}...", end=" ")
+                result = self.analyze_ticker(ticker)
+                if result:
+                    print(f"{result['signal']} ({result['trend']})")
+                    results.append(result)
+                else:
+                    print("SKIP")
         
         # Summary
         self._print_summary(results)
@@ -393,13 +457,23 @@ class SimpleProductionRunner:
             pos_pct = f"{r['position_size']*100:.0f}%" if r['position_size'] > 0 else "-"
             news_str = f"{r['news_sentiment']:+.2f}" if self.use_news else "N/A"
             
+            # Add feature indicators
+            features = r.get('features', {})
+            feature_indicators = []
+            if features.get('unusual_volume'):
+                feature_indicators.append('📈')
+            if features.get('volatility_regime') == 'high':
+                feature_indicators.append('⚡')
+            feature_str = ''.join(feature_indicators) if feature_indicators else ''
+            
             print(
                 f"{r['ticker']:<10} "
                 f"R${r['price']:>7.2f} "
                 f"{signal_emoji} {r['signal']:<4} "
                 f"{r['trend']:<10} "
                 f"{news_str:>6} "
-                f"{pos_pct:>5}"
+                f"{pos_pct:>5} "
+                f"{feature_str}"
             )
         
         # Stats

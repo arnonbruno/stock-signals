@@ -27,6 +27,12 @@ class FeatureEngineer:
     def __init__(self):
         self.features = {}
     
+    def _normalize_columns(self, data: pd.DataFrame) -> pd.DataFrame:
+        """Handle yfinance MultiIndex columns."""
+        if isinstance(data.columns, pd.MultiIndex):
+            data.columns = data.columns.get_level_values(0)
+        return data
+    
     def add_volume_features(self, data: pd.DataFrame) -> Dict:
         """
         Extract volume-based features.
@@ -37,6 +43,8 @@ class FeatureEngineer:
             - unusual_volume: Is current volume > 2x average?
             - volume_trend: Increasing or decreasing?
         """
+        data = self._normalize_columns(data)
+        
         if 'Volume' not in data.columns or len(data) < 20:
             return {
                 'volume_momentum': 1.0,
@@ -76,6 +84,10 @@ class FeatureEngineer:
             - relative_strength: Performance vs IBOV
             - sector_rank: Percentile rank
         """
+        data = self._normalize_columns(data)
+        if market_data is not None:
+            market_data = self._normalize_columns(market_data)
+        
         if len(data) < 20:
             return {
                 'relative_strength': 1.0,
@@ -110,6 +122,8 @@ class FeatureEngineer:
             - regime: 'low', 'medium', 'high'
             - vix_equivalent: VIX-like measure
         """
+        data = self._normalize_columns(data)
+        
         if len(data) < 20:
             return {
                 'volatility': 0.20,
@@ -150,6 +164,8 @@ class FeatureEngineer:
             - peer_correlation: Average correlation with sector peers
             - correlation_stability: How stable is the correlation?
         """
+        data = self._normalize_columns(data)
+        
         if len(data) < 20:
             return {
                 'market_correlation': 0.5,
