@@ -56,7 +56,8 @@ def analyze_signal_drivers(result: dict) -> dict:
         'primary': [],
         'secondary': [],
         'confidence_boosters': [],
-        'risk_factors': []
+        'risk_factors': [],
+        'reversal_signals': []  # NEW: What could flip this signal
     }
     
     signal = result.get('signal', 'HOLD')
@@ -64,66 +65,175 @@ def analyze_signal_drivers(result: dict) -> dict:
     trend = result.get('trend', 'unknown')
     fused_score = result.get('fused_score', 0)
     news_sentiment = result.get('news_sentiment', 0)
+    features = result.get('features', {})
     
-    # Trend driver
+    # === TREND DRIVER (more descriptive) ===
     if trend == 'uptrend':
+        trend_desc = "Price above 50-day MA, forming higher lows"
+        if confidence > 0.7:
+            trend_desc += ", strong buying pressure"
         drivers['primary'].append({
             'factor': 'Trend',
-            'value': 'Uptrend',
+            'value': 'Bullish Uptrend',
             'impact': f'+{confidence*0.4:.0%} confidence',
-            'description': 'Price above 50-day MA with bullish momentum'
+            'description': trend_desc
         })
     elif trend == 'downtrend':
+        trend_desc = "Price below 50-day MA, forming lower highs"
+        if confidence > 0.7:
+            trend_desc += ", strong selling pressure"
         drivers['primary'].append({
             'factor': 'Trend',
-            'value': 'Downtrend',
-            'impact': f'-{confidence*0.3:.0%} confidence',
-            'description': 'Price below 50-day MA with bearish momentum'
+            'value': 'Bearish Downtrend',
+            'impact': f'{confidence*0.3:.0%} confidence',
+            'description': trend_desc
+        })
+    elif trend == 'consolidation':
+        drivers['primary'].append({
+            'factor': 'Trend',
+            'value': 'Sideways/Range-bound',
+            'impact': 'Neutral bias',
+            'description': 'Price oscillating between support/resistance'
         })
     
-    # Fused score driver
-    if abs(fused_score) > 0.3:
+    # === FUSION SCORE DRIVER (breakdown what indicators agree) ===
+    if abs(fused_score) > 0.4:
+        fusion_desc = ""
+        if fused_score > 0:
+            fusion_desc = "RSI not overbought + MACD bullish + Volume supporting"
+            if fused_score > 0.5:
+                fusion_desc += " + Multiple timeframes aligned"
+        else:
+            fusion_desc = "RSI not oversold + MACD bearish + Volume on sells"
+            if fused_score < -0.5:
+                fusion_desc += " + Multiple timeframes aligned"
+        
         drivers['primary'].append({
             'factor': 'Signal Fusion',
             'value': f'{fused_score:+.2f}',
-            'impact': 'Strong multi-indicator alignment',
-            'description': 'Multiple indicators agree on direction'
+            'impact': 'Strong' if abs(fused_score) > 0.5 else 'Moderate',
+            'description': fusion_desc
         })
-    
-    # News sentiment driver
-    if abs(news_sentiment) > 0.1:
-        impact = 'bullish' if news_sentiment > 0 else 'bearish'
+    elif abs(fused_score) > 0.2:
         drivers['secondary'].append({
-            'factor': 'News Sentiment',
-            'value': f'{news_sentiment:+.2f}',
-            'impact': impact,
-            'description': 'Recent news supports the signal'
+            'factor': 'Signal Fusion',
+            'value': f'{fused_score:+.2f}',
+            'impact': 'Weak alignment',
+            'description': 'Some indicators agree, others mixed'
         })
     
-    # Confidence level
-    if confidence > 0.7:
+    # === VOLUME ANALYSIS ===
+    volume_momentum = features.get('volume_momentum', 1.0)
+    unusual_volume = features.get('unusual_volume', False)
+    
+    if unusual_volume:
+        drivers['secondary'].append({
+            'factor': 'Volume',
+            'value': 'Unusual spike',
+            'impact': 'Confirms conviction',
+            'description': 'Trading volume 2x+ above average - strong participation'
+        })
+    elif volume_momentum > 1.2:
+        drivers['secondary'].append({
+            'factor': 'Volume',
+            'value': 'Above average',
+            'impact': 'Supports move',
+            'description': f'Volume {volume_momentum:.1f}x normal - good participation'
+        })
+    
+    # === VOLATILITY REGIME ===
+    vol_regime = features.get('volatility_regime', 'medium')
+    if vol_regime == 'high':
+        drivers['secondary'].append({
+            'factor': 'Volatility',
+            'value': 'High',
+            'impact': '⚠️ Increased risk',
+            'description': 'Larger than normal price swings - use smaller position'
+        })
+    
+    # === NEWS SENTIMENT ===
+    if abs(news_sentiment) > 0.1:
+        if news_sentiment > 0:
+            drivers['secondary'].append({
+                'factor': 'News Sentiment',
+                'value': f'{news_sentiment:+.2f}',
+                'impact': 'Bullish catalyst',
+                'description': 'Recent news positive - supports buying pressure'
+            })
+        else:
+            drivers['secondary'].append({
+                'factor': 'News Sentiment',
+                'value': f'{news_sentiment:+.2f}',
+                'impact': 'Bearish overhang',
+                'description': 'Recent news negative - supports selling pressure'
+            })
+    
+    # === CONFIDENCE LEVEL ===
+    if confidence > 0.75:
         drivers['confidence_boosters'].append({
             'factor': 'High Confidence',
             'value': f'{confidence:.0%}',
             'impact': 'Strong signal quality',
-            'description': 'Multiple factors align with high conviction'
+            'description': 'Multiple factors strongly aligned'
         })
     
-    # Risk factors (things that could reverse the signal)
-    if abs(news_sentiment) > 0.2 and signal == 'BUY' and news_sentiment < 0:
+    # === RISK FACTORS ===
+    if vol_regime == 'high' and signal == 'BUY':
         drivers['risk_factors'].append({
-            'factor': 'Negative News',
-            'value': f'{news_sentiment:.2f}',
-            'impact': 'Could reverse BUY signal',
-            'description': 'Watch for sentiment shift'
+            'factor': 'High Volatility',
+            'value': vol_regime,
+            'impact': 'Wider stops needed',
+            'description': 'Price may swing 5%+ in a day'
         })
     
-    if trend == 'uptrend' and confidence < 0.6:
-        drivers['risk_factors'].append({
-            'factor': 'Weak Trend',
-            'value': f'{confidence:.0%}',
-            'impact': 'Trend could stall',
-            'description': 'Monitor for trend exhaustion'
+    # === REVERSAL SIGNALS (What could flip this recommendation) ===
+    if signal == 'BUY':
+        # What would make us exit/sell?
+        drivers['reversal_signals'].append({
+            'trigger': 'Price drops below 50-day MA',
+            'action': 'Exit or tighten stop-loss',
+            'probability': 'Medium'
+        })
+        
+        if fused_score > 0.4:
+            drivers['reversal_signals'].append({
+                'trigger': 'RSI breaks above 70 (overbought)',
+                'action': 'Take partial profits',
+                'probability': 'Medium'
+            })
+        
+        if vol_regime == 'high':
+            drivers['reversal_signals'].append({
+                'trigger': 'Price drops 5%+ from entry in single day',
+                'action': 'Exit immediately - momentum broken',
+                'probability': 'High'
+            })
+        
+        if news_sentiment < 0:
+            drivers['reversal_signals'].append({
+                'trigger': 'Major negative news event',
+                'action': 'Re-evaluate thesis immediately',
+                'probability': 'Low but high impact'
+            })
+    
+    elif signal == 'SELL':
+        drivers['reversal_signals'].append({
+            'trigger': 'Price breaks above 50-day MA with volume',
+            'action': 'Cover short / consider reversal',
+            'probability': 'Medium'
+        })
+        
+        if fused_score < -0.4:
+            drivers['reversal_signals'].append({
+                'trigger': 'RSI drops below 30 (oversold)',
+                'action': 'Bounce likely - tighten stops',
+                'probability': 'Medium'
+            })
+        
+        drivers['reversal_signals'].append({
+            'trigger': 'Major positive news catalyst',
+            'action': 'Exit position - sentiment shift',
+            'probability': 'Low but high impact'
         })
     
     return drivers
@@ -276,8 +386,6 @@ def format_recommendation(result: dict, drivers: dict, levels: dict,
     # Position allocation
     if allocation.get('allocation_pct', 0) > 0:
         lines.append(f"\n   📊 **Position Size:** {allocation['allocation_pct']:.0%}")
-        if allocation.get('reason'):
-            lines.append(f"      _{allocation['reason']}_")
     
     # Entry/Exit levels
     if levels:
@@ -291,33 +399,31 @@ def format_recommendation(result: dict, drivers: dict, levels: dict,
             lines.append(f"      Exit: R$ {levels.get('exit_price', price):.2f}")
             lines.append(f"      Stop Loss: R$ {levels.get('stop_loss', 0):.2f}")
     
-    # Signal drivers
+    # Signal drivers (more descriptive)
     if drivers.get('primary'):
         lines.append(f"\n   🔍 **Why this signal:**")
         for driver in drivers['primary']:
-            lines.append(f"      • {driver['factor']}: {driver['value']} - {driver['impact']}")
+            lines.append(f"      • {driver['factor']}: {driver['description']}")
     
     if drivers.get('secondary'):
+        lines.append(f"\n   📈 **Supporting factors:**")
         for driver in drivers['secondary']:
-            lines.append(f"      • {driver['factor']}: {driver['value']} ({driver['impact']})")
-    
-    # Confidence boosters
-    if drivers.get('confidence_boosters'):
-        lines.append(f"\n   ✅ **Confidence boosters:**")
-        for booster in drivers['confidence_boosters']:
-            lines.append(f"      • {booster['factor']}: {booster['value']}")
+            lines.append(f"      • {driver['factor']}: {driver['description']}")
     
     # Risk factors
     if drivers.get('risk_factors'):
-        lines.append(f"\n   ⚠️ **Risk factors:**")
+        lines.append(f"\n   ⚠️ **Risks:**")
         for risk in drivers['risk_factors']:
-            lines.append(f"      • {risk['factor']}: {risk['impact']}")
+            lines.append(f"      • {risk['description']}")
     
-    # Reversal signals to watch
-    if reversals:
-        lines.append(f"\n   👀 **Watch for:**")
-        for rev in reversals[:2]:  # Max 2 reversal signals
-            lines.append(f"      • {rev['trigger']} → {rev['action']}")
+    # Reversal signals (what to watch for)
+    reversal_signals = drivers.get('reversal_signals', [])
+    if reversal_signals:
+        lines.append(f"\n   👀 **What could flip this:**")
+        for rev in reversal_signals[:3]:  # Max 3
+            prob_emoji = '🔴' if rev.get('probability') == 'High' else '🟡' if rev.get('probability') == 'Medium' else '⚪'
+            lines.append(f"      {prob_emoji} {rev['trigger']}")
+            lines.append(f"         → {rev['action']}")
     
     lines.append("")
     
