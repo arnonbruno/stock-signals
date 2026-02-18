@@ -509,11 +509,19 @@ class FreeNewsClient:
                     logger.info(f"✅ Cache HIT: {ticker} (sentiment: {cached_sentiment:+.2f}, age: {self.cache.get_cache_age(ticker)})")
                     return cached_sentiment
             
-            # MISS: Fetch fresh news from API
+            # MISS: Fetch fresh news
             logger.debug(f"Cache MISS or disabled - fetching fresh news for {ticker}")
-            articles = self._fetch_newsdata_io(ticker, date)
             
-            # FALLBACK: If newsdata.io returns nothing, try Investing.com scraping
+            # Try Google News RSS first (free, no API key needed, best results)
+            query = self._ticker_to_query(ticker)
+            articles = self._fetch_google_news(query, days=7)
+            
+            # Fallback 1: If Google News fails, try newsdata.io API
+            if not articles:
+                logger.debug(f"Google News returned no results, trying newsdata.io for {ticker}")
+                articles = self._fetch_newsdata_io(ticker, date)
+            
+            # Fallback 2: If newsdata.io fails, try Investing.com scraping
             if not articles:
                 logger.debug(f"newsdata.io returned no results, falling back to Investing.com for {ticker}")
                 articles = self._fetch_investing_com(ticker, date)
