@@ -369,7 +369,8 @@ def get_reversal_signals(result: dict, price_data: dict) -> list:
 # ============================================================================
 
 def format_recommendation(result: dict, drivers: dict, levels: dict, 
-                         allocation: dict, reversals: list, index: int = 1) -> str:
+                         allocation: dict, reversals: list, index: int = 1,
+                         news_cache=None) -> str:
     """Format a single recommendation in compact Telegram-friendly format."""
     lines = []
     
@@ -413,15 +414,39 @@ def format_recommendation(result: dict, drivers: dict, levels: dict,
         direction = "bullish" if fused_score > 0 else "bearish"
         lines.append(f"       • Fusion: {fusion_label} {direction} alignment ({fused_score:+.2f})")
     
-    # News sentiment
+    # News sentiment with headlines
     lines.append(f"       • News: {news_sentiment:+.2f} sentiment")
+    
+    # Get article headlines from cache if available
+    cached_articles = []
+    if news_cache and hasattr(news_cache, 'get_full'):
+        cached = news_cache.get_full(ticker)
+        if cached and cached.get('articles'):
+            cached_articles = cached['articles']
+    
     if abs(news_sentiment) > 0.15:
         if news_sentiment > 0.15:
             lines.append(f"         ✅ Positive news boost (+{news_sentiment*0.20:.0%} position)")
         else:
             lines.append(f"         ⚠️ Negative news headwind ({news_sentiment*0.15:.0%} position)")
+        
+        # Show top headlines
+        if cached_articles:
+            lines.append(f"         📰 Headlines:")
+            for article in cached_articles[:2]:
+                title = article.get('title', '')[:55]
+                if title:
+                    source = article.get('source_publication', '')
+                    lines.append(f"            • {title}... ({source})")
     else:
         lines.append(f"         😐 Neutral news (no impact)")
+        # Still show headlines if available
+        if cached_articles:
+            lines.append(f"         📰 Recent:")
+            for article in cached_articles[:1]:
+                title = article.get('title', '')[:55]
+                if title:
+                    lines.append(f"            • {title}...")
     
     # Position size
     pos_pct = allocation.get('allocation_pct', 0)
@@ -443,7 +468,7 @@ def format_recommendation(result: dict, drivers: dict, levels: dict,
     return "\n".join(lines)
 
 
-def format_full_alert(recommendations: list, stats: dict) -> str:
+def format_full_alert(recommendations: list, stats: dict, news_cache=None) -> str:
     """Format the complete alert message in compact Telegram-friendly format."""
     lines = []
     
@@ -461,7 +486,8 @@ def format_full_alert(recommendations: list, stats: dict) -> str:
             rec['levels'],
             rec['allocation'],
             rec['reversals'],
-            index=i
+            index=i,
+            news_cache=news_cache
         ))
     
     # Summary
@@ -591,7 +617,8 @@ def run_monitor():
     }
     
     # Format and save alert
-    alert_text = format_full_alert(detailed_recommendations, stats)
+    news_cache_obj = runner.news_client.cache if runner.news_client else None
+    alert_text = format_full_alert(detailed_recommendations, stats, news_cache=news_cache_obj)
     
     # Save to file
     ALERT_FILE.write_text(alert_text)

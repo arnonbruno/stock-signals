@@ -1,14 +1,14 @@
 
 ======================================================================
 🚨 TOP TRADING OPPORTUNITIES
-Generated: 13:02:29
+Generated: 20:01:43
 ======================================================================
 
 1️⃣  ITUB4.SA - BUY 🟢
     Price: R$47.77
     └─ Drivers:
        • Trend: UPTREND (100% confidence)
-       • News: +0.05 sentiment
+       • News: +0.04 sentiment
          😐 Neutral news (no impact)
        • Position: 15% (VERY HIGH conviction)
 
@@ -40,7 +40,7 @@ Generated: 13:02:29
     Price: R$26.98
     └─ Drivers:
        • Trend: UPTREND (100% confidence)
-       • News: +0.02 sentiment
+       • News: +0.08 sentiment
          😐 Neutral news (no impact)
        • Position: 14% (VERY HIGH conviction)
 
@@ -48,42 +48,47 @@ Generated: 13:02:29
     Price: R$31.73
     └─ Drivers:
        • Trend: UPTREND (100% confidence)
-       • News: +0.02 sentiment
+       • News: +0.04 sentiment
          😐 Neutral news (no impact)
        • Position: 20% (VERY HIGH conviction)
 
-7️⃣  ALPA4.SA - BUY 🟢
-    Price: R$15.03
-    └─ Drivers:
-       • Trend: UPTREND (100% confidence)
-       • News: +0.03 sentiment
-         😐 Neutral news (no impact)
-       • Position: 16% (VERY HIGH conviction)
-
-8️⃣  IFCM3.SA - SELL 🔴
-    Price: R$0.51
-    └─ Drivers:
-       • Trend: DOWNTREND (100% confidence)
-       • News: +0.01 sentiment
-         😐 Neutral news (no impact)
-       • Position: 100% (VERY HIGH conviction)
-
-9️⃣  LAVV3.SA - BUY 🟢
+7️⃣  LAVV3.SA - BUY 🟢
     Price: R$18.17
     └─ Drivers:
        • Trend: UPTREND (100% confidence)
-       • News: +0.06 sentiment
-         😐 Neutral news (no impact)
+       • News: +0.20 sentiment
+         ✅ Positive news boost (+4% position)
+         📰 Top stories:
+            • XP vê valorização de até 44% para construtoras de alta renda... (Unknown)
        • Position: 19% (VERY HIGH conviction)
 
-10️⃣  MILS3.SA - BUY 🟢
+8️⃣  MILS3.SA - BUY 🟢
     Price: R$15.06
     └─ Drivers:
        • Trend: UPTREND (92% confidence)
-       • News: +0.12 sentiment
+       • News: +0.00 sentiment
          😐 Neutral news (no impact)
        • Position: 7% (VERY HIGH conviction)
 
+9️⃣  NEOE3.SA - BUY 🟢
+    Price: R$32.72
+    └─ Drivers:
+       • Trend: UPTREND (100% confidence)
+       • News: +0.15 sentiment
+         ✅ Positive news boost (+3% position)
+         📰 Top stories:
+            • Neoenergia (NEOE3) tem alta de 73% no lucro do 4º trimestre ... (Unknown)
+            • Neoenergia (NEOE3) registra lucro líquido de R$ 1,475 bi no ... (Unknown)
+       • Position: 13% (VERY HIGH conviction)
+
+10️⃣  PETR4.SA - BUY 🟢
+    Price: R$36.89
+    └─ Drivers:
+       • Trend: UPTREND (99% confidence)
+       • News: +0.02 sentiment
+         😐 Neutral news (no impact)
+       • Position: 16% (VERY HIGH conviction)
+
 ======================================================================
-📊 Summary: 9 BUY signals | 1 SELL signals
+📊 Summary: 10 BUY signals | 0 SELL signals
 ======================================================================

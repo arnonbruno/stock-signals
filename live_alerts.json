@@ -1,5 +1,152 @@
 {
-  "generated_at": "2026-02-18T18:31:05.559596",
-  "buy_signals": [],
-  "sell_signals": []
+  "generated_at": "2026-02-18T19:39:43.716385",
+  "total_analyzed": 131,
+  "buy_count": 72,
+  "sell_count": 28,
+  "recommendations": [
+    {
+      "ticker": "KEPL3.SA",
+      "signal": "SELL",
+      "price": 9.100000381469727,
+      "confidence": 0.78,
+      "fused_score": -0.6056815377666374,
+      "trend": "uptrend",
+      "allocation": 0.39,
+      "levels": {
+        "exit": 9.100000381469727,
+        "stop_loss": 10.0100004196167
+      }
+    },
+    {
+      "ticker": "ABEV3.SA",
+      "signal": "BUY",
+      "price": 16.350000381469727,
+      "confidence": 0.8333333333333335,
+      "fused_score": 0.5121472351651629,
+      "trend": "uptrend",
+      "allocation": 0.4,
+      "levels": {
+        "entry": 16.350000381469727,
+        "stop_loss": 14.715000343322755,
+        "target_1": 19.62000045776367,
+        "target_2": 21.255000495910643
+      }
+    },
+    {
+      "ticker": "SUZB3.SA",
+      "signal": "BUY",
+      "price": 58.34000015258789,
+      "confidence": 0.78,
+      "fused_score": 0.5391493669576086,
+      "trend": "uptrend",
+      "allocation": 0.39,
+      "levels": {
+        "entry": 58.34000015258789,
+        "stop_loss": 52.5060001373291,
+        "target_1": 70.00800018310547,
+        "target_2": 75.84200019836425
+      }
+    },
+    {
+      "ticker": "VIVT3.SA",
+      "signal": "BUY",
+      "price": 40.9900016784668,
+      "confidence": 0.83204149880643,
+      "fused_score": 0.4983852068413708,
+      "trend": "uptrend",
+      "allocation": 0.4,
+      "levels": {
+        "entry": 40.9900016784668,
+        "stop_loss": 36.89100151062012,
+        "target_1": 49.18800201416015,
+        "target_2": 53.28700218200682
+      }
+    },
+    {
+      "ticker": "RAIZ4.SA",
+      "signal": "SELL",
+      "price": 0.6299999952316284,
+      "confidence": 0.7875000000000002,
+      "fused_score": -0.522453523616165,
+      "trend": "downtrend",
+      "allocation": 0.39375000000000016,
+      "levels": {
+        "exit": 0.6299999952316284,
+        "stop_loss": 0.6929999947547913
+      }
+    },
+    {
+      "ticker": "ASAI3.SA",
+      "signal": "BUY",
+      "price": 9.899999618530273,
+      "confidence": 0.78,
+      "fused_score": 0.526767018716678,
+      "trend": "uptrend",
+      "allocation": 0.39,
+      "levels": {
+        "entry": 9.899999618530273,
+        "stop_loss": 8.909999656677247,
+        "target_1": 11.879999542236327,
+        "target_2": 12.869999504089353
+      }
+    },
+    {
+      "ticker": "TIMS3.SA",
+      "signal": "BUY",
+      "price": 27.290000915527344,
+      "confidence": 0.8271260582785012,
+      "fused_score": 0.4922409061814596,
+      "trend": "uptrend",
+      "allocation": 0.4,
+      "levels": {
+        "entry": 27.290000915527344,
+        "stop_loss": 24.56100082397461,
+        "target_1": 32.74800109863281,
+        "target_2": 35.47700119018555
+      }
+    },
+    {
+      "ticker": "PRNR3.SA",
+      "signal": "BUY",
+      "price": 20.59000015258789,
+      "confidence": 0.823689739858996,
+      "fused_score": 0.4879455081570781,
+      "trend": "uptrend",
+      "allocation": 0.4,
+      "levels": {
+        "entry": 20.59000015258789,
+        "stop_loss": 18.5310001373291,
+        "target_1": 24.70800018310547,
+        "target_2": 26.767000198364258
+      }
+    },
+    {
+      "ticker": "LWSA3.SA",
+      "signal": "SELL",
+      "price": 3.6600000858306885,
+      "confidence": 0.8110282168349865,
+      "fused_score": -0.48945531327379166,
+      "trend": "downtrend",
+      "allocation": 0.4,
+      "levels": {
+        "exit": 3.6600000858306885,
+        "stop_loss": 4.0260000944137575
+      }
+    },
+    {
+      "ticker": "DIRR3.SA",
+      "signal": "BUY",
+      "price": 16.190000534057617,
+      "confidence": 0.7500000000000001,
+      "fused_score": 0.502682555553157,
+      "trend": "uptrend",
+      "allocation": 0.3750000000000001,
+      "levels": {
+        "entry": 16.190000534057617,
+        "stop_loss": 14.571000480651856,
+        "target_1": 19.42800064086914,
+        "target_2": 21.0470006942749
+      }
+    }
+  ]
 }
