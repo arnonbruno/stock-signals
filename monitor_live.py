@@ -385,17 +385,17 @@ def run_monitor():
     print(f"   Sell: conf ≥ {thresholds.sell_confidence:.0%}")
     print(f"   Stop Loss: {thresholds.stop_loss:.0%}")
     
-    # Initialize runner
+    # Initialize runner (n_workers=1 forces sequential mode, no multiprocessing)
     runner = EnhancedProductionRunner(
         use_news=True,
         use_fusion=True,
         use_regime=False,  # Use default thresholds
-        n_workers=4
+        n_workers=1  # Sequential mode - no multiprocessing, no file descriptor leaks
     )
     
-    # Run analysis
-    print(f"\n📊 Analyzing market with signal fusion...")
-    results = runner.run(parallel=True)
+    # Run analysis (parallel=False for stability)
+    print(f"\n📊 Analyzing market with signal fusion (sequential mode)...")
+    results = runner.run(parallel=False)
     
     if not results:
         print("❌ No results from analysis")

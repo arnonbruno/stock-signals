@@ -447,7 +447,7 @@ class EnhancedProductionRunner:
         
         results = []
         
-        if parallel and len(tickers) > 1:
+        if parallel and len(tickers) > 1 and self.n_workers > 1:
             print(f"\n⚡ Parallel mode: {self.n_workers} workers\n")
             
             with Pool(self.n_workers) as pool:
@@ -455,6 +455,7 @@ class EnhancedProductionRunner:
             
             results = [r for r in raw_results if r is not None]
         else:
+            # Sequential mode (n_workers=1 or single ticker)
             for ticker in tickers:
                 print(f"📊 {ticker}...", end=" ")
                 result = self.analyze_ticker(ticker)

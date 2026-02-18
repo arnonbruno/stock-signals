@@ -576,9 +576,787 @@
       }
     ]
   },
+  "IRBR3.SA": {
+    "sentiment": 0.1269425215982601,
+    "timestamp": "2026-02-18T18:06:01.178007",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "IRB Brasil (IRBR3) volta ao lucro forte e anima mercado; BTG v\u00ea espa\u00e7o para alta - suno.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMigAFBVV95cUxNYWt0VEk2VUxpaWJEWko1Ql9RYU43ekhuc3JZX0NOSDYxZ1pNVlc4U1dUTUE2aE9mM25BQnZqQ0xBZ3NZUVhET2VY",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNYWt0VEk2VUxpaWJEWko1Ql9RYU43ekhuc3JZX0NOSDYxZ1pNVlc4U1dUTUE2aE9mM25BQnZqQ0xBZ3NZUVhET2VYR1g1U3pqN041VDJpNmNEQ0xMSVFycnFvcXlVQzZSdm4wMzByUVFYOUU0VmQwWk00TXNyNVVoMNIBhgFBVV95cUxOVDBvczdUVXMwdHRPdEIzRXBmcU1SU0x0bmdwVC16aEVOY0J1eGt2QVdnRTBGS1RId0YyX24xdGRRY0c2QzNNLVd2cE5uaUVVSnZRSDUwZzd2Tm5MdTJQNE1TQ0pXYWRKR25DZUNXY1lUTDNfN19oZ29FUW5NX0JjT1lBTnNEZw?oc=5"
+      },
+      {
+        "title": "IRB (IRBR3) lucra mais e promete a volta dos dividendos \u2014 mas fantasma da fraude reaparece com cobran\u00e7a milion\u00e1ria de investidores - Seu Dinheiro",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMihAJBVV95cUxNVXJRQ0xGbWJzSlBWdlNoalYzYXZ4RTJINHJrNjhXREFFWkVPRDhBZmw0Z1hQd1VZcEZjMy1BX1AzQnBVZDNEUEtR",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMihAJBVV95cUxNVXJRQ0xGbWJzSlBWdlNoalYzYXZ4RTJINHJrNjhXREFFWkVPRDhBZmw0Z1hQd1VZcEZjMy1BX1AzQnBVZDNEUEtRQU42eE1TNFFVcEdkTFRXNENneWVGSTgyTTRFVHhQeUp2Q1lwQms5R0x5NjdNM091QkhJNkFCdU1zUk9OdjU5V2MweWJxUVB2Z0p1LTJON0lCbGpQNmphTmJONmQ3Y210ZDRjWVNoc0hucnRlWW1KeFJEdHBuSUZkT0dBRlJ5MDVaeVJZSHVUUDFTWXFEOXBIYUFoNjZtU042TktiblBFdkN4S1FBa1RXYUgwVDIwbHdQekZpcE9YODlZMA?oc=5"
+      },
+      {
+        "title": "IRB Re (IRBR3) | Resultado 4T25: Recupera\u00e7\u00e3o T\u00e9cnica Consolidada e Rentabilidade em Nova Fase - Genial Investimentos",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi4gFBVV95cUxOeG9JU1RKUmZJeWlKNS1LSHlZc29VUVdZMmlZZVl6YjhwSzlqTkVheUp5UTU2OTZmQ1lYUXJxd2JVeE53RHU3LUVl",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOeG9JU1RKUmZJeWlKNS1LSHlZc29VUVdZMmlZZVl6YjhwSzlqTkVheUp5UTU2OTZmQ1lYUXJxd2JVeE53RHU3LUVla2tTcFFla2d0dTBTYlNjU3pMUmhLS1Y2ZU9sbTdOek9MRUFvRmlfdzdXZXU3aDF0UTdpc2FsVnR3QmtmWnpOR0pNUlJuMmVpRS1yZE5Rd01aSy1TdHZzU182NzE5cUJsSFd0UVBNTlpIY2ZiWnB0ZXFteVI4bG9pMndSTXA5SXBvakFkUVFvaFc1SW5GZ25qN3BYUXBTNnFB?oc=5"
+      }
+    ]
+  },
+  "KLBN11.SA": {
+    "sentiment": 0.03467293212117853,
+    "timestamp": "2026-02-18T18:10:14.737909",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Klabin (KLBN11) descontinua proje\u00e7\u00e3o de EBITDA Incremental para 2027 - InfoMoney",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxQd0FBUzRVTF9ab1p5S1V6VFM0OVZ1NHFPa0hjN1FSZ0VxNU9hU2YyQi1SVDh6SDVfN2ZuYmxOaXBJZHdkUmMxY2NO",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQd0FBUzRVTF9ab1p5S1V6VFM0OVZ1NHFPa0hjN1FSZ0VxNU9hU2YyQi1SVDh6SDVfN2ZuYmxOaXBJZHdkUmMxY2NOS2UtYjlXOGZha21KMkVoUXFJNnFWaUFDMUo3Sm5LclpfU3RIa3FzLXZIb0pUNzFJTXFhMkRCWS10WmsyblVLdFZYa0pObmxyMlZ2ZWtRQmJrMklySy04MG8xSDAtWEPSAa4BQVVfeXFMT2NEMmplMjFUUV9tdUV5VGhEUFc0RFZUa1hrYXN6UDNuT190cWN5NUthRmxod01fVkFBTkw3SVllYkRReTI0N1J1VHpKUEUzWENjTDFtYldIYXdfbS1JQUpHYXFGSVoyVWIyd1h3VGZYVm5xSnpqMW96dmNiV2hpamZ4QzNBbkFqODAxNzhEb2FXOWNhNTVpSVdDbFpVdGhrMTBKaVpPWUJWUVZLcGN3?oc=5"
+      },
+      {
+        "title": "Temporada de Balan\u00e7os: o que est\u00e1 por tr\u00e1s dos n\u00fameros da Klabin (KLBN11) - Estad\u00e3o",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiswFBVV95cUxPeElqb05jZTVTMDFiV1prWGJPU0oxUkw5cS10eHIxTm5YQlFSRzVYWGdVWkpwMWtPWnc2MEFZanpEZk1NZDl1RW9v",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPeElqb05jZTVTMDFiV1prWGJPU0oxUkw5cS10eHIxTm5YQlFSRzVYWGdVWkpwMWtPWnc2MEFZanpEZk1NZDl1RW9vNjc2c3pMemQ1UENYVXVxN19leHczbUphZ3JlS1RPWk55eFN3elZJMGE1cnl4bkpwSmF0OGplVDFxRFMxUkdjYklJbDBDUGR5Z3RPel9ZelNONHhNcDVGRjdZQ01XWDRoaV8zdnF5Uk9MUQ?oc=5"
+      },
+      {
+        "title": "Klabin (KLBN11) vai descontinuar Ebitda incremental; entenda o motivo - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMilAFBVV95cUxQTkJ3VkZnMzRGMC1PeFkzLXQ3ZHUxNC1VZUpTUFdYMDJtTjZKM24zTjRfU2cwbkVIZi1oTHNQRGdJakdvNWdQRlp3",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQTkJ3VkZnMzRGMC1PeFkzLXQ3ZHUxNC1VZUpTUFdYMDJtTjZKM24zTjRfU2cwbkVIZi1oTHNQRGdJakdvNWdQRlp3OWI3cF9RbGh1VEZEQjJQV3FqMXF3T0xaRFFtSW9XR3h3bVA1V1R3Zml6bmNjMWNlRk1xRmltTXg5VEtyeFZWUjhHaVlXWWp5cE9i?oc=5"
+      }
+    ]
+  },
+  "ASAI3.SA": {
+    "sentiment": 0.05353406899338603,
+    "timestamp": "2026-02-18T18:18:26.860039",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Assa\u00ed fecha parceria com Mercado Livre para vender online no segundo trimestre - InfoMoney",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxPREFWS21FWk5uaTFGWERzSWxQMmg4YnBkaEhEcWF1RlFRYmZTal92NU1nM0xFUnhiZkczcXZZZ1FHT1JRY0U0dkRM",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPREFWS21FWk5uaTFGWERzSWxQMmg4YnBkaEhEcWF1RlFRYmZTal92NU1nM0xFUnhiZkczcXZZZ1FHT1JRY0U0dkRMWDhFa3hzMGhJNEF6V0xtZ0tub1pBMVlEanRXeUN5bTBtSjhqY0pwVzhMXzAyYVlqSFZSdURMZ25zb2ZXeHViUjNnTEQ1eElISFdTNl9keFRZdXNCbjZXMWsxU0FYWklpXzJ0TG1BeVlmMHlFT1Bo0gG-AUFVX3lxTFA5RjJiQU1CY19JU1ZYNkphM1p5eENpejFFTUxYbFdyR18zdGZBaHhCQjBDUVBDU0JncWZwUGRFRmxSQXAzNzY3U1F0aEpHbXE3LWxpZEhlMXRfWTIwSzZpalpRVXBSTUxEbzQ1UjUtT1FaRGw1WUFrajgyMlNFeGxaT3pqbjU0dVluOUpJdVQ3TVJ5bGtTSFM0eXJhYjk1Ry1iNnZ0ZmV1bHhacGhZS0NlVWlKbVJVS0FjSWp4U2c?oc=5"
+      },
+      {
+        "title": "Assa\u00ed e Mercado Livre fecham acordo para expandir vendas online de supermercado - Bloomberg Linea Brasil",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiwAFBVV95cUxPNTlCN2Jjcm0tbEgxNTg1LXFHc29mc1dTXzRBcWVzQ3dmTGtBMzJEcVBBQTVpSm4wYk1CTmJtbDQzYXNFYi1YUkpp",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPNTlCN2Jjcm0tbEgxNTg1LXFHc29mc1dTXzRBcWVzQ3dmTGtBMzJEcVBBQTVpSm4wYk1CTmJtbDQzYXNFYi1YUkppLVR1S0hWOG56SFFLT1NVVmZEMTdhbm1EOWJKcXdjWjhIWXlqVTZGR1BQcERFWG83ZFI0UVd5eUdra2RCRGhkWU0yTHd1bjNXN01ROGR6MlBBM2R5elRqVXlMZkkxWUplaEdnVXh4YTNQWkFWdTd3NVgxNmkyOTbSAdQBQVVfeXFMUDE0U1MwYkdESFpJbkxiOG1TNWN0T09HV3ZsQXpuOGhKeEthaTlKNTZadGkyakZYY0kySl84M0JGMmRuS2NuaDE5c0tielUybUZJN1p6dnVLVmJPZkpIcnFJNTE3c2JxSlU4dU1STF81LTJteElOQnRzWm56VlBhamhnM1dFMzdLU0p2cHMyMXc0V0s2OHl3Vlh5QThodEloNEJHNk5WMnl3MzBTSjNMSGg2U3BNTkV0Yjd4OHc2MDZSSFBtSy14NkdFV0gzZzRnRUdDUTQ?oc=5"
+      },
+      {
+        "title": "Assa\u00ed demite, reduz aberturas e pode vender lojas - Valor Econ\u00f4mico",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxQeWN3V0tGbURhak1yZzlMTFk2SlRERmhiVy0talRraVUxOFR0MWxNejBQT0dGOFc0WUZKbHprRFR6RW1yRlhOS3Bi",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQeWN3V0tGbURhak1yZzlMTFk2SlRERmhiVy0talRraVUxOFR0MWxNejBQT0dGOFc0WUZKbHprRFR6RW1yRlhOS3BiQ3hsbE9McDFxV1poaUQ2cjJTRDhOOC1JWFdqXzdISnBLMEVpaF9Jc3U0UFM1bnZ6Rnljem5mMkpxYWY4aVRiSUlxbDU3em1wQlNjdi1hc0J0empHR0lCa3ZWUERYX2rSAbcBQVVfeXFMUFZBZ3l5ZUhNU2ttVldpcFYxSHVMbFpKNGpoMy1sVzJ0cDFld2x0empSTElQYVZHTkpsRXVpUWxEcXU1aEs4Qmt6cm5VZ0RSYWV5MlVVOHdIZUxaMFVFcXZ6QmlDcGR1MFZHakhtMkVBM1hGS1R1WkdQM1pLM2dtWVpFNUJ5SUJrd1hMUkNkcUZJT2tGMDlrNzFhN29FSFdxSlNITzd6NjJ1cmEyeWRNemVCX2VoTGJZ?oc=5"
+      }
+    ]
+  },
+  "BBDC4.SA": {
+    "sentiment": 0.018601827389505103,
+    "timestamp": "2026-02-18T18:20:00.562053",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Bradesco confirma pagamento da PLR para 27 de fevereiro - Contraf-CUT",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMilgFBVV95cUxPSDBfLTFKYkpZVGVSVmNRSHVVeG5JMkRRbF9hUXM4SlF4RVRCZ1d4Y3hWQmxHUDYyazlmdnhMaG9aRGRfU3pCVEU0",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPSDBfLTFKYkpZVGVSVmNRSHVVeG5JMkRRbF9hUXM4SlF4RVRCZ1d4Y3hWQmxHUDYyazlmdnhMaG9aRGRfU3pCVEU0S1ZaV0I0NXVTSXZNWk9jZmxLSFVLS3VRWnlYVWxRb2xmZ1c4ZlVKc3RuY2hyX1FSbXVtNGJLM2ZiTXVuS0xNbGZOYTJuSWhESlJuRnc?oc=5"
+      },
+      {
+        "title": "PLR do Bradesco ser\u00e1 paga no dia 27 de fevereiro - Sindicato dos Banc\u00e1rios",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiiwFBVV95cUxNTXItWndpVGoxbnhjM3hQVVBHVFhhdGlCaVJqRVZzaXFNNWRJcXBJTmNjbi1oOTVyMzAwaWZQbF9QckNmdzNMRzlv",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNTXItWndpVGoxbnhjM3hQVVBHVFhhdGlCaVJqRVZzaXFNNWRJcXBJTmNjbi1oOTVyMzAwaWZQbF9QckNmdzNMRzlvZzJGZ09nS2VPR0s1bHNaY2VUbVQyQ2VDd2doWDI2SUY4QXJHZ19QTG45bmpxbDFrd1VYYkJqXzRSa3FqQ1pxMkU4?oc=5"
+      },
+      {
+        "title": "Bradesco pagar\u00e1 PLR no dia 27 de fevereiro junto com o programa Supera - Confedera\u00e7\u00e3o Nacional dos Trabalhadores nas Empresas de Cr\u00e9dito",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMimAFBVV95cUxNMnBWYmNZVFJnQTZXWHdsTUFjRDVQcklVWmpVX2E3bFRLZGpQdV9zbVZVNkN3ZnlHeEV4QlBqeDlEU0dFZy1taE8x",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNMnBWYmNZVFJnQTZXWHdsTUFjRDVQcklVWmpVX2E3bFRLZGpQdV9zbVZVNkN3ZnlHeEV4QlBqeDlEU0dFZy1taE8xMUw3VFlCaTRXVXZzZjRUMzBSUGhaaTFQZGVWZktuUXJmNG5GaHFVdDJvQTI3V0FWaW5OUG5Rc1RZakJBNHhGYkVGWW5kZERKWm5uenVZRQ?oc=5"
+      }
+    ]
+  },
+  "BBAS3.SA": {
+    "sentiment": 0.026716137653647446,
+    "timestamp": "2026-02-18T18:20:07.190077",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Banco do Brasil tem seu pior resultado desde 2020 com crise do agro - O Globo",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMixAFBVV95cUxPNHZ1cDV2NEZaVW9JcHB1YmRIU0pqbVM2Mk14WFRYZ1o3d3lKdWctS0k1ZUFhX2Y5WDlvMTZzNVUxaGplTWdVcDJY",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPNHZ1cDV2NEZaVW9JcHB1YmRIU0pqbVM2Mk14WFRYZ1o3d3lKdWctS0k1ZUFhX2Y5WDlvMTZzNVUxaGplTWdVcDJYMm9CZF9XRmZQVVJ2LUpDWVlxN1dMaXc4UEktUGxjdl9JRWxFbjJNNUxHXzVPdGpVT3MtNm0wNG9UR0YwQzVCaXEzcTB5QnNvN2VYNlVzVF9EaVJRMjAya2hiOEFLckJVbkF4MUxuaW9PeXpXZ1k1cWxRMFdBcnVrSjF10gHTAUFVX3lxTE1Cakl6S0ZjNDBaQnlmZDdLWlNvSnBMdF9NWk9oYzJXSTRsSmZnb1NSMVhHaTBXcUROVlJSd3BIY2x5Q1ZWUy1jd2NkNVFsN0Z2Yi1uYS1taHpfa0s2bUFnZHpLTy01SEtxeGdRYmpzOUQ2ZFJqS3JHNmllMWk0MWNhRDdXY3p0eWJnX1dyU0EycG9SRU5yZFdSZWNoYzZxdDJqeUtCTk0zRGg4RnBMQUxkZE1GbTRpdjByQ1Q3Z1lTdXRBeWdmdUx5V0VWRnB6cG5ITjQ?oc=5"
+      },
+      {
+        "title": "Banco do Brasil (BBAS3) lucra R$ 5,7 bi no 4T, queda de 40%, mas acima do esperado - InfoMoney",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMikwFBVV95cUxPMUdGNnpWU1JwNl9rMHVacU85RWlGVXoyVWtNdmFfNUFXOGNENUFBZU5uVDRkdkJmRFpUZGd1ZHJLa2F6MVQxbmk1",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPMUdGNnpWU1JwNl9rMHVacU85RWlGVXoyVWtNdmFfNUFXOGNENUFBZU5uVDRkdkJmRFpUZGd1ZHJLa2F6MVQxbmk1TFE1Um9GQ1U3bmFqQ0cwMDNjOTBJQkROUWZTaWo0bEN0Yl9SN0xCUWZGc05QblZ4YmhpMjlYT0xsdVQzMEpJWGQ3Sk5CaVhqbG_SAZgBQVVfeXFMTWhsMlRBMWhmZV9oMkRxQWNaY0lObmxaNjBVRi1JZDRaNWRRWWRnNERLZm94WUdnLVVYWC1fTlYwaUFMb2RQanhWeEFOM2gxaWp1LVlnWWxMaGY3blh4Nk1vM0YtWlR3a2hnbG12WC1fZE1UT3QzXzZXSGtFcUNLQVdZcF9ScVIxdU92U0hEWUYtWmhCZkFCUG0?oc=5"
+      },
+      {
+        "title": "Banco do Brasil tem lucro l\u00edquido de R$ 5,7 bilh\u00f5es no 4\u00ba trimestre de 2025 - CNN Brasil",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxPMXQtRkpPY2Iwb2I3MjdDb3puV2ljQ3d6NWxVcVVaV29MVHhic3dpQnRCbldpQVlvZHZkRG1nbEllUjZxLXM5ZU1z",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPMXQtRkpPY2Iwb2I3MjdDb3puV2ljQ3d6NWxVcVVaV29MVHhic3dpQnRCbldpQVlvZHZkRG1nbEllUjZxLXM5ZU1zZk5CeEt4Y1Y3bU9JZ0hhcjljSHF3dlVNb0w0Y1RjUHY4YndLZnhQbG5SRWUyVHFmMHE4WG51M0NycFZFUnF3V2FxSnotRDBIdV9LRFJ3NUpabHBFbWxubldQU0lLMmNnLVJ3NllHczRsMmxlUFNmcWtWaFpB?oc=5"
+      }
+    ]
+  },
+  "RDOR3.SA": {
+    "sentiment": 0.03309429623564749,
+    "timestamp": "2026-02-18T18:20:17.301183",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Fundo imobili\u00e1rio recebe R$ 31,3 milh\u00f5es ap\u00f3s acordo com a Rede D\u2019Or; veja os detalhes - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiugFBVV95cUxQaGdLZkxLdWlHVnc5MkVrTmVSdTRzR2s2VzBraHEzNTdtMTF6MVdKV05rTXRtYzlKcVd6NWptUnd6R0J5Qmt0Z1g0",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQaGdLZkxLdWlHVnc5MkVrTmVSdTRzR2s2VzBraHEzNTdtMTF6MVdKV05rTXRtYzlKcVd6NWptUnd6R0J5Qmt0Z1g0cHRCSFRHR1ZHMjVEcXYyYnk3dHpUM1ZzTHpFM2doWHBCWEhtWllOYmRNdkMzUUZJUTlaaUhYd3NqOGpVdzhpeTlObWFwclkyaWlwV3VHTHZkTVJuSDZYZkplRmJQWlUxVmRLQVY0OVR6OXgyd25rZlE?oc=5"
+      },
+      {
+        "title": "Bebida batizada com metanol: saiba reconhecer os sinais - InfoMoney",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMilwFBVV95cUxQdl9EbDc1NkdJMHJFTkdpNmJhbmxsUmtxSGQzQmY3QVFuOXhMYkZjaHpmWk1BQ2Jab2hkRTFnLVY3UThGcm9nMXV6",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQdl9EbDc1NkdJMHJFTkdpNmJhbmxsUmtxSGQzQmY3QVFuOXhMYkZjaHpmWk1BQ2Jab2hkRTFnLVY3UThGcm9nMXV6X2J3MGlWYVo1UlBHeml0SXNzS3pReU9JaERWd3FGRmQwUC1FVnhuZHo4T3YteVJJcnVWdWU5clJBRjI3MFNUQVhpeTEzSElhc0hSb0tv0gGcAUFVX3lxTFBiNS1MckVrMUlsNWlDUEt3aEQ2aDVsTjc1RWo5WTZIZzIzV0llOFFvS0NNajBPbV8wOUt0OUVTdGxadU5Kcm1vUUNFWU9YUWFBM2h5ME1Qd2FQSmNUMGkxNTJTWW05TFBDeklTNlZZa2VKaFE5SGQ1T3B4ZmIyN1dKS202VVltcUlkSWJ5TS1vZ293cUc3eHJtcWJ3Rw?oc=5"
+      },
+      {
+        "title": "Simony \u00e9 processada ap\u00f3s \"calote\" de mais de R$ 20 mil em hospital - Metr\u00f3poles",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiswFBVV95cUxOTDRNMTJScFNOZUhyVnUtZ1hoZmo0Zl8tZVh1TGdQUFVDTlZpTzZ6bmZvVFpwa09YaUNUMFhpQ21nZHU5c2lZQ0pC",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOTDRNMTJScFNOZUhyVnUtZ1hoZmo0Zl8tZVh1TGdQUFVDTlZpTzZ6bmZvVFpwa09YaUNUMFhpQ21nZHU5c2lZQ0pCaklMQzZRMWNyQVQ4SEFVX3BrQ3pabHpvS2hEV2M2dURTczlsWVRmeFVCSmZSZmlpOW9MdHZOSjlNbzlLTUNRV2Mxb3ZQeWlUMlFVM2RYQmhYc3ZTNVc2ZzdqcGZ1TDc3R2VWSndFci1FQQ?oc=5"
+      }
+    ]
+  },
+  "PETR3.SA": {
+    "sentiment": 0.03312671300426685,
+    "timestamp": "2026-02-18T18:20:24.402162",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Petrobras informa sobre Braskem - Ag\u00eancia Petrobras de Not\u00edcias",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMigwFBVV95cUxNMXd5ckZsZm15U191SGd5T0FJODNuTW5uTldQb1JqR3R0cWItYlhXZGltYUJhRjRrZnBEcEFRQ0VLckItVUVhU29Z",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNMXd5ckZsZm15U191SGd5T0FJODNuTW5uTldQb1JqR3R0cWItYlhXZGltYUJhRjRrZnBEcEFRQ0VLckItVUVhU29ZQVFGNzdJajZKVmZHZ0ZTYXc3VjczQS1sMllCbm1qSTBNaFdYWjZycmhtOUtYSE1UMVAwejVZOEgwbw?oc=5"
+      },
+      {
+        "title": "Petrobras abre m\u00e3o de assumir controle da petroqu\u00edmica Braskem - Ag\u00eancia Brasil",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxQSTBINmNPVEZKNjF4b3pSNGFMZ0Mtam9IVGVHQjktdUY0ZnJManp5REFJT2c0M0dya1ZzRElqTElkSl9aSndVVWQy",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQSTBINmNPVEZKNjF4b3pSNGFMZ0Mtam9IVGVHQjktdUY0ZnJManp5REFJT2c0M0dya1ZzRElqTElkSl9aSndVVWQyWFVYSGhkcUdXWURMNEF1czA0Zi1CQ2hkRUI0STN4ZUpmTmFkWll0Q0xRbTlqM1FqVV9SN0xHLXNSbU5mZ1lmUGJQRUFVRWItZ0JRODlrYk4tdHd3LU5tQTdNMHZIc19manlsSmFtZWdtREk5NzluTHZnTw?oc=5"
+      },
+      {
+        "title": "Concurso Petrobras 2026: cargos e vagas previstas! - Estrat\u00e9gia Concursos",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiggFBVV95cUxNZE1VWXZFRl9USXBoX0N2TlpNSDFwYzc4UWZ0Y3dDNVlYU1dTcWdrWkZMcElQZ29VRlV3aHpWSk1RNW9SWDh1bWtf",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNZE1VWXZFRl9USXBoX0N2TlpNSDFwYzc4UWZ0Y3dDNVlYU1dTcWdrWkZMcElQZ29VRlV3aHpWSk1RNW9SWDh1bWtfWmZCSlBWV2xCM0lxRlNxN19DemczZThZZ0t5M2ExQzQ4YkZVZ194V3RCOUlFZmJkczRzeEhRWExn0gGHAUFVX3lxTE9xa21SSEFvaExrWllvVXYxREY1Sk54cW1iT2h2WTB0V0NRZGRKNDBYNGlqdG5JSjRjSXVIbExoZkFGSWJ0WlgxR0NYNmFLbGhWWGVVdG9yNE52SE44Z2lHZlJTQXRVNkpRblpzQm1EMzl6aEtrYnR2a0dwLXpWRWdoNUZzRXNDMA?oc=5"
+      }
+    ]
+  },
+  "BBDC3.SA": {
+    "sentiment": 0.07886414597357126,
+    "timestamp": "2026-02-18T18:20:26.383523",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Ibovespa recua em dia de avers\u00e3o ao risco, mas sustenta alta semanal - Valor Investe",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMizwFBVV95cUxOTDNhMXJfV2I2VnpVRHBjQm9SS3NTYTJuTTlwbWZSZHVRODB1WGozOWwxSUd4RGdBdXFYTDJpdGtzZnVFWFdqNnkt",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOTDNhMXJfV2I2VnpVRHBjQm9SS3NTYTJuTTlwbWZSZHVRODB1WGozOWwxSUd4RGdBdXFYTDJpdGtzZnVFWFdqNnktNnJhR0pFdlFnQ0l0TFZET28xZHVRWTBCZ0hsUUlZSHRrNExBdnc2eFBOclFiUEtHcFB2X0NfLUF3YUxVWWNoLXFZZEVDV2tVeDdMT0pxQklJVXdrTVp0dVliTy1ZTDU2REhGT041a1NhLUt6Ti15d3NMSnpCU2ZPVjRpR2RIY3B2SkhsazDSAd4BQVVfeXFMTU9GODRIRDZfNDN5SW04VTh5eGYtLXQ5NkFtSFgzaXctUmlYZkhudl9HVk5IRjhhM1lHRl9JZkNoOC1ySGZXZ21rcDg5MDBuOTVzdnBScGFiZ21NWjFhTjlObTYtWk9GelJCcERsMVJZYWF2UnlOUEloSDBMWXhacS0yZWgwWFJXYnlWYm5UMmhVM0l0UjFZRnI1elFMVzd4U3BwcXN1NjJTRTZ5WXNBZ0VhNGZnakZTYjFYT1NyWmh3elNtZkdrYVFtQVE2ck9KeV91dEc3dkZiTzlrcldn?oc=5"
+      },
+      {
+        "title": "Cota\u00e7\u00f5es em Tempo Real: Bolsa de Valores, A\u00e7\u00f5es, Criptomoedas, FIIs - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiUEFVX3lxTE1uVTktRGtFT1NIankyWlUxTkN0WXphV05mVmt1SGt4eDJVdF9Rd1JBRTNpU2F4TjlGSV9DZ0laWHpOWWFadHo2Nm9i",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1uVTktRGtFT1NIankyWlUxTkN0WXphV05mVmt1SGt4eDJVdF9Rd1JBRTNpU2F4TjlGSV9DZ0laWHpOWWFadHo2Nm9iYm1mZDBs?oc=5"
+      },
+      {
+        "title": "TOTVS (TOTS3) aprova programa de recompra de at\u00e9 20 mi de a\u00e7\u00f5es - Visno Invest",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxPcGhpb3BzTkEtX2dLRTZFZEQ0aFNWbFRZZjZWZ0VpVkZOU0h2UmJYbXFnN2pPSmFsR0JHSHM1MzRjSWNCTG5FUE93",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPcGhpb3BzTkEtX2dLRTZFZEQ0aFNWbFRZZjZWZ0VpVkZOU0h2UmJYbXFnN2pPSmFsR0JHSHM1MzRjSWNCTG5FUE93YlNSa1p2UThMTDFOMFhna24xZERJUVFsTDd0NzZ6aDNzaTQ3UmF0LWl0MGZ0M3ZXUDhyU0JWeGY5UjA4Tk5WbUlvY1B4ekl6c1NBVW5WcFhkQThzUVNI?oc=5"
+      }
+    ]
+  },
+  "GOAU4.SA": {
+    "sentiment": 0.026603996753692627,
+    "timestamp": "2026-02-18T18:20:46.321412",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Cota\u00e7\u00f5es em Tempo Real: Bolsa de Valores, A\u00e7\u00f5es, Criptomoedas, FIIs - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiUEFVX3lxTE1uVTktRGtFT1NIankyWlUxTkN0WXphV05mVmt1SGt4eDJVdF9Rd1JBRTNpU2F4TjlGSV9DZ0laWHpOWWFadHo2Nm9i",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1uVTktRGtFT1NIankyWlUxTkN0WXphV05mVmt1SGt4eDJVdF9Rd1JBRTNpU2F4TjlGSV9DZ0laWHpOWWFadHo2Nm9iYm1mZDBs?oc=5"
+      }
+    ]
+  },
+  "LWSA3.SA": {
+    "sentiment": 0.04870498551185741,
+    "timestamp": "2026-02-18T18:20:50.647277",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Dividendos da semana: Petrobras (PETR4) paga JCP e Locaweb (LWSA3) distribui amortiza\u00e7\u00e3o - Estad\u00e3o E-Investidor",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiowFBVV95cUxQRjdjZlA4RXpPaWJ5QjJsRWFTRTZ0bUo4d29CMnVFVkdOSFNZSFplUGdMT0dXMUZMRDlQN1lGbXREZnpyUV94VzFX",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQRjdjZlA4RXpPaWJ5QjJsRWFTRTZ0bUo4d29CMnVFVkdOSFNZSFplUGdMT0dXMUZMRDlQN1lGbXREZnpyUV94VzFXc3pxNk1BTllxd0FPX29FQmFSMDg0eHQzckZBRzVrdFBkbUpfdlZvUHcxZEo5alUzbEFpRmxfanVIZVpDeGtZZFVhWTZqbXQ0U0F2cjhVdXFFdEVYUGlTNDJB0gGoAUFVX3lxTE9yZW50WDh2aV8ycWx3cDZPWm54SnZRUFRLQl81MW9NczdqMzBUbzY2VHVyWTIwVHFkakN2X0NmMkM5Slgwc3JBS3JjS19mOTB0cVQwbkctM0hmS0NkNmFZaUN1NGRBWl9mbmlJSEdxU3FJemI0ZUM2SE1LdFJ6eEhLMFFoeVFEcE1nUjdHQ2hvZnR6ZFBGTmpDWGJhZmRRQ21aUG1TZkdFcg?oc=5"
+      },
+      {
+        "title": "O paradoxo de 2026: investidor estrangeiro toma risco, local busca prote\u00e7\u00e3o e a curva longa fecha - Estad\u00e3o E-Investidor",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi3gFBVV95cUxPMGRrc05OQy10SXN4dWNBY3NwTUkxYVBzS2l1N001TUt6R3pBMU9NZ1lFVzUwcHlBbnJYcGVxU3VrRDJzZHBBSkRR",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPMGRrc05OQy10SXN4dWNBY3NwTUkxYVBzS2l1N001TUt6R3pBMU9NZ1lFVzUwcHlBbnJYcGVxU3VrRDJzZHBBSkRROTcwSlkxVTdlNzljcFliT2hzTHg2N3JTcUExVW0xVVpiS2l4dEp2OXBwM1VfakM0a1BoZWZBMFRmYXdiSWRuVWU2djJXSFU1ZVFzRldhMzZoeUptWnctR3BfMm5OVTBrcWtKRUFnZWRtcmNyUVRGY2JLZU1fczFTRUV0ZXljRUM3QTBMbVNoS1JvdWdqOXAzazg3MUHSAd4BQVVfeXFMTzBka3NOTkMtdElzeHVjQWNzcE1JMWFQc0tpdTdNNU1Lekd6QTFPTWdZRVc1MHB5QW5yWHBlcVN1a0Qyc2RwQUpEUTk3MEpZMVU3ZTc5Y3BZYk9oc0x4NjdyU3FBMVVtMVVaYktpeHRKdjlwcDNVX2pDNGtQaGVmQTBUZmF3YklkblVlNnYyV0hVNWVRc0ZXYTM2aHlKbVp3LUdwXzJuTlUwa3FrSkVBZ2VkbXJjclFURmNiS2VNX3MxU0VFdGV5Y0VDN0EwTG1TaEtSb3VnajlwM2s4NzFB?oc=5"
+      }
+    ]
+  },
+  "MRVE3.SA": {
+    "sentiment": 0.1022895668082955,
+    "timestamp": "2026-02-18T18:20:52.644884",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "MRVE3 sobe forte e pode buscar R$ 10? Veja os n\u00fameros atualizados - arevista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxQdDRESHd4bU5saWxJRFB1WXVXWWd1QnVGZzc3RUhsUXFhRW5Oc0FpS1FJcVlCSnN1YUlTdnZoM19Nd3YxbzU3VjVV",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQdDRESHd4bU5saWxJRFB1WXVXWWd1QnVGZzc3RUhsUXFhRW5Oc0FpS1FJcVlCSnN1YUlTdnZoM19Nd3YxbzU3VjVVS1N3ZHllVEFvdjZnb0hZUlBFZk5nbGFxOEdONzEtTDR6OEtia2JadUZ1aG1aMGZpOWZxc1pMbHFnMkdYMGNOTXhfN201dTdIUTlGYzNGdUpR?oc=5"
+      },
+      {
+        "title": "Carteira recomendada: 5 a\u00e7\u00f5es para superar o desempenho do Ibovespa (IBOV) no curto prazo, segundo a Terra - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi1AFBVV95cUxOTUNncEpDVTgzN243X29OSGd5a05FWlFVTWJZcHd4SzZMQk1nTjdmakJheUxaQlE0NVBCTzJ6QTJhNW9pZ1RKYWdK",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOTUNncEpDVTgzN243X29OSGd5a05FWlFVTWJZcHd4SzZMQk1nTjdmakJheUxaQlE0NVBCTzJ6QTJhNW9pZ1RKYWdKTTFfcXRtekpkbmNlRVNnaUU1X1Z3RFNmaXpGZnE4MWdSbFVob3JmY3FTX0M0OGZPU3BuR1NieV9pRVlVd2F5b1Qya2ZIbVZ4ZE9uSEpVT0RKMDFsSDdsUGhEd3I0d1NyQkx4SEV0NDcwZU9CT2xpQ2VpTlhZNDFmLVFPMTJtRDkxS3NNempES3RHcA?oc=5"
+      },
+      {
+        "title": "Ibovespa na semana: Suzano (SUZB3) salta 16% com balan\u00e7o; Ra\u00edzen (RAIZ4) afunda 23,8% - Estad\u00e3o E-Investidor",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxOQTFWN2pZYjJXMmx2eHhsNVlOdENIV1NrTWsxdjV1bWlRZk83cmYzbEJoRWhYSGNQYjZUX1o1LVV1RjR0Q3BSTkhP",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOQTFWN2pZYjJXMmx2eHhsNVlOdENIV1NrTWsxdjV1bWlRZk83cmYzbEJoRWhYSGNQYjZUX1o1LVV1RjR0Q3BSTkhPdjVqaEVRbVhvLWNuQnZ4b0NjRUtKUEd0TE9wZHFSN0FoY2RuM1N3U3FMd2x3SE41THBnMVhuYWJybEVUeFFyTkozczVOVWNwT1h0WmhjTUxhaDJ6YmR5Z2JlTkJsMktTcVhFR3fSAbMBQVVfeXFMT0ZPQ0pSY1liVUVScTZVU1dsU08ydUNLSGVnVkZmc0JLVTFCQjdSYUhDVEVPTDhpdmxvMWlzc2tZSkhWdTdWd2w2RWpWY1BMbEM1WklSdVJlaGpKM3N3a1FTZHc3dXA0bk93ZXltSl91QTdsdEZNLUpfT2FKRDRaSzFOOTVRTmRidEdFMWEyNUxmeEdaR3FvUDBwN1g3WFdsWXkxWkJ4QmQtM1ZtU2dfRWY1S3M?oc=5"
+      }
+    ]
+  },
+  "PRIO3.SA": {
+    "sentiment": 0.09789956511663539,
+    "timestamp": "2026-02-18T18:20:54.735082",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Rali da Petrobras (PETR4) reduz potencial de alta, e Prio (PRIO3) aparece como aposta mais atrativa - Valor Investe",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMihAJBVV95cUxOY1RoUG5tZi1Ud2U3TXJZNmhsRXBWVFhXYThpZzkwMVBJb2ppbXpVQ3I0b0I2NjZmWUhJa1RCYlk4VHQ0dk9SejBW",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMihAJBVV95cUxOY1RoUG5tZi1Ud2U3TXJZNmhsRXBWVFhXYThpZzkwMVBJb2ppbXpVQ3I0b0I2NjZmWUhJa1RCYlk4VHQ0dk9SejBWSmczNUF2S2hqeFMwTHBxaFNJcjhZZXRwX1hyRko4cC1UWTgtdFl5WXpSS001UlJYcldNNHE1bm9UbUY0WVlDVjR0NGx0S1BTVWpKX0Fab19yT2ttUDJOVWRZMF9mZFFMRFhxV1lnTWMzb2tqdk0zYkg2UmJqSDR2ZlFFRE9yMTk3dlBhUHgtUlVqZkNCanN3MXQtczZveElhUDdEbkpFWFlZa1JDV28yRUs2Y0ZudHlyNjdCQUcxNzZtd9IBkwJBVV95cUxORzBWWkFfRW1oTkdnYkNWVXh4WEFsTjZxbmFDNmNaWFVkR0lVWG1tYS1jV2NEb1ViSDNhcExhamVvd1RuYmdHMDByb0JEOWNzNndlZC1tdVRaQUktR2Y5S1VCckhJWEVYd0QzM2NuZ2s5OFFJM0d3TXNuTUM3NkRFSHRhRi1kWnFpQS1PZXZ0OFZYUUxQTEhrNjdNaERIa0lQTzVYVmVsWHRKLXJPVG9MN1hmV1NxZEZCLVoycy1Qd2ZNNUs3YThLLWt3dFNPTVFMUUJPYlhXcVAtT3NiWXI3ZmhNa3lEUmlFS1dDbE80VU5pUXNSWXhpOXJ3V2ZTMEt2dnpfb1M2TFFIUXlnNGtOYV9YUQ?oc=5"
+      },
+      {
+        "title": "PRIO3 sobe mais de 20% em 2026 e pode entrar em novo ciclo de valoriza\u00e7\u00e3o - arevista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMipgFBVV95cUxOMmh3c09ZT3RxSlU2X1c2WmV4akNXUVlSUUg3SVZvakdPNDJvcFJiQ1V6eTkyVll6anFYa2VrQkJEb1lORDA3VVFQ",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOMmh3c09ZT3RxSlU2X1c2WmV4akNXUVlSUUg3SVZvakdPNDJvcFJiQ1V6eTkyVll6anFYa2VrQkJEb1lORDA3VVFQMHpOWURUOEpxZDZlcV9BVTc3V2ZBUHNYU0JJQUpSbDdFZ091cTAtLXlxMHp0RW82S0dHb1B4UHkwLU1FMVhIYnJUY29vQXpGNmZtTlpBZkwwTWhuQlNXc1FxczFR?oc=5"
+      },
+      {
+        "title": "Petroleiras sobem com alta do petr\u00f3leo em meio ao aumento das tens\u00f5es entre EUA e Ir\u00e3 - InfoMoney",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiwgFBVV95cUxOM1ZkNkNWNlprZ3hUY0JiVHRuWHV1VzBjX1dCczZZcVpXYmVLUEY2cEoteGp3MmJmLWVERlFtaGhoLVZORngzaFot",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOM1ZkNkNWNlprZ3hUY0JiVHRuWHV1VzBjX1dCczZZcVpXYmVLUEY2cEoteGp3MmJmLWVERlFtaGhoLVZORngzaFotNXlEMXVuVlBwNjFZTlQ4aGd2QTZPX2JmQjZsUFpGNzVzT2hvZGNUMWhIS3F5RDI3WXQwdkdwNm5fbEtiV0NoYTNFZUx3TUt6Qkw3RW5Tczh2ZzhzSUtNWGhheTVPdWlYMWp0T0dzN2lGUW9GMjR6NUdfd3FhTHBWQdIBxwFBVV95cUxQbi1IRFREXzg1S3ZMdS0wWGd6NFczUmlhMHVwZ1hXZHdxVlJ1clctXy1Cb3V6SVV1WHBTSHI2Wml5QlZ2NmIxaTU2Rm5lY3owSHdzZG9CcUp2Q2xITjk2Yzh0X1ZWRl9ud3hWUTdZNWdrR01ndGwxbXM4M3kxRkRud3JhN3VyTEVRT0swbmJxZDJNTklJNDlfNjRzQVhOVnYwb2puQm9Ya1dCZ0FXaE5wWUJBUnYzdTNmVGZiakdBT0xfN29TeFRR?oc=5"
+      }
+    ]
+  },
+  "RAIL3.SA": {
+    "sentiment": 0.03559887912124395,
+    "timestamp": "2026-02-18T18:21:02.521369",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Cota\u00e7\u00e3o Rumo (RAIL3) hoje: veja pre\u00e7os, gr\u00e1ficos e not\u00edcias em Tempo Real - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiV0FVX3lxTFBWQ1Fxa0tGak9sblpscXY0dllhUm1sUFpUVzIwRzFWbWQ3MUlnM24wZkJ4TUpDV1lhV2Z1cHVmNEI2VGhLTGNremtV",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBWQ1Fxa0tGak9sblpscXY0dllhUm1sUFpUVzIwRzFWbWQ3MUlnM24wZkJ4TUpDV1lhV2Z1cHVmNEI2VGhLTGNremtVY2JnYmJHQ0tJNFF3QQ?oc=5"
+      },
+      {
+        "title": "S&P revisa notas de cr\u00e9dito de Cosan (CSAN3) e Rumo (RAIL3) para negativas - Valor Investe",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi4gFBVV95cUxOTDctbVNBVngybGxtODhDWmI5WjF1a1piYy1IcWJQUHptNWx2ZkZRUmJ6V0pNSzRWekFPVFAyTnJ0MlNTRlBkREtD",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOTDctbVNBVngybGxtODhDWmI5WjF1a1piYy1IcWJQUHptNWx2ZkZRUmJ6V0pNSzRWekFPVFAyTnJ0MlNTRlBkREtDZ0JWdFNHQUNRMUp5Rk0tUXBjeXZuc1pGTEFBTWx5OTNudFRrYmlIUEVHSFpaY0NDcE9obU5MdWNzdlFueE9jdUJMTHhDbEIybzFCWHZOTWJCWDBEbXh0ZlB1S1kyTEkxQnNtbTdhTUxoVWo4TkhteGp1bzRtSkJWWHh1dUdvWmIwODc0cjJLZDJyYUtISmhVZ3FmWHh1SVRn0gHwAUFVX3lxTE9heGx4Tnh1MzFhYkt0NldRMENZaG14LVpJTFdFRzZGM0UzTDZaMVlFWm5aTmVRdmdiRHpYYzlVNkJUOVRlRV9EaFB5RUZVdXFBdVNBb2pEWnBGQmFLYlZiODZacS1JVUVMVmVBUTVadFhEcDF2NHgyY1dlMnppVFJEVVlvUVFPbVVKQlNUNlNyZ3Z5Nm0xWnFiWks4U0MtZzRNdTFENGNjWG5ES3J1V3hqMjN6Y2MtU01lWGNFcE80d2x3bDVpUGZ5V0MzQ0MxZjZvOHlOWGtvbnZhblI4U1Y0N1dxZFpHN3ZUU1dza2NvOA?oc=5"
+      }
+    ]
+  },
+  "SANB11.SA": {
+    "sentiment": 0.04322056486550679,
+    "timestamp": "2026-02-18T18:21:11.066796",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Ita\u00fa (ITUB4), Bradesco (BBDC4), BB (BBAS3) e Santander (SANB11): quem saiu na frente? Veja os destaques dos balan\u00e7os - Valor Investe",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMimgJBVV95cUxPUHVIU1RWeWFlMlZYQ05LSk84WFQwQ1NEcENVa2xtNmdPeDRrbFczLWJWLWM3WVNaT05HV1g3Yy16czl1UldkQnNP",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMimgJBVV95cUxPUHVIU1RWeWFlMlZYQ05LSk84WFQwQ1NEcENVa2xtNmdPeDRrbFczLWJWLWM3WVNaT05HV1g3Yy16czl1UldkQnNPeVVLeGgzNEJpSjFZMGM2RmU4c2FFQ0dpdGdFdzcxYVlsM1JyQW05UEs4cGJlbmpXbTJxNnU3YmFocjlCeVZjSWVNVERBcTJjbmVkYnRtSUtJeXU3dGg4b1QyWDRVM3Z4RkF5UUs5MnpseXFRODlvSG1qM2ZzWDBYM2U3SWtna2szYmVfU1VwdndaWGhGbFRmcjZMVU1XVVpBNjZseUI2a1BjZ2YwbkVBMG40cUh1dXN4cDBNVmVtVkFWczFZaFVPWXhQVmpkOEZzRzB0VVl1QVHSAagCQVVfeXFMTUxWTFFQTklUcDk2ejRTRXdjOW1NZ3RGdUJneXlUQkFOcWYxWVdrYkhWd1N6amdBVTNrWHp5Wk9wcTdyNjBMSzk2STNhWFR1SG83VTZ4dnVsNUI3N1lfR0k5U240czgxZEx5eDdHMkdWS3VkLVl6aV9meVRMNjd4NEpMOWJWamhZZ1dHWWhhcm93MU9rbjlVSXdmY0VvM3VHQ3FYRlY4blFiUmVEOXMtX3o2YTA1em0yX2EwLXFVSFA0WWxYY0YwdjY3UGxfMWVKamI1QzJsVGxMekRNSk5CODJJbG5YVHRheGxrVGg0UjQ2TE92ekgxbzZHMzRJS1BMVjc2RGgzRVNIS29TdmR2VXdNWnZGalQ3QmR0cmU2dkhFTXNzcVliQ3A?oc=5"
+      },
+      {
+        "title": "FGC no centro: O que ITUB4, SANB11 e BBAS3 falaram sobre fundo e caso Master - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxPMXpKOUZpQnJrWEQ3aDc5MW42cURnZEY5cmwwRkRYUm5iMnVjY28wS1VNZ2NKZ0d5QVpTN2t3bW5vZ2F0dFM5MHlk",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPMXpKOUZpQnJrWEQ3aDc5MW42cURnZEY5cmwwRkRYUm5iMnVjY28wS1VNZ2NKZ0d5QVpTN2t3bW5vZ2F0dFM5MHlkdjJuV2tpRVpmMVZGMHE1RlAyZWdhZDd1bGRHTkxJTUs4ODJTWVYwamlLcUtxMGQ1SG9iR2R3dnFsQVJXekRKS2RGME9wLVphS3pMNGFCaVBNTHptaVZ1NzJPNmxheDluZTYz?oc=5"
+      },
+      {
+        "title": "Fechamento (12/02) | De olho nos balan\u00e7os: Ibovespa fecha aos 187.766 pontos, em baixa de 1,02% - InvesTalk",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMickFVX3lxTE9WdXRtZDl1a0diNmJmOE91VGlxWkExTzhWcnNWZFV0YS1KOWE3MkZQUUtTbjZQUU1ubjJuVkMxSFhWR3R1M0huZWdF",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9WdXRtZDl1a0diNmJmOE91VGlxWkExTzhWcnNWZFV0YS1KOWE3MkZQUUtTbjZQUU1ubjJuVkMxSFhWR3R1M0huZWdFWHZEa054cF9QUXpDRlcwVTh0X0RMYm9adnpESXlMTzdOZ1N6d0FCdw?oc=5"
+      }
+    ]
+  },
+  "SBSP3.SA": {
+    "sentiment": -0.016805756778850222,
+    "timestamp": "2026-02-18T18:21:12.761379",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Sabesp (SBSP3) pode chegar a R$ 180, diz BofA ap\u00f3s cortar risco regulat\u00f3rio - Guia do Investidor",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMisgFBVV95cUxOVVlfVEJSRzRZNVhCaUVSWjZnSEJUWkU1NmtyUXc2ZkMtYmZsQXhwaWM1SklDUDd6M2RsdEpPMHNuS0tTWnVNTk5T",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOVVlfVEJSRzRZNVhCaUVSWjZnSEJUWkU1NmtyUXc2ZkMtYmZsQXhwaWM1SklDUDd6M2RsdEpPMHNuS0tTWnVNTk5TV3U5ZDItbktlTWkzdERFazRHZUQ3VURRZVV3aFhtbnl3MXA4U0kwa1hGUlZqb2w1YUt4YnpxcVdNUno3VDZ1T3V6VXU2OHRFZndQNEUzRTdiYUFveW1kYUp0emF0VmVWMEdoSldBTEV3?oc=5"
+      },
+      {
+        "title": "Sabesp aprova 38\u00aa emiss\u00e3o de deb\u00eantures de R$ 6,29 bilh\u00f5es e refor\u00e7a estrutura de capital na B3 - MSN",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqgNBVV95cUxNUWhuTUpKZ014TVg3anNJaDFXQlJrdXB0UDNpT1B6NlloRnFlVXN3YlB1NjhQTTdSUkQteDM3VjdvNzhyb0dscEky",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiqgNBVV95cUxNUWhuTUpKZ014TVg3anNJaDFXQlJrdXB0UDNpT1B6NlloRnFlVXN3YlB1NjhQTTdSUkQteDM3VjdvNzhyb0dscEkyZklSTUFlR0RmR0RXdXRaV3IzRE03SF9sWGNfT1EyUFNGYkpwV3ZGNVJOcEJiUHJXVmlEYnVZeW9MWWtVRXNWcGp5Y2Z0dTZXdkxIbzR5SFpQTXNzeldHUkRPczZNUmt6VDVkZDM0S3dtLWJ1Z3JKa0UyNFdVNFNHT2lNN0FpenVVdWdWYnFDY1RlWnRreTc1a1lQV1F2Y1NTWUt3WG0zQVFHeHR0UnZIaUFOLUFrM3lLdjdaNnQxYXU1aTBUb2NhQnNKTU05WENCLVJvLWdjZkY4blJ4R2g3V1U4M0ozWXJYSFB0ZVhFNG1QemRoa3FQWXZ6WnhjLTdOWXV5TE1FclIzWDg2bGlzQnAtNjNlaXlmTjU5SVBRUDBVRHBzTld4RUV3enVTbF9NUHF5OFNLWWRpblJkMkxwcHQtVVhQMThxTFFLWXZQaHM1eDJhT2NySnRfSXB1NW94RlpMa0NXNUE?oc=5"
+      },
+      {
+        "title": "BofA v\u00ea redu\u00e7\u00e3o de risco regulat\u00f3rio e eleva pre\u00e7o-alvo de Sabesp para R$ 180 - InfoMoney",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMitgFBVV95cUxPb2x1djBBZzg0QmRXTy04Z0Z4X1h3MmUyR2Z6c0p1cnBmYmVOWTlvN3QyREZwNmNQOG5zd0ZYbm1VUlVqRkZISkpU",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPb2x1djBBZzg0QmRXTy04Z0Z4X1h3MmUyR2Z6c0p1cnBmYmVOWTlvN3QyREZwNmNQOG5zd0ZYbm1VUlVqRkZISkpUSGM2bWxOeS0tdUxHazNJNnJQdWVXalVoUmxEWi1wejVhdzNqc2UzNnNYT3BhX2RLcFpnb3VpSlRycWg0T2N6Q0tmTjlXVFFvd0RfbHBqRlBGVUw3YVlrZzBMTmlFbzdCT2p0cE5WQXZHeE51Z9IBuwFBVV95cUxPYkdWQ3QybmhLWVRoT2RZUFV3aS0xT3lneGN2YWhNajFOSVg4TTBiaGY3Q0xVVFpRQV9pQTdXcGItTzk4akFBMnpRYVpLX1pBTXJhejZGSXRheFZzYTZPbzB5aHhKTGFENEJFQXJVbFVVNGFrNkNTcm1ZaGg4TlEtUGNmS3NwblQzNjBTd1REbExha2NMRTk3bnpJVHctOFR3UTNMM29DM0JSUE5rb0ZscHl0RWJRRFh6OGZV?oc=5"
+      }
+    ]
+  },
+  "SMTO3.SA": {
+    "sentiment": 0.07148089581776572,
+    "timestamp": "2026-02-18T18:21:14.546154",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Jalles Machado (JALL3) registra lucro de R$ 60,4 mi no 9M26 - Visno Invest",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMimAFBVV95cUxQX1NwcG03cW5uaVVUX09iWHRBeWs3UHNzUWJORUxEVk9tMlprdmxibWkwT0FlMFVrdlBTTXpnNUFXUVNjNnNuZ0da",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQX1NwcG03cW5uaVVUX09iWHRBeWs3UHNzUWJORUxEVk9tMlprdmxibWkwT0FlMFVrdlBTTXpnNUFXUVNjNnNuZ0dab1VqODB0RGVMejA5SXBEZ1BDWTBlSmZhZURFTkk3UGcxZm5OUkFIVmktMzIyV1RpcnJQLVlUU21icVZycGRTeThTWkNnRnhqOHctWDhwZQ?oc=5"
+      },
+      {
+        "title": "Artigos com an\u00e1lises do 4T25 de companhias que foram destaque nesta semana - financenews.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMirwFBVV95cUxPY2JQQTJIMlZEbHZRc1drLV95TU9OeW9Ud0NOYVhONkRZdUhDaXZEVGUydF9td3BNaERSU2NBWElPRTQwLW5qVXFq",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPY2JQQTJIMlZEbHZRc1drLV95TU9OeW9Ud0NOYVhONkRZdUhDaXZEVGUydF9td3BNaERSU2NBWElPRTQwLW5qVXFqT3k2VU1jTWZYd1pYWHJMcTJhS25KRVZVUzNNcnI1Wkw2ZXlScUZuM1VTUHFzVUdTRjRuZ216TEVvSy0wemthazJXeEZTOXdtZm9qSDdRbjlFakl4SHhJbUpfTFRISGdPSERSUHE4?oc=5"
+      }
+    ]
+  },
+  "TAEE11.SA": {
+    "sentiment": 0.09916355302557348,
+    "timestamp": "2026-02-18T18:21:16.511223",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Taesa pode pagar quase 8% em dividendos em 2026; a\u00e7\u00e3o ainda compensa? - arevista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxNejhOdnBiQlJCZllCaW9FOGhvZmxMMGx4R2d4ZEdIZjZCanNNQ0VJVjh4LXVfclVHX1Q4LXNSejJWODcxc3A2Q1ls",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNejhOdnBiQlJCZllCaW9FOGhvZmxMMGx4R2d4ZEdIZjZCanNNQ0VJVjh4LXVfclVHX1Q4LXNSejJWODcxc3A2Q1lsNlhaNTA4ODBrS3IzLTc0TlhMWU1WWUFaZzFRU1hDSHdOT1BJZ3dGdGhKb3lqNjYwM09rR1psRnJYS1FfcnBFN1NlRmVwTzJFUndWcGxTdW5aNXFRQlp5Wl9oNA?oc=5"
+      },
+      {
+        "title": "Isa Energia anuncia R$ 444,7 milh\u00f5es em JCP e a\u00e7\u00f5es registram leve alta na B3 - MSN",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqANBVV95cUxOYVVxNWFZdm43eUY3ejdCenJuVkI1YndXSTZyZkZibDRlZmZOTXFLTlo3Y1BxRC1wZGZORXhWUXdDdUp4ai02UzF3",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiqANBVV95cUxOYVVxNWFZdm43eUY3ejdCenJuVkI1YndXSTZyZkZibDRlZmZOTXFLTlo3Y1BxRC1wZGZORXhWUXdDdUp4ai02UzF3TVhGb296RlcxbGtQbmdEOUhnVjdNY1U4dmJGTUk2SEJxV3NON1FTV1BaekFVWFNCNUZ2VGM2MkhvR2NMekhXa2FpOGpjdW9OWFBDUk5Ib2hLZFFBS3lCejRvSndzX0tKQjRNMC10X203VG0tdnN6bUprcEcxQWNVdllEb3NIajZRQTlRUnZMNHpPMzdsNXVMZDdqRW1LZUhFR2JtaHFIZ2FOeG1PX2taNWlUODNmb250bzhhUzJGWWxUOVpGTnVwTWVSeEtBS1ZhZ084eW43WVJCRDhZRXZSbVZ4R1V2NmpRTC1xM1hFMkozLVlPVEg1MXNRMnplelJQQ2M0ajBpTlB5SXdXUXpsd1Y4SmVpMHNjdjR3UlpOV0ZIZjBNY044Q2JEUXFURTBtak1nMGpHdUVFVGQ0WTZaVHg1blVWaks5ZjZsSWZyVEIzSllEQnUtbTAzSnNTb3lvLVNTVGxQ?oc=5"
+      }
+    ]
+  },
+  "TIMS3.SA": {
+    "sentiment": 0.024935804957944094,
+    "timestamp": "2026-02-18T18:21:20.177531",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "TIM (TIMS3): resultados do 4\u00ba trimestre surpreendem e a\u00e7\u00f5es saltam quase 8% - InfoMoney",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMisgFBVV95cUxOZXZLbmJBOTlsVEVjMFRUVmJDUks4SElRSzlKbGgtMHBBbmJ4cGQ2V1JyRnJ0T19LT0VwclVsUlhpZ0ViSGpmZXdi",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOZXZLbmJBOTlsVEVjMFRUVmJDUks4SElRSzlKbGgtMHBBbmJ4cGQ2V1JyRnJ0T19LT0VwclVsUlhpZ0ViSGpmZXdia1dNQS12Q2VSLUxIdXFnWmUzaUJ3MEQ2eUV2NDhoeGtEc3pBdjVGeUtzRXdlTndfeVJaUUlHUTNfdWJjX3hiXzE2blF6TEJwYW50b1Zfd1AzYVFKRmRLQ3cwRGJ3c3lMSUFrcTBUOVl30gG3AUFVX3lxTE5paHQ4VUhUdXY3UG5NekRoME4tZWpVa1IyQjZjdDZuRFVSdDdMLTljN0JJSHl1Y1ZFUkt6TkFXc19rNVZMUFdfak1ubW1pN0ZHN0pWWU02UzRiZnlvOWJob1QxYW1XSkQtNFk3SXcwellqNGpwUkhWRnU4LW1hXzFuNW40UnFia2RuZWZkaUFRTzVNWllFV3ZpYU5XZ2JqQkc2MjgxemhFSVFjWjd6Nmd3SEZEQW96UQ?oc=5"
+      },
+      {
+        "title": "Ibovespa hoje: Suzano (SUZB3) e Tim (TIMS3) disparam ap\u00f3s balan\u00e7o; Totvs (TOTS3) lidera perdas - Estad\u00e3o E-Investidor",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMitgFBVV95cUxPcWZzY3FObDVGdzlxUWZPU0VHV3RENXdPZDJhVDIycTU3MmdpMTZXck1lMk15cDZWaG82cVRKYVc0azRTZTVpWi01",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPcWZzY3FObDVGdzlxUWZPU0VHV3RENXdPZDJhVDIycTU3MmdpMTZXck1lMk15cDZWaG82cVRKYVc0azRTZTVpWi01OHZDcEk4TW5LU2FTWi1PbUxNdFZFWlM2amFnNVMzNno3QWdybkdkbmNoX2ZzS1h2cjNEaC0weVNNMUU4dGZWQlR2eXpJWnJjVXY5bm1yOUV3aXlMSUQ5X0sxODNiVjExbFlIMllEbkFEcUwwUdIBuwFBVV95cUxQQkM1c014elQ1b0xFU1dJNmJnTzdRdzRnSnAzRFVyNjl4Q2U2cms3QTFqNUEzSndLUGU2b2xHd2UtS2VVNTQzTkRvZFNubzA4U0s1cGl0c2lVSk9HNXVIZWdxVTRIWkVqeUxsS2ZsX2dTSERUbXBnd0hoaWJqSWs1UlZNaU1PWlJHSTVteTRwOVBGU1ZMVzgxaXhvVmkxVG1MMkwyMS1KVkt0bHRJOHBuRFo0ZFVyZUxyRkdR?oc=5"
+      },
+      {
+        "title": "Ibovespa tem alta de 2%, fecha em recorde e encosta em 190 mil pontos - Nord Investimentos",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxQSmxwRzZWSXRNZVFaYVRjTUZTbUl3SEJjTUhTSU9EazF6bG10LTlaOVFxLUhGLThaak1UOFJ3YWVudERGS2tMQV9z",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQSmxwRzZWSXRNZVFaYVRjTUZTbUl3SEJjTUhTSU9EazF6bG10LTlaOVFxLUhGLThaak1UOFJ3YWVudERGS2tMQV9zVVNhQnV6TXFqdFprSm40Z1NQZXR2S3IwOGZkSWRwemwzQzV1bEdINDBUSkdwWjg3REpPOHBCTUZTODZCVEUzdm40UWtmR3kycjZVZ3VkeDJLUmR6cDdyZ0V0eNIBqgFBVV95cUxPSmVKNW5UYkd6WWJpNmo3c0xWOFZKcndwZlN1MklBbUNHMUNRNkVhdDFPMFpqNS1uMDE0UGlYOFJkUnAxNG5qbTdYUVoydUg0b2RmN2p2UjhtS09QSzgyVzBNNFNmWlIyY25KNVVmRl8yckpWU1V6WEQ0VzMwTFU1M0lTSG81VUFrZUctOHV1bGx0UHVzZXdoNUp5dWhxMUFKYlc3YUVRaDkwdw?oc=5"
+      }
+    ]
+  },
+  "TOTS3.SA": {
+    "sentiment": 0.10457273364524831,
+    "timestamp": "2026-02-18T18:21:23.101447",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Totvs (TOTS3) luta contra o Armageddon com novo programa de recompra de a\u00e7\u00f5es e lan\u00e7amento em IA - Seu Dinheiro",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi0gFBVV95cUxPcnRaMUM2QmJLc3cxQmVoR2FieWl6ZTFsdDVjMDI3SXotYy1Ednk5SnhTMF9wZDNTanlhZ2lnOHhCUU4zZmNiWHJq",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPcnRaMUM2QmJLc3cxQmVoR2FieWl6ZTFsdDVjMDI3SXotYy1Ednk5SnhTMF9wZDNTanlhZ2lnOHhCUU4zZmNiWHJqR2NiVFFUSmdWWGhfQkxTUTdlMFg3b1c1SkQ5c0RFaF9VRy1WT0JhN1I0UTBpMllaZ1k0NDhTdl83WjRtS0hONlptaVoyVU42R29sRTVERF9ONDlGUXkwSHlrNnJHTnVjMlpIdlBiQkVDZEpqM0FvUHVNb1UtelNzMlBXYllIZEZnUVNDYmo0VEE?oc=5"
+      },
+      {
+        "title": "Retorno aos acionistas? Totvs (TOTS3) anuncia recompra de a\u00e7\u00f5es ap\u00f3s lucro subir 44% no 4T25 - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiwgFBVV95cUxQYUprbjktUnNadTBBQm1vWE16UlB2WUkwWmd3eEhtU0VVTTBBWGk5dlpiU3JQWDd2M2VERklZQzdYRkNlVHRRa21u",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQYUprbjktUnNadTBBQm1vWE16UlB2WUkwWmd3eEhtU0VVTTBBWGk5dlpiU3JQWDd2M2VERklZQzdYRkNlVHRRa21uQ09VU2l4RS10bU5VQmpaNFNFOEQ0Q0pUSjA3d2cxNHRiM2xINVhqMUU5bHJ6bXdNeGg5VnBUd3BCZGNHZ19Gdzg1Q0daQzU3RVNmYS04WEpOLUNwMXk4bjlWOWVmZ0U4S2I0V3puSk5JU0o0OExqdmI4T0U2Wmh0dw?oc=5"
+      },
+      {
+        "title": "Lucro da TOTVS (TOTS3) sobe 26% em 2025 - Nord Investimentos",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiekFVX3lxTE5fcjFtQkllUC1JOGttR1JiMVN6RUtPc2ttXy0ySmJmTEhQWmp5TXdERTJPLVZuMWs2T1h1UjI4cTgyTHlCWWRSdWNV",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5fcjFtQkllUC1JOGttR1JiMVN6RUtPc2ttXy0ySmJmTEhQWmp5TXdERTJPLVZuMWs2T1h1UjI4cTgyTHlCWWRSdWNVQXQ5T3Q0bzlyVF9yTG1XeC05RHNQVzVPSDliRWtNSF8xVmFlcjN6LVo5a1M1dDJB0gF_QVVfeXFMT09mM2ZWU1hpRkp4U0Y1emJJWnlkSndlaGZXZkZtZnRxaklrTUk4ek5nRVc4UFdwZzNLMExlRTRNUnVwRG1rRC1tU19tcmNyOW1EQTY1QkRTUWg4V2tORVZvYVRGMWstWmtCcWU4QUtWWkM2MjlPd2lFR29aVGFBTQ?oc=5"
+      }
+    ]
+  },
+  "USIM5.SA": {
+    "sentiment": 0.04194414197979258,
+    "timestamp": "2026-02-18T18:21:27.258260",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Usiminas (USIM5) reverte preju\u00edzo e tem lucro de R$ 129 mi no 4\u00ba trimestre - InfoMoney",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMijwFBVV95cUxOc21SX1VKaE1IYmd1bFZhZzZzOEd3NEprS3ZOTGdxSmR1ZWhKWHE5c2FlcWhuc1FIWGxqZzB6YXVHNWtkWUw3Ukln",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOc21SX1VKaE1IYmd1bFZhZzZzOEd3NEprS3ZOTGdxSmR1ZWhKWHE5c2FlcWhuc1FIWGxqZzB6YXVHNWtkWUw3UklnZk5QY0R5bHloSlMzWHktMjhWc2FoRWU3ZFpFcFZwZTVEZDkta3NORjlIRV9YbjF5LVVnOENiVVdoVFN0UEhiUWJiWG1ZSdIBlAFBVV95cUxOTFg3RWliNmFnOElHNXhVTno3aTZyQ0lzVUtFNE4wZnRtVmEzVG1VRmphVVRRZDQ2UnRaNWw4OGtZSDhrdmk4U0cwMEdTTlN2bUdRYkxaTzZFc1hXVnE1NGVodVNBWWt3Q0owUVQ2bnppeElLRnVtaVYwUnJvMWI0cWpwY2MtV2h6LXhNN3JFR3RoRVUw?oc=5"
+      },
+      {
+        "title": "Usiminas (USIM5): ligeira melhora na rentabilidade operacional e perspectiva mais positiva - InvesTalk",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiiAFBVV95cUxOSEJRLU1Rc0hadGF5dnZmVWlRRmtLX0tONF9tdV9GMjRZVmpaaE5tamVpeXYtRjFzQ0dzSXlVQ0NwUU1UVDBaTlRS",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOSEJRLU1Rc0hadGF5dnZmVWlRRmtLX0tONF9tdV9GMjRZVmpaaE5tamVpeXYtRjFzQ0dzSXlVQ0NwUU1UVDBaTlRSMU5zUVE0bHowR1hhanF6VXpGTjJJSUZsMW5qUW55Q3FCZWN1UkJ2c3hmeW9HZjNHcUlTeDJJMzlfWW15cjhj?oc=5"
+      },
+      {
+        "title": "Ap\u00f3s resultados do 4T25, vale a pena investir em Usiminas (USIM5)? - suno.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMimAFBVV95cUxQaUlBRW1Tb2FCenluR253RGItVWtjRTNnYmg4TWhsVnk4VXBiYnlLNV9keHY0U2NCV3JFcGhHUktLc09vdU1tUUlR",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQaUlBRW1Tb2FCenluR253RGItVWtjRTNnYmg4TWhsVnk4VXBiYnlLNV9keHY0U2NCV3JFcGhHUktLc09vdU1tUUlRMU5aMHJmVFhqRTVMU2VRQTFQb191RmhNdldaTGhHaWJlODZQWWdQTkt2Z3hfVEw5WnFfVGlXVEZRb0lZZ3J0Y2NhV1lwUi1ONFJ1UnZISNIBngFBVV95cUxQVUNZd0psRk5hQmp4TzZPbHJVVmZoVmVpZS1hMFh6WTVLWmk1TkEydVJnS3ZmSk5RVVNjVVJDRlljaUMtYTJRLWptbkI3dDlQTi1GLWVRbG05eTRrLVNEdWgxR3VMaklEZmlZY1g0eHpNNzNCRnhFMUFRNnlod0tpRDZjOUk0M0h3ZWRBb2N4UWZuUkpCOUJrVmttRDN6UQ?oc=5"
+      }
+    ]
+  },
+  "VIVT3.SA": {
+    "sentiment": 0.041334644289840364,
+    "timestamp": "2026-02-18T18:21:30.262666",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Telef\u00f4nica (VIVT3) vai pagar R$ 325 milh\u00f5es em JCP; confira quem recebe - Valor Investe",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi7AFBVV95cUxObmVVOUhzVEZmQ2dlWjlzTDY2cVprTEJranlGOS1GMXNwbHVFQ2JnMGVDT19aUEthRFA2MzJYZHRTNWctbHc0OUN1",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxObmVVOUhzVEZmQ2dlWjlzTDY2cVprTEJranlGOS1GMXNwbHVFQ2JnMGVDT19aUEthRFA2MzJYZHRTNWctbHc0OUN1cXJzNC1nem52V19hTUtWNUJoR0VPTWI5WllnNVlKbk1UQldQSVd2UzI5TzNZRXhfbWhic1FVRWZlM2NKYVRkMzcxbDN5RkhBMUQ3MUI5c2o4U0xxU3BCQnN6U255NTZYMzRSZDdfbVJqNTFGMzQ1aWF4NTkzbHFhemRaTDdBejMxNlpmbE9HMG1CXy1RUDNjWXg5dGs1YlVDYUxjeVUxNHRoSNIB-wFBVV95cUxQajV6TlNxVFRpRjBSODNtUTdSeXVtTTB0TkZSdzVHYnk4bVVpaFM4QjZoQTU2VHRBYUlJNTNuMzlTVzdjZXl0a1BZRUJ6YnRTalJFTkRSbVRCR1dMWVJkSWFaZDY4WllydUo3NFVXM2JMOEJoXzM1a2FUS1dYcHlFVzRYNDdYQldnTnhZZ3pwV3VhdnNCQUxVQ3N4MWNoS2lTZVBhSkdPeUxoa29HX0pxMGN3ZXlMSnUxTXpHMWVrQUwtVUtPS2YxSWFyN1JCTGpVUVhSVFpYWWN1ODNocDA2bWtQaFczRWdIZS1mTmpwUkJZUjFaRDBPSFlEdw?oc=5"
+      },
+      {
+        "title": "Vivo (VIVT3) aprova R$ 325 milh\u00f5es em proventos; confira quem tem direito - InfoMoney",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxQaXpsX1NtSXFxcHppZ0o5a2VjWlg1NnZOUGEtUnpPRlhxRnY3bW8tSFQxczNIZ0UwVW92UWlXSVhtRm5PYzNfNHRa",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQaXpsX1NtSXFxcHppZ0o5a2VjWlg1NnZOUGEtUnpPRlhxRnY3bW8tSFQxczNIZ0UwVW92UWlXSVhtRm5PYzNfNHRaQjc1N0hHdnEtaU1pclp1QllPQmJ5ZVZTRlc4bkdlMXlhWGFKdDNfX2JSMDk3ME82a1c4czRCMXZkMV8wd0NnU2tYVHlrQjE5VGdHVXgxVEtUQzVPYTlPTEVqdUlwYUQwaXlR0gGyAUFVX3lxTE1MTnprYmcyeEZGaWRGSlhJeS1xeGp5c09odWVhQzNITVR4MWFTaGZOakkwNk1GT2gxN0dqOXFIdVF3ZnVTbklGTnFfaF9yWlhPV3pyVFozLUQ4a1dxSUNUMDJtWDlVaUxXWm8wVjB4VGVmWVYyU2hySEpIWFRzMVJsLVZjZVZYcVRHRW54elMzNHpBWE9oanJzd01XU2xyd1NHZUo2VktxYUhIYm5ZSExySHc?oc=5"
+      },
+      {
+        "title": "Telef\u00f4nica (VIVT3) anuncia R$ 325 milh\u00f5es em JCP; veja quanto cai na sua conta - Investidor10",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuwFBVV95cUxQMkJ5aEtFcGVNYnExenRTWTdjNTNoTzJONk0zSFM5c28tSGJsNEhzRENteWVkOHhVOWtINk9xZXJ0Z2U1ZWp2LW9t",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQMkJ5aEtFcGVNYnExenRTWTdjNTNoTzJONk0zSFM5c28tSGJsNEhzRENteWVkOHhVOWtINk9xZXJ0Z2U1ZWp2LW9tLXpVOVBjaGp3ZHZHSjJIYVlMR1dGY1BzUU1VYkdhME9mS3lKc3dMNlE4ZE9Nd29pRURidEpyT2U5SGtEWXJ4bVcwRlBUdjh0eXRRdEctV2NXUWsydndVWW0wLUlYcDlRa1dQSTNGdGhXT1N2VVB3cGJv0gHAAUFVX3lxTE5UNldGQnBKMUN5ZlpnNHJZNVJzalBTWGhnME8zdks3SXJCaDJla0ttWUhjOHVxenpYVTBUbko0MWRVUHlrMDJOWG5vbm9TV0hMaFl2RlgtOGlBLVBQYnFsR1hkMG8wNU9mM0liUHU1aDRTNk1jRWc3THBfcERDSGVkSE0xOW5OdWY1M0tfNU5ZZmQybkRtYzZzTm5kOXlXVGZLazhuc3MxaU14T0FCM3ZETDBqZW1XcE5EWHNfejlkYw?oc=5"
+      }
+    ]
+  },
+  "YDUQ3.SA": {
+    "sentiment": 0.07424091386862776,
+    "timestamp": "2026-02-18T18:21:31.614479",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "YDUQS conclui aquisi\u00e7\u00e3o da Unifametro ap\u00f3s aval do Cade e refor\u00e7a estrat\u00e9gia de expans\u00e3o no ensino superior - MSN",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiwwNBVV95cUxPN0stM1RpSHd3UEhFRzB0MlNwdDVtTVpTOGdKcVN1bVJrV3FBcFVhemUzR0lxS2NOeEZuSURxakNaUmZoQklIQVpR",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiwwNBVV95cUxPN0stM1RpSHd3UEhFRzB0MlNwdDVtTVpTOGdKcVN1bVJrV3FBcFVhemUzR0lxS2NOeEZuSURxakNaUmZoQklIQVpRUVYyaFZZY2hSdWJtNjV0Sm5fLUM3cjdYRjJxajJqTkdjTWNxTFo4MWtwMXBqckhPaksybFpmYl9YUWFVamdpSENYUXRXakZJclBmMy12OVlWb0J4NmZrbjBWc19hb0w3VS05NnMtQ2lTcGRLOW9ibkpIWkREX0h5d2Eza2xDQzk1Y1NCcFlUV1NZbF9VdHFEN1B3M0dPZEpwWFBYOXRnNUJCeXVuOTRTZTRROW10anhSdTI4Vjd1NFdSSmp6Y3pac0ZDWS16X0o2WHNxZGNnUUdoaFhCb09laDU1Q3pGaWU4NzE3Wkp5V2pwc3JGd2NvT0lhSDNDRUNQZDM1ZnBiajB6UmdqVmxXbjJSMTVPenU2X1BBa1VFMHhjT0NjWmRNU0tvX0RXaXZ4bG5nVzhsR2ZWSHNUM0I5U3NvWVVwa0lZaXdzd3h5eUw1UEhELU53WEVWbXZfYXhMTkFyWWlMa3p5cS1udmdZa3Z1RmU2U3VzTnMyNVhfSkFJ?oc=5"
+      },
+      {
+        "title": "MEC cancela Mais M\u00e9dicos 3 e balan\u00e7a a\u00e7\u00f5es de educa\u00e7\u00e3o; veja quem perde mais - Guia do Investidor",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMitwFBVV95cUxQTkYtcU53M1UyVDlDd051ZmdLaUtSZzViY1BYbUVtVUZMZjFBV2J5bzlqT3hUR0Z0TTE1RU9JTW1peVJSOHV6MFdz",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQTkYtcU53M1UyVDlDd051ZmdLaUtSZzViY1BYbUVtVUZMZjFBV2J5bzlqT3hUR0Z0TTE1RU9JTW1peVJSOHV6MFdzZmVoWHU2Z3pBckJFQ2JEZnNCdEtmS0xVRWQ5Z0lKMWRndjk3dWxvcV9fV0cwOWdydUtmdnJxS29JZ2VhVjFDNmNPOHJWMUhYNV9YalQ2TDJnblJ6UGdPUTVsVXJUNzFhOU1ReTFRd0Rud1QySW8?oc=5"
+      }
+    ]
+  },
+  "BPAC11.SA": {
+    "sentiment": 0.05634130074858686,
+    "timestamp": "2026-02-18T18:21:34.286378",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Cogna (COGN3) e BTG Pactual (BPAC11) pagam dividendos hoje - suno.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMif0FVX3lxTFBPSmJnZVJad3BvSkpaMUNQUkR2OHJkZlpWUWRXWW4tMFEtMWRzS2gtem1MOXZlSVB6dGVqVlRUU0c3ZzM0ZEJoX3o5",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBPSmJnZVJad3BvSkpaMUNQUkR2OHJkZlpWUWRXWW4tMFEtMWRzS2gtem1MOXZlSVB6dGVqVlRUU0c3ZzM0ZEJoX3o5MTFBV1VVV3hnMC16WE91TDJuM0x0R2ZrNXh2QUhsdkJZbmgtSHRUMEJyeGR4TGdqMFFJMmfSAYQBQVVfeXFMTkZTUGdMeHF1VUhIQW5jWm5LN1ZqUTFaWWlhckxyRVpERzBzUVQ4YS1oUGlSZEt3V1YyNXlGNjVpNDVYbVpIbDNJQU5zZ3FVZ2puS0poc244eXQweVZCNm4xbEFJbmI4OTBmSTJCaV9PQ2s0UWhKeDJVWC1NU3BIY05OcUtJ?oc=5"
+      },
+      {
+        "title": "BTG Pactual (BPAC11) adquire fatia na fintech MeuTudo e avan\u00e7a no varejo; veja os detalhes - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiwAFBVV95cUxPWENGX3dkMHR2N1R5S0RzTVNwRFR6Ui1oNlNvSHhOVXRxWGxBbUNGbHdfM2JVUWhNV29qUmVvRGYzcy01aFk0Mk14",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPWENGX3dkMHR2N1R5S0RzTVNwRFR6Ui1oNlNvSHhOVXRxWGxBbUNGbHdfM2JVUWhNV29qUmVvRGYzcy01aFk0Mk14SVN2MERSQXY1RE9VT09pY0F3dVVoN2ZURzE4cS1EX3VWWUY3TlpmYVBmdTFsU2J4dzV0anNkVkJVVGxSOExGVDRCU0N5Z1k3V2xZanlnS0Z6cWtqTmxkam92elFxOXFUcnJKMU1jdmxKS0FBeTJBSWtBZmxXMTM?oc=5"
+      },
+      {
+        "title": "BTG Pactual conclui aquisi\u00e7\u00e3o de at\u00e9 48% da meutudo e refor\u00e7a estrat\u00e9gia de cr\u00e9dito digital na B3 - ADVFN",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiakFVX3lxTE9iX0ZjN2JoX2FSSFhtdjBhRWhiZE4zLTJjcE90eklheG9YTFZFSndRcGhyRHZDODFjMnhVdjh0cXEwaXlQRTFqeEh2",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9iX0ZjN2JoX2FSSFhtdjBhRWhiZE4zLTJjcE90eklheG9YTFZFSndRcGhyRHZDODFjMnhVdjh0cXEwaXlQRTFqeEh2ZzJodzdTRnR5NmkzdGJBZXFKYmtreTAyZHpCaWdmM2c?oc=5"
+      }
+    ]
+  },
+  "COGN3.SA": {
+    "sentiment": 0.07185040589860411,
+    "timestamp": "2026-02-18T18:21:42.089954",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Cogna (COGN3) e BTG Pactual (BPAC11) pagam dividendos hoje - suno.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMif0FVX3lxTFBPSmJnZVJad3BvSkpaMUNQUkR2OHJkZlpWUWRXWW4tMFEtMWRzS2gtem1MOXZlSVB6dGVqVlRUU0c3ZzM0ZEJoX3o5",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBPSmJnZVJad3BvSkpaMUNQUkR2OHJkZlpWUWRXWW4tMFEtMWRzS2gtem1MOXZlSVB6dGVqVlRUU0c3ZzM0ZEJoX3o5MTFBV1VVV3hnMC16WE91TDJuM0x0R2ZrNXh2QUhsdkJZbmgtSHRUMEJyeGR4TGdqMFFJMmfSAYQBQVVfeXFMTkZTUGdMeHF1VUhIQW5jWm5LN1ZqUTFaWWlhckxyRVpERzBzUVQ4YS1oUGlSZEt3V1YyNXlGNjVpNDVYbVpIbDNJQU5zZ3FVZ2puS0poc244eXQweVZCNm4xbEFJbmI4OTBmSTJCaV9PQ2s0UWhKeDJVWC1NU3BIY05OcUtJ?oc=5"
+      },
+      {
+        "title": "Cogna Educa\u00e7\u00e3o (COGN3) dispara na Bolsa: mercado aposta em reprecifica\u00e7\u00e3o e forte gera\u00e7\u00e3o de caixa - arevista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMixAFBVV95cUxPREJXZGQ4OUJ1Ujl0NkNabDFsTjIzZ0t6TG1BT2dzNmFaaG1pOFlaUUUyZjhuOTBfTWNJSElMX2Z3bzVkYVJnWC1B",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPREJXZGQ4OUJ1Ujl0NkNabDFsTjIzZ0t6TG1BT2dzNmFaaG1pOFlaUUUyZjhuOTBfTWNJSElMX2Z3bzVkYVJnWC1BSW1qU1V1WUtBN29EdTE1bFRaUHlnOHJrcHRGWnVYby1uNUxmR1VTS1lQYjItMFpRcUF4UXpWaVY5VWhkTkhWdnVoU0M1UVFYRzRILUR2WGxHMWJ1b0ltUXlhT1RCNkRhc1Q4bW9CZFF0YnF1REFtWDRJSDRQY1ZMR2l3?oc=5"
+      },
+      {
+        "title": "Cogna chegou a ser \u2018meme stock\u2019 na pandemia. Hoje \u00e9 \u2018queridinha\u2019 da Faria Lima - Bloomberg Linea Brasil",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxPS210SGJ1dXNBbXFudWZRSHdZTUszRzNTaU0wTk5VSThFdGlaRXZGWUFvU0o5VlE3d2R2M2lGdkJubmtiLWEtaERt",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPS210SGJ1dXNBbXFudWZRSHdZTUszRzNTaU0wTk5VSThFdGlaRXZGWUFvU0o5VlE3d2R2M2lGdkJubmtiLWEtaERtN05OOGdvUXFFY21hRnEzeU1QX0ZLa3hkZ1V4WFBoTEc5bWlzRnBQb0p6ckZiZWt2cTl0Z0l6ZkI0N1NJOXA0eEZoVE12cGFJcWRMSUV4X1ZSVXJjWkVUMkQ2VHFTb2JraGd0UFI0NlprbDJVam9x0gHMAUFVX3lxTE03bjZDTDNYMGYxQVZVRDhlb0dFU1g0YmZvX1o5SUJwdFdpTTdFN3pTdU5pZFZoU1dZVE9QN0RxdzFhc3R4RVNwSE1JRDRXWEJULWNrU1U0SVBUcmtnanQ4Znp4SXlqdnNqbDhJdUxza0tsU051T3hTM1IyTF9jcDU4dnEweTh0WVBJY2JNYmpGZGJnU3NWTEY5TDRIT01wTFhLVzlReE1XT2FHT0x2UjdhVXJZWkNKRXhhb3RXUHRESy1BMkd2akdkMmU4VQ?oc=5"
+      }
+    ]
+  },
+  "CPFE3.SA": {
+    "sentiment": -0.009176306295044276,
+    "timestamp": "2026-02-18T18:21:43.710514",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "CPFE3: A queda de 2026 \u00e9 oportunidade ou alerta? for BMFBOVESPA:CPFE3 by BrunoMazzoni - TradingView",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiXkFVX3lxTE9FMVNMcmdJR1hTY2NHNHUwOHRjZXd5Y2NpZDl5SHJLWnNCZzJ3b1NzY0FwMDdzUVI2QXVqc1VzdUEydDE5YmFuczZB",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9FMVNMcmdJR1hTY2NHNHUwOHRjZXd5Y2NpZDl5SHJLWnNCZzJ3b1NzY0FwMDdzUVI2QXVqc1VzdUEydDE5YmFuczZBYnhrdmZNX1l4S1JONUROLVJ4YlE?oc=5"
+      }
+    ]
+  },
+  "CSAN3.SA": {
+    "sentiment": 0.008916265305957334,
+    "timestamp": "2026-02-18T18:21:46.906362",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Cosan (CSAN3) e Shell apresentam propostas para aumento de capital da Ra\u00edzen (RAIZ4), diz jornal: entenda o que est\u00e1 na mesa - Seu Dinheiro",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi-gFBVV95cUxOQ1h5N0pzcWZmdjNSeEdDczhmb2Nsc3NFdnF6dXE4NldMcDlmNk80bDR5b3JHeFNDWlREWEJCNnZWbS1QVUttSUg1",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxOQ1h5N0pzcWZmdjNSeEdDczhmb2Nsc3NFdnF6dXE4NldMcDlmNk80bDR5b3JHeFNDWlREWEJCNnZWbS1QVUttSUg1S3c3X2t3NVZoTWFqTTcyRE1Yc215WkN4U09TYVRYd2NMZ042cVZiNmFmeDBqZ0RtX1BZV3JUZlNYSnF0NzZvR3RQSnlOQWdOUDdTck1uamhzUzdsUDNkX3JTZ1BzSFNlaWViV0I1Sld5anFUQ1k3Yk1DLU1oMnhXd0c0VnlIckhjMlk3MFhzQlJEZTFUOWdlN196dnMwNXE3WlRRdkdEdVF5eGdUNldkN1ZuUlpIYjJR?oc=5"
+      },
+      {
+        "title": "S&P revisa notas de cr\u00e9dito de Cosan (CSAN3) e Rumo (RAIL3) para negativas - Valor Investe",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi4gFBVV95cUxOTDctbVNBVngybGxtODhDWmI5WjF1a1piYy1IcWJQUHptNWx2ZkZRUmJ6V0pNSzRWekFPVFAyTnJ0MlNTRlBkREtD",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOTDctbVNBVngybGxtODhDWmI5WjF1a1piYy1IcWJQUHptNWx2ZkZRUmJ6V0pNSzRWekFPVFAyTnJ0MlNTRlBkREtDZ0JWdFNHQUNRMUp5Rk0tUXBjeXZuc1pGTEFBTWx5OTNudFRrYmlIUEVHSFpaY0NDcE9obU5MdWNzdlFueE9jdUJMTHhDbEIybzFCWHZOTWJCWDBEbXh0ZlB1S1kyTEkxQnNtbTdhTUxoVWo4TkhteGp1bzRtSkJWWHh1dUdvWmIwODc0cjJLZDJyYUtISmhVZ3FmWHh1SVRn0gHwAUFVX3lxTE9heGx4Tnh1MzFhYkt0NldRMENZaG14LVpJTFdFRzZGM0UzTDZaMVlFWm5aTmVRdmdiRHpYYzlVNkJUOVRlRV9EaFB5RUZVdXFBdVNBb2pEWnBGQmFLYlZiODZacS1JVUVMVmVBUTVadFhEcDF2NHgyY1dlMnppVFJEVVlvUVFPbVVKQlNUNlNyZ3Z5Nm0xWnFiWks4U0MtZzRNdTFENGNjWG5ES3J1V3hqMjN6Y2MtU01lWGNFcE80d2x3bDVpUGZ5V0MzQ0MxZjZvOHlOWGtvbnZhblI4U1Y0N1dxZFpHN3ZUU1dza2NvOA?oc=5"
+      },
+      {
+        "title": "S&P vira a chave para negativa e pressiona Cosan (CSAN3) ap\u00f3s crise na Ra\u00edzen (RAIZ4) - Investidor10",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMixAFBVV95cUxNM2YxSGpoTDItaVpOelhaaFlIWmRKOHVsTUJEMVNSd21vZUdUb0RHbGZmdm5La2dlRjNxZmJTWTU4MUdqSmxVaWJL",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNM2YxSGpoTDItaVpOelhaaFlIWmRKOHVsTUJEMVNSd21vZUdUb0RHbGZmdm5La2dlRjNxZmJTWTU4MUdqSmxVaWJLRDJPRWE4R1JNVEIybklyU2tEZTdPOTQtd2FxVHJISERFYzlkWl83cU82MndHbnE5V29CVDl2MTNrMGZYRHpLeG53Nk9lYUEzMjNneW9zMkIwRWZjSzBEMlZfaDVQZFVIeUNNbExpaVRpN2drd2V1bWREWmkzdFYzdjAw0gHKAUFVX3lxTFBoNkpORHh3TS15Ukp0Vi1MWm9QdlNXc3Vfd0stQ0xxaW90RnZNWWNTQ3lfVHZaMy16cTk5N1RyQWJRVkozVmVyX01FcHdVaUNFRDBWS0NKVG9Vb09Pc2dkdUMzRERFbjRnUVNhMGNZZ25Zb3J6ZXMwSGJQODRTdElqYmtYUEFERm81bG5JTzFiTnRBZmZTNjlRRGJaZm44Y0lnQ241c1k2TmJqTXJBZnluSDFHTXc4LWdaenBUY1l6STU2cVIwekZraFE?oc=5"
+      }
+    ]
+  },
+  "CVCB3.SA": {
+    "sentiment": 0.06213663046558698,
+    "timestamp": "2026-02-18T18:21:48.296881",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Cota\u00e7\u00e3o CVC (CVCB3) hoje: veja pre\u00e7os, gr\u00e1ficos e not\u00edcias em Tempo Real - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiV0FVX3lxTE9LMmtYUDZWR2MxY3dYODlMNDVHMlVsSE5sRDIxalVjWnBPYzNVYk1JbGdUWmd1WG9jaFc3WklHYktLd2R2OXZJdDI3",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9LMmtYUDZWR2MxY3dYODlMNDVHMlVsSE5sRDIxalVjWnBPYzNVYk1JbGdUWmd1WG9jaFc3WklHYktLd2R2OXZJdDI3Y2hOdFdXMHByOW9kSQ?oc=5"
+      },
+      {
+        "title": "Cota\u00e7\u00e3o Vibra Energia (VBBR3) hoje: veja pre\u00e7os, gr\u00e1ficos e not\u00edcias em Tempo Real - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiV0FVX3lxTE0ybHBaTHhhb19aQXNuXzdKWFBvdkxPb0RtYXVoT2NsUHpIQlBxbHdCSnQ4clJJNjU3Z3hIWU1XNk83TzZ1UGVJcVJI",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE0ybHBaTHhhb19aQXNuXzdKWFBvdkxPb0RtYXVoT2NsUHpIQlBxbHdCSnQ4clJJNjU3Z3hIWU1XNk83TzZ1UGVJcVJIazlsREg4NzZKdVhITQ?oc=5"
+      },
+      {
+        "title": "Ibovespa retoma negocia\u00e7\u00f5es ap\u00f3s o carnaval e abre em leve alta - VEJA",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxPV3JjNUVvMXppa05Sa054OHg5Vm1GbmtRV0diVVhJVjBIT3dlRGowQnZ2V2QwX250TzJwOHgybHFWT3BlOEItNUsx",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPV3JjNUVvMXppa05Sa054OHg5Vm1GbmtRV0diVVhJVjBIT3dlRGowQnZ2V2QwX250TzJwOHgybHFWT3BlOEItNUsxVGNKdHMwMnVUOE5teDNzaXZsa0FZX3dkUUJHZXFldXBLNmo4bGx6Z0ltcS1La24xMURsQ29oUFRtX0dMenVuaGxHcU8yaXVqdklMS3phZWtlU2o1NlRB?oc=5"
+      }
+    ]
+  },
+  "RECV3.SA": {
+    "sentiment": 0.0743156604312055,
+    "timestamp": "2026-02-18T18:22:02.652732",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Petroreconcavo (RECV3): ANP encerra contrato e empresa tem 180 dias para desativar campo - Investidor10",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiygFBVV95cUxNNnk5R1ROeUlONWVKNXVUdmZKSEZzSU0tUzRJX0RhSTJnWkFWQ2Vhd2s3SWtPSVpOQ1lWalJOWHQtOXF5RHJBOWUy",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNNnk5R1ROeUlONWVKNXVUdmZKSEZzSU0tUzRJX0RhSTJnWkFWQ2Vhd2s3SWtPSVpOQ1lWalJOWHQtOXF5RHJBOWUyTU0xcWR5eGU3REwxVG5aTWNIbUFPUk1vSzg3bmQ3TjI0ZU5iSUJpMjFRb2VyckJVQ1JHdTRPZm00aHUtMllXNkttQVRuY3FWc3ljWWN4TkxYTEVKdTQ5UzlaeG9pY0lmd3lmZ0ctbjJtSGEwaDFxU2RfV1dOcmFOX1hxeF9QRHB30gHPAUFVX3lxTE80eUk2X1RRc2pNeGh2TnBBczU1Z0dIOU1NTUh6eFY5QXBabFlWaXctSkR4RUFmQkh1cUtjSGpySlFkcHlTTnBVS2xpcGlKVkRLUVlNQ2hZSk5nQkhZamhKZEk0RUt0djFmR0FmdUVNREx3amFFS2d2VDgtSHl6b24zcGROZC1SeFZvSUZlbHBfQ2lKbjZCMEhrWVFkRnZiSnpWSjFwQzFEOUJUeG9wWFVkS1RqQ3haOXJlVmcyUXoxbDVFcjV6dzF3anNWa1FTcw?oc=5"
+      },
+      {
+        "title": "PetroReconcavo (RECV3) perde concess\u00e3o na Bahia ap\u00f3s produ\u00e7\u00e3o de apenas meio barril de petr\u00f3leo - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxQWDRqZ0I4QW5wWmFGTFE5b3NVNGd4ZU1YTk9Qa21kMmZpcm9kLXg2Q25xdW5yN0lRWVJ4T2tMbFlKaGdNTzZ3eWRT",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQWDRqZ0I4QW5wWmFGTFE5b3NVNGd4ZU1YTk9Qa21kMmZpcm9kLXg2Q25xdW5yN0lRWVJ4T2tMbFlKaGdNTzZ3eWRTTGpEUm1RbjZXVmtJR2Z2bzdQcHdPOGdudm5lcjJkeWcwdm43VWRlWHBpNnk5MDVTcDhRSFdsUGtja2ZackFsMDlSMDJTREdBdzYzN0tnRVlnYnpCWVVoam9LSExMYzJWM3RLZ0NFSGREVHRDVEFV?oc=5"
+      },
+      {
+        "title": "PetroReconcavo (RECV3): este movimento mais recente vai agradar quem investe - Acionista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxQRXdIend5anBtSTNNc1BnbHlNZ3d6VVR1OFlYb0oyWWhXcVI2WnQxS29DeHZlOGNPc05CRWZmY0dvQ2NtYU5adVFZ",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQRXdIend5anBtSTNNc1BnbHlNZ3d6VVR1OFlYb0oyWWhXcVI2WnQxS29DeHZlOGNPc05CRWZmY0dvQ2NtYU5adVFZV3ZuSmhnS1dQSEFNR0VhandWOGp4SDk3RUtCaW1IVnZsazdtOEtEdWlJYVNUbU43UmNTeUxrcnhSeGMyR1RDN3lmOXpLZTJ6WURKUXlVQUlRQWxmZEJa?oc=5"
+      }
+    ]
+  },
+  "BEEF3.SA": {
+    "sentiment": 0.002468335198087472,
+    "timestamp": "2026-02-18T18:22:04.293117",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Day trade: Compre Embraer (EMBJ3) e venda Usiminas (USIM5) para ganhar at\u00e9 1,50% nesta sexta (13), segundo a \u00c1gora - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiwwFBVV95cUxOcGh3NUNIV3NFQ013bXRSR29rR3N1Q2dfNGNnQ3BTZVBvbm4zNzhyRlFDQ3RmN0JCdUpCOEFpX0FDeWF2YWsxSmRZ",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOcGh3NUNIV3NFQ013bXRSR29rR3N1Q2dfNGNnQ3BTZVBvbm4zNzhyRlFDQ3RmN0JCdUpCOEFpX0FDeWF2YWsxSmRZRV9Lb2tkTE9YSVhVZXhIVVZzdmZEd0pCWlpTWFBpb0ZBS09KM01nWlkzUEM5TGRxeHJueFFkUmFBSmVOYUZGdi1GQlBNaWNNVlR6WnFQZnV3TmhGdkJpZ1huOGl6OHJyTEtVbVBUcjhBRTZlRHYxSkpFWWlSaV9hUFU?oc=5"
+      },
+      {
+        "title": "Cota\u00e7\u00f5es em Tempo Real: Bolsa de Valores, A\u00e7\u00f5es, Criptomoedas, FIIs - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiUEFVX3lxTE1uVTktRGtFT1NIankyWlUxTkN0WXphV05mVmt1SGt4eDJVdF9Rd1JBRTNpU2F4TjlGSV9DZ0laWHpOWWFadHo2Nm9i",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1uVTktRGtFT1NIankyWlUxTkN0WXphV05mVmt1SGt4eDJVdF9Rd1JBRTNpU2F4TjlGSV9DZ0laWHpOWWFadHo2Nm9iYm1mZDBs?oc=5"
+      }
+    ]
+  },
+  "CYRE3.SA": {
+    "sentiment": 0.15594940853156972,
+    "timestamp": "2026-02-18T18:22:06.311832",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Oscar Freire perde lojas, mas ganha R$ 47 milh\u00f5es em faturamento - InfoMoney",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiowFBVV95cUxOb2liQno3THljOVVGbnh1LTc4MV9MRFBEdmdxWjloWWVQdHgzLWJZSDN6RmhzQkU1UUpHUzFsUkdHMjlWY2p0RU5v",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOb2liQno3THljOVVGbnh1LTc4MV9MRFBEdmdxWjloWWVQdHgzLWJZSDN6RmhzQkU1UUpHUzFsUkdHMjlWY2p0RU5vTHM1Y3VKMms2ZVp4VnZCZ05oaEZtYkxWdzA1dDFWSEFObUZpYzU4Y0w4NXFJTUFRUEtWSURzMFNwRTBhM1U3WGc1RXFVNnIwSktRTzY2WU9YZEJDZVJscU5N0gGoAUFVX3lxTE5zb1dfX01YSndFbXRaQnZPYUdubk5IWTVjYlVlVTRKY2NGQXVyRW5qN0JCVWhKRnFOSU00Wm1uYTJwMHVEQlVmenIySFZXV0RMNFJMZ1hIT0s1Mk8tTzdKb3RUaEtjdVNRVHNSUVdPSUFYRWxNcWRmenRObFNsTm9JU1lKejJtVHJXSGRSQTI3dUNuSmRvQzBoWklxX2xSTm9IUXE3eDhoTw?oc=5"
+      },
+      {
+        "title": "XP v\u00ea valoriza\u00e7\u00e3o de at\u00e9 44% para construtoras de alta renda; veja recomenda\u00e7\u00f5es - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMitAFBVV95cUxQRnpwYVp0cU4tVHJEbERZMF8zdHhtS0RMYlJkNUkyamVYSWJCeDRieWZHU1BhSkdrWloxSS1VVmg0WlkwX1BOU1l0",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQRnpwYVp0cU4tVHJEbERZMF8zdHhtS0RMYlJkNUkyamVYSWJCeDRieWZHU1BhSkdrWloxSS1VVmg0WlkwX1BOU1l0X3E1dEt0Nk9JRGlTOUxrMTNVYnM1NnI3bEdsb1MyWUtDcHN2MXAyeWlEMEFDaktxZktXc3FscS0tLVpVclBCb3lTZm5CdzlFQ2d3bVB3NS1YcV9JRUY2and2cmlaaFZRR3RlWTV0TjhodGI?oc=5"
+      },
+      {
+        "title": "15 A\u00e7\u00f5es para Investir em Fevereiro de 2026, Segundo a XP - melhorinvestimento.net",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMieEFVX3lxTE9TMlRUVlg3eXJ0ZXB2d3pDZGd6X1d3dGV2RGx2V3NtaGFBcm1jaVh6WEwtMFhkc3JZMmwxeVJCU0tOSXV5WXlOWUE5",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9TMlRUVlg3eXJ0ZXB2d3pDZGd6X1d3dGV2RGx2V3NtaGFBcm1jaVh6WEwtMFhkc3JZMmwxeVJCU0tOSXV5WXlOWUE5TDNLX0dQTGg1NkJqaElxM0RtWUh0ZjdhYU9EZEhaeVdwM2N6dWEtLWlrdjE3TQ?oc=5"
+      }
+    ]
+  },
+  "ALOS3.SA": {
+    "sentiment": 0.0058707773467743555,
+    "timestamp": "2026-02-18T18:22:26.452248",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Cota\u00e7\u00e3o Aliansce Sonae (ALOS3) hoje: veja pre\u00e7os, gr\u00e1ficos e not\u00edcias em Tempo Real - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiV0FVX3lxTE02WF9yYmFBU2lkeUdnRW1IZGVWTlJhSWVROFh3SXFwbWJtNTdHQkhxSmY1Nnh6VFQtT3pmV0xKeFJTUFRkUjlubXhh",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE02WF9yYmFBU2lkeUdnRW1IZGVWTlJhSWVROFh3SXFwbWJtNTdHQkhxSmY1Nnh6VFQtT3pmV0xKeFJTUFRkUjlubXhhaDJzN2dteGdPRHpEUQ?oc=5"
+      },
+      {
+        "title": "Melhores a\u00e7\u00f5es de shoppings em ano de elei\u00e7\u00f5es e queda de juros - Safra",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE5faXlRUVlLaWUxRUdaOVlnSlBYWGtyeS11TUpEN1UwOVNuOWtrVkppaldoQnQ5NVk0ZjkyT0JoUl9VS1k0cGRDUlZL",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5faXlRUVlLaWUxRUdaOVlnSlBYWGtyeS11TUpEN1UwOVNuOWtrVkppaldoQnQ5NVk0ZjkyT0JoUl9VS1k0cGRDUlZLcXBSdUtjWUZ3OHlMNDNYdkNUdDEwZ0l6Y1J6dS0zOEhzT1JXa19HTEo2Yms0ZExENA?oc=5"
+      },
+      {
+        "title": "Juros em queda e demanda firme: O futuro do setor imobili\u00e1rio, na vis\u00e3o das empresas - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxOcXdYSkZBRzFDUWsxRllJcWpnVGtIVm9ZQ1B0SzFTZ0tyaWl3NFozZ19jeGpGM0cyb3A3T1k3MW02QkZybndxQVpl",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOcXdYSkZBRzFDUWsxRllJcWpnVGtIVm9ZQ1B0SzFTZ0tyaWl3NFozZ19jeGpGM0cyb3A3T1k3MW02QkZybndxQVplY2dBTHh1UmhCelo3ZEZtSXZlTm45XzZUTnhrVjRfMVVDZi1IQm1hU3VYU0xFLXdlNW1mX3BJcUNDSWZJaDREV2t1dklxdnRfX3VaTTk1YjhfUTBLNTA?oc=5"
+      }
+    ]
+  },
+  "AURE3.SA": {
+    "sentiment": 0.014680341072380544,
+    "timestamp": "2026-02-18T18:22:28.345106",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Cota\u00e7\u00e3o Auren (AURE3) hoje: veja pre\u00e7os, gr\u00e1ficos e not\u00edcias em Tempo Real - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiV0FVX3lxTE5VenpjTnZFU25XdV9KOVhhazhXYlZxS2tYc0l1eEc5RzEyNU5rQTNzV01WMkVUVzduVmk0dl9jcVVrRkR6TDBHVno2",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5VenpjTnZFU25XdV9KOVhhazhXYlZxS2tYc0l1eEc5RzEyNU5rQTNzV01WMkVUVzduVmk0dl9jcVVrRkR6TDBHVno2RWtmYXdCb0hkajhQcw?oc=5"
+      },
+      {
+        "title": "Dividendos da Auren Energia (AURE3): o que esperar ap\u00f3s queda nos proventos? - arevista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxPLVJsWTlzSkEza2picnB3aUVyMnZ5aU95Y1EtVnRMWlAxNE1JaGQ4OVVBUlBJTkVzaVpsdXNWM0NsQmJ1cEdkTm9O",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPLVJsWTlzSkEza2picnB3aUVyMnZ5aU95Y1EtVnRMWlAxNE1JaGQ4OVVBUlBJTkVzaVpsdXNWM0NsQmJ1cEdkTm9OSVdya0c5bTl3Z2JwcWIzb200S0ZEbkIxdE9tLXZLMzRPRXVIT3RTWFk1QmYyVGhkV0ozWXEzalVfQmZ6U1BUOUVrYnFHNWkyUVRRSmhranE0Mm5nMVA2RmhGM1pkM2pDZG9r?oc=5"
+      }
+    ]
+  },
+  "BRAP4.SA": {
+    "sentiment": 0.07375965610276475,
+    "timestamp": "2026-02-18T18:22:36.563536",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Bradespar (BRAP4) e Mahle Metal Leve (LEVE3) entram em 2026 com dividendos robustos e novo pre\u00e7o teto no radar - arevista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi2gFBVV95cUxOVWRxZHY4MjRPa094cmtWbG10ZlpJQTNnUzVlZGszOXNGcWwxdFIxWncyc0NtVjV3Mk56N3puVU9ieDdYZWdLME9k",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOVWRxZHY4MjRPa094cmtWbG10ZlpJQTNnUzVlZGszOXNGcWwxdFIxWncyc0NtVjV3Mk56N3puVU9ieDdYZWdLME9kR2JBMlpEaTYzMlE3Sm9teWNCbGVRby0xSTU4NGZaQ2dmTnU1TG96TGl2alJ2SGlQRXdGUVVmRjBnUi1JSk9vMXRRNjRKMHdEOWlFSVByTVcyLU9GN2R6UUhLM2l3YURTbjBZR1FyRHZOcFlsRGttajRVZ0EzeW1WaGRLMTU4ZzdXRDR2YkhsQ3Y0MXBiVzhsdw?oc=5"
+      },
+      {
+        "title": "Cota\u00e7\u00f5es em Tempo Real: Bolsa de Valores, A\u00e7\u00f5es, Criptomoedas, FIIs - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiUEFVX3lxTE1uVTktRGtFT1NIankyWlUxTkN0WXphV05mVmt1SGt4eDJVdF9Rd1JBRTNpU2F4TjlGSV9DZ0laWHpOWWFadHo2Nm9i",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1uVTktRGtFT1NIankyWlUxTkN0WXphV05mVmt1SGt4eDJVdF9Rd1JBRTNpU2F4TjlGSV9DZ0laWHpOWWFadHo2Nm9iYm1mZDBs?oc=5"
+      }
+    ]
+  },
+  "CMIN3.SA": {
+    "sentiment": 0.03724408479915424,
+    "timestamp": "2026-02-18T18:22:38.440970",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Fundos multimercados: nova sensa\u00e7\u00e3o surpreende investidores em 2026 - Acionista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMilwFBVV95cUxNd2FqZFdNYzVFMU1oek5XVkhlVk5CaFJfemxrX29zRm9qMjJsM1huOXNfQUdGN183cGtPMHM2U2V1dGRhX1RSYUNG",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNd2FqZFdNYzVFMU1oek5XVkhlVk5CaFJfemxrX29zRm9qMjJsM1huOXNfQUdGN183cGtPMHM2U2V1dGRhX1RSYUNGbnpHQ2k5QkZacHdvSFB0cFI2ZzZySm5MdlZNb1AxNFR3dzVKZ0VncVpseEJiNkVZakE2b2YtcXpvcFgycGJpSGFLMkZZX3BGcG53Yy13?oc=5"
+      },
+      {
+        "title": "USIM5: resultados surpreendentes impulsionam alta e otimismo imediato - Acionista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxOOGtib1BfSVRjZGtPLWlfVHpXODM2VUJFWG1ibG13RHF6eURLemw0TmZwSTZINTluMkRFeTZQMG01V0JQNFk5VkYx",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOOGtib1BfSVRjZGtPLWlfVHpXODM2VUJFWG1ibG13RHF6eURLemw0TmZwSTZINTluMkRFeTZQMG01V0JQNFk5VkYxcTh6ZEdBblJ1TlVaTFFaak5kbFl1XzVKWFFNOV81RGc0Z0tCMDNYQThrZzNqZ0l0QVg5N1c1REVaTzlBUzhLUHNkTndlbTVRY1pqNkdSRnZR?oc=5"
+      },
+      {
+        "title": "HGBS11: Emiss\u00e3o de cotas pode mudar cen\u00e1rio do fundo? - Acionista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMigwFBVV95cUxOaGVPQlM5M2FKekR2amtVcVFIZkwydk1zTVh6OVNjdlhILVJja1ZiajBqUHZkUnVHSzJYd1o4cEFxZ3NTbzRHaXVX",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOaGVPQlM5M2FKekR2amtVcVFIZkwydk1zTVh6OVNjdlhILVJja1ZiajBqUHZkUnVHSzJYd1o4cEFxZ3NTbzRHaXVXR0pGN0N1MzVvYlZFNDAwS2tmczU5OGttX0RHbmprN2pEWkVXUUszZzVnTUFDSW5veFJQVEZGYVhicw?oc=5"
+      }
+    ]
+  },
   "ESPA3.SA": {
     "sentiment": 0.05292736031115055,
-    "timestamp": "2026-02-18T18:04:54.060081",
+    "timestamp": "2026-02-18T18:22:46.274371",
     "source": "google_news",
     "articles": [
       {
@@ -591,7 +1369,7 @@
   },
   "EVEN3.SA": {
     "sentiment": 0.020570497787683398,
-    "timestamp": "2026-02-18T18:05:46.118018",
+    "timestamp": "2026-02-18T18:22:48.608763",
     "source": "google_news",
     "articles": [
       {
@@ -616,7 +1394,7 @@
   },
   "GRND3.SA": {
     "sentiment": 0.154981873523534,
-    "timestamp": "2026-02-18T18:06:25.709023",
+    "timestamp": "2026-02-18T18:22:50.437459",
     "source": "google_news",
     "articles": [
       {
@@ -641,7 +1419,7 @@
   },
   "KEPL3.SA": {
     "sentiment": 0.03874438991770148,
-    "timestamp": "2026-02-18T18:08:14.642092",
+    "timestamp": "2026-02-18T18:22:52.655011",
     "source": "google_news",
     "articles": [
       {
@@ -661,6 +1439,253 @@
         "summary": "<a href=\"https://news.google.com/rss/articles/CBMirwFBVV95cUxPZ2d2OFktQzR3c1B0STNxemE5cTBMa1NHVTRkY3N2LWg1aE1CSEhPYnZiWXFZX1U0UXNWTGhDZDZNbVRYdktjSlEz",
         "source_publication": "Unknown",
         "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPZ2d2OFktQzR3c1B0STNxemE5cTBMa1NHVTRkY3N2LWg1aE1CSEhPYnZiWXFZX1U0UXNWTGhDZDZNbVRYdktjSlEzdTkyVm5KTkhRWFAtekh5RVdQc2lhUGh5U3pjNFFOUGV6Nm5JOUtyS2hyLTVtSGVscktVMEZINTBLSDBDb1NNbVdoUFU4ajUyS1hhTG9jZXVnRWpaQWhYZ01NVGs0blllLUJnMUlV?oc=5"
+      }
+    ]
+  },
+  "LEVE3.SA": {
+    "sentiment": 0.19962071448694482,
+    "timestamp": "2026-02-18T18:22:54.608074",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Bradespar (BRAP4) e Mahle Metal Leve (LEVE3) entram em 2026 com dividendos robustos e novo pre\u00e7o teto no radar - arevista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi2gFBVV95cUxOVWRxZHY4MjRPa094cmtWbG10ZlpJQTNnUzVlZGszOXNGcWwxdFIxWncyc0NtVjV3Mk56N3puVU9ieDdYZWdLME9k",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOVWRxZHY4MjRPa094cmtWbG10ZlpJQTNnUzVlZGszOXNGcWwxdFIxWncyc0NtVjV3Mk56N3puVU9ieDdYZWdLME9kR2JBMlpEaTYzMlE3Sm9teWNCbGVRby0xSTU4NGZaQ2dmTnU1TG96TGl2alJ2SGlQRXdGUVVmRjBnUi1JSk9vMXRRNjRKMHdEOWlFSVByTVcyLU9GN2R6UUhLM2l3YURTbjBZR1FyRHZOcFlsRGttajRVZ0EzeW1WaGRLMTU4ZzdXRDR2YkhsQ3Y0MXBiVzhsdw?oc=5"
+      },
+      {
+        "title": "3 a\u00e7\u00f5es resilientes que podem surpreender nos dividendos - arevista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMikAFBVV95cUxOLVdQVkpsd2NIUkl1d0VWakt3emY0cV84UTlHNFF2VWJzMWJWWUFVaGgxZm9KMXJHcnRSMU9IUktkd2g0QmpqaG1Z",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOLVdQVkpsd2NIUkl1d0VWakt3emY0cV84UTlHNFF2VWJzMWJWWUFVaGgxZm9KMXJHcnRSMU9IUktkd2g0QmpqaG1ZSWpGSUlqc1VPc1Fod0x4c3NwamZOaURLZnowMC1pYkZ6cVJFRFZuRUxtWVhtLXlkRWpEaDBZbGVjemdpYTFzOEdfRWJ2NXU?oc=5"
+      }
+    ]
+  },
+  "MDIA3.SA": {
+    "sentiment": -0.05573490802198648,
+    "timestamp": "2026-02-18T18:22:56.517567",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Petrobras (PETR4) paga JCP na semana: veja calend\u00e1rio completo e datas de corte - suno.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiogFBVV95cUxPM3FIaFU3azFyM2hUSkxLTjdwVm52UWN3S3JyczJ0YmRXUE1SOG1MYnBCMnhvaEtvVjV1V0VqM2h3aU1Cc1R4LXR3",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPM3FIaFU3azFyM2hUSkxLTjdwVm52UWN3S3JyczJ0YmRXUE1SOG1MYnBCMnhvaEtvVjV1V0VqM2h3aU1Cc1R4LXR3VW9GSXl5WlNoNko1MWE0a0FadUtSWm9HSFZINVJtM0w0Z182UEY3Q0I4SWRfQzRBekxSRldQQzI0eXpscDU3Ml9HV0IzOFFPenRTeFlCeUNnd2tYcl9NbHfSAacBQVVfeXFMTlhvck55cl9ndUVTY2F6X3otTHdhbDBWNWdnM1BSUkFCUU5iSjA2TUF6UGx1T1JRUGdZbGFsdm91cGtkLVFCSGxxVEpTbVVQeDFWNUpHWi1YZDMzcmlmS0NjbGVDdTdRTWNhVy00RXpCUDlrc2l1emFIcEdKOHZzRVRELVA3YW9UdlZtdUxiUC1jYWk5Snk0cURWdmdBQTNJZDZBbVptVlk?oc=5"
+      }
+    ]
+  },
+  "POMO4.SA": {
+    "sentiment": 0.07470566505960169,
+    "timestamp": "2026-02-18T18:23:10.938950",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "BlackRock eleva participa\u00e7\u00e3o na Marcopolo (POMO4) - financenews.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMijgFBVV95cUxPSTRkb00wSGpRRVpOcnBKOHNaZ2lHZUNhMmRnUkhfbFpWYVpwamVIb1RfNjFCYUxYWTZKRS1ya0NaQTJjdHRRU19E",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPSTRkb00wSGpRRVpOcnBKOHNaZ2lHZUNhMmRnUkhfbFpWYVpwamVIb1RfNjFCYUxYWTZKRS1ya0NaQTJjdHRRU19EU1Q1aW9mQldFdjA4SHgwMjAtSnV5c215dmNiNjM0NmdYNDZoaFd4YlBNaVJiWTdTZ1l5Y2lpUTVsN0YzRlJ3TUxTZGFB?oc=5"
+      },
+      {
+        "title": "POMO3 ou POMO4? Marcopolo surpreende com lucro 10x maior e forte gera\u00e7\u00e3o de caixa - arevista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMisAFBVV95cUxNb0FZMnNVbkRvZVNiTnhQUFF0cVZ2a01XcjhPMWlKWERzUHdqaTY2Wk1wNE1oSDVXclBQYkx2ZGVQVzBqU3R6Um5v",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNb0FZMnNVbkRvZVNiTnhQUFF0cVZ2a01XcjhPMWlKWERzUHdqaTY2Wk1wNE1oSDVXclBQYkx2ZGVQVzBqU3R6Um5vaTVLOHI1bDhqMy1va1NIUnRVNUYxSUtNMy1yOXhJeDh3Y0xsTjI3a19Nc18ydEQwVUlMQm5vQW10NGxsMy1SUzk3VTZ0Mk5kS1hVWjZoMHZwQWtJWUhDS2VpYWJVYmwwUzV3NEdwaw?oc=5"
+      },
+      {
+        "title": "BlackRock cruza linha dos 5% na Marcopolo (POMO4) e mercado liga o radar - Guia do Investidor",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMirwFBVV95cUxNbHJKQlZ5WE45YUVMRkZRYzdOcDJWYkxoblNmSEFRUlBoeU1LUXNtdGNOS1Y4MGJiRmc4T0E1MlBfZDVRZmJjbDhG",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNbHJKQlZ5WE45YUVMRkZRYzdOcDJWYkxoblNmSEFRUlBoeU1LUXNtdGNOS1Y4MGJiRmc4T0E1MlBfZDVRZmJjbDhGc3k5bHRDUjM5ZnRNQnREYUdYMGxSRHR2NzBJaHpzdWxXektqRlNqYzNXdkxKcy1tTVd6bVFkenlFRk9mS3hlSHBEQktfei1WNWlRZXJId0I0alZLSkREMzhtS1RuUlExYVktM3hB?oc=5"
+      }
+    ]
+  },
+  "PSSA3.SA": {
+    "sentiment": 0.09025193664902942,
+    "timestamp": "2026-02-18T18:23:18.654661",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Alfa Holding (RDAP5) e Petrobras (PETR3; PETR4) pagam dividendos nesta semana; veja o calend\u00e1rio - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMixAFBVV95cUxOWEFTa3phdGlJMDR2NUVucXo0OVRBUHZidzFmRHZYTWJRWWNYRjhhSTY2VG1WNGpFaVVLSzNZMmNKQW95ZGZIa1Qz",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOWEFTa3phdGlJMDR2NUVucXo0OVRBUHZidzFmRHZYTWJRWWNYRjhhSTY2VG1WNGpFaVVLSzNZMmNKQW95ZGZIa1QzQ2c2LU5jLXRMQzZid2g2R3lxWWFuOHE5RTNqTUFPeEhxODV2bDZYNy03enFLNXpRVVRSczhBWG9pMVFNeHlTZ0t3Z2FxSHlfNWE2WFFoMkhTQlBQYjAzYUF3cWYxVll5SDExMUl4Vk85WFJTeE14TWgyUFY2TmhnUjhZ?oc=5"
+      },
+      {
+        "title": "Porto Seguro (PSSA3) registra R$ 1,6 bi em Auto em dez/25 - Visno Invest",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMilgFBVV95cUxQMi1NMEw4OW5SOFl6OEEySkhVTFJIdlBVRjVNaGkwcnozclNER1J0OC1BbXA3V3Yya1V3bVFrdExydUhWX1BVNy1N",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQMi1NMEw4OW5SOFl6OEEySkhVTFJIdlBVRjVNaGkwcnozclNER1J0OC1BbXA3V3Yya1V3bVFrdExydUhWX1BVNy1NTVlFSHhUU3lqbldVWWpNdXVXTVVsQ095a1QxbUR4NmRzTjNfbWtPb05UajhMaHFXMEZONS1QOFZQVUZ4VGJrOGpmQnY5TGt2TXIyMWc?oc=5"
+      },
+      {
+        "title": "Caixa Seguridade anuncia Gustavo Portela como novo diretor-presidente em movimento estrat\u00e9gico - MSN",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMikANBVV95cUxNdGxCX0J3VzRKTGtLMG5nUlRJc2RiWlJGWVlnYjZzMGhGSkJ0NklGdlBKOHZydnExaEx4OVMtQ2dtX2ZOU0lvX3h6",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMikANBVV95cUxNdGxCX0J3VzRKTGtLMG5nUlRJc2RiWlJGWVlnYjZzMGhGSkJ0NklGdlBKOHZydnExaEx4OVMtQ2dtX2ZOU0lvX3h6VmhaNndmN09RdmlZaTlzWGMxWjB2cW03a0VCdVRZaVpoRG5zVll4QlRFWkd4b3gyNkx6NUp6Qm13T0p1VFlMVDVNY1lfTHRQeklVLVQtLVFnZC05MHFTX3Y4Y1hVSFpWYUhXYUViRFFMbU9zdXRtYV93a0pzSXA5bUdXVGdCazE0RmFWVWtFUXBXWjhfLTFRUUxqTnhlUERqWTVPaEdpMlFndjNRZ05iLVA4UTNjeVVBelJ3VDNDb3B4cHN6dGg3QXNuaTd5TlVINHlXUmVQRU1xR2xJMTBnWXdCZVFSZDVxVDVQcEp1QjNpVWc1TFU2THJWeGkxajhEenVRMnZFS1pkTUtUZU1nc0Z6aXA0REZPYnVBQzRMTWlIVlJfNXlld05TZEcyRFM2VjMxckFzUEFYbWlHWDlKSDhNUFpzem9oTlJ5VmVq?oc=5"
+      }
+    ]
+  },
+  "RAPT4.SA": {
+    "sentiment": 0.12242220934740333,
+    "timestamp": "2026-02-18T18:23:26.464531",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Randon (RAPT4) aposta em inova\u00e7\u00e3o para crescer no Brasil - Acionista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMihwFBVV95cUxQLV85X2NBT0drdDNpQ054VFd6SEJyUDgyc3FzX2p4Nm5Kc2I4TS1KVVRyYzVEeHBQZXhKdUI4OU9HbWJBSHo1N0NK",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQLV85X2NBT0drdDNpQ054VFd6SEJyUDgyc3FzX2p4Nm5Kc2I4TS1KVVRyYzVEeHBQZXhKdUI4OU9HbWJBSHo1N0NKeWtmNy1UZUMyYURSTmluUDR1UGFDUkR5a2ZTM0t6VloyVG8waEs5eDFNSm9yQmpYWGs3blpnWlhuZjFfbXc?oc=5"
+      }
+    ]
+  },
+  "SEQL3.SA": {
+    "sentiment": 0.014779104478657245,
+    "timestamp": "2026-02-18T18:23:34.497316",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Cota\u00e7\u00e3o Sequoia (SEQL3) hoje: veja pre\u00e7os, gr\u00e1ficos e not\u00edcias em Tempo Real - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiV0FVX3lxTE1TeGk3OGVjb1JDbnpUSXlZU0hNTTI1OThROGgwbzNzRUc3emU3SWVvOE5xVEd0QjBtRUw0WVlLb3h5RnA0UUstdm1C",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1TeGk3OGVjb1JDbnpUSXlZU0hNTTI1OThROGgwbzNzRUc3emU3SWVvOE5xVEd0QjBtRUw0WVlLb3h5RnA0UUstdm1CMkJqbE5rbUtBOTNXMA?oc=5"
+      }
+    ]
+  },
+  "SIMH3.SA": {
+    "sentiment": 0.054402674183781655,
+    "timestamp": "2026-02-18T18:23:36.988120",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Simpar (SIMH3) aprova grupamento de a\u00e7\u00f5es na propor\u00e7\u00e3o de 2 para 1 - InfoMoney",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMipgFBVV95cUxQTG5EVndwMzd3NjctYzVJeFF5OU16UDJQejdMUUdaSlI0ZUxFbEFaSDVzVUp4R2VMcm5XQUFYT0t0a2N6YWswc3pW",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQTG5EVndwMzd3NjctYzVJeFF5OU16UDJQejdMUUdaSlI0ZUxFbEFaSDVzVUp4R2VMcm5XQUFYT0t0a2N6YWswc3pWMHRuakM4dnE2aEhodUNrYUc4TU55ekNLZmoxODdERDdic0hrVTdWRkxGQVJNQUN1V2VqbndlYzNvZ3RzLUlyZ3VLMjM2Mk5YS3FKMV9ET3JLNjFKYm13YUUweDZR0gGrAUFVX3lxTFBNeXJJbVdzdmdSaDYxMWdzd0prSTl0TGswVzdKdzF2Z2QzQjE5enppZ0hMRDZwTGx5WEdrM3dFUEhKREhqXzZ0TVM4S2hNaVdOS01VdmxpbWFScVJ3Q3FyWlMyd2RCLV9vVkVORm1wM3FKaDBMc0c3eUtWOUpuRUY3ejhTZTA4cVlKeEZmMHpONkVyYjJKR1FmVTU0STJEdnh0N05Qek00b2szdw?oc=5"
+      },
+      {
+        "title": "Simpar (SIMH3) corta pela metade a\u00e7\u00f5es em circula\u00e7\u00e3o e amplia teto para novas emiss\u00f5es; veja o que muda para o acionista - Seu Dinheiro",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi_AFBVV95cUxOTGJEZWUtQ19UMTZYN01nXzZrd3RRODBGZXFrbzdDMHR6VFV2WENTVkJZMzVwM1U4cFZfNlRXRnhkOEdSYTlmcFZL",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOTGJEZWUtQ19UMTZYN01nXzZrd3RRODBGZXFrbzdDMHR6VFV2WENTVkJZMzVwM1U4cFZfNlRXRnhkOEdSYTlmcFZLWHptbEhBZWZXN1I3V3UzcWZhRWFFQVhQWlB0MHZEaDlpc1Z5TDRqb3lBR21rS2dYQzFub1Q5d3h0Q29JVmtvSkNrY0dFQmpzWjN4MEs1QW44V1k4VTRjYk9tSDM3Qy1pdS1JajI5ZU9QaWc5YTM5QUZfYTlaemRPc2xWOE9CNHJiNmFac0VrMmE4X2VWb1hXWnpDR256SDZ1dDVwdWVpSTZVSGZIS185cEFxYUJoTnhkUzE?oc=5"
+      },
+      {
+        "title": "Simpar (SIMH3) aprova grupamento de a\u00e7\u00f5es de 2 para 1 - Investidor10",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMinAFBVV95cUxPT0RwYXlwaHRRMk9UdVNxVVZxaS1wQmFNeFZ4eElKeXFvajI5aXpDM3dWcUFJeTNKbU8tNzFfX3pRbnFjaVI3aXgt",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPT0RwYXlwaHRRMk9UdVNxVVZxaS1wQmFNeFZ4eElKeXFvajI5aXpDM3dWcUFJeTNKbU8tNzFfX3pRbnFjaVI3aXgtcmNRLUlqVlRZXzlYYUVtRUJoenFyYS1UNFc2bW1sZG91QVJaZjc2ZFIzS0hmUjYyR3BRQVY3TmRKLXBlZjNPM3FWNFhNczBsVFp0TjZUYTF6TWHSAaIBQVVfeXFMTzRPdnJWTjNfeGpoc1MyYml4QWtGQ3Jjalk0eTZoanpNbzg4QnZKR0FIRzh6aWVBd3BPcGJoTU9nTnd4aWVZQXN1ZnRKZGg3TkxRYzFoRU9qdU1oWXJyZG1nam5rV1hCQkVvdWdsUDJLOUhoSk9Yb0NMT1FhRjlGb3FaRnNIVm1RczFVTU5sSGlBd1NQYXdIaUQySEhOWEs5eDFB?oc=5"
+      }
+    ]
+  },
+  "UNIP6.SA": {
+    "sentiment": 0.07019437244161963,
+    "timestamp": "2026-02-18T18:23:56.549313",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Cota\u00e7\u00e3o Unipar (UNIP6) hoje: veja pre\u00e7os, gr\u00e1ficos e not\u00edcias em Tempo Real - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiV0FVX3lxTE1KT2xNQTAtWHlSZ2xDczJlQWRBMWE0NnBLbTBfX1poZGlQa3VTS2NKU0RKMTNNMFpGWWUwdjE0d2wtLW1pVlFtTkpV",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1KT2xNQTAtWHlSZ2xDczJlQWRBMWE0NnBLbTBfX1poZGlQa3VTS2NKU0RKMTNNMFpGWWUwdjE0d2wtLW1pVlFtTkpVNjk1ZG5fTXVTSnBWbw?oc=5"
+      },
+      {
+        "title": "UNIP6 paga R$ 6 por a\u00e7\u00e3o e mant\u00e9m yield perto de 19% mesmo ap\u00f3s alta - arevista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxNY2wwbUlGdmxnQTB6bE1iUGtPWEZuSkhweFd4bm9tMHFyRGJSVnQ3T0Y1ejFUNURMVm9DOWRlMmtSNzFTLXl1YWJJ",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNY2wwbUlGdmxnQTB6bE1iUGtPWEZuSkhweFd4bm9tMHFyRGJSVnQ3T0Y1ejFUNURMVm9DOWRlMmtSNzFTLXl1YWJJbkt5dVBVdmtORU4yTFhFYXc2dGdHczkzOXhOVzhVZ1ItTlV3WHhSWUtpQjBaSU1kYk02cUF1Wkh3UXRuUUJFazVxMGVtSnNhZ2xyaW1iVVNhLTlYbVhRdWVkUA?oc=5"
+      }
+    ]
+  },
+  "VLID3.SA": {
+    "sentiment": 0.1691988836465911,
+    "timestamp": "2026-02-18T18:23:58.508537",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Trade do dia: analistas recomendam a\u00e7\u00f5es da Valid Solu\u00e7\u00f5es (VLID3) para ganho de at\u00e9 9,74% - Estad\u00e3o E-Investidor",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMitwFBVV95cUxPbFFzdkNPdzBadU85V2dPVUIxYlpsVURJNUJtOGxkQmdleXQyS1BwcVNMdlhOWmJWaVlublREMmp5b0dnZS1Nanpq",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPbFFzdkNPdzBadU85V2dPVUIxYlpsVURJNUJtOGxkQmdleXQyS1BwcVNMdlhOWmJWaVlublREMmp5b0dnZS1NanpqZG9mSzVFSnROVU5ybjNTNU0wa29lYkN5SzFsX1NUOXJLRVZUdUEzQ016dk9hMjFqNW9CUC0zVHN5S0FSeWM5MUEtR2t4bjVsVTdIajJUNE03WERQN3BXV3g1OFhTckdaQktocjlRZUp4SGJISDjSAbcBQVVfeXFMT2xRc3ZDT3cwWnVPOVdnT1VCMWJabFVESTVCbThsZEJnZXl0MktQcHFTTHZYTlpiVmlZbm5URDJqeW9HZ2UtTWp6amRvZks1RUp0TlVOcm4zUzVNMGtvZWJDeUsxbF9TVDlyS0VWVHVBM0NNenZPYTIxajVvQlAtM1RzeUtBUnljOTFBLUdreG41bFU3SGoyVDRNN1hEUDdwV1d4NThYU3JHWkJLaHI5UWVKeEhiSEg4?oc=5"
+      }
+    ]
+  },
+  "BRKM5.SA": {
+    "sentiment": -0.0047227136050561405,
+    "timestamp": "2026-02-18T18:24:21.236421",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Petrobras (PETR4) decide que n\u00e3o vai se envolver na venda das a\u00e7\u00f5es da Braskem (BRKM5) para o IG4 \u2014 o que acontece agora? - Seu Dinheiro",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi9AFBVV95cUxPaENZaGhXQ3kyVkZaeWF0enNmSWFQa3RJOG5uVlBHZ0NGV21KVnNTUUZlNVpCMEhieVhGb3E2RkVLUWV1Q0V6OFc1",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPaENZaGhXQ3kyVkZaeWF0enNmSWFQa3RJOG5uVlBHZ0NGV21KVnNTUUZlNVpCMEhieVhGb3E2RkVLUWV1Q0V6OFc1bXkwMjUzR0FOMHc4MXoxRDdLRnNvTXpSYXZreVcxR0xGZXBWZHkwUEk0RWhrcTkzMEk1dXFCZlFtS2h3clIzNFBzMHNVdmxLbDBLcjZ6R2R6WkJ2a0gzMmxvbmkxX2xvRElGTHRuNW1OQ1FKeFQ4UWFaV05TcnlWR2pJR3BvT19SMC1sYkR3RjdlOWgtU0E1WjE5NlBXZThVT2FHWVowdlFwR1dhV1VsQUNV?oc=5"
+      },
+      {
+        "title": "A\u00e7\u00e3o da Braskem cai 11% com not\u00edcia sobre d\u00edvida bilion\u00e1ria com BB; petroqu\u00edmica nega - InfoMoney",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiugFBVV95cUxQc2ZNYnUzZTZfTjR4VEllNlJQOTZHQ3kwQU5kbGhOUzFZSkNsekZad2ZpYTB0NGtpWV9nNWJoUEVtMldENWR2NU1w",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQc2ZNYnUzZTZfTjR4VEllNlJQOTZHQ3kwQU5kbGhOUzFZSkNsekZad2ZpYTB0NGtpWV9nNWJoUEVtMldENWR2NU1weWxIZXdpbDdTUlg3SWhTUkhpMG54bXpCdWZmWU9wSTJKeGJveXJiem1maFZMX1pLZHc1QnA1TXNEQjlIcVF3bEM3VkNkODZ2eHZqVjRlSzNjZTZ2WGdhTGVkeGVWQmZvWGhpcVBpUzZwTjFlYmNUSGfSAb8BQVVfeXFMUGFHRjZsUTFkQkxWc210VS1NbUgtRFZGOURkcW1yNk54X0VLUDNUUmJnZ1NPRWVlTm0yWk5YUGU3VGNEdVY0RWNYOHJKOTNMVWM0Vzg0aUVUUGNTa2ZoMGNHRk9Md2Nka2tvdTBoNUt4VkE2RHJOczBnbjV4OUpzNDB5eWVxalcwMkxEMXRrNzFuTjlPWlpzZGlEUHhNclBxRDVCeEs5amRWOWs5TU9zREM3by1xVWExLTJiaHBoZW8?oc=5"
+      },
+      {
+        "title": "A\u00e7\u00f5es da Braskem (BRKM5) despencam com not\u00edcia de poss\u00edvel calote bilion\u00e1rio no Banco do Brasil - Valor Investe",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMihwJBVV95cUxPYXRMbF9pSXN1TlM3NWdVQlBJUEtxek5ZMklMRW5YWjZaWDFFUDVDZnhUMEVuS2tXQ1ZvUkktUGdtY285RGJVR3JS",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMihwJBVV95cUxPYXRMbF9pSXN1TlM3NWdVQlBJUEtxek5ZMklMRW5YWjZaWDFFUDVDZnhUMEVuS2tXQ1ZvUkktUGdtY285RGJVR3JSTUJJTmtQSHQxclhERl9yY1lSUVVCSzhsNDFjU0t6QnZvRGFOWF83blppc1pHeDhjQU5zSHg3eXZhb3lIN1FHV3dOOERfc2ZKWnl3VmpuclFVZjEyWHdTTEx5YTJ4UkRWZjdENUZlTGk5SWluT2pQdmh6d3lKdFo3eXJXcGUzbTVra0lQcFJoTjNfR3NUenZzalJrT3NuQmRQVTNxdEF0R2xRRFcyVlo0UUswbXdPQ1hramVUcE16TExJZ0w4SdIBlgJBVV95cUxOQm13aGdBaF9LeHpVamhEems3azMwM19OTjdCQUV6ekt4Sm8xTGpsVkJzWVhiV3FRVnB0S3BoQnJ2ZzF6QkFzUDhDc1JGQ3JkTFJOd0tjeWQxdzJaM1Y3M3BzYzZMS3RMb3RiNDlTa0UxZEE5cm8zQWFLQTFvNDh3TGdhYmw2WTNXY0JxQUhGNEE1SGdJbXIxUEh5MG5oLUhFWlEyUHlSb2VnaEhKTHhHWG9MUndrZFotaEpxSGFPZ3FTSzJWNFp1M2I5aXVwdWV1MDlFNVg5YVhNMmpHd2N6RnJPWHY5eFhPU0ZCRXY5UHR1LVhQTnM3c19SZnVMVFptMmxyV2Nxd2poOFM4aXpITlp6OEY0Zw?oc=5"
+      }
+    ]
+  },
+  "DESK3.SA": {
+    "sentiment": 0.03230852615088224,
+    "timestamp": "2026-02-18T18:24:28.937129",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Cota\u00e7\u00e3o Desktop (DESK3) hoje: veja pre\u00e7os, gr\u00e1ficos e not\u00edcias em Tempo Real - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiV0FVX3lxTE8zZ1dWZDJHM3JNNWQtNHdmRGxsTV9yQVVDNnZvRFQyNUxLaE5qcXhpXzV1UjdBVDNfSl93eW8wdmRYOFpwQXZIRWFL",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE8zZ1dWZDJHM3JNNWQtNHdmRGxsTV9yQVVDNnZvRFQyNUxLaE5qcXhpXzV1UjdBVDNfSl93eW8wdmRYOFpwQXZIRWFLMndLMUZfbzA2NWdiSQ?oc=5"
+      },
+      {
+        "title": "Navi passa a deter 4,95% do capital social da Desktop - TradingView",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMid0FVX3lxTE9rNEFjN1ZHNzExZk45VkE2MzYtbVE2bDM3R19yeHlNd29NZWxJXzRKYjR5WlNkRkxLakhkVnpsLWNaLXQ4VFFPUEVN",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9rNEFjN1ZHNzExZk45VkE2MzYtbVE2bDM3R19yeHlNd29NZWxJXzRKYjR5WlNkRkxLakhkVnpsLWNaLXQ4VFFPUEVNSE50eFFZMFdxYlJKWU5IOTBPZzBnWkQ1NDlxRmVmSUVxRl9aelA3R20yZTlz?oc=5"
+      }
+    ]
+  },
+  "EZTC3.SA": {
+    "sentiment": 0.17542358672182107,
+    "timestamp": "2026-02-18T18:24:30.753858",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "EZTC3 vale a pena para dividendos e valoriza\u00e7\u00e3o? Eztec acelera lan\u00e7amentos e negocia com desconto em 2026 - arevista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi1wFBVV95cUxNcE5tUS11cWg3TW5tblpMNnp2SHhOYXh6UU4zaWZORXlqZkx0SkxRdDFfWXM4ekh5UFVJYzd4VXg1LWJTNnh3eGxi",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNcE5tUS11cWg3TW5tblpMNnp2SHhOYXh6UU4zaWZORXlqZkx0SkxRdDFfWXM4ekh5UFVJYzd4VXg1LWJTNnh3eGxiaFBSbnduRkR5RmUwWUthZlRsSV8wLTdvZFpRQzZ1c09MTVhLdFVqZEFFVHliWEt2NGtXYUE1ak9XQm1RYkhzREU1RjBCZWlaTl9fQmtYbXVkYUZKamZLTE04M3lvallKM05yX041SllKeDBkR2t0eDFCZUFzeFJiVnRiU2p2RV9ZbmNuREFXbDFhX25FVQ?oc=5"
+      }
+    ]
+  },
+  "GMAT3.SA": {
+    "sentiment": 0.05897390215752133,
+    "timestamp": "2026-02-18T18:24:45.048147",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "JP Morgan manda vender ASAI3, GMAT3 e PCAR3 e v\u00ea risco maior em 2026 - Guia do Investidor",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMirAFBVV95cUxNWWhXQUFrOEVIMXQ1SFJRSDJGQ1V2X2ZLeERaZXdSR0VvYmNnclI2dThOWWVGUldzUGZVY29JNkpMeXJZUVFSTTV4",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNWWhXQUFrOEVIMXQ1SFJRSDJGQ1V2X2ZLeERaZXdSR0VvYmNnclI2dThOWWVGUldzUGZVY29JNkpMeXJZUVFSTTV4c0gzckxYelR3UUdFbGxDdHJScGpjdGZ6UmJXeFFNZUhVT2cwZ1lXTW9xZHJjbmk5RjVEMkRLQlZSZ3c4V1BiNWdSY2N4X3BmTXNROUNSSU52Tk9VWXJQQTVKM1VyeUpyNWps?oc=5"
+      },
+      {
+        "title": "GMAT3 desaba quase 45%, mas lucra R$ 1,9 bi e pode subir mais de 50% com Selic em queda - arevista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiswFBVV95cUxQQjBfRDZDMmVKcGI4ZGVfa3IxelZiT29uNDlJZVp3UWV6WUlNb05GdFBzdzNzbGg0VUNFSTg5RFdVUkVHU1U5MnZz",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQQjBfRDZDMmVKcGI4ZGVfa3IxelZiT29uNDlJZVp3UWV6WUlNb05GdFBzdzNzbGg0VUNFSTg5RFdVUkVHU1U5MnZzc015c2JLVmRMd1dHd2VDSjlUWWFGUWFQWG56VVdYZWxhV1VNWWotWkdPZXNSZjQ3YkRiR1J3LXctUGJhN1hLdkh3OC0tOU5JSnhGS2NYZGRaeHpIRktlaHRtOE9lUk1NSC1OSUpxTC1jQQ?oc=5"
+      },
+      {
+        "title": "Este gestor triplicou posi\u00e7\u00e3o em varejista que derreteu ap\u00f3s erro cont\u00e1bil; \u2018est\u00e1 de gra\u00e7a\u2019 - TradingView",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMia0FVX3lxTE1Ba1JFeWhvSEpjUFhGN2NBVE1BLTg3OGJvbmhrYzQ3WGY5eUJZY2N6YXhPdEpkaDhNOUVVZFJuRk0wcjd5cm8zaUQw",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1Ba1JFeWhvSEpjUFhGN2NBVE1BLTg3OGJvbmhrYzQ3WGY5eUJZY2N6YXhPdEpkaDhNOUVVZFJuRk0wcjd5cm8zaUQwTjE2NEptMkUtOWVQcWJEX2NwSGtOWndWaFFOZ1dhcnZZ?oc=5"
       }
     ]
   }
