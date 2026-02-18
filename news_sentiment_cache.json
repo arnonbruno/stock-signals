@@ -575,5 +575,93 @@
         "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxObmI4OVB4ZVBSaFJZbm5ud1RoSVNZY2FCWkFGbmdUU3FVUXJQbzdpOEVZOGF5ZnI1YzZfVlA1bVZaUEhNYzNZM0dCNWx1VXdBcE1SRjc3MWcwOWJYZ1QwbWROZjUwaHRkcmd6THhFVDMzbzM0aGRJQmZXMW1aU3BnOWhaMVVkVGVfTWFpc2hnQTRralgzaTlIaldXV2ZWaC1UVE1LdXNKQ3JTNmRJTUdxTHRDa2xHNlZ0MGVRMHRMZzFza3ZyeHJqdGp2eHJJY3hHSHc?oc=5"
       }
     ]
+  },
+  "ESPA3.SA": {
+    "sentiment": 0.05292736031115055,
+    "timestamp": "2026-02-18T18:04:54.060081",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "\u00c1gora Investimentos entrevista Magali Leite, CEO da Espa\u00e7olaser - Estad\u00e3o E-Investidor",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMilwFBVV95cUxPcVNickpkRjIyOTRBaXhNLTlCQUsxeHFYUFZHRjUySnFIUV8ycWJzdlRwNGFLS0xaa2Z4Q3VfT1VCNUtqMnluWjdQ",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPcVNickpkRjIyOTRBaXhNLTlCQUsxeHFYUFZHRjUySnFIUV8ycWJzdlRwNGFLS0xaa2Z4Q3VfT1VCNUtqMnluWjdQSDNiZ3ZGOWVXMk1ydVhUc0cxa2ZyUE1mYk93dnpmcjNJVXlVRGRYMTExZERQUUpZX093Q0xHdmZzQjNDOXZONDVWVU5iWWtVM3lMbHNv0gGcAUFVX3lxTE56Nlpqd3k0QTd6UG44RldzdEM0QkxveWtyczRyTG9ROVFaR3MyNGR5MFhFZExXZHM4VDE2VXQzSGt1bGNDZnZscDk1S1lfamFhdzl0YXhLdHhPbElBMVZyU3VsU25ITjZpdHBkclFUdG5aNVdMT0d3VzFBSEc2RXpWaFZUdjVVaDhlMnRzcVZuWnpmZC0tS3RrOVBCTQ?oc=5"
+      }
+    ]
+  },
+  "EVEN3.SA": {
+    "sentiment": 0.020570497787683398,
+    "timestamp": "2026-02-18T18:05:46.118018",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Campo Tecnol\u00f3gico de Ver\u00e3o tem programa\u00e7\u00e3o voltada a mulheres e crian\u00e7as em J\u00falio de Castilhos - Alcir 61",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxOZUswZnFvS0pkX0pmVDdQUk1PNGJWOGNHd1NrbGlDczB4T1Iza0VDV1Mzb2ZiNnJDSTg4T2FaTDI3RFloa1VzUUtR",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOZUswZnFvS0pkX0pmVDdQUk1PNGJWOGNHd1NrbGlDczB4T1Iza0VDV1Mzb2ZiNnJDSTg4T2FaTDI3RFloa1VzUUtRQ25KQTRic0xMSFBhYmhZM0E1Z2RwTWVNWEFqemZQSGtjVjJfazZaUGZqcmNObVpBNWFtM3ZmSkZucTJmaUdvMlVVSW9UYXJoZW15T0FSa3RWYkdkblhKMWd5SUMtVXVmeTg5Qlk4bWdTdWRRcjdI?oc=5"
+      },
+      {
+        "title": "Jornada Nacional de Inova\u00e7\u00e3o da Ind\u00fastria chega a Manaus e insere o Amazonas no debate sobre o futuro do setor - SIMMMEM",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi1AFBVV95cUxOM3FScXljS2k0Vmx5cE4zcDBiRl9yNXpzVFo1dndtZi1yQ3U0anA2RjFzWk13OEhtYkNUSDl3d1EtN0l1Zzg2Wkc0",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOM3FScXljS2k0Vmx5cE4zcDBiRl9yNXpzVFo1dndtZi1yQ3U0anA2RjFzWk13OEhtYkNUSDl3d1EtN0l1Zzg2Wkc0QXpObnlHOURhUDBJVjlwdi1kSHVScU5GTm13US1Hc2pFNWRIZkRIMTFJZXFoeWdBNkFBazljTWE0eWdVSUdrS0IyRUFlUXdabE1udnVKblZJbzBuRkN2T2tWcndHM1N0eU8zaU0tWnJXWWE2ZFJqQWN5TnkxMGlfV2Y4M05zYzhYb0g1WGx0SnZkXw?oc=5"
+      },
+      {
+        "title": "Capacita\u00e7\u00e3o vai reunir conselheiros em Navegantes - Jornal nos Bairros",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMimAFBVV95cUxNLW1uU1RKb1BzU3A1cE5ESlEwVjJRaFZMQkpRZ3FQcWhRTmJ4STU4dnZPclk3Ujk4UDFFVnBGOHk3eTh2Z1diYnJa",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNLW1uU1RKb1BzU3A1cE5ESlEwVjJRaFZMQkpRZ3FQcWhRTmJ4STU4dnZPclk3Ujk4UDFFVnBGOHk3eTh2Z1diYnJaQVdOSWlrWTRrR21XazJPQlJmQks0QzNCV2NzanZYbG9sYW1yQkhsdjExTWEyUTNjNDVhRzhhY2c5U2dWWS0yb0ttbHRFMDFFM1R4N2ZsaA?oc=5"
+      }
+    ]
+  },
+  "GRND3.SA": {
+    "sentiment": 0.154981873523534,
+    "timestamp": "2026-02-18T18:06:25.709023",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Grendene (GRND3) paga dividendos elevados, negocia com P/L abaixo de 6 e volta ao radar em 2026 - arevista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMixwFBVV95cUxNcUIxV1Y1V0E4X0ZkdFdJWWIxNEdOSmpWRVpocE1reE1TWVVON2xPUk9EMXNBTHpzMEJwalBvOXA5ampRNUMzTFJX",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNcUIxV1Y1V0E4X0ZkdFdJWWIxNEdOSmpWRVpocE1reE1TWVVON2xPUk9EMXNBTHpzMEJwalBvOXA5ampRNUMzTFJXUEZVVExWMHlmVjZ0RmN0Y2lqdEM0emJzd0dYR3QxUUZ3amdSeTYxcEJxSFp2R285QlFNLTJWeVFxVDBtR05JSkhQQ29mOHJmbF9VRTdteEhMcXhxX0JWT3gtdnd3ZEJHamxtT1p5UWpvVWUxeFRleEJDTFNrVndfOFR2bHB3?oc=5"
+      },
+      {
+        "title": "Lojas Renner (LREN3) anuncia alta anual de 9% a 13% na receita (2026-2030) - Visno Invest",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqgFBVV95cUxQZXFEaXBVckVYQ05pWjJURGNRYjlWUjNrb1FScnNubTR0YWpJcFNsYVJENkZfUE1JMWVDZ01fa3FETjhRdFNJODlj",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQZXFEaXBVckVYQ05pWjJURGNRYjlWUjNrb1FScnNubTR0YWpJcFNsYVJENkZfUE1JMWVDZ01fa3FETjhRdFNJODljV1ZpYXctX3lKcDNiby16N29EN095anJWcmhneWRDRmR5dG56M3BUWmc3MjhRblF4clNnLTJzVmZDT3BmZzRndEtULVlYNTZYemt3MWItQjloQmZuZjByeXlmSW1tWFY5Zw?oc=5"
+      },
+      {
+        "title": "GRND3 ou VULC3 em 2026: qual a\u00e7\u00e3o entrega mais dividendos e maior potencial de valoriza\u00e7\u00e3o? - arevista.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxORU9KYk9YZXFqVHFFa3Jza0tSTldPZHROVEo4cUplUDhYNFppYkNtdHVaallBX1VQTjdJV096Zlo0RVA5bzJrV1JI",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxORU9KYk9YZXFqVHFFa3Jza0tSTldPZHROVEo4cUplUDhYNFppYkNtdHVaallBX1VQTjdJV096Zlo0RVA5bzJrV1JIMVJZOUsyU1g5WUFnY01UUUU0ajAzdGZMLWR1bUV0Mkc3TGRMR3hMQi12NU5qMlJjaUJ4MEY0a2tsSUNGdEFERGgwOWlQTGg4UGN3Nmtxc01YZDZPQVEyZ1U2TjU4WWZkeGJDMzIxcWlzbU52MUlDbE5QYg?oc=5"
+      }
+    ]
+  },
+  "KEPL3.SA": {
+    "sentiment": 0.03874438991770148,
+    "timestamp": "2026-02-18T18:08:14.642092",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Ibovespa recua ap\u00f3s alta de 2%, e d\u00f3lar volta a cair, cotado a R$ 5,16 - Bloomberg Linea Brasil",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMirgFBVV95cUxNdWI4RFJzRGN3Mk1zUDNWTzhEOWlyM0Zfd0FfM09uME9QdndEdEFwQ0dFaTJZWGJ6TDB4ZXpxb291VE9xNDdDNHlB",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNdWI4RFJzRGN3Mk1zUDNWTzhEOWlyM0Zfd0FfM09uME9QdndEdEFwQ0dFaTJZWGJ6TDB4ZXpxb291VE9xNDdDNHlBSnJhS3dOQ0tKRW1fMGlJSC0wZXRtUDR2RGZvQU9ONEVUckJJZElIOURvQVFkR05QN1lwczA3YVItOXVxTkowZDFoMlUwZXhzZmRVd1IwSWFtU1pFLVZvQnNIMGZQX3dNams1cEHSAcIBQVVfeXFMTVE1VG4wbTVZWlZkZXItb0ZuMDNSMXd6UHU1YTZVckNHSEx5WGlNSjZvdzd3ZXlUMFBGbHN5S3MtR1h5ZmNrWVJVZTZZblhxTGJFeHZHQkpja0ZlVDNJdzdwNGNoWXRxVjhSck5vdkY3bkJoM2pKUG84bWZhSnc2WWlzVWxFbWlfMXlfWjBTTmpjVjluN0dUTTJodnYyYW04RmFMRnFQLUh5eW9SZnJUQ1doRkFpY0dIM2lMOVh5UWk0eFE?oc=5"
+      },
+      {
+        "title": "Kepler Weber (KEPL3) prorroga novamente prazo para negocia\u00e7\u00e3o com a GPT; entenda - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiswFBVV95cUxQVkFNQldmOVdpdnQ3enAzU3psenRpMHFJRmhrY1dUQ0ZtcUFXR3dNWFMzV2NuUS1KbG9la2dveEZWUE1PT2JaVndO",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQVkFNQldmOVdpdnQ3enAzU3psenRpMHFJRmhrY1dUQ0ZtcUFXR3dNWFMzV2NuUS1KbG9la2dveEZWUE1PT2JaVndOLUJsb0FmWUI0MWVubUFsSzZ4NUpGUUNxd3VLQmU5d2JKSEJJYnJuWmxkM0FIWFc3QXVxTlRoV3I2TzBDQlRJMDBYR3hoeTFvWlRmd0phRFhLNEFxUUQwSUNrQ0t4Y2lxZmg0MXZocGVmSQ?oc=5"
+      },
+      {
+        "title": "Kepler Weber (KEPL3) prorroga prazo de exclusividade para negocia\u00e7\u00e3o com GPT - financenews.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMirwFBVV95cUxPZ2d2OFktQzR3c1B0STNxemE5cTBMa1NHVTRkY3N2LWg1aE1CSEhPYnZiWXFZX1U0UXNWTGhDZDZNbVRYdktjSlEz",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPZ2d2OFktQzR3c1B0STNxemE5cTBMa1NHVTRkY3N2LWg1aE1CSEhPYnZiWXFZX1U0UXNWTGhDZDZNbVRYdktjSlEzdTkyVm5KTkhRWFAtekh5RVdQc2lhUGh5U3pjNFFOUGV6Nm5JOUtyS2hyLTVtSGVscktVMEZINTBLSDBDb1NNbVdoUFU4ajUyS1hhTG9jZXVnRWpaQWhYZ01NVGs0blllLUJnMUlV?oc=5"
+      }
+    ]
   }
 }

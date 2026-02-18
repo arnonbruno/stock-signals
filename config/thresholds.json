@@ -1,10 +1,22 @@
 {
-  "last_updated": "2026-02-18T17:31:28.619092",
+  "last_updated": "2026-02-18T17:38:55.460858",
   "optimization_period": {
     "train_window_days": 126,
     "test_window_days": 42
   },
   "thresholds": {
+    "bull": {
+      "buy_confidence": 0.5,
+      "sell_confidence": 0.35,
+      "min_score": 0.2,
+      "stop_loss": 0.1,
+      "performance": {
+        "sharpe_ratio": 0.0,
+        "total_return": 0.19131038934635525,
+        "max_drawdown": 0.0,
+        "win_rate": 1.0
+      }
+    },
     "default": {
       "buy_confidence": 0.5,
       "sell_confidence": 0.35,
@@ -12,7 +24,7 @@
       "stop_loss": 0.1,
       "performance": {
         "sharpe_ratio": 0.0,
-        "total_return": 0.008554368159093318,
+        "total_return": 0.008554364282515815,
         "max_drawdown": 0.0,
         "win_rate": 0.2
       }
