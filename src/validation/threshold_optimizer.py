@@ -156,7 +156,7 @@ class ThresholdOptimizer:
         Simulate trading strategy with given thresholds.
         
         Args:
-            data: Price data (OHLCV)
+            data: Price data (OHLCV) - should include enough history for warmup
             thresholds: Threshold set to test
             signals: Pre-computed signals (optional)
         
@@ -207,19 +207,22 @@ class ThresholdOptimizer:
         score = (trend_ratio.fillna(0) * 10).clip(-1, 1)
         
         # Generate trades based on thresholds
+        # Start from first valid signal position (after 50-day MA warmup)
+        warmup_period = 50
+        
         returns = []
         current_position = 0  # 0 = cash, 1 = long
         entry_price = 0
         stop_loss_price = 0
         
-        for i in range(50, len(data)):  # Start after warmup
+        for i in range(warmup_period, len(data)):
             price = close.iloc[i]
             conf = confidence.iloc[i]
             scr = score.iloc[i]
+            daily_low = low.iloc[i]
             
             # Check stop loss first
             if current_position == 1:
-                daily_low = low.iloc[i]
                 if daily_low <= stop_loss_price:
                     # Stop loss triggered
                     trade_return = (stop_loss_price - entry_price) / entry_price
@@ -284,6 +287,120 @@ class ThresholdOptimizer:
             'num_trades': len(returns)
         }
     
+    def _simulate_with_signals(self,
+                                data: pd.DataFrame,
+                                signals: pd.DataFrame,
+                                thresholds: ThresholdSet) -> Dict:
+        """
+        Simulate trading using precomputed signals.
+        
+        Args:
+            data: Price data
+            signals: Precomputed confidence and score
+            thresholds: Threshold set to test
+        
+        Returns:
+            Dict with performance metrics
+        """
+        if data is None or len(data) < 5:
+            return {
+                'returns': [],
+                'sharpe': 0.0,
+                'total_return': 0.0,
+                'max_drawdown': 0.0,
+                'win_rate': 0.0,
+                'num_trades': 0
+            }
+        
+        # Normalize columns
+        if isinstance(data.columns, pd.MultiIndex):
+            data = data.copy()
+            data.columns = data.columns.get_level_values(0)
+        
+        close = data['Close'].squeeze()
+        high = data['High'].squeeze() if 'High' in data.columns else close
+        low = data['Low'].squeeze() if 'Low' in data.columns else close
+        
+        confidence = signals['confidence']
+        score = signals['score']
+        
+        # Generate trades
+        returns = []
+        current_position = 0
+        entry_price = 0
+        stop_loss_price = 0
+        
+        for i in range(len(data)):
+            price = close.iloc[i]
+            conf = confidence.iloc[i]
+            scr = score.iloc[i]
+            daily_low = low.iloc[i]
+            
+            # Check stop loss
+            if current_position == 1:
+                if daily_low <= stop_loss_price:
+                    trade_return = (stop_loss_price - entry_price) / entry_price
+                    returns.append(trade_return)
+                    current_position = 0
+                    continue
+            
+            # Buy signal
+            if current_position == 0:
+                if conf >= thresholds.buy_confidence and scr >= thresholds.min_score:
+                    current_position = 1
+                    entry_price = price
+                    stop_loss_price = price * (1 - thresholds.stop_loss)
+            
+            # Sell signal
+            elif current_position == 1:
+                if conf >= thresholds.sell_confidence and scr < -thresholds.min_score:
+                    trade_return = (price - entry_price) / entry_price
+                    returns.append(trade_return)
+                    current_position = 0
+        
+        # Close any open position
+        if current_position == 1:
+            final_return = (close.iloc[-1] - entry_price) / entry_price
+            returns.append(final_return)
+        
+        # Calculate metrics
+        if not returns:
+            return {
+                'returns': [],
+                'sharpe': 0.0,
+                'total_return': 0.0,
+                'max_drawdown': 0.0,
+                'win_rate': 0.0,
+                'num_trades': 0
+            }
+        
+        returns_arr = np.array(returns)
+        total_return = np.prod(1 + returns_arr) - 1
+        
+        # Sharpe ratio (annualized for test window ~42 trading days)
+        if len(returns_arr) > 1 and np.std(returns_arr) > 0:
+            sharpe = np.mean(returns_arr) / np.std(returns_arr) * np.sqrt(252 / 42)
+        else:
+            sharpe = 0.0
+        
+        # Max drawdown
+        cumulative = np.cumprod(1 + returns_arr)
+        running_max = np.maximum.accumulate(cumulative)
+        drawdowns = (running_max - cumulative) / running_max
+        max_drawdown = np.max(drawdowns) if len(drawdowns) > 0 else 0
+        
+        # Win rate
+        win_rate = np.sum(returns_arr > 0) / len(returns_arr) if len(returns_arr) > 0 else 0
+        
+        return {
+            'returns': returns,
+            'sharpe': float(sharpe),
+            'total_return': float(total_return),
+            'max_drawdown': float(max_drawdown),
+            'win_rate': float(win_rate),
+            'num_trades': len(returns)
+        }
+    
     def optimize(self, 
                 data: pd.DataFrame,
                 signals: pd.DataFrame = None,
@@ -303,6 +420,36 @@ class ThresholdOptimizer:
         logger.info(f"Starting threshold optimization for regime: {regime}")
         logger.info(f"{'='*60}")
         
+        # Normalize columns
+        if isinstance(data.columns, pd.MultiIndex):
+            data = data.copy()
+            data.columns = data.columns.get_level_values(0)
+        
+        # Pre-calculate signals on full data (to avoid warmup issues in test windows)
+        close = data['Close'].squeeze()
+        ma_fast = close.rolling(20).mean()
+        ma_slow = close.rolling(50).mean()
+        
+        delta = close.diff()
+        gain = delta.where(delta > 0, 0).rolling(14).mean()
+        loss = (-delta.where(delta < 0, 0)).rolling(14).mean()
+        rs = gain / loss.replace(0, 0.001)
+        rsi = 100 - (100 / (1 + rs))
+        
+        trend_ratio = (ma_fast / ma_slow - 1)
+        max_strength = trend_ratio.abs().rolling(20).max()
+        max_strength = max_strength.replace(0, 0.01).fillna(0.01)
+        trend_strength = trend_ratio.abs() / max_strength
+        
+        confidence = trend_strength.fillna(0.5) * 0.7 + (rsi / 100).fillna(0.5) * 0.3
+        score = (trend_ratio.fillna(0) * 10).clip(-1, 1)
+        
+        # Store signals for use in simulation
+        precomputed_signals = pd.DataFrame({
+            'confidence': confidence,
+            'score': score
+        }, index=data.index)
+        
         threshold_sets = self._generate_threshold_sets()
         
         # Split data into walk-forward windows
@@ -314,7 +461,7 @@ class ThresholdOptimizer:
                 best_thresholds=ThresholdSet(0.55, 0.45, 0.25, 0.15),
                 sharpe_ratio=0.0,
                 total_return=0.0,
-                max_drawdown=0.0,
+                max_drawdown= 0.0,
                 win_rate=0.0,
                 num_trades=0,
                 regime=regime,
@@ -340,9 +487,13 @@ class ThresholdOptimizer:
             oos_win_rates = []
             total_trades = 0
             
-            # Walk-forward validation
+            # Walk-forward validation using precomputed signals
             for train_data, test_data in splits:
-                metrics = self._simulate_strategy(test_data, thresholds, signals)
+                # Get signals for test period
+                test_signals = precomputed_signals.loc[test_data.index]
+                
+                # Simulate with precomputed signals
+                metrics = self._simulate_with_signals(test_data, test_signals, thresholds)
                 
                 oos_sharpes.append(metrics['sharpe'])
                 oos_returns.append(metrics['total_return'])

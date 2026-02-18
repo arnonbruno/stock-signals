@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-02-18T17:24:21.813361",
+  "last_updated": "2026-02-18T17:31:28.619092",
   "optimization_period": {
     "train_window_days": 126,
     "test_window_days": 42
@@ -12,9 +12,9 @@
       "stop_loss": 0.1,
       "performance": {
         "sharpe_ratio": 0.0,
-        "total_return": 0.0,
+        "total_return": 0.008554368159093318,
         "max_drawdown": 0.0,
-        "win_rate": 0.0
+        "win_rate": 0.2
       }
     }
   }

@@ -214,10 +214,42 @@ export NEWSDATA_API_KEY="your_api_key_here"
 
 ### Signal Thresholds
 
-- Minimum confidence: 50%
-- Trend detection: Dual-timeframe (50d + 20d)
-- Volatility regimes: Low/Medium/High
-- Adaptive thresholds: Based on market conditions
+The system uses configurable thresholds that can be optimized and updated without code changes.
+
+**Threshold Configuration (`config/thresholds.json`):**
+
+```json
+{
+  "thresholds": {
+    "default": {"buy_confidence": 0.55, "sell_confidence": 0.45, "min_score": 0.25, "stop_loss": 0.15},
+    "bull": {"buy_confidence": 0.50, "sell_confidence": 0.40, "min_score": 0.20, "stop_loss": 0.15},
+    "bear": {"buy_confidence": 0.65, "sell_confidence": 0.35, "min_score": 0.30, "stop_loss": 0.10},
+    "sideways": {"buy_confidence": 0.55, "sell_confidence": 0.45, "min_score": 0.25, "stop_loss": 0.20}
+  }
+}
+```
+
+**Optimizing Thresholds:**
+
+```bash
+# Run threshold optimization
+python scripts/optimize_thresholds.py
+
+# With custom options
+python scripts/optimize_thresholds.py --period 365 --tickers PETR4.SA VALE3.SA
+```
+
+**Using in Code:**
+
+```python
+from src.config import get_thresholds
+
+# Get thresholds for current regime
+thresholds = get_thresholds('bull')
+print(f"Buy threshold: {thresholds.buy_confidence}")
+```
+
+See `docs/threshold_optimization.md` for full documentation.
 
 ---
 

@@ -124,6 +124,11 @@ class EnhancedProductionRunner:
             self.adaptive_params = get_adaptive_params()
             self.current_regime = None
             self.regime_params = None
+        else:
+            self.regime_detector = None
+            self.adaptive_params = None
+            self.current_regime = 'default'
+            self.regime_params = None
         
         # Risk parity
         self.risk_parity = RiskParity()
