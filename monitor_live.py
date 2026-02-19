@@ -33,7 +33,7 @@ from src.news.free_news_client import FreeNewsClient
 # CONFIGURATION
 # ============================================================================
 
-MAX_RECOMMENDATIONS = 15
+MAX_RECOMMENDATIONS = 10
 MIN_CONFIDENCE = 0.50  # Minimum confidence to include
 MIN_SCORE = 0.20       # Minimum fused score
 NEWS_REFRESH_TOP_N = 5 # Only refresh news for top N movers (API budget)
@@ -384,7 +384,7 @@ def format_recommendation(result: dict, drivers: dict, levels: dict,
     
     # Number emoji
     number_emojis = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟']
-    num_emoji = number_emojis[min(index, 9)]
+    num_emoji = number_emojis[min(index - 1, 9)]
     
     # Signal emoji
     signal_emoji = '🟢' if signal == 'BUY' else '🔴'

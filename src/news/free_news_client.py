@@ -4,7 +4,7 @@ Free news client for historical and real-time stock market news.
 
 Sources:
 1. Google News RSS - Real-time news (last 30 days)
-2. Investing.com Brasil - Historical news archive (web scraping)
+2. newsdata.io API - Brazilian financial news (with API key)
 3. FinBERT - Local sentiment analysis (specialized for finance)
 
 Features:
@@ -25,7 +25,15 @@ from bs4 import BeautifulSoup
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 import re
+import os
 from urllib.parse import quote_plus
+from dotenv import load_dotenv
+from pathlib import Path
+
+# Load .env file from stock-signals directory
+env_path = Path(__file__).parent.parent.parent / '.env'
+load_dotenv(env_path)
+
 from .news_cache import NewsCache
 
 
@@ -520,22 +528,23 @@ class FreeNewsClient:
             # MISS: Fetch fresh news
             logger.debug(f"Cache MISS or disabled - fetching fresh news for {ticker}")
             
-            # Try Google News RSS first (free, no API key needed, best results)
-            query = self._ticker_to_query(ticker)
-            articles = self._fetch_google_news(query, days=7)
+            # Try newsdata.io API first (paid API, Brazilian financial news)
+            articles = self._fetch_newsdata_io(ticker, date)
             
-            # Fallback 1: If Google News fails, try newsdata.io API
+            # Fallback 1: If newsdata.io fails, try Google News RSS (free, no API key needed)
             if not articles:
-                logger.debug(f"Google News returned no results, trying newsdata.io for {ticker}")
-                articles = self._fetch_newsdata_io(ticker, date)
+                logger.debug(f"newsdata.io returned no results, trying Google News for {ticker}")
+                query = self._ticker_to_query(ticker)
+                articles = self._fetch_google_news(query, days=7)
             
+            # DISABLED: Investing.com scraping - returns 403 Forbidden, causes timeouts
             # Fallback 2: If newsdata.io fails, try Investing.com scraping
-            if not articles:
-                logger.debug(f"newsdata.io returned no results, falling back to Investing.com for {ticker}")
-                articles = self._fetch_investing_com(ticker, date)
+            # if not articles:
+            #     logger.debug(f"newsdata.io returned no results, falling back to Investing.com for {ticker}")
+            #     articles = self._fetch_investing_com(ticker, date)
             
             if not articles:
-                logger.info(f"No news found for {ticker} on {date} (newsdata.io + Investing.com)")
+                logger.info(f"No news found for {ticker} on {date} (Google News + newsdata.io)")
                 return 0.0
             
             sentiment = self._analyze_articles(articles)
