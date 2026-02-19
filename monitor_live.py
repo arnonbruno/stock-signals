@@ -424,8 +424,8 @@ def format_recommendation(result: dict, drivers: dict, levels: dict,
         if cached and cached.get('articles'):
             cached_articles = cached['articles']
     
-    if abs(news_sentiment) > 0.15:
-        if news_sentiment > 0.15:
+    if abs(news_sentiment) > 0.10:
+        if news_sentiment > 0.10:
             lines.append(f"         ✅ Positive news boost (+{news_sentiment*0.20:.0%} position)")
         else:
             lines.append(f"         ⚠️ Negative news headwind ({news_sentiment*0.15:.0%} position)")

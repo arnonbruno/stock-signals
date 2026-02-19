@@ -46,6 +46,8 @@ class FinBERTSentimentAnalyzer:
     
     FinBERT is a pre-trained NLP model for financial sentiment analysis.
     Download happens once, then runs locally (no API calls).
+    
+    For non-English text, translates to English before analysis.
     """
     
     def __init__(self):
@@ -66,17 +68,79 @@ class FinBERTSentimentAnalyzer:
             logger.warning("Falling back to simple rule-based sentiment")
             self.tokenizer = None
             self.model = None
+        
+        # Initialize translator for non-English text
+        self.translator = None
+        try:
+            from deep_translator import GoogleTranslator
+            self.translator = GoogleTranslator(source='pt', target='en')
+            logger.info("Google Translator initialized for Portuguese → English")
+        except Exception as e:
+            logger.warning(f"Translator not available: {e}")
+    
+    def _is_portuguese(self, text: str) -> bool:
+        """
+        Detect if text is likely Portuguese.
+        
+        Uses simple heuristics:
+        - Common Portuguese words
+        - Portuguese-specific characters/accents
+        """
+        if not text:
+            return False
+        
+        text_lower = text.lower()
+        
+        # Portuguese-specific words (common in financial news)
+        pt_indicators = [
+            'da', 'de', 'do', 'em', 'para', 'com', 'por', 'que', 'não',
+            'lucro', 'prejuízo', 'ações', 'empresa', 'mercado', 'bolsa',
+            'resultado', 'receita', 'dividendos', 'trimestre', 'ano',
+            'sobe', 'cai', 'após', 'sobre', 'entre', 'apenas', 'também'
+        ]
+        
+        # Count Portuguese indicators
+        pt_count = sum(1 for word in pt_indicators if word in text_lower.split())
+        
+        # Check for Portuguese-specific characters
+        pt_chars = set('áéíóúàêôãõç')
+        has_pt_chars = any(char in text_lower for char in pt_chars)
+        
+        # If 2+ Portuguese words or has Portuguese chars, likely Portuguese
+        return pt_count >= 2 or has_pt_chars
+    
+    def _translate_to_english(self, text: str) -> str:
+        """
+        Translate Portuguese text to English.
+        
+        Args:
+            text: Portuguese text
+        
+        Returns:
+            English translation (or original if translation fails)
+        """
+        if not self.translator:
+            return text
+        
+        try:
+            translated = self.translator.translate(text)
+            logger.debug(f"Translated: '{text[:50]}...' -> '{translated[:50]}...'")
+            return translated
+        except Exception as e:
+            logger.warning(f"Translation failed: {e}, using original text")
+            return text
     
     def analyze(self, text: str) -> float:
         """
         Analyze sentiment of financial text using ensemble approach.
         
-        Ensemble combines:
-        1. FinBERT (primary, specialized for finance)
-        2. Simple lexicon fallback (when FinBERT fails)
+        Pipeline:
+        1. Detect language → translate to English if Portuguese
+        2. FinBERT analysis on English text
+        3. Ensemble with lexicon fallback
         
         Args:
-            text: Financial news text
+            text: Financial news text (any language)
         
         Returns:
             Sentiment score (-1.0 to +1.0)
@@ -88,9 +152,14 @@ class FinBERTSentimentAnalyzer:
         if self.model is None:
             return self._simple_sentiment(text)
         
+        # Translate to English if Portuguese
+        analysis_text = text
+        if self._is_portuguese(text):
+            analysis_text = self._translate_to_english(text)
+        
         try:
             # Tokenize
-            inputs = self.tokenizer(text, return_tensors="pt", 
+            inputs = self.tokenizer(analysis_text, return_tensors="pt", 
                                    truncation=True, max_length=512, 
                                    padding=True)
             
@@ -106,7 +175,7 @@ class FinBERTSentimentAnalyzer:
             # Convert to -1 to +1 scale
             finbert_sentiment = positive - negative
             
-            # ENSEMBLE: Blend FinBERT with simple lexicon
+            # ENSEMBLE: Blend FinBERT with simple lexicon (on ORIGINAL text)
             # Weight FinBERT higher (0.7) vs lexicon (0.3)
             lexicon_sentiment = self._simple_sentiment(text)
             
