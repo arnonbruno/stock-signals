@@ -1,222 +1,318 @@
-# Stock-Signals Production System
+# Stock-Signals
 
-**Grade:** A+ (Production-Ready)  
-**Status:** Validated and ready for live trading  
-**Branch:** production-hardening  
-**Last Updated:** February 17, 2026
+**Production-grade trading signal system for Brazilian equities (IBOV + SMLL)**
 
----
-
-## Overview
-
-Production-grade stock market monitoring system for Brazilian equities (IBOV + SMLL indices). Implements state-of-the-art signal generation with comprehensive error handling, risk management, and sentiment analysis.
-
-**Key Features:**
-- Dual-timeframe trend detection (50-day macro + 20-day micro)
-- Sentiment analysis with FinBERT + Portuguese lexicon ensemble
-- Kelly Criterion position sizing with volatility adjustment
-- Risk parity correlation adjustments
-- Market-aware caching (4h trading / 12h overnight)
-- Robust error handling with exponential backoff
-- API budget management (150/200 credits with safety margin)
+A multi-indicator signal fusion system that analyzes 150 stocks every 10 minutes during market hours, combining technical indicators, volume analysis, and news sentiment to generate actionable trading recommendations.
 
 ---
 
-## Quick Start
+## Table of Contents
 
-### Installation
+1. [How It Works](#how-it-works)
+2. [Signal Fusion System](#signal-fusion-system)
+3. [Indicators Explained](#indicators-explained)
+4. [Position Sizing](#position-sizing)
+5. [News Sentiment](#news-sentiment)
+6. [Threshold Configuration](#threshold-configuration)
+7. [Output Format](#output-format)
+8. [Quick Start](#quick-start)
+9. [Architecture](#architecture)
+10. [Deployment](#deployment)
 
-```bash
-pip install yfinance pandas numpy scikit-learn torch transformers
+---
+
+## How It Works
+
+The system analyzes each stock through multiple layers:
+
+```
+Price Data (yfinance)
+       │
+       ▼
+┌─────────────────────────────────────────────────────────┐
+│                  INDICATOR LAYERS                         │
+├─────────────────────────────────────────────────────────┤
+│  MOMENTUM    │  VOLATILITY  │   VOLUME    │    TREND    │
+│  (25% wt)    │   (20% wt)   │   (25% wt)  │   (30% wt)  │
+│              │              │             │             │
+│  • RSI       │  • ATR       │  • OBV      │  • MA Align │
+│  • MACD      │  • Bollinger │  • VWAP     │  • ADX      │
+│  • Stochastic│  • Keltner   │  • MFI      │  • SuperTrend│
+│  • Williams %R│             │  • Vol Mom  │             │
+│  • ROC       │              │             │             │
+└─────────────────────────────────────────────────────────┘
+       │
+       ▼
+┌─────────────────────────────────────────────────────────┐
+│                 SIGNAL FUSION                            │
+│  Weighted ensemble combining all indicators              │
+│  Output: fused_score (-1.0 to +1.0)                     │
+└─────────────────────────────────────────────────────────┘
+       │
+       ▼
+┌─────────────────────────────────────────────────────────┐
+│              CONFIDENCE CALCULATION                      │
+│  Based on signal agreement rate across indicators        │
+│  Output: confidence (0.0 to 1.0)                        │
+└─────────────────────────────────────────────────────────┘
+       │
+       ▼
+┌─────────────────────────────────────────────────────────┐
+│              POSITION SIZING                             │
+│  Kelly Criterion adjusted for volatility                 │
+│  Output: allocation (10% to 40%)                        │
+└─────────────────────────────────────────────────────────┘
+       │
+       ▼
+   FINAL SIGNAL
+   (BUY / SELL / HOLD)
 ```
 
-### Run Production Monitor
+---
+
+## Signal Fusion System
+
+### What Is Fusion Score?
+
+The **fusion score** is a weighted average of signals from 12+ technical indicators, normalized to a range of -1.0 (strong bearish) to +1.0 (strong bullish).
+
+### How It's Calculated
+
+Each indicator produces a **signal** (bullish/bearish/neutral) and **strength** (0.0 to 1.0). These are aggregated by category:
 
 ```python
-from production_simple import SimpleProductionRunner
-
-# Initialize with news sentiment
-runner = SimpleProductionRunner(use_news=True)
-
-# Analyze 150 stocks (65 IBOV + 85 SMLL)
-results = runner.run()
-
-# Get top 10 movers for fresh news
-top_movers = runner.get_top_movers(results, top_n=10)
+fused_score = (momentum_score × 0.25) +
+              (volatility_score × 0.20) +
+              (volume_score × 0.25) +
+              (trend_score × 0.30)
 ```
 
-### Run Backtest
+### Category Weights
+
+| Category | Weight | Rationale |
+|----------|--------|-----------|
+| **Trend** | 30% | Most reliable for direction |
+| **Momentum** | 25% | Confirms trend strength |
+| **Volume** | 25% | Validates participation |
+| **Volatility** | 20% | Adjusts for risk |
+
+### Interpreting Fusion Score
+
+| Score Range | Interpretation |
+|-------------|----------------|
+| +0.5 to +1.0 | Strong bullish alignment |
+| +0.3 to +0.5 | Moderate bullish |
+| -0.3 to +0.3 | Mixed/consolidation |
+| -0.5 to -0.3 | Moderate bearish |
+| -1.0 to -0.5 | Strong bearish alignment |
+
+### Confidence
+
+**Confidence** measures how many indicators agree on the signal direction:
 
 ```python
-python run_final_backtest.py
+confidence = (agreeing_indicators / total_indicators) × strength_factor
 ```
 
----
-
-## Architecture
-
-```
-stock-signals/
-├── production_simple.py           # Main production engine
-├── monitor_market_v3.py           # Monitoring with smart news refresh
-├── run_final_backtest.py          # Backtest script (Nov 2024 - Present)
-│
-├── src/
-│   ├── signals/
-│   │   └── trend_detector_v2.py   # Dual-timeframe trend detection
-│   │
-│   ├── news/
-│   │   ├── free_news_client.py    # newsdata.io + FinBERT ensemble
-│   │   ├── news_cache.py          # Market-aware TTL caching
-│   │   └── api_budget_tracker.py  # API budget enforcement
-│   │
-│   ├── features/
-│   │   └── feature_engineering.py # Volume, sector, volatility features
-│   │
-│   ├── validation/
-│   │   └── walk_forward.py        # Walk-forward validation
-│   │
-│   └── risk/
-│       └── risk_parity.py         # Correlation-adjusted positions
-│
-└── tests/                         # 236 comprehensive unit tests
-    ├── test_api_budget.py
-    ├── test_comprehensive.py
-    ├── test_feature_engineering.py
-    ├── test_news_cache.py
-    ├── test_news_sentiment.py
-    ├── test_production_hardening.py
-    ├── test_production_runner.py
-    ├── test_risk_parity.py
-    └── test_trend_detector.py
-```
+High confidence (80%+) means most indicators point in the same direction.
 
 ---
 
-## Production Hardening Summary
+## Indicators Explained
 
-### Grade Upgrade: B- → A+
+### MOMENTUM (25% weight)
 
-| Dimension | Before | After | Improvement |
-|-----------|--------|-------|-------------|
-| Robustness | D | A | +3 grades |
-| Accuracy | C | A | +2 grades |
-| Intelligence | D | A | +3 grades |
-| Performance | C | A | +2 grades |
-| Security | F | A | +4 grades |
+**RSI (Relative Strength Index)**
+- Measures speed and magnitude of price movements
+- Range: 0-100
+- Overbought: >70 (potential reversal down)
+- Oversold: <30 (potential reversal up)
+- Signal: bullish when 30-70 and rising, bearish when falling from >70
 
-### All 14 Fixes Implemented
+**MACD (Moving Average Convergence Divergence)**
+- Compares 12-day and 26-day exponential moving averages
+- Signal line: 9-day EMA of MACD
+- Bullish crossover: MACD crosses above signal line
+- Bearish crossover: MACD crosses below signal line
 
-#### Phase 1: Robustness (Critical)
-1. ✅ yfinance error handling with exponential backoff (3 retries)
-2. ✅ Sigmoid sentiment scaling (prevents over-amplification)
-3. ✅ Kelly Criterion position sizing (volatility-adjusted, 10-80%)
+**Stochastic Oscillator**
+- Compares closing price to price range over period
+- %K line and %D signal line
+- Overbought: >80, Oversold: <20
 
-#### Phase 2: Accuracy (Moderate)
-4. ✅ Enhanced FinBERT fallback (Portuguese lexicon, 800+ words)
-5. ✅ Adaptive trend thresholds (volatility regime-based)
-6. ✅ Market-aware cache TTL (4h trading / 12h overnight)
+**Williams %R**
+- Similar to Stochastic but inverted
+- Range: 0 to -100
+- Overbought: >-20, Oversold: <-80
 
-#### Phase 3: Intelligence (SOTA)
-7. ✅ Feature engineering pipeline
-8. ✅ Ensemble sentiment (FinBERT 70% + lexicon 30%)
-9. ✅ Walk-forward validation
-10. ✅ Risk parity
-
-#### Phase 4: Performance
-11. ✅ Parallel execution framework (up to 8 workers)
-12. ✅ Model caching (singleton FreeNewsClient)
-
-#### Phase 5: Security
-13. ✅ Environment variables (API keys secured)
-14. ✅ API budget tracking (150/200 credit limit)
+**ROC (Rate of Change)**
+- Measures percentage price change over period
+- Positive: bullish momentum, Negative: bearish momentum
 
 ---
 
-## Test Results
+### VOLATILITY (20% weight)
 
-**Overall:** 233/236 tests passing (98.7% pass rate)
+**ATR (Average True Range)**
+- Measures market volatility by decomposing range
+- High ATR = high volatility regime
+- Used to adjust position sizing and stop-loss levels
 
-| Component | Tests | Pass Rate |
-|-----------|-------|-----------|
-| API Budget | 22 | 95.5% |
-| Trend Detection | 5 | 100% |
-| Feature Engineering | 22 | 100% |
-| News Caching | 18 | 94.4% |
-| News Sentiment | 26 | 100% |
-| Production Hardening | 17 | 94.1% |
-| Production Runner | 33 | 100% |
-| Risk Parity | 14 | 100% |
-| Integration | 55 | 100% |
+**Bollinger Bands**
+- Standard deviation bands around moving average
+- Price above upper band: potentially overbought
+- Price below lower band: potentially oversold
+- Bandwidth indicates volatility regime
 
-Run tests:
-```bash
-pytest tests/ -v
-```
+**Keltner Channels**
+- ATR-based channels around EMA
+- Similar to Bollinger but uses ATR instead of std dev
+- More stable in trending markets
 
 ---
 
-## Backtest Results
+### VOLUME (25% weight)
 
-**Period:** November 2024 - February 2025 (70 trading days)  
-**Universe:** 5 major IBOV stocks  
-**Benchmark:** IBOV index
+**OBV (On-Balance Volume)**
+- Cumulative volume based on price direction
+- Rising OBV + rising price = strong trend
+- Divergence = potential reversal
 
-| Metric | Result |
-|--------|--------|
-| IBOV Return | +0.08% |
-| Portfolio Return | +1.59% |
-| **Alpha** | **+1.51%** |
+**VWAP (Volume Weighted Average Price)**
+- Average price weighted by volume
+- Price above VWAP: bullish intraday
+- Price below VWAP: bearish intraday
 
-**Note:** Simplified buy-and-hold comparison. Full strategy with trend detection and sentiment analysis expected to outperform significantly.
+**MFI (Money Flow Index)**
+- RSI-like oscillator using volume
+- Range: 0-100
+- Overbought: >80, Oversold: <20
 
----
-
-## Monitoring Schedule
-
-**Live Trading:** Hourly, Mon-Fri 9:00-20:00 GMT-3
-
-**Coverage:**
-- 65 IBOV stocks
-- 85 SMLL stocks
-- 150 total active stocks
-
-**Alert Delivery:** Telegram group (-1003717122770)
-
-**News Strategy:**
-- Cached sentiment for all 150 stocks (0 API calls)
-- Fresh news only for top 10 movers (~10 API calls/cycle)
-- Daily budget: ~50/200 API credits
+**Volume Momentum**
+- Current volume vs average volume
+- >2x average = unusual volume (confirms signal)
+- <0.5x average = low participation (weakens signal)
 
 ---
 
-## Configuration
+### TREND (30% weight)
 
-### Environment Variables
+**Moving Average Alignment**
+- MA50 vs MA200 crossover analysis
+- Golden Cross: MA50 crosses above MA200 (bullish)
+- Death Cross: MA50 crosses below MA200 (bearish)
+- Also checks MA20 alignment for short-term trend
 
-```bash
-export NEWSDATA_API_KEY="your_api_key_here"
+**ADX (Average Directional Index)**
+- Measures trend strength (not direction)
+- ADX >25: strong trend present
+- ADX <20: weak/no trend
+- Combined with +DI/-DI for direction
+
+**SuperTrend**
+- Trend indicator using ATR
+- Clear support/resistance levels
+- Green = uptrend, Red = downtrend
+
+---
+
+## Position Sizing
+
+### Kelly Criterion
+
+The system uses the **Kelly Criterion** for optimal position sizing:
+
+```python
+# Win probability
+p = winning_days / total_days
+
+# Loss probability
+q = 1 - p
+
+# Average win/loss ratio
+b = avg_win / avg_loss
+
+# Kelly fraction
+kelly = (b × p - q) / b
+
+# Half-Kelly for safety
+position = kelly × 0.5 × confidence
 ```
 
-### Market Hours
+### Volatility Adjustment
 
-- Trading: 10:00-17:00 GMT-3
-- Pre-market: 9:00-10:00 GMT-3
-- Post-market: 17:00-20:00 GMT-3
-- Cache TTL: 4h during trading, 12h overnight
+High volatility stocks get smaller positions:
 
-### Position Sizing
+```python
+if volatility_regime == 'high':
+    position *= 0.8  # Reduce by 20%
+```
 
-- Minimum: 10% of capital
-- Maximum: 80% of capital
-- Method: Kelly Criterion with volatility adjustment
-- Risk parity: Correlation adjustments applied
+### Position Limits
 
-### Signal Thresholds
+| Limit | Value | Reason |
+|-------|-------|--------|
+| Minimum | 10% | Meaningful exposure |
+| Maximum | 40% | Risk management |
+| Default | 20% | Conservative baseline |
 
-The system uses configurable thresholds that can be optimized and updated without code changes.
+---
 
-**Threshold Configuration (`config/thresholds.json`):**
+## News Sentiment
+
+### FinBERT Analysis
+
+The system uses **FinBERT**, a BERT model trained on financial text:
+
+```python
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+
+tokenizer = AutoTokenizer.from_pretrained("ProsusAI/finbert")
+model = AutoModelForSequenceClassification.from_pretrained("ProsusAI/finbert")
+```
+
+Outputs:
+- Positive sentiment: +1.0
+- Negative sentiment: -1.0
+- Neutral: 0.0
+
+### Ensemble Approach
+
+FinBERT (70%) combined with Portuguese lexicon (30%):
+
+```python
+sentiment = 0.7 × finbert_score + 0.3 × lexicon_score
+```
+
+### News Sources
+
+1. **Google News RSS** (free, real-time)
+2. **newsdata.io API** (200 credits/day)
+3. **Investing.com Brasil** (fallback scraping)
+
+### Smart Caching
+
+- **Trading hours**: 4-hour TTL
+- **Overnight**: 12-hour TTL
+- Fresh news only fetched for top 5 movers per cycle
+- Budget: ~50 API credits/day
+
+---
+
+## Threshold Configuration
+
+Thresholds are stored in `config/thresholds.json` and can be updated without code changes.
+
+### Available Thresholds
+
+| Threshold | Description | Default |
+|-----------|-------------|---------|
+| `buy_confidence` | Minimum confidence for BUY signal | 55% |
+| `sell_confidence` | Minimum confidence for SELL signal | 45% |
+| `min_score` | Minimum fusion score for action | 25% |
+| `stop_loss` | Default stop-loss percentage | 15% |
+
+### Regime-Specific Thresholds
 
 ```json
 {
@@ -229,168 +325,192 @@ The system uses configurable thresholds that can be optimized and updated withou
 }
 ```
 
-**Optimizing Thresholds:**
+### Optimizing Thresholds
+
+Run walk-forward optimization:
 
 ```bash
-# Run threshold optimization
-python scripts/optimize_thresholds.py
-
-# With custom options
-python scripts/optimize_thresholds.py --period 365 --tickers PETR4.SA VALE3.SA
+python scripts/optimize_thresholds.py --period 180
 ```
-
-**Using in Code:**
-
-```python
-from src.config import get_thresholds
-
-# Get thresholds for current regime
-thresholds = get_thresholds('bull')
-print(f"Buy threshold: {thresholds.buy_confidence}")
-```
-
-See `docs/threshold_optimization.md` for full documentation.
 
 ---
 
-## Usage Examples
+## Output Format
 
-### Analyze Single Stock
+### Alert Structure
 
-```python
-from production_simple import SimpleProductionRunner
+```
+🚨 TOP TRADING OPPORTUNITIES
+Generated: 10:00:00
 
-runner = SimpleProductionRunner(use_news=True)
-result = runner.analyze_ticker('PETR4.SA')
-
-print(f"Signal: {result['signal']}")
-print(f"Confidence: {result['conviction']:.2%}")
-print(f"Position Size: {result['position_size']:.2%}")
+1️⃣  TICKER - BUY 🟢
+    Price: R$XX.XX
+    └─ Drivers:
+       • Trend: UPTREND (XX% confidence)
+       • Fusion: Strong bullish alignment (+0.XX)
+       • News: +0.XX sentiment
+         ✅ Positive news boost (+X% position)
+         📰 Headlines:
+            • Article title... (Source)
+       • Position: XX% (VERY HIGH conviction)
+    └─ Levels:
+       Entry: R$XX.XX | Stop: R$XX.XX
+       Targets: R$XX.XX (2:1) | R$XX.XX (3:1)
+    └─ Watch for:
+       ⚠️ Price drops below 50-day MA → Exit
 ```
 
-### Batch Analysis
+### Entry/Exit Levels
 
-```python
-results = runner.run()  # Analyzes all 150 stocks
+For BUY signals:
+- **Entry**: Current price
+- **Stop Loss**: Entry × (1 - stop_loss%)
+- **Target 1**: Entry + 2×Risk (2:1 risk-reward)
+- **Target 2**: Entry + 3×Risk (3:1 risk-reward)
 
-# Filter BUY signals
-buy_signals = [r for r in results if r['signal'] == 'BUY']
+### Reversal Signals
 
-# Sort by conviction
-buy_signals.sort(key=lambda x: x['conviction'], reverse=True)
+The system monitors for conditions that could flip the recommendation:
+- Price crossing key moving averages
+- RSI reaching extreme levels
+- Major news catalysts
+- Volume divergences
 
-# Top 5 recommendations
-for stock in buy_signals[:5]:
-    print(f"{stock['ticker']}: {stock['conviction']:.2%} confidence")
+---
+
+## Quick Start
+
+### Installation
+
+```bash
+git clone https://github.com/arnonbruno/stock-signals.git
+cd stock-signals
+pip install -r requirements.txt
 ```
 
-### News Sentiment Analysis
+### Set Environment
+
+```bash
+export NEWSDATA_API_KEY="your_key_here"
+```
+
+### Run Analysis
 
 ```python
-from src.news.free_news_client import FreeNewsClient
+from production_enhanced import EnhancedProductionRunner
 
-client = FreeNewsClient()
-sentiment = client.get_sentiment('VALE3.SA')
+runner = EnhancedProductionRunner(
+    use_news=True,
+    use_fusion=True,
+    n_workers=4
+)
 
-print(f"Sentiment: {sentiment['sentiment']:+.2f}")
-print(f"Articles: {len(sentiment['articles'])}")
+results = runner.run()
+```
+
+### Run Monitor
+
+```bash
+python monitor_live.py
+```
+
+---
+
+## Architecture
+
+```
+stock-signals/
+├── monitor_live.py              # Live 10-min monitor
+├── production_enhanced.py       # SOTA analysis engine
+├── production_simple.py         # Lightweight runner
+│
+├── src/
+│   ├── indicators/
+│   │   ├── momentum.py          # RSI, MACD, Stochastic, etc.
+│   │   ├── volatility.py        # ATR, Bollinger, Keltner
+│   │   ├── volume.py            # OBV, VWAP, MFI
+│   │   ├── trend.py             # MA, ADX, SuperTrend
+│   │   └── signal_fusion.py     # Weighted ensemble
+│   │
+│   ├── signals/
+│   │   └── trend_detector_v2.py # Dual-timeframe detection
+│   │
+│   ├── news/
+│   │   ├── free_news_client.py  # News fetching + FinBERT
+│   │   ├── news_cache.py        # TTL cache management
+│   │   ├── api_budget_tracker.py# API budget enforcement
+│   │   └── historical_sentiment.py # Backtest sentiment
+│   │
+│   ├── features/
+│   │   └── feature_engineering.py
+│   │
+│   ├── strategy/
+│   │   └── regime_detection.py  # Bull/bear/sideways
+│   │
+│   ├── risk/
+│   │   └── risk_parity.py       # Correlation adjustments
+│   │
+│   ├── validation/
+│   │   ├── threshold_optimizer.py
+│   │   └── walk_forward.py
+│   │
+│   └── config.py                # Threshold management
+│
+├── config/
+│   └── thresholds.json          # Runtime thresholds
+│
+├── scripts/
+│   └── optimize_thresholds.py   # Threshold optimization
+│
+└── tests/                       # Unit tests
 ```
 
 ---
 
 ## Deployment
 
-### Cron Job Setup
+### Cron Setup
 
-Add to crontab:
 ```bash
-0 9-20 * * 1-5 cd /path/to/stock-signals && python monitor_market_v3.py
+# Every 10 minutes during market hours (9:00-17:50 Brasilia)
+*/10 9-17 * * 1-5 cd /path/to/stock-signals && python monitor_live.py >> logs/monitor.log 2>&1
 ```
 
-### Validation Checklist
+### Requirements
 
-Before deploying real capital:
-1. ✅ Run full test suite (`pytest tests/`)
-2. ✅ Paper trade 1-2 days
-3. ✅ Monitor API budget usage
-4. ✅ Validate alert delivery to Telegram
-5. ✅ Check position sizing logic
+- Python 3.10+
+- 4GB RAM minimum
+- Internet connection for data/news
 
----
+### Monitoring
 
-## Reports & Documentation
-
-- `FINAL_REPORT.md` - Comprehensive production hardening documentation
-- `BACKTEST_REPORT.md` - Test coverage details
-- `BACKTEST_RESULTS.txt` - Performance metrics
-- `README_PRODUCAO.md` - Portuguese documentation (if exists)
+- **Universe**: 150 stocks (65 IBOV + 85 SMLL)
+- **Frequency**: Every 10 minutes
+- **Hours**: 9:00-17:50 GMT-3 (market hours)
+- **Output**: Telegram alerts + JSON files
 
 ---
 
-## Dependencies
+## Metrics Summary
 
-**Core:**
-- yfinance - Stock data
-- pandas, numpy - Data processing
-- scikit-learn - Statistical analysis
-- torch, transformers - FinBERT model
-
-**News:**
-- newsdata.io API key (environment variable)
-- requests - API calls
-
-**Testing:**
-- pytest - Test framework
-- pytest-asyncio - Async testing
+| Metric | Description | Range |
+|--------|-------------|-------|
+| **fused_score** | Weighted indicator sum | -1.0 to +1.0 |
+| **confidence** | Signal agreement rate | 0% to 100% |
+| **position_size** | Kelly-adjusted allocation | 10% to 40% |
+| **news_sentiment** | FinBERT + lexicon ensemble | -1.0 to +1.0 |
+| **volume_momentum** | Current vs average volume | Ratio |
+| **volatility_regime** | ATR-based regime | low/medium/high |
 
 ---
 
-## Known Limitations
+## Authors
 
-1. **Data Source:** yfinance may have gaps for Brazilian stocks
-2. **News API:** 200 credit/day limit (managed with budget tracker)
-3. **Market Hours:** GMT-3 timezone hardcoded
-4. **Test Failures:** 3 minor edge cases (non-critical)
-
----
-
-## Troubleshooting
-
-### yfinance Connection Errors
-
-System implements automatic retry with exponential backoff:
-- Retry 1: 1 second delay
-- Retry 2: 2 second delay
-- Retry 3: 4 second delay
-
-### API Budget Exhausted
-
-Automatic fallback to Investing.com scraping when budget exceeded.
-
-### Stale Cache
-
-Market-aware TTL prevents stale data:
-- Trading hours: 4-hour refresh
-- Overnight: 12-hour refresh
-
----
-
-## Contributing
-
-Branch: `production-hardening`
-
-**DO NOT MERGE TO MASTER** without validation in real trading.
+- **Bruno Santos** - Initial work, architecture, testing
+- **TARS** - System design, indicator integration, documentation
 
 ---
 
 ## License
 
-MIT
-
----
-
-## Contact
-
-**Repository:** https://github.com/arnonbruno/stock-signals  
-**Branch:** production-hardening  
-**Status:** Production-Ready (Grade A+)
+MIT License - See LICENSE file for details.
