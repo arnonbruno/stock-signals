@@ -286,12 +286,12 @@ class FreeNewsClient:
     
     def _fetch_newsdata_io(self, ticker: str, date: str) -> List[Dict]:
         """
-        Fetch news from newsdata.io API with proper error handling.
+        Fetch news from newsdata.io API with smart filtering.
         
-        Implements:
-        - Environment-based API key (no hardcoded fallback)
-        - Rate limit handling (HTTP 429) with exponential backoff
-        - Specific error handling for different HTTP status codes
+        Strategy (in order):
+        1. Market endpoint (financial news focused, may have limited coverage)
+        2. Regular endpoint with qInTitle (ticker in title - more relevant)
+        3. Regular endpoint with simple query + sports exclusion
         
         Args:
             ticker: Stock ticker (e.g., VALE3.SA or VALE3)
@@ -302,6 +302,7 @@ class FreeNewsClient:
         """
         import os
         import time
+        from urllib.parse import quote
         
         self._rate_limit()
         
@@ -314,11 +315,6 @@ class FreeNewsClient:
             logger.error("NEWSDATA_API_KEY environment variable not set - news fetching disabled")
             return []
         
-        # Build URL with ticker search
-        url = f"https://newsdata.io/api/1/news?q={ticker_search}&country=br&language=pt&apikey={api_key}"
-        
-        logger.debug(f"Fetching newsdata.io for '{ticker_search}'")
-        
         # Check API budget before making request
         from src.news.api_budget_tracker import get_budget_tracker
         budget_tracker = get_budget_tracker()
@@ -327,21 +323,84 @@ class FreeNewsClient:
             logger.warning(f"API budget exhausted - cannot fetch news for {ticker_search}")
             return []
         
-        # Implement retry with exponential backoff
+        # Strategy 1: Try Market endpoint (financial news focused)
+        market_url = "https://newsdata.io/api/1/market"
+        market_params = {
+            'q': ticker_search,
+            'country': 'br',
+            'language': 'pt',
+            'apikey': api_key
+        }
+        
+        logger.debug(f"Trying newsdata.io Market endpoint for '{ticker_search}'")
+        articles = self._make_newsdata_request(market_url, market_params, ticker_search, budget_tracker)
+        
+        if articles:
+            logger.info(f"Found {len(articles)} articles from newsdata.io Market for '{ticker_search}'")
+            return articles
+        
+        # Strategy 2: Try qInTitle (ticker in title - more relevant)
+        news_url = "https://newsdata.io/api/1/news"
+        title_params = {
+            'qInTitle': ticker_search,
+            'country': 'br',
+            'language': 'pt',
+            'apikey': api_key
+        }
+        
+        logger.debug(f"Trying newsdata.io qInTitle for '{ticker_search}'")
+        articles = self._make_newsdata_request(news_url, title_params, ticker_search, budget_tracker)
+        
+        if articles:
+            logger.info(f"Found {len(articles)} articles from newsdata.io (qInTitle) for '{ticker_search}'")
+            return articles
+        
+        # Strategy 3: Simple query with sports exclusion (within 100 char limit)
+        # Note: newsdata.io has 100 char query limit
+        simple_query = f'{ticker_search} NOT futebol NOT esporte'
+        simple_params = {
+            'q': simple_query,
+            'country': 'br',
+            'language': 'pt',
+            'apikey': api_key
+        }
+        
+        logger.debug(f"Trying newsdata.io simple query for '{ticker_search}'")
+        articles = self._make_newsdata_request(news_url, simple_params, ticker_search, budget_tracker)
+        
+        if articles:
+            logger.info(f"Found {len(articles)} articles from newsdata.io (filtered) for '{ticker_search}'")
+            return articles
+        
+        logger.info(f"No articles found in newsdata.io for '{ticker_search}'")
+        return []
+    
+    def _make_newsdata_request(self, url: str, params: dict, ticker: str, budget_tracker) -> List[Dict]:
+        """
+        Make a request to newsdata.io with retry logic.
+        
+        Args:
+            url: API endpoint URL
+            params: Request parameters
+            ticker: Ticker for logging
+            budget_tracker: API budget tracker
+        
+        Returns:
+            List of formatted articles
+        """
         max_retries = 3
+        
         for attempt in range(max_retries):
             try:
-                response = self.session.get(url, timeout=10)
+                response = self.session.get(url, params=params, timeout=15)
                 
                 # Handle specific status codes
                 if response.status_code == 429:
-                    # Rate limited - check Retry-After header
                     retry_after = int(response.headers.get('Retry-After', 60))
-                    logger.warning(f"Rate limited (HTTP 429) for {ticker_search}. Retry after {retry_after}s")
+                    logger.warning(f"Rate limited (HTTP 429) for {ticker}. Retry after {retry_after}s")
                     if attempt < max_retries - 1:
                         time.sleep(retry_after)
                         continue
-                    logger.error(f"Max retries exceeded for rate limit on {ticker_search}")
                     return []
                 
                 elif response.status_code == 401:
@@ -352,28 +411,37 @@ class FreeNewsClient:
                     logger.error("API key quota exceeded or access forbidden (HTTP 403)")
                     return []
                 
+                elif response.status_code == 422:
+                    # Query error (e.g., too long, invalid format)
+                    logger.warning(f"Query error for {ticker}: {response.text[:100]}")
+                    return []
+                
                 elif response.status_code >= 500:
-                    # Server error - retry with backoff
-                    logger.warning(f"Server error (HTTP {response.status_code}) for {ticker_search}")
+                    logger.warning(f"Server error (HTTP {response.status_code}) for {ticker}")
                     if attempt < max_retries - 1:
-                        backoff = 2 ** attempt  # 1s, 2s, 4s
-                        time.sleep(backoff)
+                        time.sleep(2 ** attempt)
                         continue
-                    logger.error(f"Max retries exceeded for server errors on {ticker_search}")
                     return []
                 
                 response.raise_for_status()
                 
                 # Record successful API call
-                budget_tracker.record_call(credits_used=1, ticker=ticker_search)
-                usage = budget_tracker.get_usage()
-                logger.info(f"API usage: {usage['used']}/{usage['remaining']} remaining")
+                budget_tracker.record_call(credits_used=1, ticker=ticker)
                 
                 data = response.json()
-                articles = data.get('results', [])
+                raw_articles = data.get('results', [])
                 
+                # Filter out sports/entertainment based on title keywords
+                exclude_keywords = ['futebol', 'jogo', 'partida', 'copa', 'campeonato', 'selção']
                 formatted_articles = []
-                for article in articles:
+                
+                for article in raw_articles:
+                    title = article.get('title', '').lower()
+                    
+                    # Skip sports articles
+                    if any(kw in title for kw in exclude_keywords):
+                        continue
+                    
                     formatted_articles.append({
                         'title': article.get('title', ''),
                         'link': article.get('link', ''),
@@ -383,23 +451,16 @@ class FreeNewsClient:
                         'source_publication': article.get('source_name', 'Unknown')
                     })
                 
-                logger.info(f"Found {len(formatted_articles)} articles from newsdata.io for '{ticker_search}'")
                 return formatted_articles
             
             except requests.exceptions.Timeout:
-                logger.warning(f"Request timeout (attempt {attempt + 1}/{max_retries}) for {ticker_search}")
+                logger.warning(f"Request timeout (attempt {attempt + 1}/{max_retries}) for {ticker}")
                 if attempt < max_retries - 1:
-                    time.sleep(2 ** attempt)  # Exponential backoff
+                    time.sleep(2 ** attempt)
                     continue
-                logger.error(f"Max retries exceeded for timeouts on {ticker_search}")
-                return []
-            
-            except requests.exceptions.RequestException as e:
-                logger.error(f"Request failed for {ticker_search}: {e}")
-                return []
             
             except Exception as e:
-                logger.error(f"Unexpected error fetching news for {ticker_search}: {e}")
+                logger.error(f"Error fetching newsdata.io for {ticker}: {e}")
                 return []
         
         return []
