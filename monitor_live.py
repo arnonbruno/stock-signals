@@ -36,7 +36,10 @@ from src.news.free_news_client import FreeNewsClient
 MAX_RECOMMENDATIONS = 10
 MIN_CONFIDENCE = 0.50  # Minimum confidence to include
 MIN_SCORE = 0.20       # Minimum fused score
-NEWS_REFRESH_TOP_N = 5 # Only refresh news for top N movers (API budget)
+
+# Two-pass architecture settings
+NEWS_CANDIDATES = 10   # How many stocks to fetch news for in Pass 2 (was 30)
+NEWS_REFRESH_TOP_N = 5 # Legacy: refresh news for top N (not used in two-pass)
 
 # Alert output paths
 ALERT_FILE = Path('/home/ulluboz/.openclaw/workspace/stock-signals/live_alerts.txt')
@@ -506,11 +509,21 @@ def format_full_alert(recommendations: list, stats: dict, news_cache=None) -> st
 
 def run_monitor():
     """
-    Main monitoring function.
-    Called every 10 minutes by cron.
+    Two-pass monitoring function for efficient news processing.
+    
+    PASS 1: Technical screening (fast, ~1 min for 150 stocks)
+    - Run analysis WITHOUT news
+    - Select top 30 candidates by preliminary fusion score
+    
+    PASS 2: News enhancement (slower, but only 30 stocks)
+    - Fetch news + translate Portuguese → English
+    - Recalculate fusion with sentiment
+    - Re-rank and output top 10
+    
+    Total time: ~1 min + ~10 min = 11 min (vs 5+ hours for single-pass)
     """
     print("\n" + "=" * 70)
-    print(f"🎯 LIVE MARKET MONITOR - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"🎯 LIVE MARKET MONITOR (Two-Pass) - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 70)
     
     # Reload config to get latest thresholds
@@ -522,64 +535,148 @@ def run_monitor():
     print(f"   Sell: conf ≥ {thresholds.sell_confidence:.0%}")
     print(f"   Stop Loss: {thresholds.stop_loss:.0%}")
     
-    # Initialize runner (n_workers=1 forces sequential mode, no multiprocessing)
-    runner = EnhancedProductionRunner(
-        use_news=True,
+    # ========================================================================
+    # PASS 1: Technical Screening (Fast)
+    # ========================================================================
+    print("\n" + "=" * 70)
+    print("📊 PASS 1: Technical Screening (no news)")
+    print("=" * 70)
+    
+    runner_pass1 = EnhancedProductionRunner(
+        use_news=False,  # Skip news for speed
         use_fusion=True,
-        use_regime=False,  # Use default thresholds
-        n_workers=1  # Sequential mode - no multiprocessing, no file descriptor leaks
+        use_regime=False,
+        n_workers=1
     )
     
-    # Run analysis (parallel=False for stability)
-    print(f"\n📊 Analyzing market with signal fusion (sequential mode)...")
-    results = runner.run(parallel=False)
+    print(f"\n🔄 Analyzing all stocks with technical indicators only...")
+    results_pass1 = runner_pass1.run(parallel=False)
     
-    if not results:
-        print("❌ No results from analysis")
+    if not results_pass1:
+        print("❌ No results from Pass 1")
         return
     
-    # Get stats
-    total = len(results)
-    buy_signals = [r for r in results if r['signal'] == 'BUY']
-    sell_signals = [r for r in results if r['signal'] == 'SELL']
+    # Filter actionable signals
+    actionable_pass1 = [r for r in results_pass1 if r['signal'] in ['BUY', 'SELL'] 
+                        and r.get('confidence', 0) >= MIN_CONFIDENCE]
     
-    print(f"   Total analyzed: {total}")
-    print(f"   BUY signals: {len(buy_signals)}")
-    print(f"   SELL signals: {len(sell_signals)}")
+    # Sort by preliminary fusion score
+    actionable_pass1.sort(key=lambda x: abs(x.get('fused_score', 0)), reverse=True)
     
-    # Smart news refresh for top movers
-    news_fresh = 0
-    if runner.news_client:
-        # Sort by confidence and get top movers
-        sorted_results = sorted(results, key=lambda x: x.get('confidence', 0), reverse=True)
-        top_movers = [r['ticker'] for r in sorted_results[:NEWS_REFRESH_TOP_N]]
+    # Select top candidates for news enrichment
+    candidates = actionable_pass1[:NEWS_CANDIDATES]
+    
+    print(f"\n✅ Pass 1 complete:")
+    print(f"   Total analyzed: {len(results_pass1)}")
+    print(f"   Actionable signals: {len(actionable_pass1)}")
+    print(f"   Candidates for news: {len(candidates)}")
+    
+    if not candidates:
+        print("❌ No actionable candidates found")
+        return
+    
+    # ========================================================================
+    # PASS 2: News Enhancement (Slow but limited)
+    # ========================================================================
+    print("\n" + "=" * 70)
+    print(f"📰 PASS 2: News Enhancement for top {len(candidates)} candidates")
+    print("=" * 70)
+    
+    # Initialize news client
+    news_client = FreeNewsClient()
+    today = datetime.now().strftime("%Y-%m-%d")
+    
+    # Fetch news for candidates (with translation + Google RSS fallback)
+    print(f"\n🔄 Fetching news with translation layer...")
+    print(f"   (newsdata.io → Google News RSS fallback)")
+    
+    news_sentiments = {}
+    for i, candidate in enumerate(candidates, 1):
+        ticker = candidate['ticker']
+        print(f"   [{i}/{len(candidates)}] {ticker}...", end=" ", flush=True)
         
-        if top_movers:
-            print(f"\n🔄 Refreshing news for top {len(top_movers)} movers...")
-            fresh_sentiments = runner.news_client.refresh_sentiment_batch(top_movers)
-            news_fresh = len(fresh_sentiments)
-            
-            # Update results
-            for result in results:
-                if result['ticker'] in fresh_sentiments:
-                    result['news_sentiment'] = fresh_sentiments[result['ticker']]
+        try:
+            # Force fresh fetch (use_cache=False)
+            sentiment = news_client.get_sentiment(ticker, today, use_cache=False)
+            news_sentiments[ticker] = sentiment
+            print(f"sentiment: {sentiment:+.2f}")
+        except Exception as e:
+            print(f"ERROR: {e}")
+            news_sentiments[ticker] = 0.0
     
-    # Filter and sort for recommendations
-    actionable = [r for r in results if r['signal'] in ['BUY', 'SELL'] 
-                  and r.get('confidence', 0) >= MIN_CONFIDENCE
-                  and abs(r.get('fused_score', 0)) >= MIN_SCORE]
+    print(f"\n✅ News fetched for {len(news_sentiments)} tickers")
     
-    # Sort by conviction (confidence * score)
-    actionable.sort(key=lambda x: x.get('confidence', 0) * abs(x.get('fused_score', 0)), reverse=True)
+    # ========================================================================
+    # Recalculate Fusion Scores with News
+    # ========================================================================
+    print("\n" + "=" * 70)
+    print("🔄 Recalculating fusion scores with news sentiment")
+    print("=" * 70)
     
-    # Take top N
-    top_recommendations = actionable[:MAX_RECOMMENDATIONS]
+    # Update candidates with news sentiment and recalculate fusion
+    for candidate in candidates:
+        ticker = candidate['ticker']
+        news_sentiment = news_sentiments.get(ticker, 0.0)
+        candidate['news_sentiment'] = news_sentiment
+        
+        # Recalculate fused score with news
+        # Fusion formula from production_enhanced.py:
+        # fused = 0.40 * trend + 0.25 * momentum + 0.20 * volatility + 0.15 * sentiment
+        trend_score = candidate.get('trend_score', 0)
+        momentum_score = candidate.get('momentum_score', 0)
+        volatility_score = candidate.get('volatility_score', 0)
+        
+        # Normalize news sentiment to same scale as other components
+        # Sentiment is -1 to +1, other scores are -1 to +1
+        news_score = news_sentiment
+        
+        # Weighted fusion (from SignalFusion class)
+        fused_score = (
+            0.40 * trend_score +
+            0.25 * momentum_score +
+            0.20 * volatility_score +
+            0.15 * news_score
+        )
+        
+        candidate['fused_score'] = fused_score
+        
+        # Update confidence based on news alignment
+        base_confidence = candidate.get('confidence', 0.5)
+        
+        # Boost confidence if news aligns with signal
+        signal = candidate['signal']
+        if signal == 'BUY' and news_sentiment > 0.10:
+            candidate['confidence'] = min(0.95, base_confidence + 0.05)
+        elif signal == 'BUY' and news_sentiment < -0.10:
+            candidate['confidence'] = max(0.30, base_confidence - 0.05)
+        elif signal == 'SELL' and news_sentiment < -0.10:
+            candidate['confidence'] = min(0.95, base_confidence + 0.05)
+        elif signal == 'SELL' and news_sentiment > 0.10:
+            candidate['confidence'] = max(0.30, base_confidence - 0.05)
     
+    # Re-sort by updated fusion score
+    candidates.sort(key=lambda x: abs(x.get('fused_score', 0)), reverse=True)
+    
+    # Take top N recommendations
+    top_recommendations = candidates[:MAX_RECOMMENDATIONS]
+    
+    # Stats
+    buy_count = len([c for c in candidates if c['signal'] == 'BUY'])
+    sell_count = len([c for c in candidates if c['signal'] == 'SELL'])
+    
+    print(f"\n📊 Final Results:")
+    print(f"   BUY signals: {buy_count}")
+    print(f"   SELL signals: {sell_count}")
+    print(f"   Top recommendations: {len(top_recommendations)}")
+    
+    # ========================================================================
+    # Format Output
+    # ========================================================================
     print(f"\n🎯 Top {len(top_recommendations)} recommendations:")
     
     # Build detailed recommendations
     detailed_recommendations = []
-    for result in top_recommendations:
+    for idx, result in enumerate(top_recommendations, 1):
         # Analyze drivers
         drivers = analyze_signal_drivers(result)
         
@@ -597,7 +694,8 @@ def run_monitor():
             'drivers': drivers,
             'levels': levels,
             'allocation': allocation,
-            'reversals': reversals
+            'reversals': reversals,
+            'index': idx
         })
         
         # Print summary
@@ -605,23 +703,22 @@ def run_monitor():
         ticker = result['ticker']
         conf = result.get('confidence', 0)
         alloc = allocation.get('allocation_pct', 0)
-        print(f"   {ticker}: {signal} ({conf:.0%} conf, {alloc:.0%} allocation)")
+        print(f"   {idx}. {ticker}: {signal} ({conf:.0%} conf, {alloc:.0%} allocation)")
     
     # Build stats
     stats = {
-        'total_analyzed': total,
-        'buy_count': len(buy_signals),
-        'sell_count': len(sell_signals),
-        'news_cached': len([r for r in results if r.get('news_sentiment', 0) != 0]) - news_fresh,
-        'news_fresh': news_fresh
+        'total_analyzed': len(results_pass1),
+        'buy_count': buy_count,
+        'sell_count': sell_count,
+        'news_enriched': len(news_sentiments)
     }
     
     # Format and save alert
-    news_cache_obj = runner.news_client.cache if runner.news_client else None
-    alert_text = format_full_alert(detailed_recommendations, stats, news_cache=news_cache_obj)
+    alert_text = format_full_alert(detailed_recommendations, stats, news_cache=news_client.cache)
     
     # Save to file
     ALERT_FILE.write_text(alert_text)
+    print(f"\n✅ Alert saved to {ALERT_FILE}")
     
     # Save JSON for programmatic access
     alert_json = {
@@ -659,13 +756,12 @@ def run_monitor():
     print(f"   {ALERT_FILE}")
     print(f"   {ALERT_JSON}")
     
-    # Log API usage if news client
-    if runner.news_client:
-        try:
-            cache_stats = runner.news_client.get_cache_stats()
-            print(f"\n💾 News cache: {cache_stats['total_entries']} entries ({cache_stats['fresh']} fresh)")
-        except:
-            pass
+    # Log cache stats
+    try:
+        cache_stats = news_client.get_cache_stats()
+        print(f"\n💾 News cache: {cache_stats['total_entries']} entries ({cache_stats['fresh']} fresh)")
+    except:
+        pass
     
     return detailed_recommendations
 

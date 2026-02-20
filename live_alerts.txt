@@ -1,0 +1,134 @@
+======================================================================
+🚨 TOP TRADING OPPORTUNITIES
+Generated: 21:37:54
+======================================================================
+
+1️⃣  ABEV3.SA - BUY 🟢
+    Price: R$16.13
+    └─ Drivers:
+       • Trend: UPTREND (80% confidence)
+       • Fusion: +0.45
+       • News: -0.21 sentiment
+         ⚠️ Negative news headwind
+       • Position: 15% (HIGH conviction)
+    └─ Levels:
+       Entry: R$16.13 | Stop: R$15.32
+       Targets: R$17.74 (2:1) | R$18.55 (3:1)
+
+
+2️⃣  PRIO3.SA - BUY 🟢
+    Price: R$53.78
+    └─ Drivers:
+       • Trend: UPTREND (79% confidence)
+       • Fusion: +0.45
+       • News: +0.00 sentiment
+         😐 Neutral news (no impact)
+       • Position: 15% (HIGH conviction)
+    └─ Levels:
+       Entry: R$53.78 | Stop: R$51.09
+       Targets: R$59.16 (2:1) | R$61.85 (3:1)
+
+
+3️⃣  VIVT3.SA - BUY 🟢
+    Price: R$40.58
+    └─ Drivers:
+       • Trend: UPTREND (78% confidence)
+       • Fusion: +0.44
+       • News: +0.00 sentiment
+         😐 Neutral news (no impact)
+       • Position: 15% (HIGH conviction)
+    └─ Levels:
+       Entry: R$40.58 | Stop: R$38.55
+       Targets: R$44.64 (2:1) | R$46.67 (3:1)
+
+
+4️⃣  PRNR3.SA - BUY 🟢
+    Price: R$21.00
+    └─ Drivers:
+       • Trend: UPTREND (78% confidence)
+       • Fusion: +0.51
+       • News: +0.00 sentiment
+         😐 Neutral news (no impact)
+       • Position: 15% (HIGH conviction)
+    └─ Levels:
+       Entry: R$21.00 | Stop: R$19.95
+       Targets: R$23.10 (2:1) | R$24.15 (3:1)
+
+
+5️⃣  PCAR3.SA - SELL 🔴
+    Price: R$3.36
+    └─ Drivers:
+       • Trend: DOWNTREND (78% confidence)
+       • Fusion: -0.56
+       • News: +0.00 sentiment
+         😐 Neutral news (no impact)
+       • Position: 15% (HIGH conviction)
+
+
+6️⃣  LAVV3.SA - BUY 🟢
+    Price: R$18.17
+    └─ Drivers:
+       • Trend: UPTREND (78% confidence)
+       • Fusion: +0.43
+       • News: +0.00 sentiment
+         😐 Neutral news (no impact)
+       • Position: 15% (HIGH conviction)
+    └─ Levels:
+       Entry: R$18.17 | Stop: R$17.26
+       Targets: R$19.99 (2:1) | R$20.90 (3:1)
+
+
+7️⃣  HBOR3.SA - BUY 🟢
+    Price: R$3.16
+    └─ Drivers:
+       • Trend: UPTREND (77% confidence)
+       • Fusion: +0.51
+       • News: +0.00 sentiment
+         😐 Neutral news (no impact)
+       • Position: 15% (HIGH conviction)
+    └─ Levels:
+       Entry: R$3.16 | Stop: R$3.00
+       Targets: R$3.48 (2:1) | R$3.63 (3:1)
+
+
+8️⃣  GMAT3.SA - BUY 🟢
+    Price: R$5.54
+    └─ Drivers:
+       • Trend: UPTREND (76% confidence)
+       • Fusion: +0.48
+       • News: +0.00 sentiment
+         😐 Neutral news (no impact)
+       • Position: 15% (HIGH conviction)
+    └─ Levels:
+       Entry: R$5.54 | Stop: R$5.26
+       Targets: R$6.09 (2:1) | R$6.37 (3:1)
+
+
+9️⃣  ESPA3.SA - BUY 🟢
+    Price: R$1.06
+    └─ Drivers:
+       • Trend: CONSOLIDATION (75% confidence)
+       • Fusion: +0.46
+       • News: +0.00 sentiment
+         😐 Neutral news (no impact)
+       • Position: 15% (HIGH conviction)
+    └─ Levels:
+       Entry: R$1.06 | Stop: R$1.01
+       Targets: R$1.17 (2:1) | R$1.22 (3:1)
+
+
+🔟  SUZB3.SA - BUY 🟢
+    Price: R$57.20
+    └─ Drivers:
+       • Trend: UPTREND (75% confidence)
+       • Fusion: +0.54
+       • News: +0.00 sentiment
+         😐 Neutral news (no impact)
+       • Position: 15% (HIGH conviction)
+    └─ Levels:
+       Entry: R$57.20 | Stop: R$54.34
+       Targets: R$62.92 (2:1) | R$65.78 (3:1)
+
+======================================================================
+📊 Summary: 75 BUY signals | 28 SELL signals
+======================================================================

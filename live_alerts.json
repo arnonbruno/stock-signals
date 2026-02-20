@@ -1,152 +1,763 @@
 {
-  "generated_at": "2026-02-18T19:39:43.716385",
-  "total_analyzed": 131,
-  "buy_count": 72,
-  "sell_count": 28,
+  "generated_at": "2026-02-19T15:13:15.998178",
+  "stats": {
+    "total_analyzed": 131,
+    "buy_count": 75,
+    "sell_count": 28,
+    "news_cached": 87,
+    "news_fresh": 5
+  },
+  "thresholds": {
+    "buy_confidence": 0.5,
+    "sell_confidence": 0.35,
+    "min_score": 0.2,
+    "stop_loss": 0.1
+  },
   "recommendations": [
     {
-      "ticker": "KEPL3.SA",
+      "ticker": "PCAR3.SA",
       "signal": "SELL",
-      "price": 9.100000381469727,
+      "price": 3.359999895095825,
       "confidence": 0.78,
-      "fused_score": -0.6056815377666374,
-      "trend": "uptrend",
-      "allocation": 0.39,
-      "levels": {
-        "exit": 9.100000381469727,
-        "stop_loss": 10.0100004196167
-      }
-    },
-    {
-      "ticker": "ABEV3.SA",
-      "signal": "BUY",
-      "price": 16.350000381469727,
-      "confidence": 0.8333333333333335,
-      "fused_score": 0.5121472351651629,
-      "trend": "uptrend",
-      "allocation": 0.4,
-      "levels": {
-        "entry": 16.350000381469727,
-        "stop_loss": 14.715000343322755,
-        "target_1": 19.62000045776367,
-        "target_2": 21.255000495910643
-      }
+      "allocation_pct": 0.39,
+      "entry": null,
+      "stop_loss": 3.695999884605408,
+      "target_1": null,
+      "drivers": {
+        "primary": [
+          {
+            "factor": "Trend",
+            "value": "Bearish Downtrend",
+            "impact": "23% confidence",
+            "description": "Price below 50-day MA, forming lower highs, strong selling pressure"
+          },
+          {
+            "factor": "Signal Fusion",
+            "value": "-0.56",
+            "impact": "Strong",
+            "description": "RSI not oversold + MACD bearish + Volume on sells + Multiple timeframes aligned"
+          }
+        ],
+        "secondary": [
+          {
+            "factor": "Volatility",
+            "value": "High",
+            "impact": "\u26a0\ufe0f Increased risk",
+            "description": "Larger than normal price swings - use smaller position"
+          }
+        ],
+        "confidence_boosters": [
+          {
+            "factor": "High Confidence",
+            "value": "78%",
+            "impact": "Strong signal quality",
+            "description": "Multiple factors strongly aligned"
+          }
+        ],
+        "risk_factors": [],
+        "reversal_signals": [
+          {
+            "trigger": "Price breaks above 50-day MA with volume",
+            "action": "Cover short / consider reversal",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "RSI drops below 30 (oversold)",
+            "action": "Bounce likely - tighten stops",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "Major positive news catalyst",
+            "action": "Exit position - sentiment shift",
+            "probability": "Low but high impact"
+          }
+        ]
+      },
+      "reversals": [
+        {
+          "signal": "Trend reversal",
+          "trigger": "Price breaks above 50-day MA with volume",
+          "action": "Cover short or re-evaluate"
+        },
+        {
+          "signal": "Positive news catalyst",
+          "trigger": "Major positive news event",
+          "action": "Monitor for sentiment shift"
+        }
+      ]
     },
     {
       "ticker": "SUZB3.SA",
       "signal": "BUY",
-      "price": 58.34000015258789,
-      "confidence": 0.78,
-      "fused_score": 0.5391493669576086,
-      "trend": "uptrend",
-      "allocation": 0.39,
-      "levels": {
-        "entry": 58.34000015258789,
-        "stop_loss": 52.5060001373291,
-        "target_1": 70.00800018310547,
-        "target_2": 75.84200019836425
-      }
-    },
-    {
-      "ticker": "VIVT3.SA",
-      "signal": "BUY",
-      "price": 40.9900016784668,
-      "confidence": 0.83204149880643,
-      "fused_score": 0.4983852068413708,
-      "trend": "uptrend",
-      "allocation": 0.4,
-      "levels": {
-        "entry": 40.9900016784668,
-        "stop_loss": 36.89100151062012,
-        "target_1": 49.18800201416015,
-        "target_2": 53.28700218200682
-      }
-    },
-    {
-      "ticker": "RAIZ4.SA",
-      "signal": "SELL",
-      "price": 0.6299999952316284,
-      "confidence": 0.7875000000000002,
-      "fused_score": -0.522453523616165,
-      "trend": "downtrend",
-      "allocation": 0.39375000000000016,
-      "levels": {
-        "exit": 0.6299999952316284,
-        "stop_loss": 0.6929999947547913
-      }
-    },
-    {
-      "ticker": "ASAI3.SA",
-      "signal": "BUY",
-      "price": 9.899999618530273,
-      "confidence": 0.78,
-      "fused_score": 0.526767018716678,
-      "trend": "uptrend",
-      "allocation": 0.39,
-      "levels": {
-        "entry": 9.899999618530273,
-        "stop_loss": 8.909999656677247,
-        "target_1": 11.879999542236327,
-        "target_2": 12.869999504089353
-      }
-    },
-    {
-      "ticker": "TIMS3.SA",
-      "signal": "BUY",
-      "price": 27.290000915527344,
-      "confidence": 0.8271260582785012,
-      "fused_score": 0.4922409061814596,
-      "trend": "uptrend",
-      "allocation": 0.4,
-      "levels": {
-        "entry": 27.290000915527344,
-        "stop_loss": 24.56100082397461,
-        "target_1": 32.74800109863281,
-        "target_2": 35.47700119018555
-      }
+      "price": 57.20000076293945,
+      "confidence": 0.7500000000000001,
+      "allocation_pct": 0.3750000000000001,
+      "entry": 57.20000076293945,
+      "stop_loss": 51.48000068664551,
+      "target_1": 68.64000091552734,
+      "drivers": {
+        "primary": [
+          {
+            "factor": "Trend",
+            "value": "Bullish Uptrend",
+            "impact": "+30% confidence",
+            "description": "Price above 50-day MA, forming higher lows, strong buying pressure"
+          },
+          {
+            "factor": "Signal Fusion",
+            "value": "+0.54",
+            "impact": "Strong",
+            "description": "RSI not overbought + MACD bullish + Volume supporting + Multiple timeframes aligned"
+          }
+        ],
+        "secondary": [
+          {
+            "factor": "Volume",
+            "value": "Above average",
+            "impact": "Supports move",
+            "description": "Volume 1.5x normal - good participation"
+          },
+          {
+            "factor": "Volatility",
+            "value": "High",
+            "impact": "\u26a0\ufe0f Increased risk",
+            "description": "Larger than normal price swings - use smaller position"
+          }
+        ],
+        "confidence_boosters": [
+          {
+            "factor": "High Confidence",
+            "value": "75%",
+            "impact": "Strong signal quality",
+            "description": "Multiple factors strongly aligned"
+          }
+        ],
+        "risk_factors": [
+          {
+            "factor": "High Volatility",
+            "value": "high",
+            "impact": "Wider stops needed",
+            "description": "Price may swing 5%+ in a day"
+          }
+        ],
+        "reversal_signals": [
+          {
+            "trigger": "Price drops below 50-day MA",
+            "action": "Exit or tighten stop-loss",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "RSI breaks above 70 (overbought)",
+            "action": "Take partial profits",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "Price drops 5%+ from entry in single day",
+            "action": "Exit immediately - momentum broken",
+            "probability": "High"
+          }
+        ]
+      },
+      "reversals": [
+        {
+          "signal": "Trend reversal",
+          "trigger": "Price drops below 50-day MA",
+          "action": "Consider tightening stop-loss or exiting"
+        },
+        {
+          "signal": "Negative news catalyst",
+          "trigger": "Major negative news event",
+          "action": "Re-evaluate immediately"
+        }
+      ]
     },
     {
       "ticker": "PRNR3.SA",
       "signal": "BUY",
-      "price": 20.59000015258789,
-      "confidence": 0.823689739858996,
-      "fused_score": 0.4879455081570781,
-      "trend": "uptrend",
-      "allocation": 0.4,
-      "levels": {
-        "entry": 20.59000015258789,
-        "stop_loss": 18.5310001373291,
-        "target_1": 24.70800018310547,
-        "target_2": 26.767000198364258
-      }
+      "price": 21.0,
+      "confidence": 0.7833333333333334,
+      "allocation_pct": 0.3916666666666668,
+      "entry": 21.0,
+      "stop_loss": 18.900000000000002,
+      "target_1": 25.199999999999996,
+      "drivers": {
+        "primary": [
+          {
+            "factor": "Trend",
+            "value": "Bullish Uptrend",
+            "impact": "+31% confidence",
+            "description": "Price above 50-day MA, forming higher lows, strong buying pressure"
+          },
+          {
+            "factor": "Signal Fusion",
+            "value": "+0.51",
+            "impact": "Strong",
+            "description": "RSI not overbought + MACD bullish + Volume supporting + Multiple timeframes aligned"
+          }
+        ],
+        "secondary": [],
+        "confidence_boosters": [
+          {
+            "factor": "High Confidence",
+            "value": "78%",
+            "impact": "Strong signal quality",
+            "description": "Multiple factors strongly aligned"
+          }
+        ],
+        "risk_factors": [],
+        "reversal_signals": [
+          {
+            "trigger": "Price drops below 50-day MA",
+            "action": "Exit or tighten stop-loss",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "RSI breaks above 70 (overbought)",
+            "action": "Take partial profits",
+            "probability": "Medium"
+          }
+        ]
+      },
+      "reversals": [
+        {
+          "signal": "Trend reversal",
+          "trigger": "Price drops below 50-day MA",
+          "action": "Consider tightening stop-loss or exiting"
+        },
+        {
+          "signal": "Negative news catalyst",
+          "trigger": "Major negative news event",
+          "action": "Re-evaluate immediately"
+        }
+      ]
     },
     {
-      "ticker": "LWSA3.SA",
-      "signal": "SELL",
-      "price": 3.6600000858306885,
-      "confidence": 0.8110282168349865,
-      "fused_score": -0.48945531327379166,
-      "trend": "downtrend",
-      "allocation": 0.4,
-      "levels": {
-        "exit": 3.6600000858306885,
-        "stop_loss": 4.0260000944137575
-      }
+      "ticker": "HBOR3.SA",
+      "signal": "BUY",
+      "price": 3.1600000858306885,
+      "confidence": 0.7717500000000002,
+      "allocation_pct": 0.38587500000000013,
+      "entry": 3.1600000858306885,
+      "stop_loss": 2.8440000772476197,
+      "target_1": 3.792000102996826,
+      "drivers": {
+        "primary": [
+          {
+            "factor": "Trend",
+            "value": "Bullish Uptrend",
+            "impact": "+31% confidence",
+            "description": "Price above 50-day MA, forming higher lows, strong buying pressure"
+          },
+          {
+            "factor": "Signal Fusion",
+            "value": "+0.51",
+            "impact": "Strong",
+            "description": "RSI not overbought + MACD bullish + Volume supporting + Multiple timeframes aligned"
+          }
+        ],
+        "secondary": [
+          {
+            "factor": "Volume",
+            "value": "Unusual spike",
+            "impact": "Confirms conviction",
+            "description": "Trading volume 2x+ above average - strong participation"
+          },
+          {
+            "factor": "Volatility",
+            "value": "High",
+            "impact": "\u26a0\ufe0f Increased risk",
+            "description": "Larger than normal price swings - use smaller position"
+          }
+        ],
+        "confidence_boosters": [
+          {
+            "factor": "High Confidence",
+            "value": "77%",
+            "impact": "Strong signal quality",
+            "description": "Multiple factors strongly aligned"
+          }
+        ],
+        "risk_factors": [
+          {
+            "factor": "High Volatility",
+            "value": "high",
+            "impact": "Wider stops needed",
+            "description": "Price may swing 5%+ in a day"
+          }
+        ],
+        "reversal_signals": [
+          {
+            "trigger": "Price drops below 50-day MA",
+            "action": "Exit or tighten stop-loss",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "RSI breaks above 70 (overbought)",
+            "action": "Take partial profits",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "Price drops 5%+ from entry in single day",
+            "action": "Exit immediately - momentum broken",
+            "probability": "High"
+          },
+          {
+            "trigger": "Major negative news event",
+            "action": "Re-evaluate thesis immediately",
+            "probability": "Low but high impact"
+          }
+        ]
+      },
+      "reversals": [
+        {
+          "signal": "Trend reversal",
+          "trigger": "Price drops below 50-day MA",
+          "action": "Consider tightening stop-loss or exiting"
+        },
+        {
+          "signal": "Negative news catalyst",
+          "trigger": "Major negative news event",
+          "action": "Re-evaluate immediately"
+        }
+      ]
     },
     {
       "ticker": "DIRR3.SA",
       "signal": "BUY",
-      "price": 16.190000534057617,
+      "price": 16.59000015258789,
       "confidence": 0.7500000000000001,
-      "fused_score": 0.502682555553157,
-      "trend": "uptrend",
-      "allocation": 0.3750000000000001,
-      "levels": {
-        "entry": 16.190000534057617,
-        "stop_loss": 14.571000480651856,
-        "target_1": 19.42800064086914,
-        "target_2": 21.0470006942749
-      }
+      "allocation_pct": 0.3750000000000001,
+      "entry": 16.59000015258789,
+      "stop_loss": 14.931000137329102,
+      "target_1": 19.908000183105468,
+      "drivers": {
+        "primary": [
+          {
+            "factor": "Trend",
+            "value": "Bullish Uptrend",
+            "impact": "+30% confidence",
+            "description": "Price above 50-day MA, forming higher lows, strong buying pressure"
+          },
+          {
+            "factor": "Signal Fusion",
+            "value": "+0.51",
+            "impact": "Strong",
+            "description": "RSI not overbought + MACD bullish + Volume supporting + Multiple timeframes aligned"
+          }
+        ],
+        "secondary": [
+          {
+            "factor": "Volatility",
+            "value": "High",
+            "impact": "\u26a0\ufe0f Increased risk",
+            "description": "Larger than normal price swings - use smaller position"
+          }
+        ],
+        "confidence_boosters": [
+          {
+            "factor": "High Confidence",
+            "value": "75%",
+            "impact": "Strong signal quality",
+            "description": "Multiple factors strongly aligned"
+          }
+        ],
+        "risk_factors": [
+          {
+            "factor": "High Volatility",
+            "value": "high",
+            "impact": "Wider stops needed",
+            "description": "Price may swing 5%+ in a day"
+          }
+        ],
+        "reversal_signals": [
+          {
+            "trigger": "Price drops below 50-day MA",
+            "action": "Exit or tighten stop-loss",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "RSI breaks above 70 (overbought)",
+            "action": "Take partial profits",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "Price drops 5%+ from entry in single day",
+            "action": "Exit immediately - momentum broken",
+            "probability": "High"
+          }
+        ]
+      },
+      "reversals": [
+        {
+          "signal": "Trend reversal",
+          "trigger": "Price drops below 50-day MA",
+          "action": "Consider tightening stop-loss or exiting"
+        },
+        {
+          "signal": "Negative news catalyst",
+          "trigger": "Major negative news event",
+          "action": "Re-evaluate immediately"
+        }
+      ]
+    },
+    {
+      "ticker": "TEND3.SA",
+      "signal": "BUY",
+      "price": 32.41999816894531,
+      "confidence": 0.7474030961983644,
+      "allocation_pct": 0.37370154809918227,
+      "entry": 32.41999816894531,
+      "stop_loss": 29.177998352050782,
+      "target_1": 38.903997802734374,
+      "drivers": {
+        "primary": [
+          {
+            "factor": "Trend",
+            "value": "Bullish Uptrend",
+            "impact": "+30% confidence",
+            "description": "Price above 50-day MA, forming higher lows, strong buying pressure"
+          },
+          {
+            "factor": "Signal Fusion",
+            "value": "+0.50",
+            "impact": "Moderate",
+            "description": "RSI not overbought + MACD bullish + Volume supporting"
+          }
+        ],
+        "secondary": [
+          {
+            "factor": "Volatility",
+            "value": "High",
+            "impact": "\u26a0\ufe0f Increased risk",
+            "description": "Larger than normal price swings - use smaller position"
+          }
+        ],
+        "confidence_boosters": [],
+        "risk_factors": [
+          {
+            "factor": "High Volatility",
+            "value": "high",
+            "impact": "Wider stops needed",
+            "description": "Price may swing 5%+ in a day"
+          }
+        ],
+        "reversal_signals": [
+          {
+            "trigger": "Price drops below 50-day MA",
+            "action": "Exit or tighten stop-loss",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "RSI breaks above 70 (overbought)",
+            "action": "Take partial profits",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "Price drops 5%+ from entry in single day",
+            "action": "Exit immediately - momentum broken",
+            "probability": "High"
+          }
+        ]
+      },
+      "reversals": [
+        {
+          "signal": "Trend reversal",
+          "trigger": "Price drops below 50-day MA",
+          "action": "Consider tightening stop-loss or exiting"
+        },
+        {
+          "signal": "Negative news catalyst",
+          "trigger": "Major negative news event",
+          "action": "Re-evaluate immediately"
+        }
+      ]
+    },
+    {
+      "ticker": "UNIP6.SA",
+      "signal": "BUY",
+      "price": 68.5,
+      "confidence": 0.7473933242127291,
+      "allocation_pct": 0.3736966621063646,
+      "entry": 68.5,
+      "stop_loss": 61.65,
+      "target_1": 82.2,
+      "drivers": {
+        "primary": [
+          {
+            "factor": "Trend",
+            "value": "Bullish Uptrend",
+            "impact": "+30% confidence",
+            "description": "Price above 50-day MA, forming higher lows, strong buying pressure"
+          },
+          {
+            "factor": "Signal Fusion",
+            "value": "+0.50",
+            "impact": "Moderate",
+            "description": "RSI not overbought + MACD bullish + Volume supporting"
+          }
+        ],
+        "secondary": [
+          {
+            "factor": "Volatility",
+            "value": "High",
+            "impact": "\u26a0\ufe0f Increased risk",
+            "description": "Larger than normal price swings - use smaller position"
+          }
+        ],
+        "confidence_boosters": [],
+        "risk_factors": [
+          {
+            "factor": "High Volatility",
+            "value": "high",
+            "impact": "Wider stops needed",
+            "description": "Price may swing 5%+ in a day"
+          }
+        ],
+        "reversal_signals": [
+          {
+            "trigger": "Price drops below 50-day MA",
+            "action": "Exit or tighten stop-loss",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "RSI breaks above 70 (overbought)",
+            "action": "Take partial profits",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "Price drops 5%+ from entry in single day",
+            "action": "Exit immediately - momentum broken",
+            "probability": "High"
+          }
+        ]
+      },
+      "reversals": [
+        {
+          "signal": "Trend reversal",
+          "trigger": "Price drops below 50-day MA",
+          "action": "Consider tightening stop-loss or exiting"
+        },
+        {
+          "signal": "Negative news catalyst",
+          "trigger": "Major negative news event",
+          "action": "Re-evaluate immediately"
+        }
+      ]
+    },
+    {
+      "ticker": "GMAT3.SA",
+      "signal": "BUY",
+      "price": 5.539999961853027,
+      "confidence": 0.76382955560674,
+      "allocation_pct": 0.3819147778033701,
+      "entry": 5.539999961853027,
+      "stop_loss": 4.985999965667725,
+      "target_1": 6.647999954223632,
+      "drivers": {
+        "primary": [
+          {
+            "factor": "Trend",
+            "value": "Bullish Uptrend",
+            "impact": "+31% confidence",
+            "description": "Price above 50-day MA, forming higher lows, strong buying pressure"
+          },
+          {
+            "factor": "Signal Fusion",
+            "value": "+0.48",
+            "impact": "Moderate",
+            "description": "RSI not overbought + MACD bullish + Volume supporting"
+          }
+        ],
+        "secondary": [
+          {
+            "factor": "Volatility",
+            "value": "High",
+            "impact": "\u26a0\ufe0f Increased risk",
+            "description": "Larger than normal price swings - use smaller position"
+          }
+        ],
+        "confidence_boosters": [
+          {
+            "factor": "High Confidence",
+            "value": "76%",
+            "impact": "Strong signal quality",
+            "description": "Multiple factors strongly aligned"
+          }
+        ],
+        "risk_factors": [
+          {
+            "factor": "High Volatility",
+            "value": "high",
+            "impact": "Wider stops needed",
+            "description": "Price may swing 5%+ in a day"
+          }
+        ],
+        "reversal_signals": [
+          {
+            "trigger": "Price drops below 50-day MA",
+            "action": "Exit or tighten stop-loss",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "RSI breaks above 70 (overbought)",
+            "action": "Take partial profits",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "Price drops 5%+ from entry in single day",
+            "action": "Exit immediately - momentum broken",
+            "probability": "High"
+          },
+          {
+            "trigger": "Major negative news event",
+            "action": "Re-evaluate thesis immediately",
+            "probability": "Low but high impact"
+          }
+        ]
+      },
+      "reversals": [
+        {
+          "signal": "Trend reversal",
+          "trigger": "Price drops below 50-day MA",
+          "action": "Consider tightening stop-loss or exiting"
+        },
+        {
+          "signal": "Negative news catalyst",
+          "trigger": "Major negative news event",
+          "action": "Re-evaluate immediately"
+        }
+      ]
+    },
+    {
+      "ticker": "TOTS3.SA",
+      "signal": "SELL",
+      "price": 38.400001525878906,
+      "confidence": 0.6750000000000002,
+      "allocation_pct": 0.3375000000000001,
+      "entry": null,
+      "stop_loss": 42.2400016784668,
+      "target_1": null,
+      "drivers": {
+        "primary": [
+          {
+            "factor": "Trend",
+            "value": "Bearish Downtrend",
+            "impact": "20% confidence",
+            "description": "Price below 50-day MA, forming lower highs"
+          },
+          {
+            "factor": "Signal Fusion",
+            "value": "-0.54",
+            "impact": "Strong",
+            "description": "RSI not oversold + MACD bearish + Volume on sells + Multiple timeframes aligned"
+          }
+        ],
+        "secondary": [
+          {
+            "factor": "Volatility",
+            "value": "High",
+            "impact": "\u26a0\ufe0f Increased risk",
+            "description": "Larger than normal price swings - use smaller position"
+          },
+          {
+            "factor": "News Sentiment",
+            "value": "+0.11",
+            "impact": "Bullish catalyst",
+            "description": "Recent news positive - supports buying pressure"
+          }
+        ],
+        "confidence_boosters": [],
+        "risk_factors": [],
+        "reversal_signals": [
+          {
+            "trigger": "Price breaks above 50-day MA with volume",
+            "action": "Cover short / consider reversal",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "RSI drops below 30 (oversold)",
+            "action": "Bounce likely - tighten stops",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "Major positive news catalyst",
+            "action": "Exit position - sentiment shift",
+            "probability": "Low but high impact"
+          }
+        ]
+      },
+      "reversals": [
+        {
+          "signal": "Trend reversal",
+          "trigger": "Price breaks above 50-day MA with volume",
+          "action": "Cover short or re-evaluate"
+        },
+        {
+          "signal": "Positive news catalyst",
+          "trigger": "Major positive news event",
+          "action": "Monitor for sentiment shift"
+        }
+      ]
+    },
+    {
+      "ticker": "ABEV3.SA",
+      "signal": "BUY",
+      "price": 16.1299991607666,
+      "confidence": 0.796643597628681,
+      "allocation_pct": 0.39832179881434054,
+      "entry": 16.1299991607666,
+      "stop_loss": 14.516999244689941,
+      "target_1": 19.355998992919922,
+      "drivers": {
+        "primary": [
+          {
+            "factor": "Trend",
+            "value": "Bullish Uptrend",
+            "impact": "+32% confidence",
+            "description": "Price above 50-day MA, forming higher lows, strong buying pressure"
+          },
+          {
+            "factor": "Signal Fusion",
+            "value": "+0.45",
+            "impact": "Moderate",
+            "description": "RSI not overbought + MACD bullish + Volume supporting"
+          }
+        ],
+        "secondary": [],
+        "confidence_boosters": [
+          {
+            "factor": "High Confidence",
+            "value": "80%",
+            "impact": "Strong signal quality",
+            "description": "Multiple factors strongly aligned"
+          }
+        ],
+        "risk_factors": [],
+        "reversal_signals": [
+          {
+            "trigger": "Price drops below 50-day MA",
+            "action": "Exit or tighten stop-loss",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "RSI breaks above 70 (overbought)",
+            "action": "Take partial profits",
+            "probability": "Medium"
+          }
+        ]
+      },
+      "reversals": [
+        {
+          "signal": "Trend reversal",
+          "trigger": "Price drops below 50-day MA",
+          "action": "Consider tightening stop-loss or exiting"
+        },
+        {
+          "signal": "Negative news catalyst",
+          "trigger": "Major negative news event",
+          "action": "Re-evaluate immediately"
+        }
+      ]
     }
   ]
 }
