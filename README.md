@@ -23,14 +23,30 @@ A multi-indicator signal fusion system that analyzes 150 stocks every 10 minutes
 
 ## How It Works
 
-The system analyzes each stock through multiple layers:
+The system uses a **two-pass architecture** for efficient processing:
+
+### Pass 1: Technical Screening (~1 minute)
+Analyzes all 150 stocks with technical indicators only (no news):
+- Fast screening to identify candidates
+- Outputs: fusion score, confidence, position sizing
+- Top 10 candidates selected for news enhancement
+
+### Pass 2: News Enhancement (~10 minutes)
+Fetches and analyzes news for top 10 candidates only:
+- News sources: newsdata.io → Google News RSS fallback
+- Translation: Portuguese → English via deep_translator
+- Sentiment: FinBERT analysis on translated headlines
+- Fusion score recalculated with news component
+
+### Processing Flow
 
 ```
 Price Data (yfinance)
        │
        ▼
 ┌─────────────────────────────────────────────────────────┐
-│                  INDICATOR LAYERS                         │
+│              PASS 1: TECHNICAL SCREENING                 │
+│                  (~1 min for 150 stocks)                 │
 ├─────────────────────────────────────────────────────────┤
 │  MOMENTUM    │  VOLATILITY  │   VOLUME    │    TREND    │
 │  (25% wt)    │   (20% wt)   │   (25% wt)  │   (30% wt)  │
@@ -44,29 +60,33 @@ Price Data (yfinance)
        │
        ▼
 ┌─────────────────────────────────────────────────────────┐
-│                 SIGNAL FUSION                            │
-│  Weighted ensemble combining all indicators              │
-│  Output: fused_score (-1.0 to +1.0)                     │
+│              TOP 10 CANDIDATES SELECTED                   │
+│  (based on fusion score + confidence)                    │
 └─────────────────────────────────────────────────────────┘
        │
        ▼
 ┌─────────────────────────────────────────────────────────┐
-│              CONFIDENCE CALCULATION                      │
-│  Based on signal agreement rate across indicators        │
-│  Output: confidence (0.0 to 1.0)                        │
+│              PASS 2: NEWS ENHANCEMENT                    │
+│                (~10 min for 10 stocks)                   │
+├─────────────────────────────────────────────────────────┤
+│  NEWS FETCH          │  TRANSLATION    │  SENTIMENT     │
+│  • newsdata.io       │  • deep_translator│  • FinBERT   │
+│  • Google News RSS   │  • PT → EN      │  • +0.15 wt   │
+│    (fallback)        │                 │               │
 └─────────────────────────────────────────────────────────┘
        │
        ▼
 ┌─────────────────────────────────────────────────────────┐
-│              POSITION SIZING                             │
-│  Kelly Criterion adjusted for volatility                 │
-│  Output: allocation (10% to 40%)                        │
+│              FUSION RECALCULATION                        │
+│  Trend (40%) + Momentum (25%) + Volatility (20%) + News (15%) │
 └─────────────────────────────────────────────────────────┘
        │
        ▼
    FINAL SIGNAL
    (BUY / SELL / HOLD)
 ```
+
+**Total processing time: ~11 minutes** (vs 5+ hours for single-pass with news)
 
 ---
 
@@ -260,9 +280,23 @@ if volatility_regime == 'high':
 
 ## News Sentiment
 
+### Translation Layer
+
+Brazilian news headlines are in Portuguese, but FinBERT was trained on English financial text. The system uses **deep_translator** (Google Translate) to translate headlines before analysis:
+
+```python
+from deep_translator import GoogleTranslator
+
+def _translate_to_english(self, text: str) -> str:
+    translator = GoogleTranslator(source='pt', target='en')
+    return translator.translate(text)
+```
+
+This ensures accurate sentiment analysis for Portuguese-language financial news.
+
 ### FinBERT Analysis
 
-The system uses **FinBERT**, a BERT model trained on financial text:
+The system uses **FinBERT**, a BERT model trained on English financial text:
 
 ```python
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
@@ -276,26 +310,23 @@ Outputs:
 - Negative sentiment: -1.0
 - Neutral: 0.0
 
-### Ensemble Approach
-
-FinBERT (70%) combined with Portuguese lexicon (30%):
-
-```python
-sentiment = 0.7 × finbert_score + 0.3 × lexicon_score
-```
-
 ### News Sources
 
-1. **Google News RSS** (free, real-time)
-2. **newsdata.io API** (200 credits/day)
-3. **Investing.com Brasil** (fallback scraping)
+1. **newsdata.io API** (primary, 200 credits/day) - Market endpoint for financial news
+2. **Google News RSS** (free fallback) - Used when API budget exhausted
 
 ### Smart Caching
 
 - **Trading hours**: 4-hour TTL
 - **Overnight**: 12-hour TTL
-- Fresh news only fetched for top 5 movers per cycle
-- Budget: ~50 API credits/day
+- Sentiment cache stored in `news_sentiment_cache.json`
+
+### Two-Pass Strategy
+
+News is only fetched for **top 10 candidates** after technical screening:
+- Reduces API calls from 150 to 10 per cycle
+- Total processing: ~11 minutes (vs 5+ hours)
+- Budget: ~10-30 API credits/day (well under 200 limit)
 
 ---
 
@@ -420,7 +451,7 @@ python monitor_live.py
 
 ```
 stock-signals/
-├── monitor_live.py              # Live 10-min monitor
+├── monitor_live.py              # Two-pass live monitor (technical + news)
 ├── production_enhanced.py       # SOTA analysis engine
 ├── production_simple.py         # Lightweight runner
 │
@@ -436,7 +467,7 @@ stock-signals/
 │   │   └── trend_detector_v2.py # Dual-timeframe detection
 │   │
 │   ├── news/
-│   │   ├── free_news_client.py  # News fetching + FinBERT
+│   │   ├── free_news_client.py  # News fetching + translation + FinBERT
 │   │   ├── news_cache.py        # TTL cache management
 │   │   ├── api_budget_tracker.py# API budget enforcement
 │   │   └── historical_sentiment.py # Backtest sentiment
@@ -465,6 +496,26 @@ stock-signals/
 └── tests/                       # Unit tests
 ```
 
+### Two-Pass Architecture Details
+
+**`monitor_live.py`** implements the two-pass architecture:
+
+```python
+# Configuration
+NEWS_CANDIDATES = 10  # Top N stocks for news enhancement
+
+# Pass 1: Technical screening (no news)
+runner = EnhancedProductionRunner(use_news=False)
+results = runner.run()  # ~1 min for 150 stocks
+
+# Pass 2: News enhancement for top candidates
+top_candidates = sorted(results, key=lambda x: x['confidence'], reverse=True)[:NEWS_CANDIDATES]
+for candidate in top_candidates:
+    news = news_client.fetch_news(candidate['ticker'])
+    sentiment = finbert_analyzer.analyze(news, translate=True)
+    candidate['fusion_score'] = recalculate_with_news(sentiment)
+```
+
 ---
 
 ## Deployment
@@ -472,8 +523,8 @@ stock-signals/
 ### Cron Setup
 
 ```bash
-# Every 10 minutes during market hours (9:00-17:50 Brasilia)
-*/10 9-17 * * 1-5 cd /path/to/stock-signals && python monitor_live.py >> logs/monitor.log 2>&1
+# Hourly during market hours (9:00-20:00 Brasilia)
+0 9-20 * * 1-5 cd /path/to/stock-signals && python monitor_live.py >> logs/monitor.log 2>&1
 ```
 
 ### Requirements
@@ -485,8 +536,9 @@ stock-signals/
 ### Monitoring
 
 - **Universe**: 150 stocks (65 IBOV + 85 SMLL)
-- **Frequency**: Every 10 minutes
-- **Hours**: 9:00-17:50 GMT-3 (market hours)
+- **Frequency**: Hourly during market hours
+- **Hours**: 9:00-20:00 GMT-3 (market hours + extended)
+- **Processing time**: ~11 minutes per cycle
 - **Output**: Telegram alerts + JSON files
 
 ---
