@@ -1,28 +1,17 @@
 ======================================================================
 🚨 TOP TRADING OPPORTUNITIES
-Generated: 09:02:05
+Generated: 11:01:51
 ======================================================================
 
-1️⃣  HBOR3.SA - BUY 🟢
-    Price: R$3.33
-    └─ Drivers:
-       • Trend: UPTREND (77% confidence)
-       • News: -0.80 sentiment
-         ⚠️ Negative news headwind (-12% position)
-         📰 Headlines:
-            • Helbor registra queda nas vendas do 3º trimestre, mas a... (Unknown)
-       • Position: 10% (HIGH conviction)
-    └─ Levels:
-       Entry: R$3.33 | Stop: R$3.00
-       Targets: R$4.00 (2:1) | R$4.33 (3:1)
-    └─ Watch for:
-       ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss
-       ⚠️ Price drops 5%+ from entry in single day → Exit immediately - momentum broken
-
-2️⃣  SUZB3.SA - BUY 🟢
+1️⃣  SUZB3.SA - BUY 🟢
     Price: R$57.13
     └─ Drivers:
        • Trend: UPTREND (70% confidence)
+       • Key Signals:
+         🟢 MACD: bullish (extreme)
+         🟢 OBV: accumulation (extreme)
+         🟢 VWAP: above_vwap (extreme)
+         🟢 MA_Alignment: bullish (extreme)
        • News: -0.70 sentiment
          ⚠️ Negative news headwind (-10% position)
          📰 Headlines:
@@ -35,10 +24,15 @@ Generated: 09:02:05
        ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss
        ⚠️ Price drops 5%+ from entry in single day → Exit immediately - momentum broken
 
-3️⃣  PCAR3.SA - SELL 🔴
+2️⃣  PCAR3.SA - SELL 🔴
     Price: R$3.03
     └─ Drivers:
        • Trend: DOWNTREND (87% confidence)
+       • Key Signals:
+         🔴 MACD: bearish (extreme)
+         🔴 Bollinger: below_lower (extreme)
+         🔴 OBV: distribution (extreme)
+         🔴 VWAP: below_vwap (extreme)
        • News: -0.70 sentiment
          ⚠️ Negative news headwind (-10% position)
          📰 Headlines:
@@ -49,10 +43,15 @@ Generated: 09:02:05
        ⚠️ Price breaks above 50-day MA with volume → Cover short / consider reversal
        ⚠️ Major positive news catalyst → Exit position - sentiment shift
 
-4️⃣  TOTS3.SA - SELL 🔴
+3️⃣  TOTS3.SA - SELL 🔴
     Price: R$38.95
     └─ Drivers:
        • Trend: DOWNTREND (63% confidence)
+       • Key Signals:
+         🔴 MACD: bearish (extreme)
+         🔴 OBV: distribution (extreme)
+         🔴 VWAP: below_vwap (extreme)
+         🔴 MA_Alignment: bearish (extreme)
        • News: +0.64 sentiment
          ✅ Positive news boost (+13% position)
          📰 Headlines:
@@ -62,10 +61,15 @@ Generated: 09:02:05
        ⚠️ Price breaks above 50-day MA with volume → Cover short / consider reversal
        ⚠️ Major positive news catalyst → Exit position - sentiment shift
 
-5️⃣  DIRR3.SA - BUY 🟢
+4️⃣  DIRR3.SA - BUY 🟢
     Price: R$16.77
     └─ Drivers:
        • Trend: UPTREND (80% confidence)
+       • Key Signals:
+         🟢 MACD: bullish (extreme)
+         🟢 OBV: accumulation (extreme)
+         🟢 VWAP: above_vwap (extreme)
+         🟢 MA_Alignment: bullish (extreme)
        • News: +0.50 sentiment
          ✅ Positive news boost (+10% position)
          📰 Headlines:
@@ -79,10 +83,58 @@ Generated: 09:02:05
        ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss
        ⚠️ Price drops 5%+ from entry in single day → Exit immediately - momentum broken
 
-6️⃣  PRNR3.SA - BUY 🟢
+5️⃣  HBOR3.SA - BUY 🟢
+    Price: R$3.33
+    └─ Drivers:
+       • Trend: UPTREND (77% confidence)
+       • Key Signals:
+         🟢 OBV: accumulation (extreme)
+         🟢 VWAP: above_vwap (extreme)
+         🟢 MA_Alignment: bullish (extreme)
+         🟢 SuperTrend: bullish (extreme)
+       • News: -0.40 sentiment
+         ⚠️ Negative news headwind (-6% position)
+         📰 Headlines:
+            • Helbor registra queda nas vendas do 3º trimestre, mas a... (Unknown)
+            • Gabriel Bere & irmãos expõem gravuras em ateliê de SJC ... (Unknown)
+       • Position: 10% (HIGH conviction)
+    └─ Levels:
+       Entry: R$3.33 | Stop: R$3.00
+       Targets: R$4.00 (2:1) | R$4.33 (3:1)
+    └─ Watch for:
+       ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss
+       ⚠️ Price drops 5%+ from entry in single day → Exit immediately - momentum broken
+
+6️⃣  QUAL3.SA - BUY 🟢
+    Price: R$2.59
+    └─ Drivers:
+       • Trend: CONSOLIDATION (73% confidence)
+       • Key Signals:
+         🟢 MACD: bullish (extreme)
+         🔴 Stochastic: overbought (extreme)
+         ⚪ Bollinger: above_upper (extreme)
+         🟢 OBV: accumulation (extreme)
+       • News: -0.24 sentiment
+         ⚠️ Negative news headwind (-4% position)
+         📰 Headlines:
+            • Qualicorp anuncia 70+ vagas de emprego em quatro capita... (Unknown)
+       • Position: 10% (HIGH conviction)
+    └─ Levels:
+       Entry: R$2.59 | Stop: R$2.33
+       Targets: R$3.11 (2:1) | R$3.37 (3:1)
+    └─ Watch for:
+       ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss
+       ⚠️ Price drops 5%+ from entry in single day → Exit immediately - momentum broken
+
+7️⃣  PRNR3.SA - BUY 🟢
     Price: R$21.50
     └─ Drivers:
        • Trend: UPTREND (83% confidence)
+       • Key Signals:
+         🟢 MACD: bullish (extreme)
+         🔴 Stochastic: overbought (extreme)
+         ⚪ Keltner: above_channel (extreme)
+         🟢 VWAP: above_vwap (extreme)
        • News: +0.24 sentiment
          ✅ Positive news boost (+5% position)
          📰 Headlines:
@@ -94,24 +146,35 @@ Generated: 09:02:05
     └─ Watch for:
        ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss
 
-7️⃣  LWSA3.SA - SELL 🔴
+8️⃣  LWSA3.SA - SELL 🔴
     Price: R$3.61
     └─ Drivers:
-       • Trend: DOWNTREND (74% confidence)
-       • News: +0.08 sentiment
-         😐 Neutral news (no impact)
-         📰 Recent:
-            • Dividendos da semana: Petrobras (PETR4) paga JCP e Loca...
-       • Position: 10% (HIGH conviction)
+       • Trend: DOWNTREND (69% confidence)
+       • Key Signals:
+         🔴 MACD: bearish (extreme)
+         🔴 VWAP: below_vwap (extreme)
+         🔴 MA_Alignment: bearish (extreme)
+         🔴 SuperTrend: bearish (extreme)
+       • News: +0.21 sentiment
+         ✅ Positive news boost (+4% position)
+         📰 Headlines:
+            • Dividendos da semana: Petrobras (PETR4) paga JCP e Loca... (Unknown)
+            • Dados comportamentais: o caminho para melhorar a experi... (Unknown)
+       • Position: 10% (MEDIUM-HIGH conviction)
     └─ Watch for:
        ⚠️ Price breaks above 50-day MA with volume → Cover short / consider reversal
        ⚠️ Major positive news catalyst → Exit position - sentiment shift
 
-8️⃣  RAIZ4.SA - SELL 🔴
+9️⃣  RAIZ4.SA - SELL 🔴
     Price: R$0.62
     └─ Drivers:
        • Trend: DOWNTREND (75% confidence)
-       • News: -0.05 sentiment
+       • Key Signals:
+         🔴 MACD: bearish (extreme)
+         🔴 OBV: distribution (extreme)
+         🔴 VWAP: below_vwap (extreme)
+         🔴 MA_Alignment: bearish (extreme)
+       • News: -0.06 sentiment
          😐 Neutral news (no impact)
          📰 Recent:
             • Ibovespa hoje: Raízen (RAIZ4) lidera altas e Vale (VAL...
@@ -120,10 +183,15 @@ Generated: 09:02:05
        ⚠️ Price breaks above 50-day MA with volume → Cover short / consider reversal
        ⚠️ Major positive news catalyst → Exit position - sentiment shift
 
-9️⃣  UNIP6.SA - BUY 🟢
+🔟  UNIP6.SA - BUY 🟢
     Price: R$69.91
     └─ Drivers:
        • Trend: UPTREND (78% confidence)
+       • Key Signals:
+         🟢 MACD: bullish (extreme)
+         🟢 OBV: accumulation (extreme)
+         🟢 VWAP: above_vwap (extreme)
+         🟢 MA_Alignment: bullish (extreme)
        • News: +0.04 sentiment
          😐 Neutral news (no impact)
          📰 Recent:
@@ -132,20 +200,6 @@ Generated: 09:02:05
     └─ Levels:
        Entry: R$69.91 | Stop: R$62.92
        Targets: R$83.89 (2:1) | R$90.88 (3:1)
-    └─ Watch for:
-       ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss
-       ⚠️ Price drops 5%+ from entry in single day → Exit immediately - momentum broken
-
-🔟  QUAL3.SA - BUY 🟢
-    Price: R$2.59
-    └─ Drivers:
-       • Trend: CONSOLIDATION (78% confidence)
-       • News: +0.00 sentiment
-         😐 Neutral news (no impact)
-       • Position: 10% (HIGH conviction)
-    └─ Levels:
-       Entry: R$2.59 | Stop: R$2.33
-       Targets: R$3.11 (2:1) | R$3.37 (3:1)
     └─ Watch for:
        ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss
        ⚠️ Price drops 5%+ from entry in single day → Exit immediately - momentum broken

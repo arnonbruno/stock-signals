@@ -430,11 +430,15 @@ def format_recommendation(result: dict, drivers: dict, levels: dict,
             ind_name = ind.get('name', '')
             ind_signal = ind.get('signal', '')
             ind_strength = ind.get('strength', 0)
-            # Format signal for readability - expanded bullish/bearish signals
+            # Format signal for readability
+            # Bullish: supports upward movement
             bullish_signals = ['bullish', 'buy', 'oversold', 'bullish_crossover', 'accumulation', 
-                              'above_vwap', 'above_ma', 'golden_cross', 'uptrend', 'near_lower']
+                              'above_vwap', 'above_ma', 'golden_cross', 'uptrend', 'near_lower', 
+                              'below_lower', 'below_channel']  # oversold conditions
+            # Bearish: supports downward movement OR warns of overextension
             bearish_signals = ['bearish', 'sell', 'overbought', 'bearish_crossover', 'distribution',
-                              'below_vwap', 'below_ma', 'death_cross', 'downtrend', 'below_lower', 'near_upper']
+                              'below_vwap', 'below_ma', 'death_cross', 'downtrend', 
+                              'near_upper', 'above_upper', 'above_channel']  # overextended conditions
             signal_lower = ind_signal.lower()
             if any(b in signal_lower for b in bullish_signals):
                 signal_emoji = '🟢'
@@ -442,7 +446,16 @@ def format_recommendation(result: dict, drivers: dict, levels: dict,
                 signal_emoji = '🔴'
             else:
                 signal_emoji = '⚪'
-            lines.append(f"         {signal_emoji} {ind_name}: {ind_signal} ({ind_strength:.0%})")
+            # Show strength as tiered label instead of raw %
+            if ind_strength >= 1.0:
+                strength_label = "extreme"
+            elif ind_strength >= 0.7:
+                strength_label = "strong"
+            elif ind_strength >= 0.4:
+                strength_label = "moderate"
+            else:
+                strength_label = "weak"
+            lines.append(f"         {signal_emoji} {ind_name}: {ind_signal} ({strength_label})")
     
     # News sentiment with headlines
     lines.append(f"       • News: {news_sentiment:+.2f} sentiment")
