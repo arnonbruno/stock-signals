@@ -1,134 +1,154 @@
 ======================================================================
 🚨 TOP TRADING OPPORTUNITIES
-Generated: 21:37:54
+Generated: 09:02:05
 ======================================================================
 
-1️⃣  ABEV3.SA - BUY 🟢
-    Price: R$16.13
-    └─ Drivers:
-       • Trend: UPTREND (80% confidence)
-       • Fusion: +0.45
-       • News: -0.21 sentiment
-         ⚠️ Negative news headwind
-       • Position: 15% (HIGH conviction)
-    └─ Levels:
-       Entry: R$16.13 | Stop: R$15.32
-       Targets: R$17.74 (2:1) | R$18.55 (3:1)
-
-
-2️⃣  PRIO3.SA - BUY 🟢
-    Price: R$53.78
-    └─ Drivers:
-       • Trend: UPTREND (79% confidence)
-       • Fusion: +0.45
-       • News: +0.00 sentiment
-         😐 Neutral news (no impact)
-       • Position: 15% (HIGH conviction)
-    └─ Levels:
-       Entry: R$53.78 | Stop: R$51.09
-       Targets: R$59.16 (2:1) | R$61.85 (3:1)
-
-
-3️⃣  VIVT3.SA - BUY 🟢
-    Price: R$40.58
-    └─ Drivers:
-       • Trend: UPTREND (78% confidence)
-       • Fusion: +0.44
-       • News: +0.00 sentiment
-         😐 Neutral news (no impact)
-       • Position: 15% (HIGH conviction)
-    └─ Levels:
-       Entry: R$40.58 | Stop: R$38.55
-       Targets: R$44.64 (2:1) | R$46.67 (3:1)
-
-
-4️⃣  PRNR3.SA - BUY 🟢
-    Price: R$21.00
-    └─ Drivers:
-       • Trend: UPTREND (78% confidence)
-       • Fusion: +0.51
-       • News: +0.00 sentiment
-         😐 Neutral news (no impact)
-       • Position: 15% (HIGH conviction)
-    └─ Levels:
-       Entry: R$21.00 | Stop: R$19.95
-       Targets: R$23.10 (2:1) | R$24.15 (3:1)
-
-
-5️⃣  PCAR3.SA - SELL 🔴
-    Price: R$3.36
-    └─ Drivers:
-       • Trend: DOWNTREND (78% confidence)
-       • Fusion: -0.56
-       • News: +0.00 sentiment
-         😐 Neutral news (no impact)
-       • Position: 15% (HIGH conviction)
-
-
-6️⃣  LAVV3.SA - BUY 🟢
-    Price: R$18.17
-    └─ Drivers:
-       • Trend: UPTREND (78% confidence)
-       • Fusion: +0.43
-       • News: +0.00 sentiment
-         😐 Neutral news (no impact)
-       • Position: 15% (HIGH conviction)
-    └─ Levels:
-       Entry: R$18.17 | Stop: R$17.26
-       Targets: R$19.99 (2:1) | R$20.90 (3:1)
-
-
-7️⃣  HBOR3.SA - BUY 🟢
-    Price: R$3.16
+1️⃣  HBOR3.SA - BUY 🟢
+    Price: R$3.33
     └─ Drivers:
        • Trend: UPTREND (77% confidence)
-       • Fusion: +0.51
-       • News: +0.00 sentiment
-         😐 Neutral news (no impact)
-       • Position: 15% (HIGH conviction)
+       • News: -0.80 sentiment
+         ⚠️ Negative news headwind (-12% position)
+         📰 Headlines:
+            • Helbor registra queda nas vendas do 3º trimestre, mas a... (Unknown)
+       • Position: 10% (HIGH conviction)
     └─ Levels:
-       Entry: R$3.16 | Stop: R$3.00
-       Targets: R$3.48 (2:1) | R$3.63 (3:1)
+       Entry: R$3.33 | Stop: R$3.00
+       Targets: R$4.00 (2:1) | R$4.33 (3:1)
+    └─ Watch for:
+       ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss
+       ⚠️ Price drops 5%+ from entry in single day → Exit immediately - momentum broken
 
-
-8️⃣  GMAT3.SA - BUY 🟢
-    Price: R$5.54
+2️⃣  SUZB3.SA - BUY 🟢
+    Price: R$57.13
     └─ Drivers:
-       • Trend: UPTREND (76% confidence)
-       • Fusion: +0.48
-       • News: +0.00 sentiment
-         😐 Neutral news (no impact)
-       • Position: 15% (HIGH conviction)
+       • Trend: UPTREND (70% confidence)
+       • News: -0.70 sentiment
+         ⚠️ Negative news headwind (-10% position)
+         📰 Headlines:
+            • Ibovespa hoje com queda de 0,24%... (Investing Brasil)
+       • Position: 10% (HIGH conviction)
     └─ Levels:
-       Entry: R$5.54 | Stop: R$5.26
-       Targets: R$6.09 (2:1) | R$6.37 (3:1)
+       Entry: R$57.13 | Stop: R$51.42
+       Targets: R$68.56 (2:1) | R$74.27 (3:1)
+    └─ Watch for:
+       ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss
+       ⚠️ Price drops 5%+ from entry in single day → Exit immediately - momentum broken
 
-
-9️⃣  ESPA3.SA - BUY 🟢
-    Price: R$1.06
+3️⃣  PCAR3.SA - SELL 🔴
+    Price: R$3.03
     └─ Drivers:
-       • Trend: CONSOLIDATION (75% confidence)
-       • Fusion: +0.46
-       • News: +0.00 sentiment
-         😐 Neutral news (no impact)
-       • Position: 15% (HIGH conviction)
-    └─ Levels:
-       Entry: R$1.06 | Stop: R$1.01
-       Targets: R$1.17 (2:1) | R$1.22 (3:1)
+       • Trend: DOWNTREND (87% confidence)
+       • News: -0.70 sentiment
+         ⚠️ Negative news headwind (-10% position)
+         📰 Headlines:
+            • Ibovespa hoje: Axia (AXIA6;AXIA3) e Hapvida (HAPV3) sal... (Estadao Br)
+            • GPA (PCAR3) chega a cair mais de 10% na sessão e acumu... (Infomoney)
+       • Position: 10% (VERY HIGH conviction)
+    └─ Watch for:
+       ⚠️ Price breaks above 50-day MA with volume → Cover short / consider reversal
+       ⚠️ Major positive news catalyst → Exit position - sentiment shift
 
-
-🔟  SUZB3.SA - BUY 🟢
-    Price: R$57.20
+4️⃣  TOTS3.SA - SELL 🔴
+    Price: R$38.95
     └─ Drivers:
-       • Trend: UPTREND (75% confidence)
-       • Fusion: +0.54
+       • Trend: DOWNTREND (63% confidence)
+       • News: +0.64 sentiment
+         ✅ Positive news boost (+13% position)
+         📰 Headlines:
+            • Por que o Citi reiterou sua recomendação de compra pa... (Money Times)
+       • Position: 10% (MEDIUM-HIGH conviction)
+    └─ Watch for:
+       ⚠️ Price breaks above 50-day MA with volume → Cover short / consider reversal
+       ⚠️ Major positive news catalyst → Exit position - sentiment shift
+
+5️⃣  DIRR3.SA - BUY 🟢
+    Price: R$16.77
+    └─ Drivers:
+       • Trend: UPTREND (80% confidence)
+       • News: +0.50 sentiment
+         ✅ Positive news boost (+10% position)
+         📰 Headlines:
+            • Ibovespa hoje com alta de 1,35%... (Investing Brasil)
+            • XP vê valorização de até 44% para construtoras de a... (Money Times)
+       • Position: 10% (VERY HIGH conviction)
+    └─ Levels:
+       Entry: R$16.77 | Stop: R$15.09
+       Targets: R$20.12 (2:1) | R$21.80 (3:1)
+    └─ Watch for:
+       ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss
+       ⚠️ Price drops 5%+ from entry in single day → Exit immediately - momentum broken
+
+6️⃣  PRNR3.SA - BUY 🟢
+    Price: R$21.50
+    └─ Drivers:
+       • Trend: UPTREND (83% confidence)
+       • News: +0.24 sentiment
+         ✅ Positive news boost (+5% position)
+         📰 Headlines:
+            • Ibovespa hoje com alta de 1,35%... (Investing Brasil)
+       • Position: 10% (VERY HIGH conviction)
+    └─ Levels:
+       Entry: R$21.50 | Stop: R$19.35
+       Targets: R$25.80 (2:1) | R$27.95 (3:1)
+    └─ Watch for:
+       ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss
+
+7️⃣  LWSA3.SA - SELL 🔴
+    Price: R$3.61
+    └─ Drivers:
+       • Trend: DOWNTREND (74% confidence)
+       • News: +0.08 sentiment
+         😐 Neutral news (no impact)
+         📰 Recent:
+            • Dividendos da semana: Petrobras (PETR4) paga JCP e Loca...
+       • Position: 10% (HIGH conviction)
+    └─ Watch for:
+       ⚠️ Price breaks above 50-day MA with volume → Cover short / consider reversal
+       ⚠️ Major positive news catalyst → Exit position - sentiment shift
+
+8️⃣  RAIZ4.SA - SELL 🔴
+    Price: R$0.62
+    └─ Drivers:
+       • Trend: DOWNTREND (75% confidence)
+       • News: -0.05 sentiment
+         😐 Neutral news (no impact)
+         📰 Recent:
+            • Ibovespa hoje: Raízen (RAIZ4) lidera altas e Vale (VAL...
+       • Position: 10% (HIGH conviction)
+    └─ Watch for:
+       ⚠️ Price breaks above 50-day MA with volume → Cover short / consider reversal
+       ⚠️ Major positive news catalyst → Exit position - sentiment shift
+
+9️⃣  UNIP6.SA - BUY 🟢
+    Price: R$69.91
+    └─ Drivers:
+       • Trend: UPTREND (78% confidence)
+       • News: +0.04 sentiment
+         😐 Neutral news (no impact)
+         📰 Recent:
+            • Azul (AZUL53), Axia Energia (AXIA3), Natura (NATU3) e o...
+       • Position: 10% (HIGH conviction)
+    └─ Levels:
+       Entry: R$69.91 | Stop: R$62.92
+       Targets: R$83.89 (2:1) | R$90.88 (3:1)
+    └─ Watch for:
+       ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss
+       ⚠️ Price drops 5%+ from entry in single day → Exit immediately - momentum broken
+
+🔟  QUAL3.SA - BUY 🟢
+    Price: R$2.59
+    └─ Drivers:
+       • Trend: CONSOLIDATION (78% confidence)
        • News: +0.00 sentiment
          😐 Neutral news (no impact)
-       • Position: 15% (HIGH conviction)
+       • Position: 10% (HIGH conviction)
     └─ Levels:
-       Entry: R$57.20 | Stop: R$54.34
-       Targets: R$62.92 (2:1) | R$65.78 (3:1)
-
+       Entry: R$2.59 | Stop: R$2.33
+       Targets: R$3.11 (2:1) | R$3.37 (3:1)
+    └─ Watch for:
+       ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss
+       ⚠️ Price drops 5%+ from entry in single day → Exit immediately - momentum broken
 ======================================================================
-📊 Summary: 75 BUY signals | 28 SELL signals
+📊 Summary: 6 BUY signals | 4 SELL signals
 ======================================================================
