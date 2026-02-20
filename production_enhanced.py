@@ -329,6 +329,21 @@ class EnhancedProductionRunner:
                 confidence = fused['confidence']
                 fused_score = fused['score']
                 
+                # Extract top contributing signals for display
+                category_details = fused.get('category_details', {})
+                top_signals = []
+                for category, details in category_details.items():
+                    for sig_name, sig_signal, sig_strength in details.get('signals', []):
+                        top_signals.append({
+                            'name': sig_name,
+                            'category': category,
+                            'signal': sig_signal,
+                            'strength': sig_strength
+                        })
+                # Sort by strength, take top 5
+                top_signals.sort(key=lambda x: abs(x['strength']), reverse=True)
+                key_indicators = top_signals[:5]
+                
                 # Also get trend for compatibility
                 trend_result = self.trend_detector.detect_trend(data)
                 trend = trend_result.get('consensus', 'neutral')
@@ -401,6 +416,7 @@ class EnhancedProductionRunner:
                 'conviction': conviction,
                 'position_size': position_size,
                 'fused_score': fused_score if self.use_fusion else 0,
+                'key_indicators': key_indicators if self.use_fusion else [],
                 'features': {
                     'volume_momentum': volume_features.get('volume_momentum', 1.0),
                     'unusual_volume': volume_features.get('unusual_volume', False),

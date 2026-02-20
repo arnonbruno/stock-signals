@@ -69,6 +69,7 @@ def analyze_signal_drivers(result: dict) -> dict:
     fused_score = result.get('fused_score', 0)
     news_sentiment = result.get('news_sentiment', 0)
     features = result.get('features', {})
+    key_indicators = result.get('key_indicators', [])  # Top driving indicators
     
     # === TREND DRIVER (more descriptive) ===
     if trend == 'uptrend':
@@ -238,6 +239,10 @@ def analyze_signal_drivers(result: dict) -> dict:
             'action': 'Exit position - sentiment shift',
             'probability': 'Low but high impact'
         })
+    
+    # Add key indicators (top driving signals)
+    if key_indicators:
+        drivers['key_indicators'] = key_indicators
     
     return drivers
 
@@ -416,6 +421,19 @@ def format_recommendation(result: dict, drivers: dict, levels: dict,
         fusion_label = "Strong" if abs(fused_score) > 0.5 else "Moderate"
         direction = "bullish" if fused_score > 0 else "bearish"
         lines.append(f"       • Fusion: {fusion_label} {direction} alignment ({fused_score:+.2f})")
+    
+    # Key indicators (top driving signals)
+    key_indicators = drivers.get('key_indicators', [])
+    if key_indicators:
+        lines.append(f"       • Key Signals:")
+        for ind in key_indicators[:4]:  # Top 4
+            ind_name = ind.get('name', '')
+            ind_signal = ind.get('signal', '')
+            ind_strength = ind.get('strength', 0)
+            # Format signal for readability
+            signal_emoji = '🟢' if ind_signal.lower() in ['bullish', 'buy', 'oversold', 'bullish_crossover'] else \
+                          '🔴' if ind_signal.lower() in ['bearish', 'sell', 'overbought', 'bearish_crossover'] else '⚪'
+            lines.append(f"         {signal_emoji} {ind_name}: {ind_signal} ({ind_strength:.0%})")
     
     # News sentiment with headlines
     lines.append(f"       • News: {news_sentiment:+.2f} sentiment")
