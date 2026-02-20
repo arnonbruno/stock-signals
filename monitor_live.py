@@ -430,9 +430,18 @@ def format_recommendation(result: dict, drivers: dict, levels: dict,
             ind_name = ind.get('name', '')
             ind_signal = ind.get('signal', '')
             ind_strength = ind.get('strength', 0)
-            # Format signal for readability
-            signal_emoji = '🟢' if ind_signal.lower() in ['bullish', 'buy', 'oversold', 'bullish_crossover'] else \
-                          '🔴' if ind_signal.lower() in ['bearish', 'sell', 'overbought', 'bearish_crossover'] else '⚪'
+            # Format signal for readability - expanded bullish/bearish signals
+            bullish_signals = ['bullish', 'buy', 'oversold', 'bullish_crossover', 'accumulation', 
+                              'above_vwap', 'above_ma', 'golden_cross', 'uptrend', 'near_lower']
+            bearish_signals = ['bearish', 'sell', 'overbought', 'bearish_crossover', 'distribution',
+                              'below_vwap', 'below_ma', 'death_cross', 'downtrend', 'below_lower', 'near_upper']
+            signal_lower = ind_signal.lower()
+            if any(b in signal_lower for b in bullish_signals):
+                signal_emoji = '🟢'
+            elif any(b in signal_lower for b in bearish_signals):
+                signal_emoji = '🔴'
+            else:
+                signal_emoji = '⚪'
             lines.append(f"         {signal_emoji} {ind_name}: {ind_signal} ({ind_strength:.0%})")
     
     # News sentiment with headlines
