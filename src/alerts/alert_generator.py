@@ -51,13 +51,26 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
         lines.append(f"       • Trend: {r['trend'].upper()} ({trend_conf:.0f}% confidence)")
         
         # News
-        if r.get('news_sentiment'):
-            ns = r['news_sentiment']
-            lines.append(f"       • News: {ns:+.2f} sentiment")
-            if ns > 0.1:
-                lines.append(f"         ✅ Positive news boost")
-            elif ns < -0.1:
-                lines.append(f"         ⚠️ Negative news headwind")
+        news_sentiment = r.get('news_sentiment', 0)
+        news_articles = r.get('news_articles', [])
+        
+        if news_sentiment or news_articles:
+            lines.append(f"       • News: {news_sentiment:+.2f} sentiment")
+            if news_sentiment > 0.15:
+                lines.append(f"         ✅ Positive news boost (+{int(news_sentiment*10)}% score)")
+            elif news_sentiment < -0.15:
+                lines.append(f"         ⚠️ Negative news headwind ({int(news_sentiment*10)}% score)")
+            else:
+                lines.append(f"         😐 Neutral news (no impact)")
+            
+            # Show top 2 headlines
+            if news_articles:
+                lines.append(f"         📰 Headlines:")
+                for article in news_articles[:2]:
+                    headline = article.get('title', article.get('headline', ''))[:60]
+                    source = article.get('source', '')
+                    if headline:
+                        lines.append(f"            • {headline}{'...' if len(headline) == 60 else ''} ({source})")
         
         # Fundamentals
         if fund:
