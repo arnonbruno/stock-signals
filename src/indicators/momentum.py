@@ -159,8 +159,13 @@ class MomentumIndicators:
                 strength = 0.8
                 interpretation = 'Bullish MACD crossover - buy signal'
             else:
+                # Avoid division by zero
+                macd_std = abs(macd.std())
+                if macd_std > 0:
+                    strength = min(1.0, abs(current_hist) / macd_std * 2)
+                else:
+                    strength = 0.5
                 signal = 'bullish'
-                strength = min(1.0, abs(current_hist) / abs(macd.std()) * 2)
                 interpretation = f'Bullish MACD ({current_hist:.4f})'
         else:
             if prev_hist >= 0 and current_hist < 0:
@@ -168,8 +173,13 @@ class MomentumIndicators:
                 strength = 0.8
                 interpretation = 'Bearish MACD crossover - sell signal'
             else:
+                # Avoid division by zero
+                macd_std = abs(macd.std())
+                if macd_std > 0:
+                    strength = min(1.0, abs(current_hist) / macd_std * 2)
+                else:
+                    strength = 0.5
                 signal = 'bearish'
-                strength = min(1.0, abs(current_hist) / abs(macd.std()) * 2)
                 interpretation = f'Bearish MACD ({current_hist:.4f})'
         
         # Check for zero line crossover

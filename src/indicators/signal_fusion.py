@@ -71,13 +71,17 @@ class SignalFusion:
     }
     
     # Signal direction mappings
+    # BULLISH signals: indicate upward price movement or oversold conditions (buying opportunities)
     BULLISH_SIGNALS = ['bullish', 'buy', 'oversold', 'accumulation', 
-                       'bullish_divergence', 'above_vwap', 'above_upper',
-                       'above_channel', 'golden_cross', 'bullish_crossover']
+                       'bullish_divergence', 'above_vwap', 'above_ma', 'golden_cross', 
+                       'bullish_crossover', 'uptrend', 'near_lower', 'below_lower', 
+                       'below_channel']  # below_lower/below_channel = oversold conditions
     
+    # BEARISH signals: indicate downward price movement or overbought conditions (selling opportunities)
     BEARISH_SIGNALS = ['bearish', 'sell', 'overbought', 'distribution',
-                       'bearish_divergence', 'below_vwap', 'below_lower',
-                       'below_channel', 'death_cross', 'bearish_crossover']
+                       'bearish_divergence', 'below_vwap', 'below_ma', 'death_cross', 
+                       'bearish_crossover', 'downtrend', 'near_upper', 'above_upper', 
+                       'above_channel']  # above_upper/above_channel = overextended conditions
     
     def __init__(self):
         self.signals: List[IndicatorSignal] = []

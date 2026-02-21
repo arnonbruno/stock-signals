@@ -523,8 +523,8 @@ for candidate in top_candidates:
 ### Cron Setup
 
 ```bash
-# Hourly during market hours (9:00-20:00 Brasilia)
-0 9-20 * * 1-5 cd /path/to/stock-signals && python monitor_live.py >> logs/monitor.log 2>&1
+# Every 10 minutes during market hours (9:00-17:00 Brasilia)
+*/10 9-17 * * 1-5 cd /path/to/stock-signals && python monitor_live.py >> logs/monitor.log 2>&1
 ```
 
 ### Requirements
@@ -536,8 +536,8 @@ for candidate in top_candidates:
 ### Monitoring
 
 - **Universe**: 150 stocks (65 IBOV + 85 SMLL)
-- **Frequency**: Hourly during market hours
-- **Hours**: 9:00-20:00 GMT-3 (market hours + extended)
+- **Frequency**: Every 10 minutes during market hours
+- **Hours**: 9:00-17:00 GMT-3 (market hours)
 - **Processing time**: ~11 minutes per cycle
 - **Output**: Telegram alerts + JSON files
 
