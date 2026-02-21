@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Simplified Production Runner - Working version
-Generates buy/sell signals for IBOV stocks using validated backtest logic
+Production Runner with Integrated Fundamental Analysis
+Generates buy/sell signals combining technical analysis + value investing metrics
 """
 
 import sys
@@ -14,63 +14,55 @@ import numpy as np
 from datetime import datetime, timedelta
 import argparse
 from typing import Dict, List
+import json
+from pathlib import Path
 
 from src.signals.trend_detector_v2 import TrendDetectorV2
 from src.news.free_news_client import FreeNewsClient
 from src.features.feature_engineering import get_feature_engineer
+from src.fundamentals.integration import FundamentalIntegrator, format_integrated_signal
 
-# IBOV Active Tickers (65 valid stocks - delisted removed)
-IBOV_TICKERS = [
+
+def load_tickers() -> List[str]:
+    """Load validated tickers from JSON file."""
+    config_path = Path(__file__).parent / 'data' / 'validated_tickers.json'
+    
+    if config_path.exists():
+        with open(config_path, 'r') as f:
+            data = json.load(f)
+        tickers = data.get('all_tickers', [])
+        # Add .SA suffix for Yahoo Finance
+        return [f"{t}.SA" if not t.endswith('.SA') else t for t in tickers]
+    else:
+        # Fallback to hardcoded list
+        print("⚠️ validated_tickers.json not found, using fallback list")
+        return IBOV_FALLBACK + SMLL_FALLBACK
+
+
+# Fallback tickers (used only if JSON file missing)
+IBOV_FALLBACK = [
     'PETR4.SA', 'VALE3.SA', 'ITUB4.SA', 'BBDC4.SA', 'BBAS3.SA', 'ABEV3.SA',
-    'B3SA3.SA', 'SUZB3.SA', 'RENT3.SA', 'WEGE3.SA', 'MGLU3.SA', 'PCAR3.SA',
-    'LREN3.SA', 'RAIZ4.SA', 'GGBR4.SA', 'ASAI3.SA', 'RDOR3.SA',
-    'PETR3.SA', 'ITSA4.SA', 'BBDC3.SA', 'CMIG4.SA', 'ENGI11.SA', 'EQTL3.SA',
-    'GGPS3.SA', 'GOAU4.SA', 'HAPV3.SA', 'HYPE3.SA', 'IGTI11.SA',
-    'IRBR3.SA', 'KLBN11.SA', 'LWSA3.SA', 'MRVE3.SA', 'MULT3.SA',
-    'PRIO3.SA', 'QUAL3.SA', 'RAIL3.SA', 'RADL3.SA',
-    'SANB11.SA', 'SBSP3.SA', 'SMTO3.SA', 'TAEE11.SA', 'TIMS3.SA',
-    'TOTS3.SA', 'UGPA3.SA', 'USIM5.SA', 'VBBR3.SA', 'VIVT3.SA',
-    'YDUQ3.SA', 'AZUL4.SA', 'BPAC11.SA', 'CASH3.SA',
-    'COGN3.SA', 'CPFE3.SA', 'CSAN3.SA', 'CVCB3.SA',
-    'ECOR3.SA', 'FLRY3.SA', 'RECV3.SA', 'BEEF3.SA', 'CYRE3.SA', 'DXCO3.SA',
-    'SLCE3.SA', 'VIVA3.SA', 'ALOS3.SA', 'ALPA4.SA'
+    'B3SA3.SA', 'SUZB3.SA', 'RENT3.SA', 'WEGE3.SA'
 ]
 
-SMLL_TICKERS = [
-    'AURE3.SA', 'BMOB3.SA', 'BRAP4.SA', 'CMIN3.SA', 'DIRR3.SA', 'ESPA3.SA',
-    'EVEN3.SA', 'GRND3.SA', 'IFCM3.SA', 'KEPL3.SA', 'LAVV3.SA', 'LEVE3.SA',
-    'MDIA3.SA', 'MILS3.SA', 'ODPV3.SA', 'ORVR3.SA', 'POMO4.SA', 'POSI3.SA',
-    'PSSA3.SA', 'PTBL3.SA', 'RAPT4.SA', 'SAPR11.SA', 'SEQL3.SA', 'SIMH3.SA',
-    'TEND3.SA', 'TGMA3.SA', 'TRIS3.SA', 'UNIP6.SA', 'VLID3.SA',
-    'AMBP3.SA', 'AMAR3.SA', 'BMGB4.SA', 'BRKM5.SA', 'CSED3.SA',
-    'DESK3.SA', 'EZTC3.SA', 'FESA4.SA', 'GGBR3.SA', 'GMAT3.SA', 'HBOR3.SA',
-    'JHSF3.SA', 'JSLG3.SA', 'LIGT3.SA', 'LPSB3.SA', 'MTRE3.SA',
-    'ONCO3.SA', 'OPCT3.SA', 'PINE4.SA', 'PRNR3.SA', 'RANI3.SA', 'ROMI3.SA',
-    'SEER3.SA', 'SGPS3.SA', 'SOJA3.SA', 'TCSA3.SA',
-    'TFCO4.SA', 'TUPY3.SA', 'UCAS3.SA', 'VULC3.SA', 'WIZC3.SA', 'ALUP11.SA',
-    'AZZA3.SA', 'BLAU3.SA',
-    'CEAB3.SA', 'CGRA4.SA', 'CTSA3.SA', 'FHER3.SA',
-    'FRAS3.SA', 'GFSA3.SA', 'HETA4.SA', 'INTB3.SA', 'JFEN3.SA',
-    'LOGN3.SA', 'LOGG3.SA', 'MEAL3.SA',
-    'MELK3.SA', 'MGEL4.SA', 'MOVI3.SA', 'MRSA3B.SA', 'NEOE3.SA', 'PGMN3.SA',
-    'PLPL3.SA', 'PRNR3.SA', 'SHUL4.SA', 'SYNE3.SA'
+SMLL_FALLBACK = [
+    'CURY3.SA', 'EZTC3.SA', 'JHSF3.SA', 'CYRE3.SA', 'MRVE3.SA'
 ]
-
-TICKERS = IBOV_TICKERS + SMLL_TICKERS  # 184 total
 
 from multiprocessing import Pool, cpu_count
 import functools
 
 
 class SimpleProductionRunner:
-    """Simple production runner using only validated TrendDetectorV2"""
+    """Production runner with integrated fundamental + technical analysis"""
     
     # Class-level model cache (shared across instances)
     _model_cache = {}
     
-    def __init__(self, use_news: bool = True, n_workers: int = None):
+    def __init__(self, use_news: bool = True, use_fundamentals: bool = True, n_workers: int = None):
         self.trend_detector = TrendDetectorV2()
         self.use_news = use_news
+        self.use_fundamentals = use_fundamentals
         # Cap workers at 8 to prevent resource exhaustion
         max_workers = min(cpu_count(), 8)
         self.n_workers = min(n_workers, max_workers) if n_workers else max_workers
@@ -81,7 +73,11 @@ class SimpleProductionRunner:
                 self._model_cache['news_client'] = FreeNewsClient()
             self.news_client = self._model_cache['news_client']
         
-        print(f"✅ Sistema inicializado (news={'ON' if use_news else 'OFF'}, workers={self.n_workers})")
+        if use_fundamentals:
+            self.fundamental_integrator = FundamentalIntegrator()
+        
+        print(f"✅ Sistema inicializado (news={'ON' if use_news else 'OFF'}, "
+              f"fundamentals={'ON' if use_fundamentals else 'OFF'}, workers={self.n_workers})")
     
     def calculate_kelly_position(self, data: pd.DataFrame, confidence: float) -> float:
         """
@@ -303,6 +299,7 @@ class SimpleProductionRunner:
             signal = "HOLD"
             position_size = 0.0
             conviction = 0.0
+            technical_score = confidence * 100  # Convert to 0-100 scale
             
             # Minimum confidence threshold from centralized config
             MIN_CONFIDENCE = config.MIN_CONFIDENCE
@@ -334,6 +331,57 @@ class SimpleProductionRunner:
                 conviction = -confidence
                 position_size = 1.0  # Exit completely
             
+            # Integrate fundamental analysis
+            fundamental_data = None
+            if self.use_fundamentals:
+                integrated_score = self.fundamental_integrator.integrate(
+                    ticker=ticker,
+                    technical_score=technical_score,
+                    trend=trend,
+                    confidence=confidence
+                )
+                
+                # Override signal based on integrated analysis
+                signal = integrated_score.recommendation
+                conviction = integrated_score.composite_score / 100  # Normalize to 0-1
+                
+                # Adjust position size based on fundamentals
+                if signal in ["BUY", "STRONG_BUY"]:
+                    # High quality stocks can get larger positions
+                    if integrated_score.is_quality_pick:
+                        position_size = min(0.80, position_size * 1.2)
+                    
+                    # Value picks get moderate positions (contrarian)
+                    if integrated_score.is_value_pick:
+                        position_size = max(0.15, min(0.50, position_size))
+                    
+                    # Poor fundamentals reduce position size
+                    if integrated_score.fundamental_score < 40:
+                        position_size *= 0.5
+                    
+                    # Avoid flag blocks trading entirely
+                    if integrated_score.is_avoid:
+                        signal = "HOLD"
+                        position_size = 0.0
+                
+                fundamental_data = {
+                    'composite_score': integrated_score.composite_score,
+                    'fundamental_grade': integrated_score.fundamental_grade,
+                    'value_score': integrated_score.value_score,
+                    'quality_score': integrated_score.quality_score,
+                    'is_value_pick': integrated_score.is_value_pick,
+                    'is_quality_pick': integrated_score.is_quality_pick,
+                    'is_momentum_pick': integrated_score.is_momentum_pick,
+                    'is_avoid': integrated_score.is_avoid,
+                    'pe_ratio': integrated_score.pe_ratio,
+                    'pb_ratio': integrated_score.pb_ratio,
+                    'roe': integrated_score.roe,
+                    'div_yield': integrated_score.div_yield,
+                    'strengths': integrated_score.strengths,
+                    'weaknesses': integrated_score.weaknesses,
+                    'action_notes': integrated_score.action_notes,
+                }
+            
             return {
                 "ticker": ticker,
                 "price": current_price,
@@ -344,7 +392,8 @@ class SimpleProductionRunner:
                 "signal": signal,
                 "conviction": conviction,
                 "position_size": position_size,
-                "features": feature_summary  # Add feature engineering data
+                "features": feature_summary,  # Add feature engineering data
+                "fundamentals": fundamental_data,  # Add fundamental data
             }
             
         except Exception as e:
@@ -395,14 +444,15 @@ class SimpleProductionRunner:
         Run analysis on all tickers.
         
         Args:
-            tickers: List of tickers to analyze (default: all IBOV + SMLL)
+            tickers: List of tickers to analyze (default: all from validated_tickers.json)
             parallel: Use parallel processing (default: True, ~8x faster)
         """
         if tickers is None:
-            tickers = TICKERS
+            tickers = load_tickers()
         
         print(f"\n{'='*70}")
         print(f"🚀 PRODUÇÃO - {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+        print(f"📊 Analyzing {len(tickers)} tickers (IBOV + SMLL)")
         print(f"{'='*70}\n")
         
         results = []
@@ -432,7 +482,7 @@ class SimpleProductionRunner:
         return results
     
     def _print_summary(self, results: List[Dict]):
-        """Print final table"""
+        """Print final table with fundamental data"""
         if not results:
             print("\n❌ No results")
             return
@@ -445,38 +495,75 @@ class SimpleProductionRunner:
         print(f"{'='*70}\n")
         
         # Header
-        print(f"{'Ticker':<10} {'Preço':>8} {'Sinal':<6} {'Trend':<10} {'News':>6} {'Pos%':>5}")
+        if self.use_fundamentals:
+            print(f"{'Ticker':<10} {'Preço':>8} {'Sinal':<8} {'Grade':>4} {'Val':>4} {'Qual':>4} {'Pos%':>5}")
+        else:
+            print(f"{'Ticker':<10} {'Preço':>8} {'Sinal':<6} {'Trend':<10} {'News':>6} {'Pos%':>5}")
         print(f"{'-'*70}")
         
         # Rows
         for r in results_sorted:
+            signal = r['signal']
             signal_emoji = {
+                "STRONG_BUY": "🚀",
                 "BUY": "🟢",
+                "HOLD": "🟡",
                 "SELL": "🔴",
-                "HOLD": "⚪"
-            }[r['signal']]
+                "STRONG_SELL": "💀"
+            }.get(signal, "⚪")
             
             pos_pct = f"{r['position_size']*100:.0f}%" if r['position_size'] > 0 else "-"
-            news_str = f"{r['news_sentiment']:+.2f}" if self.use_news else "N/A"
             
-            # Add feature indicators
-            features = r.get('features', {})
-            feature_indicators = []
-            if features.get('unusual_volume'):
-                feature_indicators.append('📈')
-            if features.get('volatility_regime') == 'high':
-                feature_indicators.append('⚡')
-            feature_str = ''.join(feature_indicators) if feature_indicators else ''
-            
-            print(
-                f"{r['ticker']:<10} "
-                f"R${r['price']:>7.2f} "
-                f"{signal_emoji} {r['signal']:<4} "
-                f"{r['trend']:<10} "
-                f"{news_str:>6} "
-                f"{pos_pct:>5} "
-                f"{feature_str}"
-            )
+            # Fundamental indicators
+            fund = r.get('fundamentals', {})
+            if self.use_fundamentals and fund:
+                grade = fund.get('fundamental_grade', 'N/A')
+                value = f"{fund.get('value_score', 0):.0f}" if fund.get('value_score') else "-"
+                quality = f"{fund.get('quality_score', 0):.0f}" if fund.get('quality_score') else "-"
+                
+                # Add fundamental indicators
+                fund_indicators = []
+                if fund.get('is_value_pick'):
+                    fund_indicators.append('💰')
+                if fund.get('is_quality_pick'):
+                    fund_indicators.append('⭐')
+                if fund.get('is_momentum_pick'):
+                    fund_indicators.append('📈')
+                if fund.get('is_avoid'):
+                    fund_indicators.append('⚠️')
+                fund_str = ''.join(fund_indicators)
+                
+                print(
+                    f"{r['ticker']:<10} "
+                    f"R${r['price']:>7.2f} "
+                    f"{signal_emoji} {signal:<6} "
+                    f"{grade:>4} "
+                    f"{value:>4} "
+                    f"{quality:>4} "
+                    f"{pos_pct:>5} "
+                    f"{fund_str}"
+                )
+            else:
+                # Original format without fundamentals
+                news_str = f"{r['news_sentiment']:+.2f}" if self.use_news else "N/A"
+                
+                features = r.get('features', {})
+                feature_indicators = []
+                if features.get('unusual_volume'):
+                    feature_indicators.append('📈')
+                if features.get('volatility_regime') == 'high':
+                    feature_indicators.append('⚡')
+                feature_str = ''.join(feature_indicators) if feature_indicators else ''
+                
+                print(
+                    f"{r['ticker']:<10} "
+                    f"R${r['price']:>7.2f} "
+                    f"{signal_emoji} {signal:<4} "
+                    f"{r['trend']:<10} "
+                    f"{news_str:>6} "
+                    f"{pos_pct:>5} "
+                    f"{feature_str}"
+                )
         
         # Stats
         buy = [r for r in results if r['signal'] == "BUY"]
@@ -492,33 +579,84 @@ class SimpleProductionRunner:
             print(f"📰 NEWS ANALYSIS DETAILS")
             print(f"{'='*70}\n")
             
-            for r in results_sorted:
-                articles = r.get('news_articles', [])
-                sentiment = r.get('news_sentiment', 0.0)
+            # Show fundamental details for top signals
+            if self.use_fundamentals:
+                print(f"\n{'='*70}")
+                print(f"📊 FUNDAMENTAL ANALYSIS - TOP SIGNALS")
+                print(f"{'='*70}\n")
                 
-                if articles:
-                    print(f"📊 {r['ticker']} - Sentiment: {sentiment:+.2f} ({len(articles)} articles)")
-                    for i, article in enumerate(articles[:3], 1):  # Show top 3 articles
-                        title = article.get('title', 'No title')[:70]
-                        art_sentiment = article.get('sentiment', 0.0)
-                        date = article.get('date', 'N/A')
-                        print(f"   [{i}] ({art_sentiment:+.2f}) {title}...")
-                        print(f"       Date: {date} | Source: {article.get('source', 'unknown')}")
-                    if len(articles) > 3:
-                        print(f"   ... and {len(articles) - 3} more articles")
-                else:
-                    print(f"📊 {r['ticker']} - No news found (Sentiment: {sentiment:+.2f})")
-                print()
+                # Show top 5 BUY signals
+                buy_signals = [r for r in results_sorted if r['signal'] in ['BUY', 'STRONG_BUY']][:5]
+                if buy_signals:
+                    print("🟢 TOP BUY SIGNALS:\n")
+                    for r in buy_signals:
+                        fund = r.get('fundamentals', {})
+                        if fund:
+                            print(f"  {r['ticker']} - {r['signal']} @ R${r['price']:.2f}")
+                            print(f"    Grade: {fund.get('fundamental_grade')} | "
+                                  f"Value: {fund.get('value_score', 0):.0f} | "
+                                  f"Quality: {fund.get('quality_score', 0):.0f}")
+                            if fund.get('pe_ratio'):
+                                print(f"    P/E: {fund['pe_ratio']:.1f} | "
+                                      f"P/B: {fund.get('pb_ratio', 0):.2f} | "
+                                      f"ROE: {fund.get('roe', 0):.1f}% | "
+                                      f"Div: {fund.get('div_yield', 0):.1f}%")
+                            if fund.get('strengths'):
+                                print(f"    ✅ {', '.join(fund['strengths'][:2])}")
+                            if fund.get('action_notes'):
+                                for note in fund['action_notes'][:2]:
+                                    print(f"    {note}")
+                            print()
+                
+                # Show AVOID stocks
+                avoid_stocks = [r for r in results_sorted if r.get('fundamentals', {}).get('is_avoid')]
+                if avoid_stocks:
+                    print("⚠️ AVOID (Poor fundamentals + Poor technicals):\n")
+                    for r in avoid_stocks[:5]:
+                        fund = r.get('fundamentals', {})
+                        print(f"  {r['ticker']} - {fund.get('fundamental_grade')} grade, "
+                              f"Value: {fund.get('value_score', 0):.0f}, Quality: {fund.get('quality_score', 0):.0f}")
+                        if fund.get('weaknesses'):
+                            print(f"    ❌ {', '.join(fund['weaknesses'][:2])}")
+                    print()
+            
+            # News details (if enabled)
+            if self.use_news:
+                print(f"\n{'='*70}")
+                print(f"📰 NEWS ANALYSIS DETAILS")
+                print(f"{'='*70}\n")
+                
+                for r in results_sorted[:10]:  # Top 10 only
+                    articles = r.get('news_articles', [])
+                    sentiment = r.get('news_sentiment', 0.0)
+                    
+                    if articles:
+                        print(f"📊 {r['ticker']} - Sentiment: {sentiment:+.2f} ({len(articles)} articles)")
+                        for i, article in enumerate(articles[:3], 1):  # Show top 3 articles
+                            title = article.get('title', 'No title')[:70]
+                            art_sentiment = article.get('sentiment', 0.0)
+                            date = article.get('date', 'N/A')
+                            print(f"   [{i}] ({art_sentiment:+.2f}) {title}...")
+                            print(f"       Date: {date} | Source: {article.get('source', 'unknown')}")
+                        if len(articles) > 3:
+                            print(f"   ... and {len(articles) - 3} more articles")
+                    else:
+                        print(f"📊 {r['ticker']} - No news found (Sentiment: {sentiment:+.2f})")
+                    print()
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Simple Production Runner")
+    parser = argparse.ArgumentParser(description="Production Runner with Fundamental Analysis")
     parser.add_argument("--ticker", type=str, help="Single ticker (ex: PETR4.SA)")
     parser.add_argument("--no-news", action="store_true", help="Disable news (faster)")
+    parser.add_argument("--no-fundamentals", action="store_true", help="Disable fundamentals (technical only)")
     
     args = parser.parse_args()
     
-    runner = SimpleProductionRunner(use_news=not args.no_news)
+    runner = SimpleProductionRunner(
+        use_news=not args.no_news,
+        use_fundamentals=not args.no_fundamentals
+    )
     
     if args.ticker:
         runner.run(tickers=[args.ticker])

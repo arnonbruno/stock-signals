@@ -77,8 +77,22 @@ class FundamentalIntegrator:
     
     def __init__(self, fundamentals_path: Optional[Path] = None):
         """Initialize with path to fundamental scores cache."""
-        self.fundamentals_path = fundamentals_path or \
-            Path(__file__).parent.parent / 'data' / 'fundamentals' / 'fundamental_scores.json'
+        if fundamentals_path:
+            self.fundamentals_path = fundamentals_path
+        else:
+            # Find the project root (where data/ folder is)
+            # Walk up from this file until we find data/fundamentals/
+            current = Path(__file__).resolve().parent
+            for _ in range(5):  # Max 5 levels up
+                candidate = current / 'data' / 'fundamentals' / 'fundamental_scores.json'
+                if candidate.exists():
+                    self.fundamentals_path = candidate
+                    break
+                current = current.parent
+            else:
+                # Fallback to relative path
+                self.fundamentals_path = Path(__file__).parent.parent.parent / 'data' / 'fundamentals' / 'fundamental_scores.json'
+        
         self._fundamentals_cache = None
     
     def load_fundamentals(self) -> Dict:
