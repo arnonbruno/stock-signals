@@ -257,5 +257,30 @@
         "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQTXlaV0EzVGJHc0E5dThpM2FaaFFlZ21XTzAtY2ZRTWFqSHFfa0w4TGd5V2VEM0QzN2VHYzQtWktsTG85QnBneFVWNzlKeHdGbWRGNDI0ZjNkV1l5MVZZUTRfTThNS3hYZnRTMmlOT1I0S2xkcVZ5aDNyeGI2OHRVVnBsWjVQZHJUQy1OOURfZ1J1NUItUEdhRTBHZ3dEZzRybmNyWFpHSXVzNW53RzV3Rzd6MTNrNFQ3ajZlUVZ3?oc=5"
       }
     ]
+  },
+  "ITUB4.SA": {
+    "sentiment": 0.2211345178880868,
+    "timestamp": "2026-02-21T10:34:25.882817",
+    "source": "newsdata.io",
+    "articles": [
+      {
+        "title": "Ibovespa hoje: Vale (VALE3) e Santander (SANB11) saltam mais de 3%; Rai\u0301zen (RAIZ4) tomba",
+        "summary": "O Ibovespa hoje fechou em alta, depois de bater um novo recorde intradia\u0301rio. A principal refere\u0302ncia da B3 finalizou esta sexta-feira (20) em valoriz",
+        "source_publication": "Estadao Br",
+        "link": "https://einvestidor.estadao.com.br/mercado/ibovespa-hoje-vale-vale3-santander-sanb11-saltam-raizen-raiz4-tomba/"
+      },
+      {
+        "title": "Proximidade de corte da Selic abre novas apostas entre gestoras; veja as estrate\u0301gias",
+        "summary": "A ata do Comite\u0302 de Poli\u0301tica Moneta\u0301ria (Copom) relativa a\u0300 reunia\u0303o de janeiro reforc\u0327ou as perspectivas de que o primeiro corte na Selic, provavelm",
+        "source_publication": "Estadao Br",
+        "link": "https://einvestidor.estadao.com.br/investimentos/proximidade-corte-taxa-selic-incentiva-posicoes-aplicadas-di-curto/"
+      },
+      {
+        "title": "Vale (VALE3) sustenta Ibovespa em dia de vencimento de opc\u0327o\u0303es; Petrobras (PETR4) pressiona",
+        "summary": "O Ibovespa afastava-se das mi\u0301nimas nesta sexta-feira e rondava os 189 mil pontos no melhor momento do prega\u0303o, em sessa\u0303o marcada pelo vencimento de ",
+        "source_publication": "Money Times",
+        "link": "https://www.moneytimes.com.br/vale-vale3-sustenta-ibovespa-em-dia-de-vencimento-de-opcoes-petrobras-petr4-cede-kda/"
+      }
+    ]
   }
 }
