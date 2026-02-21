@@ -62,8 +62,8 @@
       "revenue": 4432.06,
       "market_cap": 8510.95,
       "price": 12.46,
-      "sector": "Tecidos, Vestuário e Calçados",
-      "subsector": "Calçados",
+      "sector": "Tecidos, Vestu\u00e1rio e Cal\u00e7ados",
+      "subsector": "Cal\u00e7ados",
       "company_name": "ALPARGATAS ON N1"
     },
     "ALPA4": {
@@ -94,8 +94,8 @@
       "revenue": 4432.06,
       "market_cap": 10170.8,
       "price": 14.89,
-      "sector": "Tecidos, Vestuário e Calçados",
-      "subsector": "Calçados",
+      "sector": "Tecidos, Vestu\u00e1rio e Cal\u00e7ados",
+      "subsector": "Cal\u00e7ados",
       "company_name": "ALPARGATAS PN N1"
     },
     "ALSO3": {
@@ -158,8 +158,8 @@
       "revenue": 1493.5,
       "market_cap": 487.84,
       "price": 0.95,
-      "sector": "Comércio",
-      "subsector": "Tecidos, Vestuário e Calçados",
+      "sector": "Com\u00e9rcio",
+      "subsector": "Tecidos, Vestu\u00e1rio e Cal\u00e7ados",
       "company_name": "LOJAS MARISA ON NM"
     },
     "ARZZ3": {
@@ -222,7 +222,7 @@
       "revenue": 77307.0,
       "market_cap": 12858.2,
       "price": 9.5,
-      "sector": "Comércio e Distribuição",
+      "sector": "Com\u00e9rcio e Distribui\u00e7\u00e3o",
       "subsector": "Alimentos",
       "company_name": "ASSAI ON NM"
     },
@@ -255,7 +255,7 @@
       "market_cap": 591093.0,
       "price": 0.81,
       "sector": "Transporte",
-      "subsector": "Transporte Aéreo",
+      "subsector": "Transporte A\u00e9reo",
       "company_name": "AZUL PN"
     },
     "B3SA3": {
@@ -286,8 +286,8 @@
       "revenue": 10837.6,
       "market_cap": 95218.3,
       "price": 18.08,
-      "sector": "Serviços Financeiros Diversos",
-      "subsector": "Serviços Financeiros Diversos",
+      "sector": "Servi\u00e7os Financeiros Diversos",
+      "subsector": "Servi\u00e7os Financeiros Diversos",
       "company_name": "B3 ON"
     },
     "BALM3": {
@@ -350,7 +350,7 @@
       "revenue": null,
       "market_cap": 154675.0,
       "price": 26.99,
-      "sector": "Intermediários Financeiros",
+      "sector": "Intermedi\u00e1rios Financeiros",
       "subsector": "Bancos",
       "company_name": "BANCO DO BRASIL S.A. ON"
     },
@@ -382,7 +382,7 @@
       "revenue": null,
       "market_cap": 198494.0,
       "price": 18.74,
-      "sector": "Intermediários Financeiros",
+      "sector": "Intermedi\u00e1rios Financeiros",
       "subsector": "Bancos",
       "company_name": "BANCO BRADESCO S.A. ON N1"
     },
@@ -414,7 +414,7 @@
       "revenue": null,
       "market_cap": 230482.0,
       "price": 21.76,
-      "sector": "Intermediários Financeiros",
+      "sector": "Intermedi\u00e1rios Financeiros",
       "subsector": "Bancos",
       "company_name": "BANCO BRADESCO S.A. PN N1"
     },
@@ -446,7 +446,7 @@
       "revenue": 0.0,
       "market_cap": 68100.0,
       "price": 34.05,
-      "sector": "Previdência e Seguros",
+      "sector": "Previd\u00eancia e Seguros",
       "subsector": "Seguradoras",
       "company_name": "BBSEGURIDADE ON NM"
     },
@@ -510,7 +510,7 @@
       "revenue": 1769.04,
       "market_cap": 2670.28,
       "price": 11.45,
-      "sector": "Comércio e Distribuição",
+      "sector": "Com\u00e9rcio e Distribui\u00e7\u00e3o",
       "subsector": "Medicamentos e Outros Produtos",
       "company_name": "BLAU ON NM"
     },
@@ -542,8 +542,8 @@
       "revenue": 1634.34,
       "market_cap": 2140.21,
       "price": 25.0,
-      "sector": "Programas e Serviços",
-      "subsector": "Programas e Serviços",
+      "sector": "Programas e Servi\u00e7os",
+      "subsector": "Programas e Servi\u00e7os",
       "company_name": "BEMOBI TECH ON NM"
     },
     "BPAC11": {
@@ -574,7 +574,7 @@
       "revenue": null,
       "market_cap": 241882.0,
       "price": 62.18,
-      "sector": "Intermediários Financeiros",
+      "sector": "Intermedi\u00e1rios Financeiros",
       "subsector": "Bancos",
       "company_name": "BTGP BANCO UNT"
     },
@@ -606,8 +606,8 @@
       "revenue": 0.0,
       "market_cap": 9339.98,
       "price": 23.76,
-      "sector": "Mineração",
-      "subsector": "Minerais Metálicos",
+      "sector": "Minera\u00e7\u00e3o",
+      "subsector": "Minerais Met\u00e1licos",
       "company_name": "BRADESPAR S/A PN N1"
     },
     "BRFS3": {
@@ -670,8 +670,8 @@
       "revenue": 73768.0,
       "market_cap": 7844.53,
       "price": 9.84,
-      "sector": "Químicos",
-      "subsector": "Petroquímicos",
+      "sector": "Qu\u00edmicos",
+      "subsector": "Petroqu\u00edmicos",
       "company_name": "BRASKEM PNA N1"
     },
     "BSEV3": {
@@ -703,7 +703,7 @@
       "market_cap": 9183.86,
       "price": 9.0,
       "sector": "Alimentos Processados",
-      "subsector": "Açucar e Alcool",
+      "subsector": "A\u00e7ucar e Alcool",
       "company_name": "BIOSEV ON NM"
     },
     "CAML3": {
@@ -766,8 +766,8 @@
       "revenue": 426.552,
       "market_cap": 398.556,
       "price": 3.52,
-      "sector": "Programas e Serviços",
-      "subsector": "Programas e Serviços",
+      "sector": "Programas e Servi\u00e7os",
+      "subsector": "Programas e Servi\u00e7os",
       "company_name": "MELIUZ ON NM"
     },
     "CBAV3": {
@@ -798,8 +798,8 @@
       "revenue": 8874.3,
       "market_cap": 6614.9,
       "price": 10.16,
-      "sector": "Mineração",
-      "subsector": "Minerais Metálicos",
+      "sector": "Minera\u00e7\u00e3o",
+      "subsector": "Minerais Met\u00e1licos",
       "company_name": "CBA ON NM"
     },
     "CCRO3": {
@@ -862,8 +862,8 @@
       "revenue": 1657.1,
       "market_cap": 8909.57,
       "price": 25.55,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "CESP CIA ENERGETICA SAO PAULO ON"
     },
     "CESP5": {
@@ -894,8 +894,8 @@
       "revenue": 1657.1,
       "market_cap": 8717.77,
       "price": 25.0,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "CESP CIA ENERGETICA SAO PAULO PNA"
     },
     "CESP6": {
@@ -926,41 +926,9 @@
       "revenue": 1657.1,
       "market_cap": 8804.95,
       "price": 25.25,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "CESP CIA ENERGETICA SAO PAULO PNB"
-    },
-    "CIEL3": {
-      "ticker": "CIEL3",
-      "timestamp": "2026-02-21T09:00:42.406474",
-      "pe_ratio": 8.39,
-      "pb_ratio": 1.43,
-      "ps_ratio": 2.61,
-      "p_ebit": 34.01,
-      "ev_ebitda": 17.44,
-      "ev_ebit": 36.84,
-      "roe": 17.0,
-      "roic": 2.8,
-      "ebit_margin": 7.7,
-      "net_margin": 31.1,
-      "gross_margin": 43.2,
-      "debt_equity": 0.91,
-      "current_ratio": 1.11,
-      "div_yield": 0.0,
-      "revenue_growth_5y": 1.8,
-      "eps": 0.69,
-      "bvps": 4.09,
-      "total_assets": 121476.0,
-      "total_equity": 11107.8,
-      "net_debt": 1316.93,
-      "ebit": 465.669,
-      "net_income": 1888.06,
-      "revenue": 6074.86,
-      "market_cap": 15839.0,
-      "price": 5.83,
-      "sector": "Serviços Financeiros Diversos",
-      "subsector": "Serviços Financeiros Diversos",
-      "company_name": "CIELO ON NM"
     },
     "CMIG3": {
       "ticker": "CMIG3",
@@ -990,8 +958,8 @@
       "revenue": 42427.1,
       "market_cap": 44643.8,
       "price": 15.6,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "CEMIG ON N1"
     },
     "CMIG4": {
@@ -1022,8 +990,8 @@
       "revenue": 42427.1,
       "market_cap": 34226.9,
       "price": 11.96,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "CEMIG PN N1"
     },
     "CMIN3": {
@@ -1054,8 +1022,8 @@
       "revenue": 17925.3,
       "market_cap": 29236.9,
       "price": 5.33,
-      "sector": "Mineração",
-      "subsector": "Minerais Metálicos",
+      "sector": "Minera\u00e7\u00e3o",
+      "subsector": "Minerais Met\u00e1licos",
       "company_name": "CSNMINERACAO ON N2"
     },
     "COCE3": {
@@ -1086,8 +1054,8 @@
       "revenue": 8837.7,
       "market_cap": 3279.48,
       "price": 38.0,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "CIA ENERG CEARA - COELCE ON"
     },
     "COCE5": {
@@ -1118,8 +1086,8 @@
       "revenue": 8837.7,
       "market_cap": 2631.35,
       "price": 30.49,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "CIA ENERG CEARA - COELCE PNA"
     },
     "COCE6": {
@@ -1150,8 +1118,8 @@
       "revenue": 8837.7,
       "market_cap": 3020.57,
       "price": 35.0,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "CIA ENERG CEARA - COELCE PNB"
     },
     "COGN3": {
@@ -1183,7 +1151,7 @@
       "market_cap": 7493.29,
       "price": 3.63,
       "sector": "Diversos",
-      "subsector": "Serviços Educacionais",
+      "subsector": "Servi\u00e7os Educacionais",
       "company_name": "COGNA ON"
     },
     "CPFE3": {
@@ -1214,8 +1182,8 @@
       "revenue": 44479.5,
       "market_cap": 57336.2,
       "price": 49.76,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "CPFL ENERGIA S.A. ON"
     },
     "CPLE6": {
@@ -1246,8 +1214,8 @@
       "revenue": 24947.6,
       "market_cap": 42534.9,
       "price": 14.26,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "COPEL PNB"
     },
     "CPRE3": {
@@ -1278,8 +1246,8 @@
       "revenue": 3638.15,
       "market_cap": 10824.7,
       "price": 18.23,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "CPFL RENOVAV ON NM"
     },
     "CRFB3": {
@@ -1310,7 +1278,7 @@
       "revenue": 119573.0,
       "market_cap": 17884.8,
       "price": 8.48,
-      "sector": "Comércio e Distribuição",
+      "sector": "Com\u00e9rcio e Distribui\u00e7\u00e3o",
       "subsector": "Alimentos",
       "company_name": "CARREFOUR BR ON NM"
     },
@@ -1342,8 +1310,8 @@
       "revenue": 42572.8,
       "market_cap": 25901.7,
       "price": 6.53,
-      "sector": "Petróleo, Gás e Biocombustíveis",
-      "subsector": "Exploração, Refino e Distribuição",
+      "sector": "Petr\u00f3leo, G\u00e1s e Biocombust\u00edveis",
+      "subsector": "Explora\u00e7\u00e3o, Refino e Distribui\u00e7\u00e3o",
       "company_name": "COSAN SA INDUSTRIA E COMERCIO ON"
     },
     "CSNA3": {
@@ -1406,7 +1374,7 @@
       "revenue": 635.477,
       "market_cap": 218.435,
       "price": 7.13,
-      "sector": "Tecidos, Vestuário e Calçados",
+      "sector": "Tecidos, Vestu\u00e1rio e Cal\u00e7ados",
       "subsector": "Fios e Tecidos",
       "company_name": "COTEMINAS ON"
     },
@@ -1438,8 +1406,8 @@
       "revenue": 5014.68,
       "market_cap": 12836.3,
       "price": 41.67,
-      "sector": "Construção Civil",
-      "subsector": "Incorporações",
+      "sector": "Constru\u00e7\u00e3o Civil",
+      "subsector": "Incorpora\u00e7\u00f5es",
       "company_name": "CURY S/A ON NM"
     },
     "CVCB3": {
@@ -1502,8 +1470,8 @@
       "revenue": 8694.59,
       "market_cap": 14594.8,
       "price": 31.95,
-      "sector": "Construção Civil",
-      "subsector": "Incorporações",
+      "sector": "Constru\u00e7\u00e3o Civil",
+      "subsector": "Incorpora\u00e7\u00f5es",
       "company_name": "CYRELA BRAZIL REALTY PN"
     },
     "DEXP3": {
@@ -1534,8 +1502,8 @@
       "revenue": 2206.57,
       "market_cap": 938.292,
       "price": 7.63,
-      "sector": "Químicos",
-      "subsector": "Petroquímicos",
+      "sector": "Qu\u00edmicos",
+      "subsector": "Petroqu\u00edmicos",
       "company_name": "DEXXOS PAR ON"
     },
     "DIRR3": {
@@ -1566,8 +1534,8 @@
       "revenue": 4041.37,
       "market_cap": 8786.04,
       "price": 16.88,
-      "sector": "Construção Civil",
-      "subsector": "Incorporações",
+      "sector": "Constru\u00e7\u00e3o Civil",
+      "subsector": "Incorpora\u00e7\u00f5es",
       "company_name": "Direcional Engenharia ON NM"
     },
     "DTCY3": {
@@ -1598,8 +1566,8 @@
       "revenue": 8.271,
       "market_cap": 27.8275,
       "price": 2.5,
-      "sector": "Serviços Diversos",
-      "subsector": "Serviços Diversos",
+      "sector": "Servi\u00e7os Diversos",
+      "subsector": "Servi\u00e7os Diversos",
       "company_name": "DTCOM ON"
     },
     "DXCO3": {
@@ -1663,7 +1631,7 @@
       "market_cap": 7603.97,
       "price": 10.92,
       "sector": "Transporte",
-      "subsector": "Exploração de Rodovias",
+      "subsector": "Explora\u00e7\u00e3o de Rodovias",
       "company_name": "ECORODOVIAS ON NM"
     },
     "EGIE3": {
@@ -1694,8 +1662,8 @@
       "revenue": 12713.4,
       "market_cap": 38426.9,
       "price": 33.64,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "ENGIE BRASIL ON"
     },
     "ELET3": {
@@ -1790,7 +1758,7 @@
       "revenue": 1253.25,
       "market_cap": 4455.06,
       "price": 31.0,
-      "sector": "Mídia",
+      "sector": "M\u00eddia",
       "subsector": "Publicidade e Propaganda",
       "company_name": "ELETROMIDIA ON NM"
     },
@@ -1854,8 +1822,8 @@
       "revenue": 2218.76,
       "market_cap": 5742.54,
       "price": 21.64,
-      "sector": "Petróleo, Gás e Biocombustíveis",
-      "subsector": "Exploração, Refino e Distribuição",
+      "sector": "Petr\u00f3leo, G\u00e1s e Biocombust\u00edveis",
+      "subsector": "Explora\u00e7\u00e3o, Refino e Distribui\u00e7\u00e3o",
       "company_name": "ENAUTA PART ON"
     },
     "ENBR3": {
@@ -1886,8 +1854,8 @@
       "revenue": 19491.8,
       "market_cap": 13994.5,
       "price": 24.08,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "EDP ENERGIAS DO BRASIL S/A ON"
     },
     "ENEV3": {
@@ -1918,8 +1886,8 @@
       "revenue": 17224.1,
       "market_cap": 43000.8,
       "price": 22.2,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "ENEVA ON"
     },
     "ENGI11": {
@@ -1950,8 +1918,8 @@
       "revenue": 35713.6,
       "market_cap": 26840.8,
       "price": 53.29,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "ENERGISA UNT N2"
     },
     "EQTL3": {
@@ -1982,8 +1950,8 @@
       "revenue": 51267.6,
       "market_cap": 52513.7,
       "price": 41.71,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "EQUATORIAL ENERGIA S.A. ON NM"
     },
     "ETER3": {
@@ -2014,8 +1982,8 @@
       "revenue": 1169.49,
       "market_cap": 252.668,
       "price": 4.09,
-      "sector": "Construção e Engenharia",
-      "subsector": "Produtos para Construção",
+      "sector": "Constru\u00e7\u00e3o e Engenharia",
+      "subsector": "Produtos para Constru\u00e7\u00e3o",
       "company_name": "ETERNIT ON"
     },
     "EVEN3": {
@@ -2046,8 +2014,8 @@
       "revenue": 1641.07,
       "market_cap": 1706.0,
       "price": 8.53,
-      "sector": "Construção Civil",
-      "subsector": "Incorporações",
+      "sector": "Constru\u00e7\u00e3o Civil",
+      "subsector": "Incorpora\u00e7\u00f5es",
       "company_name": "Even ON NM"
     },
     "EZTC3": {
@@ -2078,8 +2046,8 @@
       "revenue": 1656.42,
       "market_cap": 4512.86,
       "price": 16.06,
-      "sector": "Construção Civil",
-      "subsector": "Incorporações",
+      "sector": "Constru\u00e7\u00e3o Civil",
+      "subsector": "Incorpora\u00e7\u00f5es",
       "company_name": "EZTec ON NM"
     },
     "FIBR3": {
@@ -2142,8 +2110,8 @@
       "revenue": 8069.92,
       "market_cap": 9778.3,
       "price": 17.87,
-      "sector": "Serv.Méd.Hospit. Análises e Diagnósticos",
-      "subsector": "Serv.Méd.Hospit. Análises e Diagnósticos",
+      "sector": "Serv.M\u00e9d.Hospit. An\u00e1lises e Diagn\u00f3sticos",
+      "subsector": "Serv.M\u00e9d.Hospit. An\u00e1lises e Diagn\u00f3sticos",
       "company_name": "FLEURY ON NM"
     },
     "FRIO3": {
@@ -2174,8 +2142,8 @@
       "revenue": 2460.4,
       "market_cap": 1086.09,
       "price": 170.18,
-      "sector": "Máquinas e Equipamentos",
-      "subsector": "Máq. e Equip. Industriais",
+      "sector": "M\u00e1quinas e Equipamentos",
+      "subsector": "M\u00e1q. e Equip. Industriais",
       "company_name": "Metalfrio ON NM"
     },
     "GEPA3": {
@@ -2206,9 +2174,9 @@
       "revenue": 945.856,
       "market_cap": 3116.29,
       "price": 33.0,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
-      "company_name": "DUKE ENERGY INT,GERAÇÃO PARANAPANEMA SA ON"
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
+      "company_name": "DUKE ENERGY INT,GERA\u00c7\u00c3O PARANAPANEMA SA ON"
     },
     "GEPA4": {
       "ticker": "GEPA4",
@@ -2238,9 +2206,9 @@
       "revenue": 945.856,
       "market_cap": 3342.93,
       "price": 35.4,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
-      "company_name": "DUKE ENERGY INT,GERAÇÃO PARANAPANEMA SA PN"
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
+      "company_name": "DUKE ENERGY INT,GERA\u00c7\u00c3O PARANAPANEMA SA PN"
     },
     "GGBR4": {
       "ticker": "GGBR4",
@@ -2302,7 +2270,7 @@
       "revenue": 36601.5,
       "market_cap": 12854.6,
       "price": 5.58,
-      "sector": "Comércio e Distribuição",
+      "sector": "Com\u00e9rcio e Distribui\u00e7\u00e3o",
       "subsector": "Alimentos",
       "company_name": "GRUPO MATEUS ON NM"
     },
@@ -2336,39 +2304,7 @@
       "price": 9.71,
       "sector": "Siderurgia e Metalurgia",
       "subsector": "Siderurgia",
-      "company_name": "METALÚRGICA GERDAU PN N1"
-    },
-    "GOLL4": {
-      "ticker": "GOLL4",
-      "timestamp": "2026-02-21T09:00:57.287797",
-      "pe_ratio": -189.23,
-      "pb_ratio": -60.87,
-      "ps_ratio": 44.17,
-      "p_ebit": -2431.67,
-      "ev_ebitda": 405.91,
-      "ev_ebit": -2463.64,
-      "roe": 32.2,
-      "roic": -1.8,
-      "ebit_margin": -1.8,
-      "net_margin": -23.3,
-      "gross_margin": 25.2,
-      "debt_equity": -0.99,
-      "current_ratio": 0.63,
-      "div_yield": 0.0,
-      "revenue_growth_5y": 31.7,
-      "eps": 0.0,
-      "bvps": -0.01,
-      "total_assets": 26719.3,
-      "total_equity": -15618.8,
-      "net_debt": 12498.2,
-      "ebit": -390.945,
-      "net_income": -5023.68,
-      "revenue": 21521.3,
-      "market_cap": 950650.0,
-      "price": 0.79,
-      "sector": "Transporte",
-      "subsector": "Transporte Aéreo",
-      "company_name": "GOL LINHAS AEREAS INTELIGENTES SA PN"
+      "company_name": "METAL\u00daRGICA GERDAU PN N1"
     },
     "GPAR3": {
       "ticker": "GPAR3",
@@ -2398,8 +2334,8 @@
       "revenue": 35.033,
       "market_cap": 1203.12,
       "price": 15.1,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "CELGPAR ON"
     },
     "GRND3": {
@@ -2430,8 +2366,8 @@
       "revenue": 2738.63,
       "market_cap": 4402.54,
       "price": 4.88,
-      "sector": "Tecidos, Vestuário e Calçados",
-      "subsector": "Calçados",
+      "sector": "Tecidos, Vestu\u00e1rio e Cal\u00e7ados",
+      "subsector": "Cal\u00e7ados",
       "company_name": "GRENDENE SA ON"
     },
     "HAPV3": {
@@ -2462,8 +2398,8 @@
       "revenue": 29672.8,
       "market_cap": 5277.63,
       "price": 10.5,
-      "sector": "Serv.Méd.Hospit. Análises e Diagnósticos",
-      "subsector": "Serv.Méd.Hospit. Análises e Diagnósticos",
+      "sector": "Serv.M\u00e9d.Hospit. An\u00e1lises e Diagn\u00f3sticos",
+      "subsector": "Serv.M\u00e9d.Hospit. An\u00e1lises e Diagn\u00f3sticos",
       "company_name": "HAPVIDA ON NM"
     },
     "HBRE3": {
@@ -2494,8 +2430,8 @@
       "revenue": 216.747,
       "market_cap": 371.48,
       "price": 3.6,
-      "sector": "Exploração de Imóveis",
-      "subsector": "Exploração de Imóveis",
+      "sector": "Explora\u00e7\u00e3o de Im\u00f3veis",
+      "subsector": "Explora\u00e7\u00e3o de Im\u00f3veis",
       "company_name": "HBR REALTY ON NM"
     },
     "HYPE3": {
@@ -2526,7 +2462,7 @@
       "revenue": 6973.08,
       "market_cap": 15094.4,
       "price": 23.83,
-      "sector": "Comércio e Distribuição",
+      "sector": "Com\u00e9rcio e Distribui\u00e7\u00e3o",
       "subsector": "Medicamentos e Outros Produtos",
       "company_name": "HYPERA ON"
     },
@@ -2558,8 +2494,8 @@
       "revenue": 1426.19,
       "market_cap": 8694.14,
       "price": 29.3,
-      "sector": "Exploração de Imóveis",
-      "subsector": "Exploração de Imóveis",
+      "sector": "Explora\u00e7\u00e3o de Im\u00f3veis",
+      "subsector": "Explora\u00e7\u00e3o de Im\u00f3veis",
       "company_name": "IGUATEMI S.A UNT N1"
     },
     "INEP3": {
@@ -2590,8 +2526,8 @@
       "revenue": 5.371,
       "market_cap": 58.2523,
       "price": 1.19,
-      "sector": "Máquinas e Equipamentos",
-      "subsector": "Máq. e Equip. Industriais",
+      "sector": "M\u00e1quinas e Equipamentos",
+      "subsector": "M\u00e1q. e Equip. Industriais",
       "company_name": "INEPAR S/A ON"
     },
     "INEP4": {
@@ -2622,8 +2558,8 @@
       "revenue": 5.371,
       "market_cap": 54.8257,
       "price": 1.12,
-      "sector": "Máquinas e Equipamentos",
-      "subsector": "Máq. e Equip. Industriais",
+      "sector": "M\u00e1quinas e Equipamentos",
+      "subsector": "M\u00e1q. e Equip. Industriais",
       "company_name": "INEPAR S/A PN"
     },
     "IRBR3": {
@@ -2654,7 +2590,7 @@
       "revenue": 5211.35,
       "market_cap": 4861.47,
       "price": 59.4,
-      "sector": "Previdência e Seguros",
+      "sector": "Previd\u00eancia e Seguros",
       "subsector": "Seguradoras",
       "company_name": "IRBBRASIL RE ON NM"
     },
@@ -2686,9 +2622,9 @@
       "revenue": 8216.0,
       "market_cap": 168990.0,
       "price": 15.07,
-      "sector": "Intermediários Financeiros",
+      "sector": "Intermedi\u00e1rios Financeiros",
       "subsector": "Bancos",
-      "company_name": "ITAÚSA PN N1"
+      "company_name": "ITA\u00daSA PN N1"
     },
     "ITUB4": {
       "ticker": "ITUB4",
@@ -2718,7 +2654,7 @@
       "revenue": null,
       "market_cap": 542853.0,
       "price": 49.23,
-      "sector": "Intermediários Financeiros",
+      "sector": "Intermedi\u00e1rios Financeiros",
       "subsector": "Bancos",
       "company_name": "ITAUUNIBANCO PN N1"
     },
@@ -2751,7 +2687,7 @@
       "market_cap": 944.015,
       "price": 3.11,
       "sector": "Alimentos Processados",
-      "subsector": "Açucar e Alcool",
+      "subsector": "A\u00e7ucar e Alcool",
       "company_name": "JALLESMACHAD ON NM"
     },
     "JBSS3": {
@@ -2814,8 +2750,8 @@
       "revenue": 1960.73,
       "market_cap": 6899.1,
       "price": 10.09,
-      "sector": "Construção Civil",
-      "subsector": "Incorporações",
+      "sector": "Constru\u00e7\u00e3o Civil",
+      "subsector": "Incorpora\u00e7\u00f5es",
       "company_name": "JHSF Part ON NM"
     },
     "KEPL3": {
@@ -2846,8 +2782,8 @@
       "revenue": 1551.74,
       "market_cap": 1793.61,
       "price": 9.98,
-      "sector": "Máquinas e Equipamentos",
-      "subsector": "Máq. e Equip. Industriais",
+      "sector": "M\u00e1quinas e Equipamentos",
+      "subsector": "M\u00e1q. e Equip. Industriais",
       "company_name": "KEPLER WEBER SA ON"
     },
     "KLBN11": {
@@ -2910,8 +2846,8 @@
       "revenue": 1806.7,
       "market_cap": 3701.52,
       "price": 18.94,
-      "sector": "Construção Civil",
-      "subsector": "Incorporações",
+      "sector": "Constru\u00e7\u00e3o Civil",
+      "subsector": "Incorpora\u00e7\u00f5es",
       "company_name": "LAVVI ON NM"
     },
     "LCAM3": {
@@ -2974,8 +2910,8 @@
       "revenue": 14944.8,
       "market_cap": 1832.97,
       "price": 4.92,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "LIGHT SA ON"
     },
     "LOGG3": {
@@ -3006,8 +2942,8 @@
       "revenue": 248.759,
       "market_cap": 2417.0,
       "price": 27.51,
-      "sector": "Exploração de Imóveis",
-      "subsector": "Exploração de Imóveis",
+      "sector": "Explora\u00e7\u00e3o de Im\u00f3veis",
+      "subsector": "Explora\u00e7\u00e3o de Im\u00f3veis",
       "company_name": "LOG COM PROP ON NM"
     },
     "LPAN3": {
@@ -3070,8 +3006,8 @@
       "revenue": 15605.8,
       "market_cap": 15706.8,
       "price": 15.6,
-      "sector": "Comércio",
-      "subsector": "Tecidos, Vestuário e Calçados",
+      "sector": "Com\u00e9rcio",
+      "subsector": "Tecidos, Vestu\u00e1rio e Cal\u00e7ados",
       "company_name": "RENNER ON"
     },
     "LUPA3": {
@@ -3102,8 +3038,8 @@
       "revenue": 68.934,
       "market_cap": 57.728,
       "price": 1.22,
-      "sector": "Petróleo, Gás e Biocombustíveis",
-      "subsector": "Equipamentos e Serviços",
+      "sector": "Petr\u00f3leo, G\u00e1s e Biocombust\u00edveis",
+      "subsector": "Equipamentos e Servi\u00e7os",
       "company_name": "LUPATECH ON NM"
     },
     "LWSA3": {
@@ -3134,8 +3070,8 @@
       "revenue": 1471.19,
       "market_cap": 2052.51,
       "price": 3.61,
-      "sector": "Programas e Serviços",
-      "subsector": "Programas e Serviços",
+      "sector": "Programas e Servi\u00e7os",
+      "subsector": "Programas e Servi\u00e7os",
       "company_name": "LOCAWEB ON NM"
     },
     "MATD3": {
@@ -3166,8 +3102,8 @@
       "revenue": 2100.02,
       "market_cap": 1951.26,
       "price": 5.85,
-      "sector": "Serv.Méd.Hospit. Análises e Diagnósticos",
-      "subsector": "Serv.Méd.Hospit. Análises e Diagnósticos",
+      "sector": "Serv.M\u00e9d.Hospit. An\u00e1lises e Diagn\u00f3sticos",
+      "subsector": "Serv.M\u00e9d.Hospit. An\u00e1lises e Diagn\u00f3sticos",
       "company_name": "MATER DEI ON NM"
     },
     "MDNE3": {
@@ -3198,8 +3134,8 @@
       "revenue": 2019.96,
       "market_cap": 3572.46,
       "price": 34.28,
-      "sector": "Construção Civil",
-      "subsector": "Incorporações",
+      "sector": "Constru\u00e7\u00e3o Civil",
+      "subsector": "Incorpora\u00e7\u00f5es",
       "company_name": "MOURA DUBEUX ON NM"
     },
     "MELK3": {
@@ -3230,8 +3166,8 @@
       "revenue": 1204.19,
       "market_cap": 835.391,
       "price": 4.05,
-      "sector": "Construção Civil",
-      "subsector": "Incorporações",
+      "sector": "Constru\u00e7\u00e3o Civil",
+      "subsector": "Incorpora\u00e7\u00f5es",
       "company_name": "MELNICK ON NM"
     },
     "MGLU3": {
@@ -3262,8 +3198,8 @@
       "revenue": 38337.6,
       "market_cap": 8380.21,
       "price": 10.8,
-      "sector": "Comércio",
-      "subsector": "Eletrodomésticos",
+      "sector": "Com\u00e9rcio",
+      "subsector": "Eletrodom\u00e9sticos",
       "company_name": "MAGAZ LUIZA ON NM"
     },
     "MILS3": {
@@ -3326,8 +3262,8 @@
       "revenue": 0.0,
       "market_cap": 90.832,
       "price": 14.0,
-      "sector": "Mineração",
-      "subsector": "Minerais Metálicos",
+      "sector": "Minera\u00e7\u00e3o",
+      "subsector": "Minerais Met\u00e1licos",
       "company_name": "MMX MINER ON NM"
     },
     "MRFG3": {
@@ -3390,8 +3326,8 @@
       "revenue": 10244.2,
       "market_cap": 5819.72,
       "price": 10.34,
-      "sector": "Construção Civil",
-      "subsector": "Incorporações",
+      "sector": "Constru\u00e7\u00e3o Civil",
+      "subsector": "Incorpora\u00e7\u00f5es",
       "company_name": "MRV ON NM"
     },
     "MULT3": {
@@ -3422,8 +3358,8 @@
       "revenue": 2739.08,
       "market_cap": 17519.4,
       "price": 34.14,
-      "sector": "Exploração de Imóveis",
-      "subsector": "Exploração de Imóveis",
+      "sector": "Explora\u00e7\u00e3o de Im\u00f3veis",
+      "subsector": "Explora\u00e7\u00e3o de Im\u00f3veis",
       "company_name": "Multiplan ON N2"
     },
     "MYPK3": {
@@ -3454,8 +3390,8 @@
       "revenue": 15756.5,
       "market_cap": 1617.13,
       "price": 10.52,
-      "sector": "Automóveis e Motocicletas",
-      "subsector": "Automóveis e Motocicletas",
+      "sector": "Autom\u00f3veis e Motocicletas",
+      "subsector": "Autom\u00f3veis e Motocicletas",
       "company_name": "IOCHPE-MAXION ON"
     },
     "NEOE3": {
@@ -3486,8 +3422,8 @@
       "revenue": 52633.0,
       "market_cap": 39751.9,
       "price": 32.75,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "NEOENERGIA ON NM"
     },
     "NGRD3": {
@@ -3518,8 +3454,8 @@
       "revenue": 275.501,
       "market_cap": 246.714,
       "price": 26.99,
-      "sector": "Programas e Serviços",
-      "subsector": "Programas e Serviços",
+      "sector": "Programas e Servi\u00e7os",
+      "subsector": "Programas e Servi\u00e7os",
       "company_name": "NEOGRID ON NM"
     },
     "NTCO3": {
@@ -3646,8 +3582,8 @@
       "revenue": 2040.61,
       "market_cap": 1893.62,
       "price": 9.47,
-      "sector": "Petróleo, Gás e Biocombustíveis",
-      "subsector": "Equipamentos e Serviços",
+      "sector": "Petr\u00f3leo, G\u00e1s e Biocombust\u00edveis",
+      "subsector": "Equipamentos e Servi\u00e7os",
       "company_name": "OCEANPACT ON NM"
     },
     "ORVR3": {
@@ -3678,8 +3614,8 @@
       "revenue": 1016.24,
       "market_cap": 7006.69,
       "price": 72.89,
-      "sector": "Água e Saneamento",
-      "subsector": "Água e Saneamento",
+      "sector": "\u00c1gua e Saneamento",
+      "subsector": "\u00c1gua e Saneamento",
       "company_name": "ORIZON ON NM"
     },
     "PARD3": {
@@ -3710,8 +3646,8 @@
       "revenue": 2106.41,
       "market_cap": 5403.49,
       "price": 20.25,
-      "sector": "Serv.Méd.Hospit. Análises e Diagnósticos",
-      "subsector": "Serv.Méd.Hospit. Análises e Diagnósticos",
+      "sector": "Serv.M\u00e9d.Hospit. An\u00e1lises e Diagn\u00f3sticos",
+      "subsector": "Serv.M\u00e9d.Hospit. An\u00e1lises e Diagn\u00f3sticos",
       "company_name": "IHPARDINI ON NM"
     },
     "PATS3": {
@@ -3774,9 +3710,9 @@
       "revenue": 19220.0,
       "market_cap": 1521.47,
       "price": 3.1,
-      "sector": "Comércio e Distribuição",
+      "sector": "Com\u00e9rcio e Distribui\u00e7\u00e3o",
       "subsector": "Alimentos",
-      "company_name": "PÃO DE AÇÚCAR ON"
+      "company_name": "P\u00c3O DE A\u00c7\u00daCAR ON"
     },
     "PDGR3": {
       "ticker": "PDGR3",
@@ -3806,8 +3742,8 @@
       "revenue": 98.656,
       "market_cap": 7.2314,
       "price": 2.2,
-      "sector": "Construção Civil",
-      "subsector": "Incorporações",
+      "sector": "Constru\u00e7\u00e3o Civil",
+      "subsector": "Incorpora\u00e7\u00f5es",
       "company_name": "PDG REALT ON NM"
     },
     "PETR3": {
@@ -3838,8 +3774,8 @@
       "revenue": 491446.0,
       "market_cap": 527665.0,
       "price": 40.94,
-      "sector": "Petróleo, Gás e Biocombustíveis",
-      "subsector": "Exploração, Refino e Distribuição",
+      "sector": "Petr\u00f3leo, G\u00e1s e Biocombust\u00edveis",
+      "subsector": "Explora\u00e7\u00e3o, Refino e Distribui\u00e7\u00e3o",
       "company_name": "PETROBRAS ON"
     },
     "PETR4": {
@@ -3870,8 +3806,8 @@
       "revenue": 491446.0,
       "market_cap": 489385.0,
       "price": 37.97,
-      "sector": "Petróleo, Gás e Biocombustíveis",
-      "subsector": "Exploração, Refino e Distribuição",
+      "sector": "Petr\u00f3leo, G\u00e1s e Biocombust\u00edveis",
+      "subsector": "Explora\u00e7\u00e3o, Refino e Distribui\u00e7\u00e3o",
       "company_name": "PETROBRAS PN"
     },
     "PETZ3": {
@@ -3902,7 +3838,7 @@
       "revenue": 3513.74,
       "market_cap": 1980.5,
       "price": 4.39,
-      "sector": "Comércio",
+      "sector": "Com\u00e9rcio",
       "subsector": "Produtos Diversos",
       "company_name": "PETZ ON NM"
     },
@@ -3934,7 +3870,7 @@
       "revenue": 14266.5,
       "market_cap": 4996.55,
       "price": 7.54,
-      "sector": "Comércio e Distribuição",
+      "sector": "Com\u00e9rcio e Distribui\u00e7\u00e3o",
       "subsector": "Medicamentos e Outros Produtos",
       "company_name": "PAGUE MENOS ON NM"
     },
@@ -3998,9 +3934,9 @@
       "revenue": 1169.66,
       "market_cap": 57.9005,
       "price": 4.66,
-      "sector": "Automóveis e Motocicletas",
-      "subsector": "Automóveis e Motocicletas",
-      "company_name": "PLASCAR PARTICIPAÇÕES INDUSTRIAIS S.A ON"
+      "sector": "Autom\u00f3veis e Motocicletas",
+      "subsector": "Autom\u00f3veis e Motocicletas",
+      "company_name": "PLASCAR PARTICIPA\u00c7\u00d5ES INDUSTRIAIS S.A ON"
     },
     "PMAM3": {
       "ticker": "PMAM3",
@@ -4062,9 +3998,9 @@
       "revenue": 5293.2,
       "market_cap": 2431.6,
       "price": 16.17,
-      "sector": "Comércio e Distribuição",
+      "sector": "Com\u00e9rcio e Distribui\u00e7\u00e3o",
       "subsector": "Medicamentos e Outros Produtos",
-      "company_name": "PANVEL FARMÁCIAS ON"
+      "company_name": "PANVEL FARM\u00c1CIAS ON"
     },
     "PNVL4": {
       "ticker": "PNVL4",
@@ -4094,9 +4030,9 @@
       "revenue": 5293.2,
       "market_cap": 2800.02,
       "price": 18.62,
-      "sector": "Comércio e Distribuição",
+      "sector": "Com\u00e9rcio e Distribui\u00e7\u00e3o",
       "subsector": "Medicamentos e Outros Produtos",
-      "company_name": "PANVEL FARMÁCIAS PN"
+      "company_name": "PANVEL FARM\u00c1CIAS PN"
     },
     "POWE3": {
       "ticker": "POWE3",
@@ -4126,8 +4062,8 @@
       "revenue": 1580.29,
       "market_cap": 977.238,
       "price": 10.9,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "FOCUS ON ON NM"
     },
     "PRIO3": {
@@ -4158,8 +4094,8 @@
       "revenue": 14318.8,
       "market_cap": 48004.7,
       "price": 55.02,
-      "sector": "Petróleo, Gás e Biocombustíveis",
-      "subsector": "Exploração, Refino e Distribuição",
+      "sector": "Petr\u00f3leo, G\u00e1s e Biocombust\u00edveis",
+      "subsector": "Explora\u00e7\u00e3o, Refino e Distribui\u00e7\u00e3o",
       "company_name": "PETRORIO ON"
     },
     "PTCA3": {
@@ -4254,7 +4190,7 @@
       "revenue": 828.724,
       "market_cap": 406.954,
       "price": 8.47,
-      "sector": "Tecidos, Vestuário e Calçados",
+      "sector": "Tecidos, Vestu\u00e1rio e Cal\u00e7ados",
       "subsector": "Fios e Tecidos",
       "company_name": "PETTENATI ON"
     },
@@ -4350,7 +4286,7 @@
       "revenue": 42241.7,
       "market_cap": 46420.2,
       "price": 26.49,
-      "sector": "Comércio e Distribuição",
+      "sector": "Com\u00e9rcio e Distribui\u00e7\u00e3o",
       "subsector": "Medicamentos e Outros Produtos",
       "company_name": "RAIADROGASIL ON"
     },
@@ -4383,7 +4319,7 @@
       "market_cap": 30689.3,
       "price": 16.51,
       "sector": "Transporte",
-      "subsector": "Transporte Ferroviário",
+      "subsector": "Transporte Ferrovi\u00e1rio",
       "company_name": "RUMO S.A. ON NM"
     },
     "RAIZ4": {
@@ -4414,8 +4350,8 @@
       "revenue": 232247.0,
       "market_cap": 6211.51,
       "price": 0.6,
-      "sector": "Petróleo, Gás e Biocombustíveis",
-      "subsector": "Exploração, Refino e Distribuição",
+      "sector": "Petr\u00f3leo, G\u00e1s e Biocombust\u00edveis",
+      "subsector": "Explora\u00e7\u00e3o, Refino e Distribui\u00e7\u00e3o",
       "company_name": "RAIZEN PN N2"
     },
     "RCSL3": {
@@ -4447,7 +4383,7 @@
       "market_cap": 91.9656,
       "price": 2.89,
       "sector": "Material de Transporte",
-      "subsector": "Material Rodoviário",
+      "subsector": "Material Rodovi\u00e1rio",
       "company_name": "RECRUSUL ON"
     },
     "RCSL4": {
@@ -4479,7 +4415,7 @@
       "market_cap": 195.705,
       "price": 6.15,
       "sector": "Material de Transporte",
-      "subsector": "Material Rodoviário",
+      "subsector": "Material Rodovi\u00e1rio",
       "company_name": "RECRUSUL PN"
     },
     "RDOR3": {
@@ -4510,8 +4446,8 @@
       "revenue": 54198.4,
       "market_cap": 103224.0,
       "price": 45.09,
-      "sector": "Serv.Méd.Hospit. Análises e Diagnósticos",
-      "subsector": "Serv.Méd.Hospit. Análises e Diagnósticos",
+      "sector": "Serv.M\u00e9d.Hospit. An\u00e1lises e Diagn\u00f3sticos",
+      "subsector": "Serv.M\u00e9d.Hospit. An\u00e1lises e Diagn\u00f3sticos",
       "company_name": "REDE D OR ON NM"
     },
     "RENT3": {
@@ -4574,8 +4510,8 @@
       "revenue": 469.241,
       "market_cap": 401.72,
       "price": 3.23,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "RENOVA UNT N2"
     },
     "RNEW3": {
@@ -4606,8 +4542,8 @@
       "revenue": 469.241,
       "market_cap": 473.856,
       "price": 1.27,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "RENOVA ON N2"
     },
     "RNEW4": {
@@ -4638,8 +4574,8 @@
       "revenue": 469.241,
       "market_cap": 365.653,
       "price": 0.98,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "RENOVA PN N2"
     },
     "ROMI3": {
@@ -4670,8 +4606,8 @@
       "revenue": 1326.71,
       "market_cap": 775.183,
       "price": 8.32,
-      "sector": "Máquinas e Equipamentos",
-      "subsector": "Máq. e Equip. Industriais",
+      "sector": "M\u00e1quinas e Equipamentos",
+      "subsector": "M\u00e1q. e Equip. Industriais",
       "company_name": "ROMI ON"
     },
     "RPAD3": {
@@ -4702,7 +4638,7 @@
       "revenue": 0.0,
       "market_cap": 450.508,
       "price": 5.32,
-      "sector": "Intermediários Financeiros",
+      "sector": "Intermedi\u00e1rios Financeiros",
       "subsector": "Bancos",
       "company_name": "ALFA HOLDINGS ON"
     },
@@ -4734,7 +4670,7 @@
       "revenue": 0.0,
       "market_cap": 527.569,
       "price": 6.23,
-      "sector": "Intermediários Financeiros",
+      "sector": "Intermedi\u00e1rios Financeiros",
       "subsector": "Bancos",
       "company_name": "ALFA HOLDINGS PNA"
     },
@@ -4798,8 +4734,8 @@
       "revenue": 84.333,
       "market_cap": 33.4491,
       "price": 1.65,
-      "sector": "Construção Civil",
-      "subsector": "Incorporações",
+      "sector": "Constru\u00e7\u00e3o Civil",
+      "subsector": "Incorpora\u00e7\u00f5es",
       "company_name": "ROSSI RESIDENCIAL ON N1"
     },
     "SANB11": {
@@ -4830,7 +4766,7 @@
       "revenue": null,
       "market_cap": 137598.0,
       "price": 36.7,
-      "sector": "Intermediários Financeiros",
+      "sector": "Intermedi\u00e1rios Financeiros",
       "subsector": "Bancos",
       "company_name": "SANTANDER UNT"
     },
@@ -4862,8 +4798,8 @@
       "revenue": 7090.98,
       "market_cap": 14314.1,
       "price": 47.36,
-      "sector": "Água e Saneamento",
-      "subsector": "Água e Saneamento",
+      "sector": "\u00c1gua e Saneamento",
+      "subsector": "\u00c1gua e Saneamento",
       "company_name": "SANEPAR UNT N2"
     },
     "SAPR3": {
@@ -4894,8 +4830,8 @@
       "revenue": 7090.98,
       "market_cap": 17122.0,
       "price": 11.33,
-      "sector": "Água e Saneamento",
-      "subsector": "Água e Saneamento",
+      "sector": "\u00c1gua e Saneamento",
+      "subsector": "\u00c1gua e Saneamento",
       "company_name": "SANEPAR ON"
     },
     "SAPR4": {
@@ -4926,8 +4862,8 @@
       "revenue": 7090.98,
       "market_cap": 13480.0,
       "price": 8.92,
-      "sector": "Água e Saneamento",
-      "subsector": "Água e Saneamento",
+      "sector": "\u00c1gua e Saneamento",
+      "subsector": "\u00c1gua e Saneamento",
       "company_name": "SANEPAR PN"
     },
     "SBSP3": {
@@ -4958,8 +4894,8 @@
       "revenue": 34654.5,
       "market_cap": 107748.0,
       "price": 153.1,
-      "sector": "Água e Saneamento",
-      "subsector": "Água e Saneamento",
+      "sector": "\u00c1gua e Saneamento",
+      "subsector": "\u00c1gua e Saneamento",
       "company_name": "SABESP ON NM"
     },
     "SEDU3": {
@@ -5086,7 +5022,7 @@
       "revenue": 549.081,
       "market_cap": 16.4,
       "price": 1.64,
-      "sector": "Tecidos, Vestuário e Calçados",
+      "sector": "Tecidos, Vestu\u00e1rio e Cal\u00e7ados",
       "subsector": "Fios e Tecidos",
       "company_name": "Springs ON NM"
     },
@@ -5119,7 +5055,7 @@
       "market_cap": 33.368,
       "price": 4.95,
       "sector": "Viagens e Lazer",
-      "subsector": "Produção de Eventos e Shows",
+      "subsector": "Produ\u00e7\u00e3o de Eventos e Shows",
       "company_name": "TIME FOR FUN ON NM"
     },
     "SIMH3": {
@@ -5182,7 +5118,7 @@
       "revenue": 9513.65,
       "market_cap": 8114.6,
       "price": 16.27,
-      "sector": "Agropecuária",
+      "sector": "Agropecu\u00e1ria",
       "subsector": "Agricultura",
       "company_name": "SLC Agricola ON NM"
     },
@@ -5247,7 +5183,7 @@
       "market_cap": 5348.88,
       "price": 16.09,
       "sector": "Alimentos Processados",
-      "subsector": "Açucar e Alcool",
+      "subsector": "A\u00e7ucar e Alcool",
       "company_name": "SAO MARTINHO ON NM"
     },
     "SOMA3": {
@@ -5278,8 +5214,8 @@
       "revenue": 5377.51,
       "market_cap": 4661.4,
       "price": 5.94,
-      "sector": "Comércio",
-      "subsector": "Tecidos, Vestuário e Calçados",
+      "sector": "Com\u00e9rcio",
+      "subsector": "Tecidos, Vestu\u00e1rio e Cal\u00e7ados",
       "company_name": "GRUPO SOMA ON NM"
     },
     "SOND3": {
@@ -5310,7 +5246,7 @@
       "revenue": 220.668,
       "market_cap": 95.0263,
       "price": 38.66,
-      "sector": "Construção e Engenharia",
+      "sector": "Constru\u00e7\u00e3o e Engenharia",
       "subsector": "Engenharia Consultiva",
       "company_name": "SONDOTECNICA S/A. ON"
     },
@@ -5342,7 +5278,7 @@
       "revenue": 220.668,
       "market_cap": 172.06,
       "price": 70.0,
-      "sector": "Construção e Engenharia",
+      "sector": "Constru\u00e7\u00e3o e Engenharia",
       "subsector": "Engenharia Consultiva",
       "company_name": "SONDOTECNICA S/A. PNA"
     },
@@ -5374,7 +5310,7 @@
       "revenue": 220.668,
       "market_cap": 135.313,
       "price": 55.05,
-      "sector": "Construção e Engenharia",
+      "sector": "Constru\u00e7\u00e3o e Engenharia",
       "subsector": "Engenharia Consultiva",
       "company_name": "SONDOTECNICA S/A. PNB"
     },
@@ -5439,7 +5375,7 @@
       "market_cap": 2488.81,
       "price": 14.4,
       "sector": "Transporte",
-      "subsector": "Serviços de Apoio e Armazenagem",
+      "subsector": "Servi\u00e7os de Apoio e Armazenagem",
       "company_name": "SBPAR UNT"
     },
     "STBP3": {
@@ -5471,7 +5407,7 @@
       "market_cap": 12461.3,
       "price": 14.42,
       "sector": "Transporte",
-      "subsector": "Serviços de Apoio e Armazenagem",
+      "subsector": "Servi\u00e7os de Apoio e Armazenagem",
       "company_name": "SBPAR ON NM"
     },
     "SULA11": {
@@ -5502,7 +5438,7 @@
       "revenue": 21933.2,
       "market_cap": 9475.04,
       "price": 22.25,
-      "sector": "Previdência e Seguros",
+      "sector": "Previd\u00eancia e Seguros",
       "subsector": "Seguradoras",
       "company_name": "Sul America UNT N2"
     },
@@ -5566,8 +5502,8 @@
       "revenue": 4510.0,
       "market_cap": 15505.9,
       "price": 45.01,
-      "sector": "Energia Elétrica",
-      "subsector": "Energia Elétrica",
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
       "company_name": "TAESA UNT"
     },
     "TASA3": {
@@ -5598,8 +5534,8 @@
       "revenue": 1527.07,
       "market_cap": 749.423,
       "price": 5.38,
-      "sector": "Máquinas e Equipamentos",
-      "subsector": "Armas e Munições",
+      "sector": "M\u00e1quinas e Equipamentos",
+      "subsector": "Armas e Muni\u00e7\u00f5es",
       "company_name": "TAURUS ARMAS ON"
     },
     "TASA4": {
@@ -5630,8 +5566,8 @@
       "revenue": 1527.07,
       "market_cap": 764.746,
       "price": 5.49,
-      "sector": "Máquinas e Equipamentos",
-      "subsector": "Armas e Munições",
+      "sector": "M\u00e1quinas e Equipamentos",
+      "subsector": "Armas e Muni\u00e7\u00f5es",
       "company_name": "TAURUS ARMAS PN"
     },
     "TCIN3": {
@@ -5694,8 +5630,8 @@
       "revenue": 453.697,
       "market_cap": 551.199,
       "price": 9.05,
-      "sector": "Tecidos, Vestuário e Calçados",
-      "subsector": "Acessórios",
+      "sector": "Tecidos, Vestu\u00e1rio e Cal\u00e7ados",
+      "subsector": "Acess\u00f3rios",
       "company_name": "TECHNOS ON NM"
     },
     "TGMA3": {
@@ -5727,7 +5663,7 @@
       "market_cap": 2671.8,
       "price": 40.48,
       "sector": "Transporte",
-      "subsector": "Transporte Rodoviário",
+      "subsector": "Transporte Rodovi\u00e1rio",
       "company_name": "Tegma ON NM"
     },
     "TIMS3": {
@@ -5758,8 +5694,8 @@
       "revenue": 0.0,
       "market_cap": 64563.5,
       "price": 26.99,
-      "sector": "Telecomunicações",
-      "subsector": "Telecomunicações",
+      "sector": "Telecomunica\u00e7\u00f5es",
+      "subsector": "Telecomunica\u00e7\u00f5es",
       "company_name": "TIM ON NM"
     },
     "TLEF3": {
@@ -5856,7 +5792,7 @@
       "price": 56.0,
       "sector": "",
       "subsector": "",
-      "company_name": "TELEMIG CELULAR PARTICIPAÇÕES S.A. ON"
+      "company_name": "TELEMIG CELULAR PARTICIPA\u00c7\u00d5ES S.A. ON"
     },
     "TMCP4": {
       "ticker": "TMCP4",
@@ -5888,7 +5824,7 @@
       "price": 58.2,
       "sector": "",
       "subsector": "",
-      "company_name": "TELEMIG CELULAR PARTICIPAÇÕES S.A. PN"
+      "company_name": "TELEMIG CELULAR PARTICIPA\u00c7\u00d5ES S.A. PN"
     },
     "TNEP3": {
       "ticker": "TNEP3",
@@ -5920,7 +5856,7 @@
       "price": 3.01,
       "sector": "",
       "subsector": "",
-      "company_name": "TELE NORDESTE CELULAR PARTICIPAÇÕES S.A. ON"
+      "company_name": "TELE NORDESTE CELULAR PARTICIPA\u00c7\u00d5ES S.A. ON"
     },
     "TNEP4": {
       "ticker": "TNEP4",
@@ -5952,7 +5888,7 @@
       "price": 3.95,
       "sector": "",
       "subsector": "",
-      "company_name": "TELE NORDESTE CELULAR PARTICIPAÇÕES S.A. PN"
+      "company_name": "TELE NORDESTE CELULAR PARTICIPA\u00c7\u00d5ES S.A. PN"
     },
     "TNLP3": {
       "ticker": "TNLP3",
@@ -6046,8 +5982,8 @@
       "revenue": 5771.87,
       "market_cap": 23676.4,
       "price": 39.5,
-      "sector": "Programas e Serviços",
-      "subsector": "Programas e Serviços",
+      "sector": "Programas e Servi\u00e7os",
+      "subsector": "Programas e Servi\u00e7os",
       "company_name": "TOTVS ON NM"
     },
     "TOYR3": {
@@ -6111,7 +6047,7 @@
       "market_cap": 278.08,
       "price": 6.32,
       "sector": "Transporte",
-      "subsector": "Exploração de Rodovias",
+      "subsector": "Explora\u00e7\u00e3o de Rodovias",
       "company_name": "TRIUNFO PARTICIPACOES SA ON NM"
     },
     "TRAD3": {
@@ -6142,8 +6078,8 @@
       "revenue": 31.412,
       "market_cap": 115.661,
       "price": 2.89,
-      "sector": "Programas e Serviços",
-      "subsector": "Programas e Serviços",
+      "sector": "Programas e Servi\u00e7os",
+      "subsector": "Programas e Servi\u00e7os",
       "company_name": "TC ON NM"
     },
     "TRIS3": {
@@ -6174,8 +6110,8 @@
       "revenue": 1357.17,
       "market_cap": 1797.8,
       "price": 7.41,
-      "sector": "Construção Civil",
-      "subsector": "Incorporações",
+      "sector": "Constru\u00e7\u00e3o Civil",
+      "subsector": "Incorpora\u00e7\u00f5es",
       "company_name": "Trisul ON NM"
     },
     "TRPN3": {
@@ -6270,8 +6206,8 @@
       "revenue": 237.788,
       "market_cap": 88.5552,
       "price": 1.34,
-      "sector": "Utilidades Domésticas",
-      "subsector": "Móveis",
+      "sector": "Utilidades Dom\u00e9sticas",
+      "subsector": "M\u00f3veis",
       "company_name": "UNICASA ON NM"
     },
     "UGPA3": {
@@ -6302,9 +6238,9 @@
       "revenue": 139820.0,
       "market_cap": 30998.3,
       "price": 27.78,
-      "sector": "Petróleo, Gás e Biocombustíveis",
-      "subsector": "Exploração, Refino e Distribuição",
-      "company_name": "ULTRAPAR PARTICIPAÇÕES SA ON"
+      "sector": "Petr\u00f3leo, G\u00e1s e Biocombust\u00edveis",
+      "subsector": "Explora\u00e7\u00e3o, Refino e Distribui\u00e7\u00e3o",
+      "company_name": "ULTRAPAR PARTICIPA\u00c7\u00d5ES SA ON"
     },
     "UNIP3": {
       "ticker": "UNIP3",
@@ -6334,9 +6270,9 @@
       "revenue": 5538.79,
       "market_cap": 7195.54,
       "price": 63.58,
-      "sector": "Químicos",
-      "subsector": "Químicos Diversos",
-      "company_name": "UNIPAR PARTICIPAÇÕES S.A. ON"
+      "sector": "Qu\u00edmicos",
+      "subsector": "Qu\u00edmicos Diversos",
+      "company_name": "UNIPAR PARTICIPA\u00c7\u00d5ES S.A. ON"
     },
     "UNIP5": {
       "ticker": "UNIP5",
@@ -6366,9 +6302,9 @@
       "revenue": 5538.79,
       "market_cap": 7808.94,
       "price": 69.0,
-      "sector": "Químicos",
-      "subsector": "Químicos Diversos",
-      "company_name": "UNIPAR PARTICIPAÇÕES S.A. PNA"
+      "sector": "Qu\u00edmicos",
+      "subsector": "Qu\u00edmicos Diversos",
+      "company_name": "UNIPAR PARTICIPA\u00c7\u00d5ES S.A. PNA"
     },
     "UNIP6": {
       "ticker": "UNIP6",
@@ -6398,9 +6334,9 @@
       "revenue": 5538.79,
       "market_cap": 7846.28,
       "price": 69.33,
-      "sector": "Químicos",
-      "subsector": "Químicos Diversos",
-      "company_name": "UNIPAR PARTICIPAÇÕES S.A. PNB"
+      "sector": "Qu\u00edmicos",
+      "subsector": "Qu\u00edmicos Diversos",
+      "company_name": "UNIPAR PARTICIPA\u00c7\u00d5ES S.A. PNB"
     },
     "USIM3": {
       "ticker": "USIM3",
@@ -6526,8 +6462,8 @@
       "revenue": 213595.0,
       "market_cap": 394031.0,
       "price": 86.81,
-      "sector": "Mineração",
-      "subsector": "Minerais Metálicos",
+      "sector": "Minera\u00e7\u00e3o",
+      "subsector": "Minerais Met\u00e1licos",
       "company_name": "VALE ON NM"
     },
     "VBBR3": {
@@ -6558,8 +6494,8 @@
       "revenue": 183042.0,
       "market_cap": 38150.3,
       "price": 31.83,
-      "sector": "Petróleo, Gás e Biocombustíveis",
-      "subsector": "Exploração, Refino e Distribuição",
+      "sector": "Petr\u00f3leo, G\u00e1s e Biocombust\u00edveis",
+      "subsector": "Explora\u00e7\u00e3o, Refino e Distribui\u00e7\u00e3o",
       "company_name": "VIBRA ON"
     },
     "VIVA3": {
@@ -6590,8 +6526,8 @@
       "revenue": 2875.91,
       "market_cap": 7263.09,
       "price": 30.75,
-      "sector": "Tecidos, Vestuário e Calçados",
-      "subsector": "Acessórios",
+      "sector": "Tecidos, Vestu\u00e1rio e Cal\u00e7ados",
+      "subsector": "Acess\u00f3rios",
       "company_name": "VIVARA S.A. ON NM"
     },
     "VIVR3": {
@@ -6622,8 +6558,8 @@
       "revenue": 37.674,
       "market_cap": 29.768,
       "price": 0.61,
-      "sector": "Construção Civil",
-      "subsector": "Incorporações",
+      "sector": "Constru\u00e7\u00e3o Civil",
+      "subsector": "Incorpora\u00e7\u00f5es",
       "company_name": "VIVER ON NM"
     },
     "VIVT3": {
@@ -6654,8 +6590,8 @@
       "revenue": 58565.8,
       "market_cap": 131320.0,
       "price": 40.7,
-      "sector": "Telecomunicações",
-      "subsector": "Telecomunicações",
+      "sector": "Telecomunica\u00e7\u00f5es",
+      "subsector": "Telecomunica\u00e7\u00f5es",
       "company_name": "TELEF BRASIL ON"
     },
     "VULC3": {
@@ -6686,8 +6622,8 @@
       "revenue": 3457.4,
       "market_cap": 6067.34,
       "price": 19.17,
-      "sector": "Tecidos, Vestuário e Calçados",
-      "subsector": "Calçados",
+      "sector": "Tecidos, Vestu\u00e1rio e Cal\u00e7ados",
+      "subsector": "Cal\u00e7ados",
       "company_name": "VULCABRAS S/A. ON"
     },
     "WEGE3": {
@@ -6718,7 +6654,7 @@
       "revenue": 41379.6,
       "market_cap": 218219.0,
       "price": 51.99,
-      "sector": "Máquinas e Equipamentos",
+      "sector": "M\u00e1quinas e Equipamentos",
       "subsector": "Motores, Compressores e Outros",
       "company_name": "WEG SA ON N1"
     },
@@ -6750,7 +6686,7 @@
       "revenue": 1365.8,
       "market_cap": 1461.55,
       "price": 9.14,
-      "sector": "Previdência e Seguros",
+      "sector": "Previd\u00eancia e Seguros",
       "subsector": "Corretoras de Seguros",
       "company_name": "WIZ CO ON"
     },
@@ -6815,7 +6751,7 @@
       "market_cap": 3689.24,
       "price": 13.46,
       "sector": "Diversos",
-      "subsector": "Serviços Educacionais",
+      "subsector": "Servi\u00e7os Educacionais",
       "company_name": "YDUQS PART ON"
     },
     "ZAMP3": {
@@ -6849,6 +6785,70 @@
       "sector": "Hoteis e Restaurantes",
       "subsector": "Restaurante e Similares",
       "company_name": "ZAMP S.A. ON"
+    },
+    "AURE3": {
+      "ticker": "AURE3",
+      "timestamp": "2026-02-21T09:13:45.416647",
+      "pe_ratio": -9.0,
+      "pb_ratio": 1.0,
+      "ps_ratio": 0.98,
+      "p_ebit": 7.89,
+      "ev_ebitda": 11.3,
+      "ev_ebit": 20.65,
+      "roe": -11.1,
+      "roic": 3.7,
+      "ebit_margin": 12.4,
+      "net_margin": -10.0,
+      "gross_margin": 17.3,
+      "debt_equity": 2.04,
+      "current_ratio": 1.3,
+      "div_yield": 0.5,
+      "revenue_growth_5y": 33.9,
+      "eps": -1.3,
+      "bvps": 11.69,
+      "total_assets": 48833.5,
+      "total_equity": 12275.5,
+      "net_debt": 19919.2,
+      "ebit": 1560.91,
+      "net_income": -1368.53,
+      "revenue": 12541.1,
+      "market_cap": 12310.4,
+      "price": 11.72,
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
+      "company_name": "AUREN ON NM"
+    },
+    "REDE3": {
+      "ticker": "REDE3",
+      "timestamp": "2026-02-21T09:13:45.449264",
+      "pe_ratio": 11.39,
+      "pb_ratio": 3.88,
+      "ps_ratio": 0.83,
+      "p_ebit": 4.24,
+      "ev_ebitda": 6.53,
+      "ev_ebit": 8.18,
+      "roe": 34.0,
+      "roic": 13.7,
+      "ebit_margin": 19.6,
+      "net_margin": 9.8,
+      "gross_margin": 25.1,
+      "debt_equity": 4.38,
+      "current_ratio": 1.38,
+      "div_yield": 8.0,
+      "revenue_growth_5y": 6.8,
+      "eps": 0.55,
+      "bvps": 1.62,
+      "total_assets": 32781.0,
+      "total_equity": 4160.96,
+      "net_debt": 15013.4,
+      "ebit": 3805.84,
+      "net_income": 1415.88,
+      "revenue": 19448.7,
+      "market_cap": 16128.3,
+      "price": 6.28,
+      "sector": "Energia El\u00e9trica",
+      "subsector": "Energia El\u00e9trica",
+      "company_name": "REDE EMPRESAS DE ENERGIA EL\u00c9TRICA S.A. ON"
     }
   }
 }
