@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-20T11:01:51.369031",
+  "generated_at": "2026-02-20T20:14:25.825125",
   "stats": {
     "total_analyzed": 131,
     "buy_count": 6,
@@ -14,424 +14,11 @@
   },
   "recommendations": [
     {
-      "ticker": "SUZB3.SA",
-      "signal": "BUY",
-      "price": 57.130001068115234,
-      "confidence": 0.7000000000000001,
-      "allocation_pct": 0.1,
-      "entry": 57.130001068115234,
-      "stop_loss": 51.417000961303714,
-      "target_1": 68.55600128173828,
-      "drivers": {
-        "primary": [
-          {
-            "factor": "Trend",
-            "value": "Bullish Uptrend",
-            "impact": "+28% confidence",
-            "description": "Price above 50-day MA, forming higher lows, strong buying pressure"
-          }
-        ],
-        "secondary": [
-          {
-            "factor": "Volume",
-            "value": "Above average",
-            "impact": "Supports move",
-            "description": "Volume 1.5x normal - good participation"
-          },
-          {
-            "factor": "Volatility",
-            "value": "High",
-            "impact": "\u26a0\ufe0f Increased risk",
-            "description": "Larger than normal price swings - use smaller position"
-          },
-          {
-            "factor": "News Sentiment",
-            "value": "-0.70",
-            "impact": "Bearish overhang",
-            "description": "Recent news negative - supports selling pressure"
-          }
-        ],
-        "confidence_boosters": [],
-        "risk_factors": [
-          {
-            "factor": "High Volatility",
-            "value": "high",
-            "impact": "Wider stops needed",
-            "description": "Price may swing 5%+ in a day"
-          }
-        ],
-        "reversal_signals": [
-          {
-            "trigger": "Price drops below 50-day MA",
-            "action": "Exit or tighten stop-loss",
-            "probability": "Medium"
-          },
-          {
-            "trigger": "Price drops 5%+ from entry in single day",
-            "action": "Exit immediately - momentum broken",
-            "probability": "High"
-          },
-          {
-            "trigger": "Major negative news event",
-            "action": "Re-evaluate thesis immediately",
-            "probability": "Low but high impact"
-          }
-        ],
-        "key_indicators": [
-          {
-            "name": "MACD",
-            "category": "momentum",
-            "signal": "bullish",
-            "strength": 1.0
-          },
-          {
-            "name": "OBV",
-            "category": "volume",
-            "signal": "accumulation",
-            "strength": 1.0
-          },
-          {
-            "name": "VWAP",
-            "category": "volume",
-            "signal": "above_vwap",
-            "strength": 1.0
-          },
-          {
-            "name": "MA_Alignment",
-            "category": "trend",
-            "signal": "bullish",
-            "strength": 1.0
-          },
-          {
-            "name": "SuperTrend",
-            "category": "trend",
-            "signal": "bullish",
-            "strength": 0.837578056493274
-          }
-        ]
-      },
-      "reversals": [
-        {
-          "signal": "Trend reversal",
-          "trigger": "Price drops below 50-day MA",
-          "action": "Consider tightening stop-loss or exiting"
-        },
-        {
-          "signal": "Negative news catalyst",
-          "trigger": "Major negative news event",
-          "action": "Re-evaluate immediately"
-        }
-      ]
-    },
-    {
-      "ticker": "PCAR3.SA",
-      "signal": "SELL",
-      "price": 3.0299999713897705,
-      "confidence": 0.8690000000000001,
-      "allocation_pct": 0.10071195169596468,
-      "entry": null,
-      "stop_loss": 3.332999968528748,
-      "target_1": null,
-      "drivers": {
-        "primary": [
-          {
-            "factor": "Trend",
-            "value": "Bearish Downtrend",
-            "impact": "26% confidence",
-            "description": "Price below 50-day MA, forming lower highs, strong selling pressure"
-          }
-        ],
-        "secondary": [
-          {
-            "factor": "Volume",
-            "value": "Unusual spike",
-            "impact": "Confirms conviction",
-            "description": "Trading volume 2x+ above average - strong participation"
-          },
-          {
-            "factor": "Volatility",
-            "value": "High",
-            "impact": "\u26a0\ufe0f Increased risk",
-            "description": "Larger than normal price swings - use smaller position"
-          },
-          {
-            "factor": "News Sentiment",
-            "value": "-0.70",
-            "impact": "Bearish overhang",
-            "description": "Recent news negative - supports selling pressure"
-          }
-        ],
-        "confidence_boosters": [
-          {
-            "factor": "High Confidence",
-            "value": "87%",
-            "impact": "Strong signal quality",
-            "description": "Multiple factors strongly aligned"
-          }
-        ],
-        "risk_factors": [],
-        "reversal_signals": [
-          {
-            "trigger": "Price breaks above 50-day MA with volume",
-            "action": "Cover short / consider reversal",
-            "probability": "Medium"
-          },
-          {
-            "trigger": "Major positive news catalyst",
-            "action": "Exit position - sentiment shift",
-            "probability": "Low but high impact"
-          }
-        ],
-        "key_indicators": [
-          {
-            "name": "MACD",
-            "category": "momentum",
-            "signal": "bearish",
-            "strength": 1.0
-          },
-          {
-            "name": "Bollinger",
-            "category": "volatility",
-            "signal": "below_lower",
-            "strength": 1.0
-          },
-          {
-            "name": "OBV",
-            "category": "volume",
-            "signal": "distribution",
-            "strength": 1.0
-          },
-          {
-            "name": "VWAP",
-            "category": "volume",
-            "signal": "below_vwap",
-            "strength": 1.0
-          },
-          {
-            "name": "MA_Alignment",
-            "category": "trend",
-            "signal": "bearish",
-            "strength": 1.0
-          }
-        ]
-      },
-      "reversals": [
-        {
-          "signal": "Trend reversal",
-          "trigger": "Price breaks above 50-day MA with volume",
-          "action": "Cover short or re-evaluate"
-        },
-        {
-          "signal": "Positive news catalyst",
-          "trigger": "Major positive news event",
-          "action": "Monitor for sentiment shift"
-        }
-      ]
-    },
-    {
-      "ticker": "TOTS3.SA",
-      "signal": "SELL",
-      "price": 38.95000076293945,
-      "confidence": 0.6250000000000001,
-      "allocation_pct": 0.1,
-      "entry": null,
-      "stop_loss": 42.8450008392334,
-      "target_1": null,
-      "drivers": {
-        "primary": [
-          {
-            "factor": "Trend",
-            "value": "Bearish Downtrend",
-            "impact": "19% confidence",
-            "description": "Price below 50-day MA, forming lower highs"
-          }
-        ],
-        "secondary": [
-          {
-            "factor": "Volatility",
-            "value": "High",
-            "impact": "\u26a0\ufe0f Increased risk",
-            "description": "Larger than normal price swings - use smaller position"
-          },
-          {
-            "factor": "News Sentiment",
-            "value": "+0.64",
-            "impact": "Bullish catalyst",
-            "description": "Recent news positive - supports buying pressure"
-          }
-        ],
-        "confidence_boosters": [],
-        "risk_factors": [],
-        "reversal_signals": [
-          {
-            "trigger": "Price breaks above 50-day MA with volume",
-            "action": "Cover short / consider reversal",
-            "probability": "Medium"
-          },
-          {
-            "trigger": "Major positive news catalyst",
-            "action": "Exit position - sentiment shift",
-            "probability": "Low but high impact"
-          }
-        ],
-        "key_indicators": [
-          {
-            "name": "MACD",
-            "category": "momentum",
-            "signal": "bearish",
-            "strength": 1.0
-          },
-          {
-            "name": "OBV",
-            "category": "volume",
-            "signal": "distribution",
-            "strength": 1.0
-          },
-          {
-            "name": "VWAP",
-            "category": "volume",
-            "signal": "below_vwap",
-            "strength": 1.0
-          },
-          {
-            "name": "MA_Alignment",
-            "category": "trend",
-            "signal": "bearish",
-            "strength": 1.0
-          },
-          {
-            "name": "SuperTrend",
-            "category": "trend",
-            "signal": "bearish",
-            "strength": 1.0
-          }
-        ]
-      },
-      "reversals": [
-        {
-          "signal": "Trend reversal",
-          "trigger": "Price breaks above 50-day MA with volume",
-          "action": "Cover short or re-evaluate"
-        },
-        {
-          "signal": "Positive news catalyst",
-          "trigger": "Major positive news event",
-          "action": "Monitor for sentiment shift"
-        }
-      ]
-    },
-    {
-      "ticker": "DIRR3.SA",
-      "signal": "BUY",
-      "price": 16.770000457763672,
-      "confidence": 0.8000000000000002,
-      "allocation_pct": 0.1,
-      "entry": 16.770000457763672,
-      "stop_loss": 15.093000411987305,
-      "target_1": 20.124000549316406,
-      "drivers": {
-        "primary": [
-          {
-            "factor": "Trend",
-            "value": "Bullish Uptrend",
-            "impact": "+32% confidence",
-            "description": "Price above 50-day MA, forming higher lows, strong buying pressure"
-          }
-        ],
-        "secondary": [
-          {
-            "factor": "Volatility",
-            "value": "High",
-            "impact": "\u26a0\ufe0f Increased risk",
-            "description": "Larger than normal price swings - use smaller position"
-          },
-          {
-            "factor": "News Sentiment",
-            "value": "+0.50",
-            "impact": "Bullish catalyst",
-            "description": "Recent news positive - supports buying pressure"
-          }
-        ],
-        "confidence_boosters": [
-          {
-            "factor": "High Confidence",
-            "value": "80%",
-            "impact": "Strong signal quality",
-            "description": "Multiple factors strongly aligned"
-          }
-        ],
-        "risk_factors": [
-          {
-            "factor": "High Volatility",
-            "value": "high",
-            "impact": "Wider stops needed",
-            "description": "Price may swing 5%+ in a day"
-          }
-        ],
-        "reversal_signals": [
-          {
-            "trigger": "Price drops below 50-day MA",
-            "action": "Exit or tighten stop-loss",
-            "probability": "Medium"
-          },
-          {
-            "trigger": "Price drops 5%+ from entry in single day",
-            "action": "Exit immediately - momentum broken",
-            "probability": "High"
-          }
-        ],
-        "key_indicators": [
-          {
-            "name": "MACD",
-            "category": "momentum",
-            "signal": "bullish",
-            "strength": 1.0
-          },
-          {
-            "name": "OBV",
-            "category": "volume",
-            "signal": "accumulation",
-            "strength": 1.0
-          },
-          {
-            "name": "VWAP",
-            "category": "volume",
-            "signal": "above_vwap",
-            "strength": 1.0
-          },
-          {
-            "name": "MA_Alignment",
-            "category": "trend",
-            "signal": "bullish",
-            "strength": 1.0
-          },
-          {
-            "name": "SuperTrend",
-            "category": "trend",
-            "signal": "bullish",
-            "strength": 1.0
-          }
-        ]
-      },
-      "reversals": [
-        {
-          "signal": "Trend reversal",
-          "trigger": "Price drops below 50-day MA",
-          "action": "Consider tightening stop-loss or exiting"
-        },
-        {
-          "signal": "Negative news catalyst",
-          "trigger": "Major negative news event",
-          "action": "Re-evaluate immediately"
-        }
-      ]
-    },
-    {
       "ticker": "HBOR3.SA",
       "signal": "BUY",
       "price": 3.3299999237060547,
       "confidence": 0.769,
-      "allocation_pct": 0.1,
+      "allocation_pct": 0.10216446501056138,
       "entry": 3.3299999237060547,
       "stop_loss": 2.9969999313354494,
       "target_1": 3.9959999084472653,
@@ -459,7 +46,7 @@
           },
           {
             "factor": "News Sentiment",
-            "value": "-0.40",
+            "value": "-0.80",
             "impact": "Bearish overhang",
             "description": "Recent news negative - supports selling pressure"
           }
@@ -544,29 +131,29 @@
       ]
     },
     {
-      "ticker": "QUAL3.SA",
-      "signal": "BUY",
-      "price": 2.5899999141693115,
-      "confidence": 0.73,
+      "ticker": "PCAR3.SA",
+      "signal": "SELL",
+      "price": 3.0299999713897705,
+      "confidence": 0.8690000000000001,
       "allocation_pct": 0.1,
-      "entry": 2.5899999141693115,
-      "stop_loss": 2.3309999227523805,
-      "target_1": 3.1079998970031735,
+      "entry": null,
+      "stop_loss": 3.332999968528748,
+      "target_1": null,
       "drivers": {
         "primary": [
           {
             "factor": "Trend",
-            "value": "Sideways/Range-bound",
-            "impact": "Neutral bias",
-            "description": "Price oscillating between support/resistance"
+            "value": "Bearish Downtrend",
+            "impact": "26% confidence",
+            "description": "Price below 50-day MA, forming lower highs, strong selling pressure"
           }
         ],
         "secondary": [
           {
             "factor": "Volume",
-            "value": "Above average",
-            "impact": "Supports move",
-            "description": "Volume 1.4x normal - good participation"
+            "value": "Unusual spike",
+            "impact": "Confirms conviction",
+            "description": "Trading volume 2x+ above average - strong participation"
           },
           {
             "factor": "Volatility",
@@ -576,113 +163,15 @@
           },
           {
             "factor": "News Sentiment",
-            "value": "-0.24",
+            "value": "-0.46",
             "impact": "Bearish overhang",
             "description": "Recent news negative - supports selling pressure"
-          }
-        ],
-        "confidence_boosters": [],
-        "risk_factors": [
-          {
-            "factor": "High Volatility",
-            "value": "high",
-            "impact": "Wider stops needed",
-            "description": "Price may swing 5%+ in a day"
-          }
-        ],
-        "reversal_signals": [
-          {
-            "trigger": "Price drops below 50-day MA",
-            "action": "Exit or tighten stop-loss",
-            "probability": "Medium"
-          },
-          {
-            "trigger": "Price drops 5%+ from entry in single day",
-            "action": "Exit immediately - momentum broken",
-            "probability": "High"
-          },
-          {
-            "trigger": "Major negative news event",
-            "action": "Re-evaluate thesis immediately",
-            "probability": "Low but high impact"
-          }
-        ],
-        "key_indicators": [
-          {
-            "name": "MACD",
-            "category": "momentum",
-            "signal": "bullish",
-            "strength": 1.0
-          },
-          {
-            "name": "Stochastic",
-            "category": "momentum",
-            "signal": "overbought",
-            "strength": 1.0
-          },
-          {
-            "name": "Bollinger",
-            "category": "volatility",
-            "signal": "above_upper",
-            "strength": 1.0
-          },
-          {
-            "name": "OBV",
-            "category": "volume",
-            "signal": "accumulation",
-            "strength": 1.0
-          },
-          {
-            "name": "VWAP",
-            "category": "volume",
-            "signal": "above_vwap",
-            "strength": 1.0
-          }
-        ]
-      },
-      "reversals": [
-        {
-          "signal": "Trend reversal",
-          "trigger": "Price drops below 50-day MA",
-          "action": "Consider tightening stop-loss or exiting"
-        },
-        {
-          "signal": "Negative news catalyst",
-          "trigger": "Major negative news event",
-          "action": "Re-evaluate immediately"
-        }
-      ]
-    },
-    {
-      "ticker": "PRNR3.SA",
-      "signal": "BUY",
-      "price": 21.5,
-      "confidence": 0.8333333333333335,
-      "allocation_pct": 0.1,
-      "entry": 21.5,
-      "stop_loss": 19.35,
-      "target_1": 25.799999999999997,
-      "drivers": {
-        "primary": [
-          {
-            "factor": "Trend",
-            "value": "Bullish Uptrend",
-            "impact": "+33% confidence",
-            "description": "Price above 50-day MA, forming higher lows, strong buying pressure"
-          }
-        ],
-        "secondary": [
-          {
-            "factor": "News Sentiment",
-            "value": "+0.24",
-            "impact": "Bullish catalyst",
-            "description": "Recent news positive - supports buying pressure"
           }
         ],
         "confidence_boosters": [
           {
             "factor": "High Confidence",
-            "value": "83%",
+            "value": "87%",
             "impact": "Strong signal quality",
             "description": "Multiple factors strongly aligned"
           }
@@ -690,40 +179,45 @@
         "risk_factors": [],
         "reversal_signals": [
           {
-            "trigger": "Price drops below 50-day MA",
-            "action": "Exit or tighten stop-loss",
+            "trigger": "Price breaks above 50-day MA with volume",
+            "action": "Cover short / consider reversal",
             "probability": "Medium"
+          },
+          {
+            "trigger": "Major positive news catalyst",
+            "action": "Exit position - sentiment shift",
+            "probability": "Low but high impact"
           }
         ],
         "key_indicators": [
           {
             "name": "MACD",
             "category": "momentum",
-            "signal": "bullish",
+            "signal": "bearish",
             "strength": 1.0
           },
           {
-            "name": "Stochastic",
-            "category": "momentum",
-            "signal": "overbought",
-            "strength": 1.0
-          },
-          {
-            "name": "Keltner",
+            "name": "Bollinger",
             "category": "volatility",
-            "signal": "above_channel",
+            "signal": "below_lower",
+            "strength": 1.0
+          },
+          {
+            "name": "OBV",
+            "category": "volume",
+            "signal": "distribution",
             "strength": 1.0
           },
           {
             "name": "VWAP",
             "category": "volume",
-            "signal": "above_vwap",
+            "signal": "below_vwap",
             "strength": 1.0
           },
           {
             "name": "MA_Alignment",
             "category": "trend",
-            "signal": "bullish",
+            "signal": "bearish",
             "strength": 1.0
           }
         ]
@@ -731,13 +225,13 @@
       "reversals": [
         {
           "signal": "Trend reversal",
-          "trigger": "Price drops below 50-day MA",
-          "action": "Consider tightening stop-loss or exiting"
+          "trigger": "Price breaks above 50-day MA with volume",
+          "action": "Cover short or re-evaluate"
         },
         {
-          "signal": "Negative news catalyst",
-          "trigger": "Major negative news event",
-          "action": "Re-evaluate immediately"
+          "signal": "Positive news catalyst",
+          "trigger": "Major positive news event",
+          "action": "Monitor for sentiment shift"
         }
       ]
     },
@@ -774,7 +268,7 @@
           },
           {
             "factor": "News Sentiment",
-            "value": "+0.21",
+            "value": "+0.32",
             "impact": "Bullish catalyst",
             "description": "Recent news positive - supports buying pressure"
           }
@@ -840,10 +334,220 @@
       ]
     },
     {
+      "ticker": "DIRR3.SA",
+      "signal": "BUY",
+      "price": 16.770000457763672,
+      "confidence": 0.7000000000000001,
+      "allocation_pct": 0.1,
+      "entry": 16.770000457763672,
+      "stop_loss": 15.093000411987305,
+      "target_1": 20.124000549316406,
+      "drivers": {
+        "primary": [
+          {
+            "factor": "Trend",
+            "value": "Bullish Uptrend",
+            "impact": "+28% confidence",
+            "description": "Price above 50-day MA, forming higher lows, strong buying pressure"
+          }
+        ],
+        "secondary": [
+          {
+            "factor": "Volatility",
+            "value": "High",
+            "impact": "\u26a0\ufe0f Increased risk",
+            "description": "Larger than normal price swings - use smaller position"
+          },
+          {
+            "factor": "News Sentiment",
+            "value": "-0.23",
+            "impact": "Bearish overhang",
+            "description": "Recent news negative - supports selling pressure"
+          }
+        ],
+        "confidence_boosters": [],
+        "risk_factors": [
+          {
+            "factor": "High Volatility",
+            "value": "high",
+            "impact": "Wider stops needed",
+            "description": "Price may swing 5%+ in a day"
+          }
+        ],
+        "reversal_signals": [
+          {
+            "trigger": "Price drops below 50-day MA",
+            "action": "Exit or tighten stop-loss",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "Price drops 5%+ from entry in single day",
+            "action": "Exit immediately - momentum broken",
+            "probability": "High"
+          },
+          {
+            "trigger": "Major negative news event",
+            "action": "Re-evaluate thesis immediately",
+            "probability": "Low but high impact"
+          }
+        ],
+        "key_indicators": [
+          {
+            "name": "MACD",
+            "category": "momentum",
+            "signal": "bullish",
+            "strength": 1.0
+          },
+          {
+            "name": "OBV",
+            "category": "volume",
+            "signal": "accumulation",
+            "strength": 1.0
+          },
+          {
+            "name": "VWAP",
+            "category": "volume",
+            "signal": "above_vwap",
+            "strength": 1.0
+          },
+          {
+            "name": "MA_Alignment",
+            "category": "trend",
+            "signal": "bullish",
+            "strength": 1.0
+          },
+          {
+            "name": "SuperTrend",
+            "category": "trend",
+            "signal": "bullish",
+            "strength": 1.0
+          }
+        ]
+      },
+      "reversals": [
+        {
+          "signal": "Trend reversal",
+          "trigger": "Price drops below 50-day MA",
+          "action": "Consider tightening stop-loss or exiting"
+        },
+        {
+          "signal": "Negative news catalyst",
+          "trigger": "Major negative news event",
+          "action": "Re-evaluate immediately"
+        }
+      ]
+    },
+    {
+      "ticker": "UNIP6.SA",
+      "signal": "BUY",
+      "price": 69.91000366210938,
+      "confidence": 0.8300000000000001,
+      "allocation_pct": 0.1,
+      "entry": 69.91000366210938,
+      "stop_loss": 62.91900329589844,
+      "target_1": 83.89200439453124,
+      "drivers": {
+        "primary": [
+          {
+            "factor": "Trend",
+            "value": "Bullish Uptrend",
+            "impact": "+33% confidence",
+            "description": "Price above 50-day MA, forming higher lows, strong buying pressure"
+          }
+        ],
+        "secondary": [
+          {
+            "factor": "Volatility",
+            "value": "High",
+            "impact": "\u26a0\ufe0f Increased risk",
+            "description": "Larger than normal price swings - use smaller position"
+          },
+          {
+            "factor": "News Sentiment",
+            "value": "+0.15",
+            "impact": "Bullish catalyst",
+            "description": "Recent news positive - supports buying pressure"
+          }
+        ],
+        "confidence_boosters": [
+          {
+            "factor": "High Confidence",
+            "value": "83%",
+            "impact": "Strong signal quality",
+            "description": "Multiple factors strongly aligned"
+          }
+        ],
+        "risk_factors": [
+          {
+            "factor": "High Volatility",
+            "value": "high",
+            "impact": "Wider stops needed",
+            "description": "Price may swing 5%+ in a day"
+          }
+        ],
+        "reversal_signals": [
+          {
+            "trigger": "Price drops below 50-day MA",
+            "action": "Exit or tighten stop-loss",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "Price drops 5%+ from entry in single day",
+            "action": "Exit immediately - momentum broken",
+            "probability": "High"
+          }
+        ],
+        "key_indicators": [
+          {
+            "name": "MACD",
+            "category": "momentum",
+            "signal": "bullish",
+            "strength": 1.0
+          },
+          {
+            "name": "OBV",
+            "category": "volume",
+            "signal": "accumulation",
+            "strength": 1.0
+          },
+          {
+            "name": "VWAP",
+            "category": "volume",
+            "signal": "above_vwap",
+            "strength": 1.0
+          },
+          {
+            "name": "MA_Alignment",
+            "category": "trend",
+            "signal": "bullish",
+            "strength": 1.0
+          },
+          {
+            "name": "SuperTrend",
+            "category": "trend",
+            "signal": "bullish",
+            "strength": 1.0
+          }
+        ]
+      },
+      "reversals": [
+        {
+          "signal": "Trend reversal",
+          "trigger": "Price drops below 50-day MA",
+          "action": "Consider tightening stop-loss or exiting"
+        },
+        {
+          "signal": "Negative news catalyst",
+          "trigger": "Major negative news event",
+          "action": "Re-evaluate immediately"
+        }
+      ]
+    },
+    {
       "ticker": "RAIZ4.SA",
       "signal": "SELL",
       "price": 0.6200000047683716,
-      "confidence": 0.7500000000000001,
+      "confidence": 0.8000000000000002,
       "allocation_pct": 0.1,
       "entry": null,
       "stop_loss": 0.6820000052452088,
@@ -853,7 +557,7 @@
           {
             "factor": "Trend",
             "value": "Bearish Downtrend",
-            "impact": "23% confidence",
+            "impact": "24% confidence",
             "description": "Price below 50-day MA, forming lower highs, strong selling pressure"
           }
         ],
@@ -869,12 +573,18 @@
             "value": "High",
             "impact": "\u26a0\ufe0f Increased risk",
             "description": "Larger than normal price swings - use smaller position"
+          },
+          {
+            "factor": "News Sentiment",
+            "value": "-0.13",
+            "impact": "Bearish overhang",
+            "description": "Recent news negative - supports selling pressure"
           }
         ],
         "confidence_boosters": [
           {
             "factor": "High Confidence",
-            "value": "75%",
+            "value": "80%",
             "impact": "Strong signal quality",
             "description": "Multiple factors strongly aligned"
           }
@@ -939,24 +649,227 @@
       ]
     },
     {
-      "ticker": "UNIP6.SA",
-      "signal": "BUY",
-      "price": 69.91000366210938,
-      "confidence": 0.78,
+      "ticker": "TOTS3.SA",
+      "signal": "SELL",
+      "price": 38.95000076293945,
+      "confidence": 0.6750000000000002,
       "allocation_pct": 0.1,
-      "entry": 69.91000366210938,
-      "stop_loss": 62.91900329589844,
-      "target_1": 83.89200439453124,
+      "entry": null,
+      "stop_loss": 42.8450008392334,
+      "target_1": null,
+      "drivers": {
+        "primary": [
+          {
+            "factor": "Trend",
+            "value": "Bearish Downtrend",
+            "impact": "20% confidence",
+            "description": "Price below 50-day MA, forming lower highs"
+          }
+        ],
+        "secondary": [
+          {
+            "factor": "Volatility",
+            "value": "High",
+            "impact": "\u26a0\ufe0f Increased risk",
+            "description": "Larger than normal price swings - use smaller position"
+          }
+        ],
+        "confidence_boosters": [],
+        "risk_factors": [],
+        "reversal_signals": [
+          {
+            "trigger": "Price breaks above 50-day MA with volume",
+            "action": "Cover short / consider reversal",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "Major positive news catalyst",
+            "action": "Exit position - sentiment shift",
+            "probability": "Low but high impact"
+          }
+        ],
+        "key_indicators": [
+          {
+            "name": "MACD",
+            "category": "momentum",
+            "signal": "bearish",
+            "strength": 1.0
+          },
+          {
+            "name": "OBV",
+            "category": "volume",
+            "signal": "distribution",
+            "strength": 1.0
+          },
+          {
+            "name": "VWAP",
+            "category": "volume",
+            "signal": "below_vwap",
+            "strength": 1.0
+          },
+          {
+            "name": "MA_Alignment",
+            "category": "trend",
+            "signal": "bearish",
+            "strength": 1.0
+          },
+          {
+            "name": "SuperTrend",
+            "category": "trend",
+            "signal": "bearish",
+            "strength": 1.0
+          }
+        ]
+      },
+      "reversals": [
+        {
+          "signal": "Trend reversal",
+          "trigger": "Price breaks above 50-day MA with volume",
+          "action": "Cover short or re-evaluate"
+        },
+        {
+          "signal": "Positive news catalyst",
+          "trigger": "Major positive news event",
+          "action": "Monitor for sentiment shift"
+        }
+      ]
+    },
+    {
+      "ticker": "SUZB3.SA",
+      "signal": "BUY",
+      "price": 57.130001068115234,
+      "confidence": 0.7500000000000001,
+      "allocation_pct": 0.1,
+      "entry": 57.130001068115234,
+      "stop_loss": 51.417000961303714,
+      "target_1": 68.55600128173828,
       "drivers": {
         "primary": [
           {
             "factor": "Trend",
             "value": "Bullish Uptrend",
-            "impact": "+31% confidence",
+            "impact": "+30% confidence",
             "description": "Price above 50-day MA, forming higher lows, strong buying pressure"
           }
         ],
         "secondary": [
+          {
+            "factor": "Volume",
+            "value": "Above average",
+            "impact": "Supports move",
+            "description": "Volume 1.5x normal - good participation"
+          },
+          {
+            "factor": "Volatility",
+            "value": "High",
+            "impact": "\u26a0\ufe0f Increased risk",
+            "description": "Larger than normal price swings - use smaller position"
+          }
+        ],
+        "confidence_boosters": [
+          {
+            "factor": "High Confidence",
+            "value": "75%",
+            "impact": "Strong signal quality",
+            "description": "Multiple factors strongly aligned"
+          }
+        ],
+        "risk_factors": [
+          {
+            "factor": "High Volatility",
+            "value": "high",
+            "impact": "Wider stops needed",
+            "description": "Price may swing 5%+ in a day"
+          }
+        ],
+        "reversal_signals": [
+          {
+            "trigger": "Price drops below 50-day MA",
+            "action": "Exit or tighten stop-loss",
+            "probability": "Medium"
+          },
+          {
+            "trigger": "Price drops 5%+ from entry in single day",
+            "action": "Exit immediately - momentum broken",
+            "probability": "High"
+          },
+          {
+            "trigger": "Major negative news event",
+            "action": "Re-evaluate thesis immediately",
+            "probability": "Low but high impact"
+          }
+        ],
+        "key_indicators": [
+          {
+            "name": "MACD",
+            "category": "momentum",
+            "signal": "bullish",
+            "strength": 1.0
+          },
+          {
+            "name": "OBV",
+            "category": "volume",
+            "signal": "accumulation",
+            "strength": 1.0
+          },
+          {
+            "name": "VWAP",
+            "category": "volume",
+            "signal": "above_vwap",
+            "strength": 1.0
+          },
+          {
+            "name": "MA_Alignment",
+            "category": "trend",
+            "signal": "bullish",
+            "strength": 1.0
+          },
+          {
+            "name": "SuperTrend",
+            "category": "trend",
+            "signal": "bullish",
+            "strength": 0.837578056493274
+          }
+        ]
+      },
+      "reversals": [
+        {
+          "signal": "Trend reversal",
+          "trigger": "Price drops below 50-day MA",
+          "action": "Consider tightening stop-loss or exiting"
+        },
+        {
+          "signal": "Negative news catalyst",
+          "trigger": "Major negative news event",
+          "action": "Re-evaluate immediately"
+        }
+      ]
+    },
+    {
+      "ticker": "QUAL3.SA",
+      "signal": "BUY",
+      "price": 2.5899999141693115,
+      "confidence": 0.78,
+      "allocation_pct": 0.1,
+      "entry": 2.5899999141693115,
+      "stop_loss": 2.3309999227523805,
+      "target_1": 3.1079998970031735,
+      "drivers": {
+        "primary": [
+          {
+            "factor": "Trend",
+            "value": "Sideways/Range-bound",
+            "impact": "Neutral bias",
+            "description": "Price oscillating between support/resistance"
+          }
+        ],
+        "secondary": [
+          {
+            "factor": "Volume",
+            "value": "Above average",
+            "impact": "Supports move",
+            "description": "Volume 1.4x normal - good participation"
+          },
           {
             "factor": "Volatility",
             "value": "High",
@@ -1000,6 +913,18 @@
             "strength": 1.0
           },
           {
+            "name": "Stochastic",
+            "category": "momentum",
+            "signal": "overbought",
+            "strength": 1.0
+          },
+          {
+            "name": "Bollinger",
+            "category": "volatility",
+            "signal": "above_upper",
+            "strength": 1.0
+          },
+          {
             "name": "OBV",
             "category": "volume",
             "signal": "accumulation",
@@ -1010,15 +935,84 @@
             "category": "volume",
             "signal": "above_vwap",
             "strength": 1.0
-          },
+          }
+        ]
+      },
+      "reversals": [
+        {
+          "signal": "Trend reversal",
+          "trigger": "Price drops below 50-day MA",
+          "action": "Consider tightening stop-loss or exiting"
+        },
+        {
+          "signal": "Negative news catalyst",
+          "trigger": "Major negative news event",
+          "action": "Re-evaluate immediately"
+        }
+      ]
+    },
+    {
+      "ticker": "PRNR3.SA",
+      "signal": "BUY",
+      "price": 21.5,
+      "confidence": 0.7833333333333334,
+      "allocation_pct": 0.1,
+      "entry": 21.5,
+      "stop_loss": 19.35,
+      "target_1": 25.799999999999997,
+      "drivers": {
+        "primary": [
           {
-            "name": "MA_Alignment",
-            "category": "trend",
+            "factor": "Trend",
+            "value": "Bullish Uptrend",
+            "impact": "+31% confidence",
+            "description": "Price above 50-day MA, forming higher lows, strong buying pressure"
+          }
+        ],
+        "secondary": [],
+        "confidence_boosters": [
+          {
+            "factor": "High Confidence",
+            "value": "78%",
+            "impact": "Strong signal quality",
+            "description": "Multiple factors strongly aligned"
+          }
+        ],
+        "risk_factors": [],
+        "reversal_signals": [
+          {
+            "trigger": "Price drops below 50-day MA",
+            "action": "Exit or tighten stop-loss",
+            "probability": "Medium"
+          }
+        ],
+        "key_indicators": [
+          {
+            "name": "MACD",
+            "category": "momentum",
             "signal": "bullish",
             "strength": 1.0
           },
           {
-            "name": "SuperTrend",
+            "name": "Stochastic",
+            "category": "momentum",
+            "signal": "overbought",
+            "strength": 1.0
+          },
+          {
+            "name": "Keltner",
+            "category": "volatility",
+            "signal": "above_channel",
+            "strength": 1.0
+          },
+          {
+            "name": "VWAP",
+            "category": "volume",
+            "signal": "above_vwap",
+            "strength": 1.0
+          },
+          {
+            "name": "MA_Alignment",
             "category": "trend",
             "signal": "bullish",
             "strength": 1.0

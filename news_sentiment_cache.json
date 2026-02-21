@@ -1,71 +1,107 @@
 {
   "PCAR3.SA": {
-    "sentiment": -0.6953644535969943,
-    "timestamp": "2026-02-20T11:01:25.853550",
-    "source": "newsdata.io",
+    "sentiment": -0.46019977469848716,
+    "timestamp": "2026-02-20T20:20:57.339790",
+    "source": "google_news",
     "articles": [
       {
-        "title": "Ibovespa hoje: Axia (AXIA6;AXIA3) e Hapvida (HAPV3) saltam; GPA (PCAR3) cai quase 10%",
-        "summary": "O Ibovespa hoje fechou em alta, ao contra\u0301rio dos i\u0301ndices de Nova York, que encerraram em queda. A principal refere\u0302ncia da B3 terminou esta quinta-f",
-        "source_publication": "Estadao Br",
-        "link": "https://einvestidor.estadao.com.br/mercado/ibovespa-hoje-axia-axia6-axia3-hapvida-hapv3-saltam-gpa-pcar3-tomba/"
+        "title": "A\u00e7\u00f5es do Grupo P\u00e3o de A\u00e7\u00facar despencam com temores sobre caixa e lideram perdas do Ibovespa - Valor Econ\u00f4mico",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi6AFBVV95cUxNTTFaeDVTM1NGMG5OOGt0V1FVUmdKSHhOZDJkNnlwaXdQLXp0ZTYxZWdha29QZkQxRS1uRy02NkVZdnhNZnpFT1Y1",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNTTFaeDVTM1NGMG5OOGt0V1FVUmdKSHhOZDJkNnlwaXdQLXp0ZTYxZWdha29QZkQxRS1uRy02NkVZdnhNZnpFT1Y1TkRVblpmb2VVc0hLd0tvelpsUXIzYU5GLXg5YnQtM0Z6RkM4SXY3OS10amp1aUNIV3Q5YnJhdDZDX2FiY1BlWVN5ZU9MMUl3dmhxNzl5dDRMR2I2SG5iS1BLcVpTaHRIOUVYWUx3bXFfSGpCdzM0WC03bDJXV1gzVHg5WGo4ZGZXSEN6dW03U2ktRWEzaFMyeVI2ZHJpaDlnZ25POGx20gH3AUFVX3lxTE0tUmhIWDVkWnVHaUJmLUVIUmpCUFczVklHamYtMWMzQzhBUVR4WVlSb0p2VGZMbWVTNkV2NUxvY0xwamZFSHR4UVhENzBscTJjLVBja3BzV3NmRExuQy04ZnJEaWxKeEdSQU9fUlFqQ0tka2xSSGlrMDAtaVNKSm1zZ3pKSm95RXVBeWhsRkFYZHNfOUIyM2ZxcmE3TXRkaW9ra2FlMWlhdzdkUUJwVW1pRXlZSmZOUDl1d0ZGT0k4QTFmUnJJeEpaS0s1b2h5aUhudjY5bERyRy1UcXFUWmlmb0g1YlZVaTVmQjZxUTRVM0x1bGNKOEU?oc=5"
       },
       {
-        "title": "GPA (PCAR3) chega a cair mais de 10% na sessa\u0303o e acumula perdas de 23% em 2026",
-        "summary": "Em seus dois aplicativos, o Grupo Pa\u0303o de Ac\u0327u\u0301car ja\u0301 acumula 82% de penetrac\u0327a\u0303o entre os clientes de suas lojas. Foto: Divulgac\u0327a\u0303o\" data-medium-fi",
-        "source_publication": "Infomoney",
-        "link": "https://www.infomoney.com.br/mercados/gpa-pcar3-chega-a-cair-mais-de-10-na-sessao-e-acumula-perdas-de-23-em-2026/"
+        "title": "GPA (PCAR3) cai forte na bolsa: o que afetou a dona da rede P\u00e3o de A\u00e7\u00facar, que vive trocas no comando e alto endividamento - Seu Dinheiro",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi9wFBVV95cUxPTHByenZ1a3M3WjFKUVkwaDdkWmVNV01YTXY2ejVDN0RPMTRXLWYwSmVlbV9hSl9KOUJWNHZBVEQxVnVaNGJnNzdU",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxPTHByenZ1a3M3WjFKUVkwaDdkWmVNV01YTXY2ejVDN0RPMTRXLWYwSmVlbV9hSl9KOUJWNHZBVEQxVnVaNGJnNzdUOWpHeTRpNW1MYUZUUTFuSjllTE5OaHdRYzQ0OS1PeU5CQjhCZ05xZndyalJpWS14aHl5YVRwX0gzMGp3TjhJZmc3S09FVGV3UUhMVHc3dzQ5ZU4zUE9lYVBmd3BTUWhUN0FSdGFQbE1hQ2pibUQtcmVyMWVQX0VZdWp5TGFpdzcyTEVFSG1wSnkwcFJkVkZHRWZZUFdVWGZJRDRLTUtDTUZPaE5LcFluRG9lcWln?oc=5"
+      },
+      {
+        "title": "A conta que n\u00e3o fecha no GPA - Brazil Journal",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiZkFVX3lxTE9UZ0FlemdfNHVnMHRKVl80bVBPcFBjZDhqQmM0clg1cmwyeFpSblpZQ05RN3FGb2hXY3ZMYlFTdmNYYjJCQWN1OGxp",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9UZ0FlemdfNHVnMHRKVl80bVBPcFBjZDhqQmM0clg1cmwyeFpSblpZQ05RN3FGb2hXY3ZMYlFTdmNYYjJCQWN1OGxpMUI2MmVjU3lfWG5tLURXWTRNdWZWZ1RqSWQ5UQ?oc=5"
       }
     ]
   },
   "TOTS3.SA": {
-    "sentiment": 0.6355828798775162,
-    "timestamp": "2026-02-20T11:01:31.744585",
-    "source": "newsdata.io",
+    "sentiment": 0.036412825145538105,
+    "timestamp": "2026-02-20T20:11:15.997366",
+    "source": "google_news",
     "articles": [
       {
-        "title": "Por que o Citi reiterou sua recomendac\u0327a\u0303o de compra para esta ac\u0327a\u0303o, apo\u0301s tombo de quase 20%",
-        "summary": "Citi cortou prec\u0327o-alvo, mas manteve a recomendac\u0327a\u0303o de compra grac\u0327as a uma arma que pode potencializar o nego\u0301cio da companhia de software The post",
-        "source_publication": "Money Times",
-        "link": "https://www.moneytimes.com.br/o-dia-seguinte-ao-apocalipse-de-us-2-trilhoes-totvs-tots3-prova-que-ha-vida-apos-o-caos-da-ia-e-acoes-podem-dar-um-salto-de-22/"
+        "title": "O dia seguinte ao apocalipse de US$ 2 trilh\u00f5es: Totvs (TOTS3) prova que h\u00e1 vida ap\u00f3s o caos da IA e a\u00e7\u00f5es podem dar um salto de 22% - Seu Dinheiro",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMihAJBVV95cUxPVlVPUURxeENfbHlpZjc4N2pzYmQ4QVBBNlZab0RpeVFBRF9lb1VMaGFEXzlaZkdET3ZCMjBtZVFQU2Uxd0VQN0FD",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMihAJBVV95cUxPVlVPUURxeENfbHlpZjc4N2pzYmQ4QVBBNlZab0RpeVFBRF9lb1VMaGFEXzlaZkdET3ZCMjBtZVFQU2Uxd0VQN0FDNlNhUG43dHItWlhtSGdOVzB3ZDhYSWtOVmpaU20zU2FlZ3puZ1pjSFhsaS1Vdk1kQ2gzc0NzdFlVR19rV0s3V3ltS2V0ZW1sZ0JkclFhRVpOSGU3WnVGc0M5M2lWVnRqMUIzZm5rdXVsTllJdVBtSEtQblpTamN5dmtDMXZMb0FwN1JidkY1YV8zakY1SmxGcFdBa05weUdka0k2WVZQQ244T2M1X2tUazBxOUNiQnc0eHhqUjNFMF9CVw?oc=5"
+      },
+      {
+        "title": "BTG sobre Totvs (TOTS3): IA pode abrir mercado 20 vezes maior e a\u00e7\u00e3o tem potencial de alta de 40% - Estad\u00e3o E-Investidor",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiiAFBVV95cUxOcGhKTDlrNk1xSmJrX08zMHRBODIteExPRERmSGVNYlU4bzFlaXp4eEJLWFBVa1ptbmY5N0RUajZPTklfdTBSeS03",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOcGhKTDlrNk1xSmJrX08zMHRBODIteExPRERmSGVNYlU4bzFlaXp4eEJLWFBVa1ptbmY5N0RUajZPTklfdTBSeS03T2NoRi12Q1ByOHN2TkQ2WloxYldpc0F2bFZTVlJGUERqRlJFVmg0dUJJMXFONEZ3NHBBREQyMy15NzJVc2Rm0gGOAUFVX3lxTE03RF9uYlVNb2pwUkdJZEJMcy11VXo2QlFtTU1HMEMwZ3dsWFBVU2JsQXU3ZDJ2bV9fZjFtZmkyWGlhc21OMDE0R3lQclUwRjdEVmQ4QUMzMTlnMzNKOGtVd3VKVjZVb3F4MnNLT3gzQmloYXdkRHdSZGpPOTlMSlJfc01nM1NEZ1VrUjVCSkE?oc=5"
+      },
+      {
+        "title": "TOTVS anuncia primeiro foundation de IA B2B brasileiro - Terra",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMizwFBVV95cUxOUE4zaUdtVmR3VVc3QThLcFAtYkJnc1NTYnNEcklac2ROTndrT0JTOHUxMTlmZ3FDdmd3M3JYUVZoSjVQN1dpZkhx",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOUE4zaUdtVmR3VVc3QThLcFAtYkJnc1NTYnNEcklac2ROTndrT0JTOHUxMTlmZ3FDdmd3M3JYUVZoSjVQN1dpZkhxV21ieDY1elB3WWp1NEhPSzdHOWx1UDd6cXktZER0S3ZROWtYa3NnUzg3SlVZc3Z2b3B3Qk4yTFpJcnliWGNhSG1lSWdQNHY0aFBZQ05zeUNkdVQzWWRVWWx1QmVyZEFQZFlVbGtiT0NVWXhTUkp4bWdMR1I0ZUF2Zl9ER1MwNVNCUFdYbEU?oc=5"
       }
     ]
   },
   "SUZB3.SA": {
-    "sentiment": -0.6967966629192233,
-    "timestamp": "2026-02-20T11:01:34.105535",
-    "source": "newsdata.io",
+    "sentiment": -0.035633237757397025,
+    "timestamp": "2026-02-20T20:12:25.706323",
+    "source": "google_news",
     "articles": [
       {
-        "title": "Ibovespa hoje com queda de 0,24%",
-        "summary": "Ana\u0301lises do Mercado por abrangendo: FTSE 100, Dow Jones Industrial Average, DAX, Nikkei 225. Leia as Ana\u0301lises do Mercado de no Investing.com.",
-        "source_publication": "Investing Brasil",
-        "link": "https://br.investing.com/analysis/ibovespa-hoje-com-queda-de-024-200475600"
+        "title": "Suzano divulga novo cronograma de coleta de lixo - G1",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxOeVlJOU11cFJ4N1RLRkhyaGdqeTV4aXE4MGVBOVBSeUVUOU9PNk5tSzFBR2dHZlZZbUxhWll6cTlWNk9ldXdRMUVo",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOeVlJOU11cFJ4N1RLRkhyaGdqeTV4aXE4MGVBOVBSeUVUOU9PNk5tSzFBR2dHZlZZbUxhWll6cTlWNk9ldXdRMUVoNDRNOTNIYURFRk10ZzdBYXFHM3lZN2N0U0E2M0c4Vm93dWNFbnpmVFZUcG1kNzFzWGZpanFzNkQtTmVhQ3M5NE90QmF2S29TM2RpNmQ4dWJuWjl4XzQyVV83N1J3YjM2MjMxLVVfSzVEZ2g2TFZ2cFY1TdIBywFBVV95cUxPNjlBYTFaVEg2SFNWQ0FLc080YlV0WnFPUXVqUWxuN2ZETW9UUExfZEVQVC1CZEsycVladW9DVHlaNzJuUm1iWEtMV3plakNrV2xFSTkzems0d3VhZERqSy04TzBlcW5zblhuYXp4X1JMS25kTDhhemdwQjRrN2NNazZvN3Q0Yzgxak5QVGpWQWZSY3JwWFZQUGVKekhiOU94NTgwazlNcjVVTHFZVzdvRk9RSXJ1NFBnTHJud0hpdkRTeTlHLWZraFVfcw?oc=5"
+      },
+      {
+        "title": "Contribuintes podem consultar IPTU 2026 pela internet a partir desta segunda - Di\u00e1rio de Suzano",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiuAFBVV95cUxQYnhOS1VwSEkxM2J5REZyQXlLOG1WVEdXdkZHN1h1UDlVT2x6TW01SGRzeVV4WFlZVlZZSTBjeUdTb1ZITUxKUTV5",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQYnhOS1VwSEkxM2J5REZyQXlLOG1WVEdXdkZHN1h1UDlVT2x6TW01SGRzeVV4WFlZVlZZSTBjeUdTb1ZITUxKUTV5YWI3QmR5d3NZallVOFFobWl0SlNleUE4NERRS0VCd0FhajdKZzloS1VRLWJvTzVVV2RhZElWN3ZJbWsxY1NXZktCZUc5RmlpcVMzNEpHVHQ2QnIxZV9JQjFTUFNobU1jM1dTVW0wQzl3QTFobGdP0gG-AUFVX3lxTE4weUZiNzFaX011NFdIR0VweTducGxUTDVLQ1luTzMtV09CMkRCUjh2Q0NiZkZITlpKbkJNVDIxekx4YU5CSjViSXlHaUE1ZlRtcVRacnJDa09EXy1LaVZxM2w0bkxZTmJHRGFFSmhFRWJJLVA2QmlsQTV6eF8xM0hNckdGLU5kcTgtUXhiMnQ5c2F1Y3hHZ2ZHamh3cHRYMHNPc3RKTTcxN2R3YnM2NDFsekM0TjJtMUoxQVNVMVE?oc=5"
+      },
+      {
+        "title": "Vara do Trabalho de Suzano far\u00e1 o pagamento do sal\u00e1rio dos trabalhadores da empresa Renova Suzano Ambiental S/A - TRT2",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi8wFBVV95cUxQV3lwOFl2TmFhMnAxYmRETTIxclBTU2NOV1VqdGxHQ2NUYjhvVDE2MEo1MlNYbUFKMk9ld3hVRm4zRWdGcDVoNXFJ",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxQV3lwOFl2TmFhMnAxYmRETTIxclBTU2NOV1VqdGxHQ2NUYjhvVDE2MEo1MlNYbUFKMk9ld3hVRm4zRWdGcDVoNXFJMUhSYU91b2t1Z1R2TjRnRnhJMzl2MWh0QlJGOWFObWhfTlhoajJ6eTdHWWk5RUZaM0ZFbVQtNHpreGRSN2NJQ2ZQX3lVNWNnNnY1UTdUWXJqc1RoRlh0OHVxYUZBYWFvODAwc1pnaHNUcVd2Zk40SmZSeDE4MnhYLVZrelN3Xzd2NmRLeUFMVVRBczBud3RZQW5hQkVlVS1xaFMtdm9NZzFielZLZENvQmc?oc=5"
       }
     ]
   },
   "DIRR3.SA": {
-    "sentiment": 0.4961421876214444,
-    "timestamp": "2026-02-20T11:01:47.557379",
-    "source": "newsdata.io",
+    "sentiment": -0.23435801025345546,
+    "timestamp": "2026-02-20T20:14:20.773420",
+    "source": "google_news",
     "articles": [
       {
-        "title": "Ibovespa hoje com alta de 1,35%",
-        "summary": "Ana\u0301lises do Mercado por abrangendo: FTSE 100, Dow Jones Industrial Average, DAX, Nikkei 225. Leia as Ana\u0301lises do Mercado de no Investing.com.",
-        "source_publication": "Investing Brasil",
-        "link": "https://br.investing.com/analysis/ibovespa-hoje-com-alta-de-135-200475620"
+        "title": "Motociclista morre ap\u00f3s perder controle e bater em \u00e1rvore em MS - G1",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiywFBVV95cUxPM2RZMGRCckVEQzlQaDVaS0RrNW10M2pTT3ptSVV5VXluREs5X2x3UGhkVW54ZjNKUllCUEZfYU8xSDRBWHBvMjRq",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPM2RZMGRCckVEQzlQaDVaS0RrNW10M2pTT3ptSVV5VXluREs5X2x3UGhkVW54ZjNKUllCUEZfYU8xSDRBWHBvMjRqZ2laLVl2RkZBOVA4bVNWYzh6dnZGVV91azJhbWNZS0NyYnRoWElkVzIwaFczMjQzU3BwUlFyeFFJZ1d5WXZfeDJMMzN3b0VXaVAwNFhrdG9HZ0dtTEFtWjBtRFZrbTBYaF91TFZUaDdBLXppNkN0d01RQ2JpbUJzdk1TbWNhVzhXTdIB2gFBVV95cUxQV1JUWWFqUWgxSVpRMXh3VWdOMVpIYWJVWkRqNUZfTjUxQmFMaXJqRVB4QThiZ1FBazJ5T2RxcllwY2JxaUN2VzZfbEJmdlRTRmhXQVFSMHdTY2lTaUs5MDY4VUJXYjJSTVllT3R2Y2R5VmV5MGF4bS1KNkdhREUyOUZuWnZfeDMwWUY2NFozTnQ1RDlwSGVjeTN4WFE3TnZzTmVTMWxhRWQ0LUpGOTgyOHAtUmxWQlZ0bkktR25vU01JY3QtOHA3NENMVEhwbHJhSWNEX0Fla2JaUQ?oc=5"
       },
       {
-        "title": "XP ve\u0302 valorizac\u0327a\u0303o de ate\u0301 44% para construtoras de alta renda; veja recomendac\u0327o\u0303es",
-        "summary": "A XP Investimentos manteve a Cyrela (CYRE3) como sua principal escolha (top pick) entre as construtoras listadas em bolsa e que sa\u0303o voltadas ao segme",
-        "source_publication": "Money Times",
-        "link": "https://www.moneytimes.com.br/xp-ve-valorizacao-de-ate-44-para-construtoras-de-alta-renda-veja-recomendacoes-igdl/"
+        "title": "BHTrans altera tr\u00e2nsito em dois bairros de Belo Horizonte - Rede 98",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMioAFBVV95cUxPUGlzcE5WbU4wR1ZQbEllM2RzWlZqUXhuSEQwZmhORGpzUjBPQ29nS1JCSEk5aEYwTUpVcTRObFdwN3NQelRIRWpi",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPUGlzcE5WbU4wR1ZQbEllM2RzWlZqUXhuSEQwZmhORGpzUjBPQ29nS1JCSEk5aEYwTUpVcTRObFdwN3NQelRIRWpiTDhiQ3BpMTN2WkZ3UzhIR1NlVVBTVmE0aHpzRlVoQ2NRZDNVRDV4dXJFYXlCTVNXZlRGcHhLSjBtMUREN0NaaTd4aExrLVAwaG5XOTg5OVhoYnk0cDR2?oc=5"
+      },
+      {
+        "title": "Usu\u00e1ria do Reddit busca respostas na comunidade ap\u00f3s ficar intrigada com \"p\u00f3 branco\" saindo do DualSense do PS5 - IGN Brasil",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi0wFBVV95cUxNU2tDMHloYkU3OURvN0dfaXlqaHg0Z2hJdTlaVzQyYjhjbWEya1pyekt3RlBPcFFFMVhWeExVWlVTZklvNHN6cExL",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNU2tDMHloYkU3OURvN0dfaXlqaHg0Z2hJdTlaVzQyYjhjbWEya1pyekt3RlBPcFFFMVhWeExVWlVTZklvNHN6cExLdUtReWNVQlgyRXRHNGNpaVZqY3lTcFFsS2YwdEZiYmRuS3hJN3VTRjNKQUdIbnpFbUk3ZnYwdWFRRmcwaE5tMlhEWFlEbWNzbWtSWWNjbGFsc0IyVnY2ZTNkNnFHMC1YU1YzMjNkd2x5cllXR2dLRGF2NjAxbkJGejdhRTFHaDlHcEtDZVA3SC1Z?oc=5"
       }
     ]
   },
   "HBOR3.SA": {
-    "sentiment": -0.3994340643394165,
-    "timestamp": "2026-02-20T11:01:31.050478",
+    "sentiment": -0.7971219636714801,
+    "timestamp": "2026-02-20T20:21:00.475431",
     "source": "google_news",
     "articles": [
       {
@@ -73,50 +109,62 @@
         "summary": "<a href=\"https://news.google.com/rss/articles/CBMilgNBVV95cUxNQUxDZHE0Y2RXVTZMSjItUjBoMU9ueGlfbmRXb25uNm5IRDNZc29NSjYwczhUSGYtX0xmb0JLcE0zTk5ISkNraGtI",
         "source_publication": "Unknown",
         "link": "https://news.google.com/rss/articles/CBMilgNBVV95cUxNQUxDZHE0Y2RXVTZMSjItUjBoMU9ueGlfbmRXb25uNm5IRDNZc29NSjYwczhUSGYtX0xmb0JLcE0zTk5ISkNraGtIVVBFSDAxU1RkTkEyTi1kMXU5VTN2alhCb21XZU02RkJHOTVNYVR6amhuTEZleXhnVG5FaEtyUmg0ckllUlRBcVh5SVJhR196dFV0eWpYWVVaSU5aU0FLYWVQV3JVMzF2cGlnT3ZwTWdKQlJXcWtvMFJ6ejJSaE9LNUZWcTBfQ3JxUUh1Y1FScnBVbzFwWEIwUms2bFVna1Q1bmhDdENfWkxDVC1jVFQ3RDRGRnF6bVBsRThrSUNfOERXZmdXM2MwMXpNYzFmT1Q4Y1BwbU1qVFVFY3UtdnRNeGUtckIzaHprVXdkYmM1cjV6LU5vRlRsR3oyeGI2aVdZNEd0REhzTXFkUFIwMG1WaFZ4SV9Rd3JTb3pEUUpUSW5mNjF3aVdKUDNDTjJpcnAzQ0YzSXc3MTU5T1hqYlNaOVhfd21wU2xOLTZyYnFqV2Y3YmNB?oc=5"
-      },
-      {
-        "title": "Gabriel Bere & irm\u00e3os exp\u00f5em gravuras em ateli\u00ea de SJC \u2014 s\u00e3o jovens do Timor-Leste reconstruindo seu pa\u00eds - spriomais",
-        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi1AFBVV95cUxPOGNsZmcxX2FfUThwd2h6R0xKaXFZakN3LVdKbkp6TFhaM1lDSWFpdUdlU3V0bkNrTEEycVR2dHRRS3VQU2FydzR5",
-        "source_publication": "Unknown",
-        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPOGNsZmcxX2FfUThwd2h6R0xKaXFZakN3LVdKbkp6TFhaM1lDSWFpdUdlU3V0bkNrTEEycVR2dHRRS3VQU2FydzR5cmV0NFFLaktEZmZYUXRTV0pmTTJ5dG1nRFp6ZUZoV1d1cmhzRGRWcFlmTEE0X05SVDZVSlJlVG1QRzczU25mbXNfbUVtMFc2T2RpZHdOQ1YxcGEybjJlNm9INFZYZS1hbzBUbVNSSWhsOWpXaFZJRUgxbWRHc1lnQnl4X2NGbEs1WDJLOE1VQVpqNA?oc=5"
       }
     ]
   },
   "RAIZ4.SA": {
-    "sentiment": -0.056000467383169716,
-    "timestamp": "2026-02-20T11:01:44.057584",
-    "source": "newsdata.io",
+    "sentiment": -0.1259089047789908,
+    "timestamp": "2026-02-20T20:13:53.701592",
+    "source": "google_news",
     "articles": [
       {
-        "title": "Ibovespa hoje: Rai\u0301zen (RAIZ4) lidera altas e Vale (VALE3) fica entre maiores quedas",
-        "summary": "O Ibovespa hoje fechou em queda, em prega\u0303o reduzido, na volta do carnaval. Nesta quarta-feira (18), o principal i\u0301ndice da B3 registrou baixa de 0,24",
-        "source_publication": "Estadao Br",
-        "link": "https://einvestidor.estadao.com.br/mercado/ibovespa-hoje-raizen-raiz4-lidera-altas-vale-vale3-maiores-quedas/"
+        "title": "Ra\u00edzen registra preju\u00edzo de R$ 15,6 bilh\u00f5es no 3\u00ba trimestre - brasilagro.com.br",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiowFBVV95cUxNcTdhcVdYa2s1OG1xQmlRY0pHZW5QUWtGRWxvLTgtTzctaTNwVy1CRmJVdloxRzZtLWR1ZjJFS2IzUkpxMlp1WnJl",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNcTdhcVdYa2s1OG1xQmlRY0pHZW5QUWtGRWxvLTgtTzctaTNwVy1CRmJVdloxRzZtLWR1ZjJFS2IzUkpxMlp1WnJlZ1p2U09WVHRudFZIRGJQWTlnNGl3dUU0MEtHcEdMTTFzdExMWFM0S0I5S2l0RFVXR1lmRm5GdVdlaWRfSVZzOGh5c1R5TUwxR010VlpSQU9wUVB0cGdJd1Br?oc=5"
       },
       {
-        "title": "Rai\u0301zen (RAIZ4) sobe na Bolsa com avanc\u0327o em negociac\u0327o\u0303es para reestruturac\u0327a\u0303o da di\u0301vida",
-        "summary": "As ac\u0327o\u0303es da Rai\u0301zen (RAIZ4) subiam 6,35% por volta das 14h11 desta quarta-feira (18), apo\u0301s novas informac\u0327o\u0303es sobre possi\u0301veis alternativas para r",
-        "source_publication": "Money Times",
-        "link": "https://www.moneytimes.com.br/raizen-raiz4-sobe-na-bolsa-com-avanco-em-negociacoes-para-reestruturacao-da-divida-pads/"
+        "title": "Os planos na mesa da Shell para tirar a Ra\u00edzen da corda bamba - VEJA",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMipAFBVV95cUxQRzhzdEFCMDNrMWlId21BaFFxbUFxd3UzRmNUSDRuaUR3RzJvZXR6ZHlIeWY3eWI5S3lxSjlsNzF4eU5iVmc0NnMt",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQRzhzdEFCMDNrMWlId21BaFFxbUFxd3UzRmNUSDRuaUR3RzJvZXR6ZHlIeWY3eWI5S3lxSjlsNzF4eU5iVmc0NnMtN25kM2ZHOEVYOHRnNi1JOHdRUlNFSnVCalByaDl1bFRGMldyTjFzUmNGOXNaa1RhZ05PaWN2STlJcFpwempQaFRKTGlFM2JkS2NlaXRhNndET1djZ25CXzVOTg?oc=5"
+      },
+      {
+        "title": "Indecis\u00e3o de Cosan e Shell custou o grau de investimento da Ra\u00edzen, diz Fitch | InvestNews - InvestNews",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMixwFBVV95cUxOWkZNNW5xeEpGbGtSVzBBOEZTRHVfYVhkNkZsczR6RkNidVR0MnJyUENtNzRxb25BZ08xdzBNS3AwRnRQMVRLU0x6",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOWkZNNW5xeEpGbGtSVzBBOEZTRHVfYVhkNkZsczR6RkNidVR0MnJyUENtNzRxb25BZ08xdzBNS3AwRnRQMVRLU0x6cGl0QTFPY3hBZExPN3BQZmpjeVg0ZFJIT3hKNkFsTmtrckZUZXhSLUZWRUdOSHpzMnpMeGJrVXVWRGFpSHpsdEpQdmlaWm5uTE9KWVJWQmlGdUpFeFFMTDZJd1RrY2xNMzBRcXhxWjduQ1NSR3hmUk1BZUhob2xob0ZWSWlj0gHMAUFVX3lxTE9RYTVNVHhDX0U4MkdOOGF4QWYwYl9BSk5KZ0FjVk9mV1FvNlZjb082RjcyZmlSZWstbnVyYVVtXy1qejVjdzJ1M044QkhKTURYTm1qcGl0LW1MU3NWUVRxUnJhYVd3akdzNnl3bkNFUk9GSnh4N1hUTk45blpPYlcxN1hhWnd5UlpzaHNxQlF2anRLR0JFVHRZTDR3dmJueGdrU051cXlpaDJRQ2Y5TVlmWjdlSy1tLWJDdFFzRVBtQkN3OFNzdzJJOEdETg?oc=5"
       }
     ]
   },
   "UNIP6.SA": {
-    "sentiment": 0.04250142003938154,
-    "timestamp": "2026-02-20T11:01:39.522268",
-    "source": "newsdata.io",
+    "sentiment": 0.14966339222230396,
+    "timestamp": "2026-02-20T20:12:56.516688",
+    "source": "google_news",
     "articles": [
       {
-        "title": "Azul (AZUL53), Axia Energia (AXIA3), Natura (NATU3) e outros destaques desta quinta-feira (19)",
-        "summary": "A conclusa\u0303o da oferta de ac\u0327o\u0303es da Azul (AZUL53), a proposta da Axia Energia (AXIA3) para migrar para o Novo Mercado e a venda da Avon Ru\u0301ssia pela ",
-        "source_publication": "Money Times",
-        "link": "https://www.moneytimes.com.br/radar-do-mercado-destaques-corporativos-hoje-azul-axia-energia-natura-19-02-2026-lmrs/"
+        "title": "Unipar firma joint venture com Casa dos Ventos para autoprodu\u00e7\u00e3o de energia solar - InfoMoney",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMivAFBVV95cUxQUXBTOExZV0lJbnlrUEc4eXJzNWRPTWVWRnJWTjF4YUpMQk1nZjdjWjlTaEpmVGZubTFFMzRiMXlHQVMwMnNQTm5G",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQUXBTOExZV0lJbnlrUEc4eXJzNWRPTWVWRnJWTjF4YUpMQk1nZjdjWjlTaEpmVGZubTFFMzRiMXlHQVMwMnNQTm5GX1VMZHVCenQwbFBjSVFJRmFDei0xeE8yM1d2d0xDQ0hDVjNnejNuWDRZRmd1LWM4S0kxRjNFaXNmQVQ5R20yYXNKcE5iREMxdVRSVU5ETDdkVF9HUXJ6bVQ0NGQ4SFptODNjVTFrTmJtUUJXWDA4anlBX9IBwgFBVV95cUxOTjJ6TGNsYVBtdFN6cmpUcmJNeG45MzNqVmZ4VXdJOERMWVpZbzNFa1c1WGZlMmpYYVZmeVQ5bzg4a2RPQjBnVkRPT0hBWnpseEprV3J5ZUpEdVZ0ZkZSaDNpc05ldmhPb2FvMzRIQUloT0xYci04WFJjWFFzMlEwcWVxX0c5ZWU3ZlJYUHNoZ1VMSWdCV2s2UEp1S3NPTUZVMy13TWtqaW5lelBtVW56b3k3T25pTEswNUVXOHRRT0tnQQ?oc=5"
+      },
+      {
+        "title": "Unipar amplia autoprodu\u00e7\u00e3o de energia com acordo com Casa dos Ventos - Valor Econ\u00f4mico",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMixAFBVV95cUxOamhwOVkzYlJoa1c0R2JrM3dlSkd4cjBlV2w0MV9seVNZRG9TeXhBa0tnaUlleTJ5dVpKQS0tR0w5Zk9ob3RBWUgx",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOamhwOVkzYlJoa1c0R2JrM3dlSkd4cjBlV2w0MV9seVNZRG9TeXhBa0tnaUlleTJ5dVpKQS0tR0w5Zk9ob3RBWUgxTmpNbmc3TFYyVkc5Mm9EV2pPNTctSk10VC1TdGlQVGdMR0ozczBwc3I4MUxOYlZncGVZOUxZSno0VFB2UnF2c3kzQ1FEWEVtb2VDdC0wWmV5b3VFSHRDNUdQWmt3SE1tVENDVk4xZ0V2RG5TWUJ6V2tMejNGNjJPbzgt0gHTAUFVX3lxTE5RcWRONDktb1dyVE53cEZ0STZYYkw0OWJmLXprRThLWVU2NWQzZkVjUjhfdVZkeDRWeDRhV3dYYjRrRUh0YVM3NGRETEQwRE51d1Rsb19QQ2s4OUxXUGJoakZmY29CNDZ3eEVZOWExX0Y2WWtzdWpiZ05UZkV4OHdON1AtY29RdzVXQjBOTjd3YnNFeW5mVkJsNldiQy16ZlpTeUp1d2R5WFRPV09iTHMtQ1RLY3pMRHF5RlVTWmxUMTZvSURwQ2I0Y1pCX1pncEd5NTQ?oc=5"
+      },
+      {
+        "title": "Unipar fecha contrato de autoprodu\u00e7\u00e3o com a Casa dos Ventos - Canal Solar",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTFBWbzN5Tm5jbmJLcm0xSEJCSmcwNkhyOGJ1QWNrUzN6NGFMRFVuOUFiZXFYZV9qWW9ObGNiZElKejcydU14cElaUEtw",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBWbzN5Tm5jbmJLcm0xSEJCSmcwNkhyOGJ1QWNrUzN6NGFMRFVuOUFiZXFYZV9qWW9ObGNiZElKejcydU14cElaUEtwSXV1ZE1zUVJHdElNMVRnYVRkTG8tWUdPcUlab1NLdEpLWVZJTV95V3F3OF80MHhhQQ?oc=5"
       }
     ]
   },
   "LWSA3.SA": {
-    "sentiment": 0.2127244307189264,
-    "timestamp": "2026-02-20T11:01:51.367896",
+    "sentiment": 0.3217414157225308,
+    "timestamp": "2026-02-20T20:14:25.823652",
     "source": "google_news",
     "articles": [
       {
@@ -130,18 +178,12 @@
         "summary": "<a href=\"https://news.google.com/rss/articles/CBMisgFBVV95cUxOODFrOGJ3MjlYMV9fQkdWN2lQalZyZGRZVlhGYXdkdElXTjhaYVFjb3lHeTdOa2FHV1BKTUVCYXNMcENkU1RjVTF6",
         "source_publication": "Unknown",
         "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOODFrOGJ3MjlYMV9fQkdWN2lQalZyZGRZVlhGYXdkdElXTjhaYVFjb3lHeTdOa2FHV1BKTUVCYXNMcENkU1RjVTF6LVh0UHAtYndSYmNpczFPX2ZCbl9yZF9OVjgycXR2ZWpFU09LSWRvbFRBaDNIb3dIU1FwV2ctOXA3Z3hweUdEbndXMDhrTnR4RlFqTERlb29aWFFabUN1dDNpRnluS0RVanprMWprSlRR?oc=5"
-      },
-      {
-        "title": "Ex-Ingram Micro \u00e9 managing director da Accenture - Baguete",
-        "summary": "<a href=\"https://news.google.com/rss/articles/CBMijAFBVV95cUxPckM1SmJnRWY0MW41MnhWRFRzWC1KRGpydXVDaTh2ZXlidmtaTVN3dkxKbzJMM3Z5OUh2TVJZMGhzYnBmVWNSYTJo",
-        "source_publication": "Unknown",
-        "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPckM1SmJnRWY0MW41MnhWRFRzWC1KRGpydXVDaTh2ZXlidmtaTVN3dkxKbzJMM3Z5OUh2TVJZMGhzYnBmVWNSYTJoWWxqVUZqR3U2aExTWHBnakdiNlB5WVFVY3V4SUYzQ204eU1rRnh2bUd0ZFFoVXhCMzJGc2VUbXBEbmlRdmxyN193TA?oc=5"
       }
     ]
   },
   "PRNR3.SA": {
     "sentiment": 0.23716373629868026,
-    "timestamp": "2026-02-20T11:01:42.443867",
+    "timestamp": "2026-02-20T12:51:25.425372",
     "source": "newsdata.io",
     "articles": [
       {
@@ -154,7 +196,7 @@
   },
   "QUAL3.SA": {
     "sentiment": -0.24175687618553637,
-    "timestamp": "2026-02-20T11:01:38.060270",
+    "timestamp": "2026-02-20T18:03:03.656899",
     "source": "google_news",
     "articles": [
       {
@@ -162,6 +204,19 @@
         "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxQcklWMnB3czZPcnNjbXh5LVdEZUhSTmNRemJ0ak55eGdiNWY3OEdJcEcydjJqaHQweHphR3pma0ZHUzNCUWFEZVEx",
         "source_publication": "Unknown",
         "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQcklWMnB3czZPcnNjbXh5LVdEZUhSTmNRemJ0ak55eGdiNWY3OEdJcEcydjJqaHQweHphR3pma0ZHUzNCUWFEZVExVElYYTJWSklTa0QzYVdyUXVIbUJyWmhqVWRNMnRfdnJkdXQtRWZiVUJiNDNjWnFPWUVUTVF3Yy1OQzFrczJuTEVwa2F5RlhxRkE0YlFpc2VtQ1B1bDVSR0VIdmJBTEjSAa4BQVVfeXFMTkRMT1Q3bExkVVl5RngxNlc3M3lNczdwcFhqX3ZxcExONFR0YW1qU2syeG5vYkVlM0IyaHhnVGIydmc2enUwS3l0dnNVbG16a2RnRUpBTThfc084ZTF6RERCTUhNUVowMGpHOTRyX3ZxajdKZWN1Q3hSZjhyOENqYm52UGFnbWozSUlnUDVlTldNT0Z0b2ZXbjdoWUNtbnNWdVNoYXRjdC02bElib2xn?oc=5"
+      }
+    ]
+  },
+  "TEST.SA": {
+    "sentiment": 0.5,
+    "timestamp": "2026-02-20T21:32:49.787445",
+    "source": "test",
+    "articles": [
+      {
+        "title": "Test article",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": ""
       }
     ]
   }
