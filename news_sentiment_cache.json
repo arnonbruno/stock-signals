@@ -219,5 +219,43 @@
         "link": ""
       }
     ]
+  },
+  "CYRE3.SA": {
+    "sentiment": -0.3670265332609415,
+    "timestamp": "2026-02-21T10:15:49.273120",
+    "source": "newsdata.io",
+    "articles": [
+      {
+        "title": "Citi exclui seis empresas e adiciona cinco na sua carteira de baixa volatilidade; veja quais foram",
+        "summary": "O Citi realizou mudanc\u0327as na sua carteira de baixa volatilidade (MVP). Foram retiradas ac\u0327o\u0303es da MBRF (MBRF3), BTG Pactual (BPAC11), Vivara (VIVA3), ",
+        "source_publication": "Estadao Br",
+        "link": "https://einvestidor.estadao.com.br/ultimas/citi-exclui-seis-empresas-adiciona-cinco-carteira-baixa-volatilidade-mvp-ibovespa/"
+      }
+    ]
+  },
+  "MGLU3.SA": {
+    "sentiment": -0.06750717280624415,
+    "timestamp": "2026-02-21T10:16:27.742603",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Enquanto Magazine Luiza paga sal\u00e1rio-base, dono da Havan distribuiu R$ 90 milh\u00f5es aos funcion\u00e1rios - Diario de Pernambuco",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi1AFBVV95cUxQajExcEY5TnNpb1htdDRfTEswMjJyZGxRb1VoOURCem5yR3pTeUg5aDNTS3E5ZVBEbGM4V0p1SVlQWTl2aFZZNVVZ",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQajExcEY5TnNpb1htdDRfTEswMjJyZGxRb1VoOURCem5yR3pTeUg5aDNTS3E5ZVBEbGM4V0p1SVlQWTl2aFZZNVVZNWxmRmFqUWxIMWFLeGFuLTU2U1pWOVdGUC15Sm1LdlEzQzRZYk0zRnBBX0hwazdiZ1VoX3BUb1M4MTVFelRmS0tNakItN1Bmc190Y1NHenVWWmFkVHRiRFlSNmJKNmFWb2V0bVhVNmdLRG9XZ28zdHRLeFhDcHQ0eHViYV83ZEdFU0VjU1JvVVR4bQ?oc=5"
+      },
+      {
+        "title": "Monitores e PCs completos em oferta e com cupons de at\u00e9 R$100 no Magazine Luiza; confira - TecMundo",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi2AFBVV95cUxOTmktVjRseUlOTkdpeHJ0MWI3dG1nYmhFNUs3c1o5WUNzUmktMU1CdkREeG1RMGV1bVoyeHVLMXpKVnRwbzdndGRw",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOTmktVjRseUlOTkdpeHJ0MWI3dG1nYmhFNUs3c1o5WUNzUmktMU1CdkREeG1RMGV1bVoyeHVLMXpKVnRwbzdndGRwNnYxTW5GSG1xOTJMMEUwVVBITl9zeGNxZURLQXhCZDA2bjhFU2EyLW5jTnZkNkJoMmNIR1lYWk9rMDY5S21vMTZGY0g3VjcyVGFySUlQSTdIM2NvS3VPOF9qZmhXRTlnMUt2UkVaMHdHaXVkWm41WnNfMF9XZENqWHRzZzRvSWdVMDczSWd0U0hCdmlhSlk?oc=5"
+      },
+      {
+        "title": "Ministro pede flexibiliza\u00e7\u00e3o de crit\u00e9rios para empr\u00e9stimos subsidiados a companhias a\u00e9reas - Money Times",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMivgFBVV95cUxQTXlaV0EzVGJHc0E5dThpM2FaaFFlZ21XTzAtY2ZRTWFqSHFfa0w4TGd5V2VEM0QzN2VHYzQtWktsTG85QnBneFVW",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQTXlaV0EzVGJHc0E5dThpM2FaaFFlZ21XTzAtY2ZRTWFqSHFfa0w4TGd5V2VEM0QzN2VHYzQtWktsTG85QnBneFVWNzlKeHdGbWRGNDI0ZjNkV1l5MVZZUTRfTThNS3hYZnRTMmlOT1I0S2xkcVZ5aDNyeGI2OHRVVnBsWjVQZHJUQy1OOURfZ1J1NUItUEdhRTBHZ3dEZzRybmNyWFpHSXVzNW53RzV3Rzd6MTNrNFQ3ajZlUVZ3?oc=5"
+      }
+    ]
   }
 }
