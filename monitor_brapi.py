@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """
-Market Monitor - BrAPI + Fundamentals
+Market Monitor - Using cached data + fundamentals
 Runs hourly during market hours and sends alerts to Telegram.
+
+Uses cached quotes to avoid BrAPI rate limits.
+Run scripts/update_fundamentals.py daily to refresh data.
 """
 
 import sys
@@ -12,7 +15,7 @@ from datetime import datetime
 from pathlib import Path
 import json
 
-from production_brapi import BrAPIProductionRunner
+from run_production import ProductionRunner
 from src.alerts.alert_generator import generate_trading_alerts
 
 
@@ -21,10 +24,10 @@ def main():
     print(f"📊 MARKET MONITOR - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"{'='*60}\n")
     
-    # Run analysis with fundamentals + news for top picks
-    runner = BrAPIProductionRunner(
-        use_news=True,  # Fetch news for top recommendations
-        use_fundamentals=True
+    # Run analysis with fundamentals using cached quotes
+    runner = ProductionRunner(
+        use_fundamentals=True,
+        n_workers=4
     )
     
     results = runner.run()
