@@ -73,15 +73,19 @@ def main():
     if top_candidates:
         try:
             news_client = FreeNewsClient()
+            today = datetime.now().strftime('%Y-%m-%d')
             
             for i, result in enumerate(top_candidates, 1):
                 ticker = result.get('ticker', '')
                 print(f"   [{i}/20] {ticker}...", end=" ", flush=True)
                 
                 try:
-                    news_result = news_client.get_news(ticker, max_articles=5)
-                    sentiment = news_result.get('sentiment', 0.0)
-                    articles = news_result.get('articles', [])
+                    # Get sentiment (this fetches news and caches it)
+                    sentiment = news_client.get_sentiment(ticker, today)
+                    
+                    # Get cached articles (if available)
+                    cached = news_client.cache.get_full(ticker)
+                    articles = cached.get('articles', []) if cached else []
                     
                     # Store news data
                     result['news_sentiment'] = sentiment
