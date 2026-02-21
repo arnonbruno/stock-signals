@@ -51,6 +51,16 @@ api_budget.json
 news_sentiment_cache.json
 monitor_alerts.txt
 
+# Data caches (regenerated at runtime)
+src/data/cache/
+data/fundamentals/*.json
+data/logs/
+live_alerts.json
+live_alerts.txt
+test_results.json
+data/full_results.json
+data/quotes_cache.json
+
 # OS
 .DS_Store
 Thumbs.db
