@@ -571,22 +571,46 @@ class FreeNewsClient:
                 data = response.json()
                 raw_articles = data.get('results', [])
                 
+                # Get company name for relevance filtering
+                ticker_clean = ticker.replace('.SA', '').replace('.sa', '')
+                company_name = self.TICKER_MAP.get(ticker, ticker_clean)
+                
+                # Keywords that MUST appear in title or summary
+                required_keywords = [
+                    ticker_clean.lower(),
+                    ticker_clean.upper(),
+                    company_name.lower(),
+                ]
+                
                 # Filter out sports/entertainment based on title keywords
                 exclude_keywords = ['futebol', 'jogo', 'partida', 'copa', 'campeonato', 'selção']
                 formatted_articles = []
                 
                 for article in raw_articles:
-                    title = article.get('title', '').lower()
+                    title = article.get('title', '')
+                    summary = article.get('description', '')
+                    title_lower = title.lower()
+                    summary_lower = (summary or '').lower()
                     
                     # Skip sports articles
-                    if any(kw in title for kw in exclude_keywords):
+                    if any(kw in title_lower for kw in exclude_keywords):
+                        continue
+                    
+                    # RELEVANCE FILTER: Must mention ticker or company name
+                    is_relevant = any(
+                        kw in title_lower or kw in summary_lower
+                        for kw in required_keywords
+                    )
+                    
+                    if not is_relevant:
+                        logger.debug(f"Skipping irrelevant article for {ticker}: '{title[:50]}...'")
                         continue
                     
                     formatted_articles.append({
-                        'title': article.get('title', ''),
+                        'title': title,
                         'link': article.get('link', ''),
                         'published': article.get('pubDate', ''),
-                        'summary': article.get('description', ''),
+                        'summary': summary,
                         'source': 'newsdata.io',
                         'source_publication': article.get('source_name', 'Unknown')
                     })
