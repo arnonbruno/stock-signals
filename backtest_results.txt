@@ -1,0 +1,15 @@
+BACKTEST COMPARISON RESULTS
+======================================================================
+
+Test Period: 2025-02-18 to 2026-02-18
+Initial Capital: $10000.00
+
+Passive Strategy:
+  Final Value: R$14443.96
+  Return: +44.44%
+
+Active Strategy:
+  Final Value: R$12090.64
+  Return: +20.91%
+
+Alpha: -23.53%

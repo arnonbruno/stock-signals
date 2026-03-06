@@ -1,0 +1,16 @@
+FAIR BACKTEST COMPARISON (3 YEARS)
+======================================================================
+
+PASSIVE STRATEGY:
+  total_return: 72.16
+  volatility: 14.74
+  sharpe_ratio: 4.56
+  max_drawdown: 12.72
+
+ACTIVE STRATEGY:
+  total_return: 21.86
+  volatility: 13.37
+  sharpe_ratio: 1.26
+  max_drawdown: 6.26
+
+Alpha: -50.30%

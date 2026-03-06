@@ -27,6 +27,7 @@ from pathlib import Path
 from production_enhanced import EnhancedProductionRunner
 from src.config import get_thresholds, reload_config
 from src.news.free_news_client import FreeNewsClient
+from src.fundamentals.integration import FundamentalIntegrator
 
 
 # ============================================================================
@@ -491,6 +492,29 @@ def format_recommendation(result: dict, drivers: dict, levels: dict,
                 if title:
                     lines.append(f"            • {title}...")
     
+    # Fundamentals (if available)
+    if result.get('fundamental_grade'):
+        grade = result['fundamental_grade']
+        pe = result.get('pe_ratio')
+        pb = result.get('pb_ratio')
+        roe = result.get('roe')
+        div_yield = result.get('div_yield')
+        fund_score = result.get('fundamental_score', 0)
+        
+        lines.append(f"       • Fundamentals: Grade {grade}")
+        if pe:
+            lines.append(f"         P/E: {pe:.1f} | P/B: {pb:.1f}" if pb else f"         P/E: {pe:.1f}")
+        if roe:
+            lines.append(f"         ROE: {roe:.1f}% | Div: {div_yield:.1f}%" if div_yield else f"         ROE: {roe:.1f}%")
+        
+        # Quality/value flags
+        if result.get('is_quality_pick'):
+            lines.append(f"         ✅ High quality pick (ROE > 20%, ROIC > 15%)")
+        if result.get('is_value_pick'):
+            lines.append(f"         ✅ Value pick (P/E < 10, P/B < 1)")
+        if result.get('is_avoid'):
+            lines.append(f"         ⚠️ AVOID flag (poor fundamentals + weak technicals)")
+    
     # Position size
     pos_pct = allocation.get('allocation_pct', 0)
     lines.append(f"       • Position: {pos_pct:.0%} ({conviction_label} conviction)")
@@ -565,6 +589,11 @@ def run_monitor():
     print("\n" + "=" * 70)
     print(f"🎯 LIVE MARKET MONITOR (Two-Pass) - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 70)
+    
+    # Initialize fundamental integrator
+    print("\n📊 Loading fundamental data...")
+    fundamental_integrator = FundamentalIntegrator()
+    print("   ✅ Fundamental integrator loaded")
     
     # Reload config to get latest thresholds
     reload_config()
@@ -680,6 +709,41 @@ def run_monitor():
         
         candidate['fused_score'] = fused_score
         
+        # Integrate fundamentals
+        try:
+            ticker_clean = ticker.replace('.SA', '')
+            # Map signal to trend for integrator
+            trend = 'UPTREND' if candidate.get('trend') == 'uptrend' else 'DOWNTREND' if candidate.get('trend') == 'downtrend' else 'SIDEWAYS'
+            
+            integrated = fundamental_integrator.integrate(
+                ticker=ticker_clean,
+                technical_score=fused_score * 100,  # Convert to 0-100
+                trend=trend,
+                confidence=candidate.get('confidence', 0.5)
+            )
+            
+            # Use composite_score for final ranking
+            candidate['composite_score'] = integrated.composite_score / 100  # Normalize to 0-1
+            candidate['fundamental_grade'] = integrated.fundamental_grade
+            candidate['pe_ratio'] = integrated.pe_ratio
+            candidate['pb_ratio'] = integrated.pb_ratio
+            candidate['roe'] = integrated.roe
+            candidate['div_yield'] = integrated.div_yield
+            candidate['fundamental_score'] = integrated.fundamental_score
+            candidate['is_value_pick'] = integrated.is_value_pick
+            candidate['is_quality_pick'] = integrated.is_quality_pick
+            candidate['is_avoid'] = integrated.is_avoid
+            
+            # Downgrade signal if fundamentals are very poor
+            if integrated.is_avoid and candidate['signal'] == 'BUY':
+                candidate['signal'] = 'HOLD'
+                candidate['avoid_flag'] = True
+        
+        except Exception as e:
+            # If fundamentals fail, use fused_score as composite
+            candidate['composite_score'] = abs(fused_score)
+            print(f"   ⚠️ {ticker}: Fundamentals error: {e}")
+        
         # Update confidence based on news alignment
         base_confidence = candidate.get('confidence', 0.5)
         
@@ -694,8 +758,8 @@ def run_monitor():
         elif signal == 'SELL' and news_sentiment > 0.10:
             candidate['confidence'] = max(0.30, base_confidence - 0.05)
     
-    # Re-sort by updated fusion score
-    candidates.sort(key=lambda x: abs(x.get('fused_score', 0)), reverse=True)
+    # Re-sort by composite score (technical + fundamental)
+    candidates.sort(key=lambda x: x.get('composite_score', 0), reverse=True)
     
     # Take top N recommendations
     top_recommendations = candidates[:MAX_RECOMMENDATIONS]

@@ -1,0 +1,66 @@
+======================================================================
+📊 DAILY MARKET SCAN - 2026-02-18 11:01
+======================================================================
+
+🎯 MARKET REGIME: BULL (strength: 100%)
+   Confidence threshold: 50%
+   Max position size: 60%
+   Cash buffer: 30%
+
+======================================================================
+🚨 TOP SIGNALS (98 actionable)
+======================================================================
+
+1️⃣  ITUB4.SA - BUY 🟢 @ R$47.77
+    Position size: 15%
+    Reasoning:
+       ✅ UPTREND detected (100% confidence)
+
+2️⃣  ABEV3.SA - BUY 🟢 @ R$16.35
+    Position size: 18%
+    Reasoning:
+       ✅ UPTREND detected (100% confidence)
+
+3️⃣  ITSA4.SA - BUY 🟢 @ R$14.60
+    Position size: 17%
+    Reasoning:
+       ✅ UPTREND detected (100% confidence)
+
+4️⃣  MULT3.SA - BUY 🟢 @ R$32.78
+    Position size: 12%
+    Reasoning:
+       ✅ UPTREND detected (100% confidence)
+
+5️⃣  UGPA3.SA - BUY 🟢 @ R$26.98
+    Position size: 14%
+    Reasoning:
+       ✅ UPTREND detected (100% confidence)
+
+6️⃣  VBBR3.SA - BUY 🟢 @ R$31.73
+    Position size: 20%
+    Reasoning:
+       ✅ UPTREND detected (100% confidence)
+
+7️⃣  LAVV3.SA - BUY 🟢 @ R$18.17
+    Position size: 19%
+    Reasoning:
+       ✅ UPTREND detected (100% confidence)
+
+8️⃣  NEOE3.SA - BUY 🟢 @ R$32.72
+    Position size: 19%
+    Reasoning:
+       ✅ UPTREND detected (100% confidence)
+
+9️⃣  PETR4.SA - BUY 🟢 @ R$36.89
+    Position size: 16%
+    Reasoning:
+       ✅ UPTREND detected (99% confidence)
+
+10️⃣  PRIO3.SA - BUY 🟢 @ R$52.56
+    Position size: 17%
+    Reasoning:
+       ✅ UPTREND detected (98% confidence)
+
+======================================================================
+📊 SUMMARY: 84 BUY | 14 SELL | 0 HOLD
+======================================================================

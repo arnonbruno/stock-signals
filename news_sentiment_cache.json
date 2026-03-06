@@ -1,26 +1,14 @@
 {
   "PCAR3.SA": {
-    "sentiment": -0.46019977469848716,
-    "timestamp": "2026-02-20T20:20:57.339790",
-    "source": "google_news",
+    "sentiment": 0.15792462880324037,
+    "timestamp": "2026-03-06T17:10:53.881407",
+    "source": "newsdata.io",
     "articles": [
       {
-        "title": "A\u00e7\u00f5es do Grupo P\u00e3o de A\u00e7\u00facar despencam com temores sobre caixa e lideram perdas do Ibovespa - Valor Econ\u00f4mico",
-        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi6AFBVV95cUxNTTFaeDVTM1NGMG5OOGt0V1FVUmdKSHhOZDJkNnlwaXdQLXp0ZTYxZWdha29QZkQxRS1uRy02NkVZdnhNZnpFT1Y1",
-        "source_publication": "Unknown",
-        "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNTTFaeDVTM1NGMG5OOGt0V1FVUmdKSHhOZDJkNnlwaXdQLXp0ZTYxZWdha29QZkQxRS1uRy02NkVZdnhNZnpFT1Y1TkRVblpmb2VVc0hLd0tvelpsUXIzYU5GLXg5YnQtM0Z6RkM4SXY3OS10amp1aUNIV3Q5YnJhdDZDX2FiY1BlWVN5ZU9MMUl3dmhxNzl5dDRMR2I2SG5iS1BLcVpTaHRIOUVYWUx3bXFfSGpCdzM0WC03bDJXV1gzVHg5WGo4ZGZXSEN6dW03U2ktRWEzaFMyeVI2ZHJpaDlnZ25POGx20gH3AUFVX3lxTE0tUmhIWDVkWnVHaUJmLUVIUmpCUFczVklHamYtMWMzQzhBUVR4WVlSb0p2VGZMbWVTNkV2NUxvY0xwamZFSHR4UVhENzBscTJjLVBja3BzV3NmRExuQy04ZnJEaWxKeEdSQU9fUlFqQ0tka2xSSGlrMDAtaVNKSm1zZ3pKSm95RXVBeWhsRkFYZHNfOUIyM2ZxcmE3TXRkaW9ra2FlMWlhdzdkUUJwVW1pRXlZSmZOUDl1d0ZGT0k4QTFmUnJJeEpaS0s1b2h5aUhudjY5bERyRy1UcXFUWmlmb0g1YlZVaTVmQjZxUTRVM0x1bGNKOEU?oc=5"
-      },
-      {
-        "title": "GPA (PCAR3) cai forte na bolsa: o que afetou a dona da rede P\u00e3o de A\u00e7\u00facar, que vive trocas no comando e alto endividamento - Seu Dinheiro",
-        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi9wFBVV95cUxPTHByenZ1a3M3WjFKUVkwaDdkWmVNV01YTXY2ejVDN0RPMTRXLWYwSmVlbV9hSl9KOUJWNHZBVEQxVnVaNGJnNzdU",
-        "source_publication": "Unknown",
-        "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxPTHByenZ1a3M3WjFKUVkwaDdkWmVNV01YTXY2ejVDN0RPMTRXLWYwSmVlbV9hSl9KOUJWNHZBVEQxVnVaNGJnNzdUOWpHeTRpNW1MYUZUUTFuSjllTE5OaHdRYzQ0OS1PeU5CQjhCZ05xZndyalJpWS14aHl5YVRwX0gzMGp3TjhJZmc3S09FVGV3UUhMVHc3dzQ5ZU4zUE9lYVBmd3BTUWhUN0FSdGFQbE1hQ2pibUQtcmVyMWVQX0VZdWp5TGFpdzcyTEVFSG1wSnkwcFJkVkZHRWZZUFdVWGZJRDRLTUtDTUZPaE5LcFluRG9lcWln?oc=5"
-      },
-      {
-        "title": "A conta que n\u00e3o fecha no GPA - Brazil Journal",
-        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiZkFVX3lxTE9UZ0FlemdfNHVnMHRKVl80bVBPcFBjZDhqQmM0clg1cmwyeFpSblpZQ05RN3FGb2hXY3ZMYlFTdmNYYjJCQWN1OGxp",
-        "source_publication": "Unknown",
-        "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9UZ0FlemdfNHVnMHRKVl80bVBPcFBjZDhqQmM0clg1cmwyeFpSblpZQ05RN3FGb2hXY3ZMYlFTdmNYYjJCQWN1OGxpMUI2MmVjU3lfWG5tLURXWTRNdWZWZ1RqSWQ5UQ?oc=5"
+        "title": "Azul (AZUL53), GPA (PCAR3), Rai\u0301zen (RAIZ4) e outros destaques desta quarta-feira (4)",
+        "summary": "A proposta de grupamento de ac\u0327o\u0303es da Azul (AZUL53), a contratac\u0327a\u0303o de consultoria e negociac\u0327a\u0303o com credores para melhorar perfil da di\u0301vida do GP",
+        "source_publication": "Money Times",
+        "link": "https://www.moneytimes.com.br/radar-do-mercado-destaques-corporativos-hoje-azul-gpa-raizen-04-03-2026-lmrs/"
       }
     ]
   },
@@ -195,15 +183,27 @@
     ]
   },
   "QUAL3.SA": {
-    "sentiment": -0.24175687618553637,
-    "timestamp": "2026-02-20T18:03:03.656899",
+    "sentiment": -0.19358594877272461,
+    "timestamp": "2026-03-06T17:11:05.558850",
     "source": "google_news",
     "articles": [
       {
-        "title": "Qualicorp anuncia 70+ vagas de emprego em quatro capitais do Brasil | SEGS Portal Nacional de Seguros,... - SEGS Portal Nacional",
-        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiqAFBVV95cUxQcklWMnB3czZPcnNjbXh5LVdEZUhSTmNRemJ0ak55eGdiNWY3OEdJcEcydjJqaHQweHphR3pma0ZHUzNCUWFEZVEx",
+        "title": "Qualicorp (QUAL3) desaba mais de 12% ap\u00f3s 4T refor\u00e7ar desafios; o que desagradou? - InfoMoney",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMitgFBVV95cUxNbU5ibHNNMmhELVBFMW1MaEcyd19NR1R4dVBId25EWGNBanRnVjNhRjhpa0t4WmZIemI0SXZVS0N0NnJMa2dHeXow",
         "source_publication": "Unknown",
-        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQcklWMnB3czZPcnNjbXh5LVdEZUhSTmNRemJ0ak55eGdiNWY3OEdJcEcydjJqaHQweHphR3pma0ZHUzNCUWFEZVExVElYYTJWSklTa0QzYVdyUXVIbUJyWmhqVWRNMnRfdnJkdXQtRWZiVUJiNDNjWnFPWUVUTVF3Yy1OQzFrczJuTEVwa2F5RlhxRkE0YlFpc2VtQ1B1bDVSR0VIdmJBTEjSAa4BQVVfeXFMTkRMT1Q3bExkVVl5RngxNlc3M3lNczdwcFhqX3ZxcExONFR0YW1qU2syeG5vYkVlM0IyaHhnVGIydmc2enUwS3l0dnNVbG16a2RnRUpBTThfc084ZTF6RERCTUhNUVowMGpHOTRyX3ZxajdKZWN1Q3hSZjhyOENqYm52UGFnbWozSUlnUDVlTldNT0Z0b2ZXbjdoWUNtbnNWdVNoYXRjdC02bElib2xn?oc=5"
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNbU5ibHNNMmhELVBFMW1MaEcyd19NR1R4dVBId25EWGNBanRnVjNhRjhpa0t4WmZIemI0SXZVS0N0NnJMa2dHeXowV0ZneEhhdEtiRGlQTTBKbVZILWRQdUNLemxnVkR2bFhiR0pKUGNaWERjMEtCbjlySU1PUjQ0VHFzaFdLQ21kcjhER0JVS3RZQjduNURWVGNJeElTRGJ1aEMzMTdNZnczSGpDTmZZcDIteFhEZ9IBuwFBVV95cUxNcFNVVTJ6MkRhTm9LYXJMYk1qTUE5aDRsUkVCb2J5VlNGcXE5V2JSdzAwLWZLcEFxYkpURHprQW04WnpNNTVHdHBNaWpqVGwxZEp3QTNYdERoZV9feGI2dXdTZ1dhTy00eVhmOWRKV3VHemV4ZWZiZUg3aGlOel8xOHpWUS1FaU01QXNta3gwOGtWdV9ueEozb09DUUdqS3VWOHJERXY1b1VYOHg3NHF2Y2I0RFhDbzdfSVVR?oc=5"
+      },
+      {
+        "title": "Qualicorp (QUAL3) reverte lucro em preju\u00edzo l\u00edquido, e a\u00e7\u00e3o cai forte na bolsa; saiba como est\u00e1 a sa\u00fade da operadora de planos de sa\u00fade - Seu Dinheiro",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMi0gFBVV95cUxOR1c0LXJtdTVkc3B5Y3B5V0otR3dCT1BJQ3RGOUJsMHhSbnRSdXRqckduWGR3RFF0QlpXelZfYlNiZGUyUU9FVXJm",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOR1c0LXJtdTVkc3B5Y3B5V0otR3dCT1BJQ3RGOUJsMHhSbnRSdXRqckduWGR3RFF0QlpXelZfYlNiZGUyUU9FVXJmWHFvNHI1X3BPMzI2N1dYWmJpaHpqcFFFU3l0VGhxQmV4OVJJQTNiczFzRG0xbTIyVVNUNXNzRWFqYlAyNVh4U3pZNFgydjdwUndxTmdxNVRySEFNYXNWSDIwaDl4My0zRUp5NklvakMtdHhsQklKMmZjNk1LNkMxanJjdmJTUGoxZnJTTk56dFE?oc=5"
+      },
+      {
+        "title": "Bradsa\u00fade estreia na Bolsa, faz Odontoprev (ODPV3) subir 25%, Bradesco (BBDC4) disparar e causa tombo da Qualicorp (QUAL3); acompanhe as a\u00e7\u00f5es - Estad\u00e3o E-Investidor",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiswFBVV95cUxONmdVZmFUeXpMWmgzVHpPZTJPb0t6UFozakJaOXg0Tl91b2NzT1NQazNMRm5JdTJaMk9WTGlnT2p1VTBVV3dKVGFJ",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxONmdVZmFUeXpMWmgzVHpPZTJPb0t6UFozakJaOXg0Tl91b2NzT1NQazNMRm5JdTJaMk9WTGlnT2p1VTBVV3dKVGFJam94cFdTYUtPQlVjSnhlaWhuaWZXUm5BakFhU0xBcHk3XzJkX0VoVnRWQ0NpbzJYdFlWRngtWFJyM0xQSnpBLVRGamI1M3loaE5iU0VqZzU2aFBzNVdxSDcyaTRseTJDelpTc09NRUtfY9IBuAFBVV95cUxNNFNPVk04SGU2ZzZHMzZ4bHByR18wd0E4ZF94NlZJV0doLW1Tb29fbEEwLW1EcjBMVFYwWkhQVjQyWU16SGpXUjY0T0laeVNGcUFmYjlPWTJmdjkwLVBmTVd3Y2RzZWdCS1l1RUNUZEVUQzhiZFk0a1ZIZEYwNXBvc3kwdk1vSHVPS1laR0otbHAtWmx1ZW5saU9yRElxMmVKZ214WV9xRm5LV05HVUIzTjhraGZ6Rl8t?oc=5"
       }
     ]
   },
@@ -280,6 +280,31 @@
         "summary": "O Ibovespa afastava-se das mi\u0301nimas nesta sexta-feira e rondava os 189 mil pontos no melhor momento do prega\u0303o, em sessa\u0303o marcada pelo vencimento de ",
         "source_publication": "Money Times",
         "link": "https://www.moneytimes.com.br/vale-vale3-sustenta-ibovespa-em-dia-de-vencimento-de-opcoes-petrobras-petr4-cede-kda/"
+      }
+    ]
+  },
+  "SMTO3.SA": {
+    "sentiment": 0.06123006215724222,
+    "timestamp": "2026-03-06T17:12:02.332819",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Vivo vai conectar 3 milh\u00f5es de hectares da S\u00e3o Martinho - TELETIME News",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMilgFBVV95cUxObEVuZnY1WmpUd01WMEVRbjJEU3FqTmRxMlJndVppY2tLUnFGdHRwMDNDVnRCSzg1REMwc0NROUxsOUxubnhEZk1w",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxObEVuZnY1WmpUd01WMEVRbjJEU3FqTmRxMlJndVppY2tLUnFGdHRwMDNDVnRCSzg1REMwc0NROUxsOUxubnhEZk1wZHAxX2hTRVZvcE9nWUwwMV9EOHhMdGphck5sSGlhWlZzbzhVVkEtSl9jdFBSeWtzbHRWSUdtOF9ET01meG1tanBRcXpWV3l5cWg2U0E?oc=5"
+      },
+      {
+        "title": "Vivo ser\u00e1 respons\u00e1vel por cobertura de quase 3 milh\u00f5es de hectares da S\u00e3o Martinho - Mobile Time",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE1CNE15V3JPMEV1Z253MDhpZFJpUzVDS25OUHgtWkJ1bkxycDNsblVrNWhXNzdJRTJkRTZkNFRaMXI5c3VFZU1ZRlJY",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1CNE15V3JPMEV1Z253MDhpZFJpUzVDS25OUHgtWkJ1bkxycDNsblVrNWhXNzdJRTJkRTZkNFRaMXI5c3VFZU1ZRlJYOC1jTnAwLVpaUnhJUVREcWdLQ0pGYVpaVzdUX2RZekczWVUtZ3RpaE04WndxeU5sdw?oc=5"
+      },
+      {
+        "title": "Parceria da S\u00e3o Martinho e da Vivo promete ampliar conectividade rural - Cana Online",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMitAFBVV95cUxNTE5zRFc1R3JPUWtjamthbTh3X0FGV2M5QUNUc211QTdGby1ZMFNnQjFZSDRBVTRfajljb1dpQW4xZlVpSll6Y0JI",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNTE5zRFc1R3JPUWtjamthbTh3X0FGV2M5QUNUc211QTdGby1ZMFNnQjFZSDRBVTRfajljb1dpQW4xZlVpSll6Y0JIdk9kc2dfclVoRUNfVVpKWnBRZUMwTmlqZjlaWUVVU0IwbFNRRU02VHFZbkNfQkZJTW5JNTlJUmw4ZUx1WDM2MGxpV0RXRFpHa2hEdUNQaFNSS0tlN0s2bE50UmRqMTQ4QXhsN3RxdWo2OFc?oc=5"
       }
     ]
   }
