@@ -723,16 +723,16 @@ class FreeNewsClient:
         
         return avg_sentiment
     
-    @lru_cache(maxsize=256)
     def get_sentiment(self, ticker: str, date: str, use_cache: bool = True) -> float:
         """
         Get sentiment score for a ticker on a given date.
         
-        Smart caching strategy:
+        Smart caching strategy with multi-process safety:
         1. Check cache first (if fresh, return immediately - no API call)
-        2. If cache miss, fetch from newsdata.io API
-        3. Fallback to Investing.com scraping if needed
-        4. Store in cache for future use (6-hour TTL)
+        2. If pending (another worker fetching), wait and retry cache
+        3. Mark as pending, then fetch from newsdata.io API
+        4. Fallback to Google News if needed
+        5. Store in cache for future use (4-12 hour TTL based on market hours)
         
         Args:
             ticker: Stock ticker (e.g., PETR4.SA)
@@ -749,43 +749,58 @@ class FreeNewsClient:
                 if cached_sentiment is not None:
                     logger.info(f"✅ Cache HIT: {ticker} (sentiment: {cached_sentiment:+.2f}, age: {self.cache.get_cache_age(ticker)})")
                     return cached_sentiment
+                
+                # PENDING CHECK: If another worker is fetching, wait and retry
+                if self.cache.is_pending(ticker, max_age_seconds=60):
+                    logger.info(f"⏳ {ticker} is being fetched by another worker, waiting...")
+                    # Wait up to 60 seconds for the other worker to complete
+                    for _ in range(12):
+                        time.sleep(5)  # Wait 5 seconds
+                        cached_sentiment = self.cache.get(ticker)
+                        if cached_sentiment is not None:
+                            logger.info(f"✅ Cache HIT after waiting: {ticker} (sentiment: {cached_sentiment:+.2f})")
+                            return cached_sentiment
+                    
+                    # If still no result after waiting, proceed to fetch ourselves
+                    logger.warning(f"Timeout waiting for {ticker}, fetching ourselves")
             
-            # MISS: Fetch fresh news
-            logger.debug(f"Cache MISS or disabled - fetching fresh news for {ticker}")
+            # MISS: Mark as pending and fetch fresh news
+            logger.debug(f"Cache MISS - fetching fresh news for {ticker}")
+            self.cache.mark_pending(ticker)
             
-            # Try newsdata.io API first (paid API, Brazilian financial news)
-            articles = self._fetch_newsdata_io(ticker, date)
+            try:
+                # Try newsdata.io API first (paid API, Brazilian financial news)
+                articles = self._fetch_newsdata_io(ticker, date)
+                
+                # Fallback 1: If newsdata.io fails, try Google News RSS (free, no API key needed)
+                if not articles:
+                    logger.debug(f"newsdata.io returned no results, trying Google News for {ticker}")
+                    query = self._ticker_to_query(ticker)
+                    articles = self._fetch_google_news(query, days=7)
+                
+                if not articles:
+                    logger.info(f"No news found for {ticker} on {date} (Google News + newsdata.io)")
+                    return 0.0
+                
+                sentiment = self._analyze_articles(articles)
+                
+                # Determine source: check if articles came from newsdata.io or Google News
+                source = articles[0].get('source', 'unknown') if articles else 'unknown'
+                
+                # CACHE: Store sentiment + article summaries for future use
+                self.cache.set(ticker, sentiment, source=source, articles=articles)
+                
+                logger.info(f"{ticker} on {date}: {len(articles)} articles from {source}, sentiment={sentiment:+.2f}")
+                
+                return sentiment
             
-            # Fallback 1: If newsdata.io fails, try Google News RSS (free, no API key needed)
-            if not articles:
-                logger.debug(f"newsdata.io returned no results, trying Google News for {ticker}")
-                query = self._ticker_to_query(ticker)
-                articles = self._fetch_google_news(query, days=7)
-            
-            # DISABLED: Investing.com scraping - returns 403 Forbidden, causes timeouts
-            # Fallback 2: If newsdata.io fails, try Investing.com scraping
-            # if not articles:
-            #     logger.debug(f"newsdata.io returned no results, falling back to Investing.com for {ticker}")
-            #     articles = self._fetch_investing_com(ticker, date)
-            
-            if not articles:
-                logger.info(f"No news found for {ticker} on {date} (Google News + newsdata.io)")
-                return 0.0
-            
-            sentiment = self._analyze_articles(articles)
-            
-            # Determine source: check if articles came from newsdata.io or Investing.com fallback
-            source = articles[0].get('source', 'unknown') if articles else 'unknown'
-            
-            # CACHE: Store sentiment + article summaries for future use
-            self.cache.set(ticker, sentiment, source=source, articles=articles)
-            
-            logger.info(f"{ticker} on {date}: {len(articles)} articles from {source}, sentiment={sentiment:+.2f}")
-            
-            return sentiment
+            finally:
+                # Always clear pending flag
+                self.cache.clear_pending(ticker)
         
         except Exception as e:
             logger.error(f"Failed to get sentiment for {ticker}: {e}")
+            self.cache.clear_pending(ticker)
             return 0.0
     
     def get_sentiment_batch(self, tickers: List[str], date: str) -> Dict[str, float]:
