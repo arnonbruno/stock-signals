@@ -6,6 +6,76 @@ Formats signals for Telegram delivery.
 
 from typing import List, Dict
 from datetime import datetime
+import re
+
+
+def _get_ticker_group(ticker: str) -> str:
+    """
+    Get the base ticker group (e.g., PETR from PETR3/PETR4).
+    
+    Args:
+        ticker: Full ticker string (e.g., 'PETR4.SA' or 'PETR4')
+    
+    Returns:
+        Base ticker group (e.g., 'PETR')
+    """
+    # Remove .SA suffix
+    ticker = ticker.replace('.SA', '')
+    
+    # Extract base (remove trailing digits)
+    match = re.match(r'^([A-Z]+)', ticker)
+    if match:
+        return match.group(1)
+    return ticker
+
+
+def _deduplicate_ticker_groups(results: List[Dict]) -> List[Dict]:
+    """
+    Remove duplicate tickers from the same group, keeping the best one.
+    
+    For example, if both PETR3 and PETR4 appear, keeps only the one with
+    higher conviction (or better fundamentals if tied).
+    
+    Args:
+        results: List of analysis results
+    
+    Returns:
+        Deduplicated list with only one ticker per group
+    """
+    groups = {}
+    
+    for r in results:
+        ticker = r.get('ticker', '')
+        group = _get_ticker_group(ticker)
+        
+        if group not in groups:
+            groups[group] = r
+        else:
+            # Compare with existing - keep the better one
+            existing = groups[group]
+            
+            # Priority: conviction > position_size > composite_score
+            existing_conv = abs(existing.get('conviction', 0))
+            new_conv = abs(r.get('conviction', 0))
+            
+            if new_conv > existing_conv:
+                groups[group] = r
+            elif new_conv == existing_conv:
+                # Tie-breaker: position size (Kelly)
+                existing_pos = existing.get('position_size', 0)
+                new_pos = r.get('position_size', 0)
+                
+                if new_pos > existing_pos:
+                    groups[group] = r
+                elif new_pos == existing_pos:
+                    # Final tie-breaker: fundamental score
+                    existing_score = existing.get('fundamentals', {}).get('composite_score', 0)
+                    new_score = r.get('fundamentals', {}).get('composite_score', 0)
+                    
+                    if new_score > existing_score:
+                        groups[group] = r
+    
+    return list(groups.values())
 
 
 def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
@@ -24,6 +94,12 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
     
     # Sort by conviction
     sorted_results = sorted(results, key=lambda x: abs(x.get('conviction', 0)), reverse=True)
+    
+    # Deduplicate ticker groups (PETR3/PETR4 -> keep best one)
+    sorted_results = _deduplicate_ticker_groups(sorted_results)
+    
+    # Re-sort after deduplication
+    sorted_results = sorted(sorted_results, key=lambda x: abs(x.get('conviction', 0)), reverse=True)
     
     # Filter to actionable signals
     buy_signals = [r for r in sorted_results if r['signal'] in ['STRONG_BUY', 'BUY']][:top_n]
