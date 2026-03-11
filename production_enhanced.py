@@ -394,9 +394,10 @@ class EnhancedProductionRunner:
             if signal == 'BUY' and confidence >= min_confidence:
                 position_size = self.calculate_kelly_position(data, confidence)
                 
-                # News boost
+                # News boost: shifted sigmoid centered at 1.0
+                # Positive sentiment boosts > 1.0, negative reduces < 1.0
                 if abs(news_sentiment) > 0.1:
-                    sigmoid_boost = 1 / (1 + np.exp(-5 * news_sentiment))
+                    sigmoid_boost = 0.5 + (1 / (1 + np.exp(-5 * news_sentiment)))
                     position_size *= sigmoid_boost
                 
                 position_size = min(0.80, position_size)
