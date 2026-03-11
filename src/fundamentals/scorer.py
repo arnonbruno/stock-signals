@@ -66,6 +66,7 @@ class FundamentalScore:
     is_quality: bool  # High profitability
     is_growth: bool  # Growing revenues
     is_undervalued: bool  # Below intrinsic value estimate
+    is_holding_or_financial: bool  # Holding/financial institution
     
     # Notes
     strengths: List[str]
@@ -195,6 +196,94 @@ class FundamentalScorer:
             passed_criteria=passed,
             failed_criteria=failed
         )
+    
+    def is_holding_or_financial(self, data) -> bool:
+        """
+        Detect if stock is a holding company or financial institution.
+        
+        These companies have different metrics:
+        - EBIT is not meaningful (holdings get income from dividends)
+        - EV/EBIT is inflated
+        - ROIC is not applicable
+        - Growth expectations are lower (stable dividend payers)
+        
+        Detection criteria:
+        1. EV/EBIT > 100 (indicating EBIT is very low relative to value)
+        2. P/EBIT > 100
+        3. Net margin > 50% (dividend income has high margin)
+        4. Sector is "Intermediários Financeiros"
+        """
+        # Check EV/EBIT or P/EBIT threshold
+        if data.ev_ebit is not None and data.ev_ebit > 100:
+            return True
+        if data.p_ebit is not None and data.p_ebit > 100:
+            return True
+        
+        # Check for high net margin (dividend income)
+        if data.net_margin is not None and data.net_margin > 50:
+            return True
+        
+        # Check sector
+        if data.sector and 'financeiro' in data.sector.lower():
+            return True
+        
+        return False
+    
+    def score_holding_or_financial(self, data, graham: GrahamScore) -> Tuple[float, Optional[LynchScore], Optional[GreenblattScore]]:
+        """
+        Score holdings and financial institutions using alternative metrics.
+        
+        For holdings/financials:
+        - Graham: 50% (value + dividend focus)
+        - Quality: 50% (ROE, dividend yield, stability)
+        - Skip Greenblatt (EBIT-based metrics don't apply)
+        - Lower growth expectations
+        
+        Returns:
+            Tuple of (composite_score, lynch_score, greenblatt_score)
+        """
+        # Graham score (50% weight)
+        graham_score = graham.percentage
+        
+        # Quality score based on ROE and Dividend (50% weight)
+        quality_score = 50  # Start neutral
+        
+        # ROE is key for financials
+        if data.roe is not None:
+            if data.roe > 20:
+                quality_score += 20
+            elif data.roe > 15:
+                quality_score += 15
+            elif data.roe > 10:
+                quality_score += 10
+            elif data.roe > 5:
+                quality_score += 5
+            else:
+                quality_score -= 10
+        
+        # Dividend yield is important for holdings
+        if data.div_yield is not None:
+            if data.div_yield > 6:
+                quality_score += 15
+            elif data.div_yield > 4:
+                quality_score += 10
+            elif data.div_yield > 2:
+                quality_score += 5
+        
+        # Low debt is good
+        if data.debt_equity is not None:
+            if data.debt_equity < 0.5:
+                quality_score += 10
+            elif data.debt_equity < 1.0:
+                quality_score += 5
+        
+        quality_score = max(0, min(100, quality_score))
+        
+        # Composite: 50% Graham + 50% Quality
+        composite = (graham_score * 0.50) + (quality_score * 0.50)
+        
+        # Skip Lynch and Greenblatt for holdings
+        return composite, None, None
     
     def score_lynch(self, data) -> Optional[LynchScore]:
         """
@@ -413,46 +502,58 @@ class FundamentalScorer:
         - Graham (value): 30%
         - Lynch (GARP): 35%
         - Greenblatt (Magic Formula): 35%
+        
+        For holdings/financials:
+        - Graham: 50%
+        - Quality (ROE + Div): 50%
+        - Skip Lynch/Greenblatt (EBIT-based metrics don't apply)
         """
         # Individual scores
         graham = self.score_graham(data)
-        lynch = self.score_lynch(data)
-        greenblatt = self.score_greenblatt(data)
         
-        # Component scores
+        # Check if this is a holding or financial institution
+        is_holding = self.is_holding_or_financial(data)
+        
+        if is_holding:
+            composite, lynch, greenblatt = self.score_holding_or_financial(data, graham)
+        else:
+            lynch = self.score_lynch(data)
+            greenblatt = self.score_greenblatt(data)
+            
+            # Composite calculation
+            weights = {'graham': 0.30, 'lynch': 0.35, 'greenblatt': 0.35}
+            
+            composite = 0
+            total_weight = 0
+            
+            # Graham (always available)
+            composite += graham.percentage * weights['graham']
+            total_weight += weights['graham']
+            
+            # Lynch (optional)
+            if lynch:
+                composite += lynch.score * weights['lynch']
+                total_weight += weights['lynch']
+            else:
+                # Redistribute weight to Greenblatt
+                composite += graham.percentage * weights['lynch']
+                total_weight += weights['lynch']
+            
+            # Greenblatt (optional)
+            if greenblatt:
+                composite += greenblatt.score * weights['greenblatt']
+                total_weight += weights['greenblatt']
+            else:
+                # Redistribute to Graham
+                composite += graham.percentage * weights['greenblatt']
+                total_weight += weights['greenblatt']
+            
+            composite = composite / total_weight if total_weight > 0 else 0
+        
+        # Calculate component scores
         value_score = self.calculate_value_score(data, graham)
         quality_score = self.calculate_quality_score(data)
         growth_score = self.calculate_growth_score(data)
-        
-        # Composite calculation
-        weights = {'graham': 0.30, 'lynch': 0.35, 'greenblatt': 0.35}
-        
-        composite = 0
-        total_weight = 0
-        
-        # Graham (always available)
-        composite += graham.percentage * weights['graham']
-        total_weight += weights['graham']
-        
-        # Lynch (optional)
-        if lynch:
-            composite += lynch.score * weights['lynch']
-            total_weight += weights['lynch']
-        else:
-            # Redistribute weight to Greenblatt
-            composite += graham.percentage * weights['lynch']
-            total_weight += weights['lynch']
-        
-        # Greenblatt (optional)
-        if greenblatt:
-            composite += greenblatt.score * weights['greenblatt']
-            total_weight += weights['greenblatt']
-        else:
-            # Redistribute to Graham
-            composite += graham.percentage * weights['greenblatt']
-            total_weight += weights['greenblatt']
-        
-        composite = composite / total_weight if total_weight > 0 else 0
         
         # Identify strengths and weaknesses
         strengths = []
@@ -506,6 +607,7 @@ class FundamentalScorer:
             is_quality=is_quality,
             is_growth=is_growth,
             is_undervalued=is_undervalued,
+            is_holding_or_financial=is_holding,
             strengths=strengths,
             weaknesses=weaknesses
         )

@@ -198,6 +198,9 @@ class FundamentusScraper:
         # Remove .SA suffix if present
         clean_ticker = ticker.replace('.SA', '')
         
+        # SOTA: Basic structural validation variables
+        indicators_parsed = 0
+        
         try:
             url = f"{self.BASE_URL}?papel={clean_ticker}"
             response = self.session.get(url, timeout=10)
@@ -216,10 +219,19 @@ class FundamentusScraper:
             self._parse_header(soup, data)
             
             # Parse indicator tables
-            self._parse_indicators(soup, data)
+            indicators_parsed = self._parse_indicators(soup, data)
             
             # Parse balance sheet
             self._parse_balance_sheet(soup, data)
+            
+            # Structural validation: if we couldn't parse at least 5 key indicators, 
+            # it means the HTML structure has likely changed or the page is empty/blocked.
+            if indicators_parsed < 5:
+                print(f"⚠️ Warning: Only {indicators_parsed} indicators parsed for {clean_ticker}. HTML structure might have changed or data is missing.")
+                # We could implement a fallback to BrAPI here in the future
+                # For now, return None to prevent corrupting the cache with zeroes
+                if not data.pe_ratio and not data.pb_ratio and not data.roe:
+                    return None
             
             return data
             
@@ -265,11 +277,12 @@ class FundamentusScraper:
             label = label[1:].strip()
         return label
     
-    def _parse_indicators(self, soup: BeautifulSoup, data: FundamentalData):
-        """Parse the indicators table."""
+    def _parse_indicators(self, soup: BeautifulSoup, data: FundamentalData) -> int:
+        """Parse the indicators table. Returns number of successful parses."""
         # Find tables with indicator data
         tables = soup.find_all('table', class_='w728')
         
+        parsed_count = 0
         for table in tables:
             rows = table.find_all('tr')
             for row in rows:
@@ -289,6 +302,9 @@ class FundamentusScraper:
                         parsed = self._parse_number(value)
                         if parsed is not None:
                             setattr(data, field_name, parsed)
+                            parsed_count += 1
+                            
+        return parsed_count
     
     def _parse_balance_sheet(self, soup: BeautifulSoup, data: FundamentalData):
         """Parse balance sheet data."""

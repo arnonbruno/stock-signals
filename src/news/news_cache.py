@@ -11,23 +11,60 @@ Strategy:
 
 import json
 import logging
+import fcntl
+import time as time_module
 from datetime import datetime, timedelta, time
 from pathlib import Path
 from typing import Dict, Optional, List, Any
+from contextlib import contextmanager
 
 logger = logging.getLogger(__name__)
 
 
 class NewsCache:
-    """Manage news sentiment cache with TTL."""
+    """Manage news sentiment cache with TTL and file locking for multi-process safety."""
     
     def __init__(self, cache_file: str = "news_sentiment_cache.json", ttl_hours: int = 6):
         self.cache_file = Path(cache_file)
+        self.lock_file = Path(str(cache_file).replace('.json', '.lock'))
         self.ttl = timedelta(hours=ttl_hours)
         self.cache = self._load_cache()
     
+    @contextmanager
+    def _file_lock(self, timeout: float = 5.0):
+        """File lock for multi-process safety.
+        
+        Args:
+            timeout: Max seconds to wait for lock
+        
+        Raises:
+            TimeoutError: If lock cannot be acquired within timeout
+        """
+        lock_fd = None
+        try:
+            lock_fd = open(self.lock_file, 'w')
+            start_time = time_module.time()
+            
+            while True:
+                try:
+                    fcntl.flock(lock_fd.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    break  # Lock acquired
+                except (IOError, OSError):
+                    if time_module.time() - start_time > timeout:
+                        raise TimeoutError(f"Could not acquire lock within {timeout}s")
+                    time_module.sleep(0.05)  # Wait 50ms before retry
+            
+            yield lock_fd
+        finally:
+            if lock_fd:
+                try:
+                    fcntl.flock(lock_fd.fileno(), fcntl.LOCK_UN)
+                    lock_fd.close()
+                except:
+                    pass
+    
     def _load_cache(self) -> Dict:
-        """Load cache from disk."""
+        """Load cache from disk (no locking - caller should handle locking)."""
         if self.cache_file.exists():
             try:
                 with open(self.cache_file, 'r') as f:
@@ -38,7 +75,7 @@ class NewsCache:
         return {}
     
     def _save_cache(self):
-        """Save cache to disk."""
+        """Save cache to disk (no locking - caller should handle locking)."""
         try:
             with open(self.cache_file, 'w') as f:
                 json.dump(self.cache, f, indent=2)
@@ -78,19 +115,105 @@ class NewsCache:
             logger.warning(f"Error checking cache for {ticker}: {e}")
             return False
     
+    def is_pending(self, ticker: str, max_age_seconds: int = 30) -> bool:
+        """Check if ticker is currently being fetched by another process.
+        
+        A ticker is "pending" if it has a 'pending' flag set within the last max_age_seconds.
+        This prevents multiple workers from fetching the same ticker simultaneously.
+        """
+        try:
+            with self._file_lock(timeout=1.0):
+                self.cache = self._load_cache()
+                
+                if ticker not in self.cache:
+                    return False
+                
+                entry = self.cache[ticker]
+                if not entry.get('pending'):
+                    return False
+                
+                # Check if pending flag is recent (within max_age_seconds)
+                cached_time = datetime.fromisoformat(entry['timestamp'])
+                age = (datetime.now() - cached_time).total_seconds()
+                
+                if age < max_age_seconds:
+                    logger.debug(f"{ticker} is pending (age: {age:.1f}s)")
+                    return True
+                
+                return False
+        except TimeoutError:
+            # If we can't check, assume not pending
+            return False
+    
+    def mark_pending(self, ticker: str):
+        """Mark ticker as pending (being fetched by this process)."""
+        try:
+            with self._file_lock(timeout=1.0):
+                self.cache = self._load_cache()
+                
+                if ticker in self.cache:
+                    self.cache[ticker]['pending'] = True
+                else:
+                    self.cache[ticker] = {
+                        'pending': True,
+                        'timestamp': datetime.now().isoformat(),
+                        'sentiment': 0.0,
+                        'source': 'pending',
+                        'articles': []
+                    }
+                
+                # Save immediately
+                with open(self.cache_file, 'w') as f:
+                    json.dump(self.cache, f, indent=2)
+        except TimeoutError:
+            logger.warning(f"Could not mark {ticker} as pending")
+    
+    def clear_pending(self, ticker: str):
+        """Clear pending flag for ticker."""
+        try:
+            with self._file_lock(timeout=1.0):
+                self.cache = self._load_cache()
+                
+                if ticker in self.cache and 'pending' in self.cache[ticker]:
+                    del self.cache[ticker]['pending']
+                    with open(self.cache_file, 'w') as f:
+                        json.dump(self.cache, f, indent=2)
+        except TimeoutError:
+            logger.warning(f"Could not clear pending for {ticker}")
+    
     def get(self, ticker: str) -> Optional[float]:
-        """Get cached sentiment if fresh, otherwise None."""
-        if self.is_fresh(ticker):
-            sentiment = self.cache[ticker].get('sentiment', 0.0)
-            logger.debug(f"Cache HIT: {ticker} (sentiment: {sentiment:+.2f})")
-            return sentiment
+        """Get cached sentiment if fresh, otherwise None.
+        
+        Reloads cache from disk to see updates from other processes.
+        """
+        try:
+            with self._file_lock(timeout=1.0):
+                self.cache = self._load_cache()
+                
+                if ticker in self.cache and self.is_fresh(ticker):
+                    sentiment = self.cache[ticker].get('sentiment', 0.0)
+                    logger.debug(f"Cache HIT: {ticker} (sentiment: {sentiment:+.2f})")
+                    return sentiment
+        except TimeoutError:
+            logger.warning(f"Could not acquire lock to check cache for {ticker}")
+        
         return None
     
     def get_full(self, ticker: str) -> Optional[Dict]:
-        """Get cached sentiment + article details if fresh, otherwise None."""
-        if self.is_fresh(ticker):
-            logger.debug(f"Cache HIT: {ticker}")
-            return self.cache[ticker]
+        """Get cached sentiment + article details if fresh, otherwise None.
+        
+        Reloads cache from disk to see updates from other processes.
+        """
+        try:
+            with self._file_lock(timeout=1.0):
+                self.cache = self._load_cache()
+                
+                if ticker in self.cache and self.is_fresh(ticker):
+                    logger.debug(f"Cache HIT: {ticker}")
+                    return self.cache[ticker]
+        except TimeoutError:
+            logger.warning(f"Could not acquire lock to check cache for {ticker}")
+        
         return None
     
     def set(self, ticker: str, sentiment: float, source: str = "newsdata_io", articles: List = None):
@@ -106,14 +229,23 @@ class NewsCache:
                     'link': article.get('link', '')
                 })
         
-        self.cache[ticker] = {
-            'sentiment': sentiment,
-            'timestamp': datetime.now().isoformat(),
-            'source': source,
-            'articles': article_summaries
-        }
-        self._save_cache()
-        logger.info(f"Cached {ticker}: {sentiment:+.2f} from {source} ({len(article_summaries)} articles)")
+        try:
+            with self._file_lock(timeout=2.0):
+                self.cache = self._load_cache()
+                
+                self.cache[ticker] = {
+                    'sentiment': sentiment,
+                    'timestamp': datetime.now().isoformat(),
+                    'source': source,
+                    'articles': article_summaries
+                }
+                
+                with open(self.cache_file, 'w') as f:
+                    json.dump(self.cache, f, indent=2)
+                
+                logger.info(f"Cached {ticker}: {sentiment:+.2f} from {source} ({len(article_summaries)} articles)")
+        except TimeoutError:
+            logger.error(f"Could not acquire lock to save cache for {ticker}")
     
     def get_cache_age(self, ticker: str) -> Optional[timedelta]:
         """Get age of cached item."""

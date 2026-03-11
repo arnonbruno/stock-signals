@@ -64,9 +64,13 @@ class FeatureEngineer:
         current_vol = volume.iloc[-1]
         unusual_volume = current_vol > (vol_20d + 2 * vol_std)
         
-        # Volume trend
-        vol_slope = np.polyfit(range(10), volume.iloc[-10:].values, 1)[0]
-        volume_trend = 'increasing' if vol_slope > 0 else 'decreasing'
+        # Volume trend - Use smoothed volume to prevent single-day distortions
+        smoothed_vol = volume.rolling(3).mean().dropna()
+        if len(smoothed_vol) >= 10:
+            vol_slope = np.polyfit(range(10), smoothed_vol.iloc[-10:].values, 1)[0]
+            volume_trend = 'increasing' if vol_slope > 0 else 'decreasing'
+        else:
+            volume_trend = 'neutral'
         
         return {
             'volume_momentum': float(volume_momentum),
@@ -100,7 +104,16 @@ class FeatureEngineer:
         # If market data available, calculate relative strength
         if market_data is not None and len(market_data) >= 20:
             market_returns = market_data['Close'].pct_change(20).iloc[-1]
-            relative_strength = ticker_returns / market_returns if market_returns != 0 else 1.0
+            # Avoid division by zero
+            if market_returns == 0:
+                relative_strength = 1.0
+            else:
+                relative_strength = ticker_returns / market_returns
+                # Handle edge cases where market returns are close to zero and different sign
+                if relative_strength < 0 and ticker_returns > 0:
+                    relative_strength = abs(relative_strength) # Stock is up while market is down (good)
+                elif relative_strength < 0 and ticker_returns < 0:
+                    relative_strength = -abs(relative_strength) # Stock is down while market is up (bad)
         else:
             relative_strength = 1.0
         
@@ -174,16 +187,42 @@ class FeatureEngineer:
             }
         
         # Calculate ticker returns
-        ticker_returns = data['Close'].pct_change().iloc[-20:]
+        ticker_returns = data['Close'].pct_change().dropna()
         
-        # Market correlation (placeholder)
         market_correlation = 0.5
-        
-        # Peer correlation (placeholder)
         peer_correlation = 0.5
-        
-        # Correlation stability
         correlation_stability = 'stable'
+        
+        # If we have peer data (which includes market data if passed appropriately)
+        if peer_data:
+            # We assume 'IBOV.SA' or '^BVSP' represents market data in peer_data if passed
+            market_key = '^BVSP' if '^BVSP' in peer_data else 'IBOV.SA' if 'IBOV.SA' in peer_data else None
+            
+            if market_key and market_key in peer_data:
+                m_data = self._normalize_columns(peer_data[market_key])
+                if len(m_data) > 20:
+                    m_returns = m_data['Close'].pct_change().dropna()
+                    # Align indices
+                    aligned = pd.concat([ticker_returns, m_returns], axis=1).dropna()
+                    if len(aligned) > 10:
+                        market_correlation = aligned.iloc[:, 0].corr(aligned.iloc[:, 1])
+            
+            # Calculate peer correlation (excluding the ticker itself and market)
+            peer_corrs = []
+            for p_ticker, p_data in peer_data.items():
+                if p_ticker != ticker and p_ticker not in ['^BVSP', 'IBOV.SA']:
+                    p_data_norm = self._normalize_columns(p_data)
+                    if len(p_data_norm) > 20:
+                        p_returns = p_data_norm['Close'].pct_change().dropna()
+                        aligned = pd.concat([ticker_returns, p_returns], axis=1).dropna()
+                        if len(aligned) > 10:
+                            peer_corrs.append(aligned.iloc[:, 0].corr(aligned.iloc[:, 1]))
+            
+            if peer_corrs:
+                peer_correlation = np.mean(peer_corrs)
+                # Check stability: if stdev of rolling correlation is high, it's unstable
+                if np.std(peer_corrs) > 0.3:
+                    correlation_stability = 'unstable'
         
         return {
             'market_correlation': float(market_correlation),

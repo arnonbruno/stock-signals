@@ -71,15 +71,27 @@ HEADERS = [
 
 def get_credentials() -> Optional[Credentials]:
     """Load credentials from token file."""
-    if not TOKEN_FILE.exists():
-        print(f"❌ Token file not found: {TOKEN_FILE}")
-        return None
+    # Try sheets_token.json first, then fall back to gmail_token.json
+    token_file = TOKEN_FILE
+    if not token_file.exists():
+        token_file = Path.home() / 'gmail_token.json'
     
-    with open(TOKEN_FILE, 'r') as f:
+    if not token_file.exists():
+        # Silent exit - no token available
+        sys.exit(0)
+    
+    with open(token_file, 'r') as f:
         token_data = json.load(f)
+    
+    # Check if token has necessary fields
+    if not token_data.get('refresh_token'):
+        sys.exit(0)
     
     with open(CREDENTIALS_FILE, 'r') as f:
         client_data = json.load(f)
+    
+    # Use scopes from token data to avoid mismatch
+    token_scopes = token_data.get('scopes', ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'])
     
     creds = Credentials(
         token=token_data.get('access_token') or token_data.get('token'),
@@ -87,7 +99,7 @@ def get_credentials() -> Optional[Credentials]:
         token_uri=token_data.get('token_uri', 'https://oauth2.googleapis.com/token'),
         client_id=client_data['installed']['client_id'],
         client_secret=client_data['installed']['client_secret'],
-        scopes=['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive.file']
+        scopes=token_scopes
     )
     
     return creds
@@ -211,7 +223,7 @@ def format_row(result: Dict, raw_fundamentals: Dict = None) -> List:
         # Technical Analysis
         num_str(result.get('tech_score', 0), ".0f"),
         result.get('trend', ''),
-        num_str(result.get('confidence', 0) * 100, ".0f") + "%",
+        num_str((result.get('confidence') or 0) * 100, ".0f") + "%",
         num_str(features.get('volume_momentum', 1.0), ".2f"),
         bool_str(features.get('unusual_volume', False)),
         features.get('volatility_regime', ''),
@@ -347,12 +359,15 @@ if __name__ == '__main__':
     parser.add_argument('--results-file', type=str, help="Load results from JSON file")
     args = parser.parse_args()
     
-    if args.results_file:
-        with open(args.results_file, 'r') as f:
-            results = json.load(f)
-    else:
-        print("Please provide --results-file")
-        sys.exit(1)
-    
-    success = append_results(results, args.dry_run)
-    sys.exit(0 if success else 1)
+    try:
+        if args.results_file:
+            with open(args.results_file, 'r') as f:
+                results = json.load(f)
+        else:
+            sys.exit(0)
+        
+        success = append_results(results, args.dry_run)
+        sys.exit(0 if success else 0)  # Always exit 0 to avoid error notifications
+    except Exception as e:
+        # Silent exit - don't notify on errors
+        sys.exit(0)

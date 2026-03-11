@@ -6,15 +6,171 @@ Formats signals for Telegram delivery.
 
 from typing import List, Dict
 from datetime import datetime
+import re
 
 
-def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
+def _get_ticker_group(ticker: str) -> str:
+    """
+    Get the base ticker group (e.g., PETR from PETR3/PETR4).
+    
+    Args:
+        ticker: Full ticker string (e.g., 'PETR4.SA' or 'PETR4')
+    
+    Returns:
+        Base ticker group (e.g., 'PETR')
+    """
+    # Remove .SA suffix
+    ticker = ticker.replace('.SA', '')
+    
+    # Extract base (remove trailing digits)
+    match = re.match(r'^([A-Z]+)', ticker)
+    if match:
+        return match.group(1)
+    return ticker
+
+
+def _deduplicate_ticker_groups(results: List[Dict]) -> List[Dict]:
+    """
+    Remove duplicate tickers from the same group, keeping the best one.
+    
+    For example, if both PETR3 and PETR4 appear, keeps only the one with
+    higher conviction (or better fundamentals if tied).
+    
+    Args:
+        results: List of analysis results
+    
+    Returns:
+        Deduplicated list with only one ticker per group
+    """
+    groups = {}
+    
+    for r in results:
+        ticker = r.get('ticker', '')
+        group = _get_ticker_group(ticker)
+        
+        if group not in groups:
+            groups[group] = r
+        else:
+            # Compare with existing - keep the better one
+            existing = groups[group]
+            
+            # Priority: conviction > position_size > composite_score
+            existing_conv = abs(existing.get('conviction', 0))
+            new_conv = abs(r.get('conviction', 0))
+            
+            if new_conv > existing_conv:
+                groups[group] = r
+            elif new_conv == existing_conv:
+                # Tie-breaker: position size (Kelly)
+                existing_pos = existing.get('position_size', 0)
+                new_pos = r.get('position_size', 0)
+                
+                if new_pos > existing_pos:
+                    groups[group] = r
+                elif new_pos == existing_pos:
+                    # Final tie-breaker: fundamental score
+                    existing_score = existing.get('fundamentals', {}).get('composite_score', 0)
+                    new_score = r.get('fundamentals', {}).get('composite_score', 0)
+                    
+                    if new_score > existing_score:
+                        groups[group] = r
+    
+    return list(groups.values())
+
+
+# Sector mapping for Brazilian stocks
+SECTOR_MAP = {
+    # Imobiliário
+    'LAVV3': 'Imobiliário', 'CURY3': 'Imobiliário', 'JHSF3': 'Imobiliário', 
+    'MDNE3': 'Imobiliário', 'MRVE3': 'Imobiliário', 'CYRE3': 'Imobiliário',
+    'DIRR3': 'Imobiliário', 'TEND3': 'Imobiliário', 'PDGR3': 'Imobiliário',
+    # Varejo
+    'GMAT3': 'Varejo', 'PCAR3': 'Varejo', 'CRFB3': 'Varejo', 'AMAR3': 'Varejo',
+    'LREN3': 'Varejo', 'GUAR3': 'Varejo', 'SOMA3': 'Varejo', 'ARZZ3': 'Varejo',
+    # Energia
+    'NEOE3': 'Energia', 'CPFE3': 'Energia', 'CMIG4': 'Energia', 'CMIG3': 'Energia',
+    'ELET3': 'Energia', 'ELET6': 'Energia', 'ENGI11': 'Energia', 'EGIE3': 'Energia',
+    'TAEE11': 'Energia', 'TAEE3': 'Energia', 'TAEE4': 'Energia',
+    # Petróleo & Gás
+    'PRIO3': 'Petróleo', 'PETR3': 'Petróleo', 'PETR4': 'Petróleo', 
+    'RRRP3': 'Petróleo', 'ENAT3': 'Petróleo',
+    # Bancos
+    'BBAS3': 'Bancos', 'ITUB4': 'Bancos', 'BBDC4': 'Bancos', 'BBDC3': 'Bancos',
+    'SANB11': 'Bancos', 'SANB3': 'Bancos', 'SANB4': 'Bancos', 'BPAC11': 'Bancos',
+    # Mineração & Siderurgia
+    'VALE3': 'Mineração', 'CSNA3': 'Siderurgia', 'USIM5': 'Siderurgia', 
+    'GGBR4': 'Siderurgia', 'CMIN3': 'Mineração',
+    # Saneamento
+    'SBSP3': 'Saneamento', 'SAPR11': 'Saneamento', 'SAPR3': 'Saneamento', 
+    'SAPR4': 'Saneamento', 'CESP6': 'Saneamento', 'AMTB3': 'Saneamento',
+    # Tecnologia
+    'TECN3': 'Tecnologia', 'LINX3': 'Tecnologia', 'POSI3': 'Tecnologia',
+    # Celulose & Papel
+    'SUZB3': 'Celulose', 'KLBN11': 'Celulose', 'KLBN3': 'Celulose', 'KLBN4': 'Celulose',
+    # Shoppings
+    'MULT3': 'Shoppings', 'BRML3': 'Shoppings', 'IGTI11': 'Shoppings',
+    # Industrial
+    'WEGE3': 'Industrial', 'EMBR3': 'Industrial', 'RENT3': 'Industrial',
+    'GOAU4': 'Industrial', 'GRND3': 'Industrial',
+    # Saúde
+    'RDOR3': 'Saúde', 'FLRY3': 'Saúde', 'ODPV3': 'Saúde', 'HAPV3': 'Saúde',
+    # Seguros
+    'BBSE3': 'Seguros', 'SULA11': 'Seguros', 'PORT3': 'Seguros',
+    # Bebidas
+    'ABEV3': 'Bebidas', 'AMBEV3': 'Bebidas',
+    # Varejo Farmacêutico
+    'RADL3': 'Farmacêutico', 'RAIA3': 'Farmacêutico', 'DMVF3': 'Farmacêutico',
+    # Outros
+    'BBRK3': 'Outros', 'BRKM5': 'Química', 'BRAP3': 'Outros', 'BRAP4': 'Outros',
+}
+
+
+def get_sector(ticker: str) -> str:
+    """Get sector for a ticker, default to 'Outros'."""
+    return SECTOR_MAP.get(ticker.replace('.SA', ''), 'Outros')
+
+
+def diversify_by_sector(signals: List[Dict], max_per_sector: int = 2, top_n: int = 5) -> List[Dict]:
+    """
+    Diversify signals by sector, limiting exposure per sector.
+    
+    Args:
+        signals: List of signal dicts sorted by score
+        max_per_sector: Maximum stocks per sector in output
+        top_n: Total number of stocks to return
+    
+    Returns:
+        Diversified list of signals
+    """
+    sector_counts = {}
+    diversified = []
+    
+    for signal in signals:
+        ticker = signal.get('ticker', '').replace('.SA', '')
+        sector = get_sector(ticker)
+        
+        # Count stocks per sector
+        current_count = sector_counts.get(sector, 0)
+        
+        if current_count < max_per_sector:
+            diversified.append(signal)
+            sector_counts[sector] = current_count + 1
+        
+        # Stop when we have enough
+        if len(diversified) >= top_n:
+            break
+    
+    return diversified
+
+
+def generate_trading_alerts(results: List[Dict], top_n: int = 5, diversify: bool = True) -> str:
     """
     Generate formatted trading alerts for Telegram.
     
     Args:
         results: List of analysis results from production runner
         top_n: Number of top signals to include
+        diversify: Whether to apply sector diversification
     
     Returns:
         Formatted string for Telegram
@@ -22,11 +178,24 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
     if not results:
         return "📊 No trading signals at this time."
     
-    # Sort by conviction
-    sorted_results = sorted(results, key=lambda x: abs(x.get('conviction', 0)), reverse=True)
+    # Sort by composite score (better than conviction for ranking)
+    sorted_results = sorted(results, key=lambda x: x.get('composite_score', x.get('conviction', 0)), reverse=True)
+    
+    # Deduplicate ticker groups (PETR3/PETR4 -> keep best one)
+    sorted_results = _deduplicate_ticker_groups(sorted_results)
+    
+    # Re-sort after deduplication
+    sorted_results = sorted(sorted_results, key=lambda x: abs(x.get('conviction', 0)), reverse=True)
     
     # Filter to actionable signals
-    buy_signals = [r for r in sorted_results if r['signal'] in ['STRONG_BUY', 'BUY']][:top_n]
+    all_buy_signals = [r for r in sorted_results if r['signal'] in ['STRONG_BUY', 'BUY']]
+    
+    # Apply diversification if enabled
+    if diversify:
+        buy_signals = diversify_by_sector(all_buy_signals, max_per_sector=2, top_n=top_n)
+    else:
+        buy_signals = all_buy_signals[:top_n]
+    
     sell_signals = [r for r in sorted_results if r['signal'] in ['STRONG_SELL', 'SELL']][:3]
     
     lines = []
@@ -42,8 +211,11 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
         # Number emoji
         num_emoji = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣'][i-1]
         
-        lines.append(f"{num_emoji}  {r['ticker'].replace('.SA', '')} - {r['signal']} 🟢")
-        lines.append(f"    Price: R${r['price']:.2f}")
+        ticker = r['ticker'].replace('.SA', '')
+        sector = get_sector(ticker)
+        
+        lines.append(f"{num_emoji}  {ticker} - {r['signal']} 🟢")
+        lines.append(f"    Sector: {sector} | Price: R${r['price']:.2f}")
         lines.append(f"    └─ Drivers:")
         
         # Trend
@@ -106,6 +278,18 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
     # Summary
     lines.append("=" * 70)
     lines.append(f"📊 Summary: {len(buy_signals)} BUY signals | {len(sell_signals)} SELL signals")
+    
+    # Sector breakdown
+    sectors_used = {}
+    for r in buy_signals:
+        ticker = r.get('ticker', '').replace('.SA', '')
+        sector = get_sector(ticker)
+        sectors_used[sector] = sectors_used.get(sector, 0) + 1
+    
+    if sectors_used:
+        sector_str = " | ".join([f"{s}: {c}" for s, c in sorted(sectors_used.items(), key=lambda x: -x[1])])
+        lines.append(f"🏗️ Sectors: {sector_str}")
+    
     lines.append("=" * 70)
     
     # SELL signals (compact)
