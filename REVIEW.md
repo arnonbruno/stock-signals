@@ -1,119 +1,61 @@
-# System Review Report - Stock Signals
+# Code Review: Stock Signals System
 
-## Date: 2026-02-21
+## Overview
+A thorough review of the `stock-signals` project (main branch / fundamental-analysis integrated version).
+The system represents a sophisticated intersection of technical analysis (trend detection, feature engineering) and fundamental analysis (value, quality, momentum), coupled with smart position sizing via the Kelly Criterion.
 
----
+## Strengths & SOTA Alignment
 
-## ✅ CODE CORRECTNESS
+1. **Dual-Timeframe Trend Detection (`TrendDetectorV2`)**:
+   - ✅ **SOTA alignment**: Moving away from single-period linear regressions to a 50-day macro + 20-day micro approach is an industry-standard way to prevent getting whipsawed by bull-market pullbacks.
+   - ✅ **Robust Statistics**: Uses `scipy.stats.theilslopes` (Theil-Sen estimator), which is robust to outliers, solving the classic issue where a single gap-up/down distorts the OLS slope.
+   - ✅ **Volatility normalization**: Normalizing the slope by ATR-like measure rather than standard deviation is exactly how systematic trend-followers measure trend strength.
 
-### Composite Score Calculation
-- **Formula:** `composite = (tech_score * 0.5) + (fund_score * 0.5)`
-- **Status:** ✅ Working correctly
-- **Edge case:** AZUL4 has NaN tech_score → NaN composite → correctly flagged as STRONG_SELL
+2. **Position Sizing (`calculate_kelly_position`)**:
+   - ✅ **SOTA alignment**: Implementing the true Kelly Criterion ($f^* = (bp - q) / b$) based on the historical win/loss ratio and average payoff of the asset.
+   - ✅ **Risk Management**: Employs the "Half-Kelly" ($0.5 \times f^*$) scaled by signal confidence, which is universally recommended by quants to minimize drawdowns while maintaining geometric growth. Minimum and maximum exposure bounds are properly enforced.
 
-### Signal Thresholds
-| Signal | Threshold | Status |
-|--------|-----------|--------|
-| STRONG_BUY | ≥75 | ✅ Correct |
-| BUY | 60-74 | ✅ Correct |
-| HOLD | 40-59 | ✅ Correct |
-| SELL | 30-39 | ✅ Correct |
-| STRONG_SELL | <30 | ✅ Correct |
+3. **Fundamental Scoring (`scorer.py`)**:
+   - ✅ Comprehensive mapping of three major schools of thought:
+     - **Graham** (Defensive value: P/E < 15, P/B < 1.5, Current Ratio > 2)
+     - **Lynch** (GARP: PEG ratio)
+     - **Greenblatt** (Magic Formula: Earnings Yield + ROC)
+   - ✅ Graceful handling of missing fundamental data (e.g., redistributing weights if PEG or EV/EBITDA data is missing).
 
-### Trend Detection
-- Uptrend: 82 stocks (59%)
-- Downtrend: 33 stocks (24%)
-- Consolidation: 24 stocks (17%)
-- **Status:** ✅ Working correctly
+4. **Integration Engine (`integration.py`)**:
+   - ✅ Elegant matrix combinations: Quality + Uptrend = Momentum boost; Value + Sideways = Contrarian opportunity.
+   - ✅ **Avoid Flags**: Using poor fundamentals to override bullish technicals acts as an excellent "trap" prevention mechanism.
 
----
+5. **Alert & Reporting System (`alert_generator.py`)**:
+   - ✅ Includes sector deduplication (e.g., picking the better of PETR3 vs PETR4) and sector diversification to prevent over-concentration in energy or banks.
 
-## ✅ DATA INTEGRITY
+## Areas for Improvement & Vulnerabilities
 
-### Fundamentals Cache
-- **Source:** fundamentus.com.br
-- **Timestamp:** 2026-02-21 09:01:44
-- **Total stocks:** 214
-- **Missing fields:** 8 stocks (ALSO3, ARZZ3, etc. - normal for some tickers)
+### 1. Feature Engineering (`feature_engineering.py`)
+- **Vulnerability**: Currently, `add_sector_momentum` and `add_correlation_features` return **hardcoded placeholders** (`0.5`, `'stable'`).
+  - *Impact*: The system expects these features to be real, but they are mocked.
+  - *Fix*: Implement actual sector ETF/index comparative returns and rolling window correlations.
+- **Volume Momentum Bug Risk**: In `add_volume_features`, `volume_trend` uses `np.polyfit` over the last 10 days of volume. Raw volume is highly volatile; a single block trade 2 days ago will skew the slope. It should be smoothed (e.g., using a 3-day SMA of volume before fitting the slope) or measured via OBV (On-Balance Volume).
 
-### Quotes Cache (BrAPI)
-- **Total cached:** 167 tickers
-- **Missing quotes:** 44 tickers (BrAPI doesn't have data for all tickers)
+### 2. Trend Confidence & Sigmoid Scaling (`production_simple.py`)
+- **Issue**: In `analyze_ticker`, news sentiment is applied using a sigmoid: `1 / (1 + np.exp(-5 * news_sentiment))`. 
+  - If sentiment is `0.2` (positive), sigmoid = `0.73`. The code does `position_size *= 0.73` — which actually **reduces** the position size by 27% instead of boosting it.
+  - *Fix*: The scaling factor should be centered around `1.0`. A correct multiplier would be `1.0 + (sentiment * 0.5)` or a shifted sigmoid like `0.5 + (1 / (1 + np.exp(-5 * news_sentiment)))`.
 
-### Results
-- **Total analyzed:** 139 stocks
-- **Missing fundamentals in results:** 2 (TIMS3, IRBR3)
-- **NaN scores:** 1 (AZUL4 - handled correctly with STRONG_SELL)
+### 3. Kelly Criterion Data Leakage / Lookback
+- **Issue**: `calculate_kelly_position` calculates the win probability and average win/loss using the `Close` price returns of the *entire* provided dataframe (which is often the last 120 days).
+  - *Impact*: This measures the stock's overall daily return statistics over the last 120 days, NOT the win rate of the actual trading strategy. Kelly requires the probability of *the strategy's trades* winning. 
+  - *Fix*: While calculating historical daily drift is an okay proxy, a more SOTA approach uses the actual backtested hit rate of the `TrendDetectorV2` signals for that specific ticker.
 
----
+### 4. Data Fetching Resiliency (`fundamentus_scraper.py`)
+- **Issue**: The scraper relies heavily on `requests.get` with standard headers. Fundamentus is known to aggressively block scrapers and change their HTML structure.
+  - *Impact*: If the `<table>` layout changes, the fundamental leg of the engine will silently fail or return zeros.
+  - *Fix*: Add structural validation (e.g., ensuring we got >10 valid metrics) and implement a robust fallback (e.g., fetching from BrAPI if Fundamentus fails, as noted in the lessons learned).
 
-## ✅ TOP PICKS VERIFICATION
+### 5. Config Centralization
+- **Issue**: Hardcoded thresholds exist in `production_simple.py` (e.g., `if len(data) < 50: return None`). This should ideally be pulled from `src/config.py`.
 
-### My Recommendations vs Quality Ranking
+## Summary
+The architectural foundation of this system is **excellent and highly aligned with state-of-the-art retail quant systems**. The integration of robust regression for trend analysis, multi-factor value scoring, and Kelly-based sizing is top-tier. 
 
-| My Rank | Ticker | Quality Rank | Signal | Status |
-|---------|--------|--------------|--------|--------|
-| 1 | CURY3 | #2 | STRONG_BUY | ✅ Excellent pick |
-| 2 | PRIO3 | #17 | STRONG_BUY | ✅ Best momentum |
-| 3 | TGMA3 | #4 | STRONG_BUY | ✅ Great pick |
-| 4 | VULC3 | #1 | STRONG_BUY | ⚠️ In downtrend - wait |
-| 5 | JHSF3 | #24 | STRONG_BUY | ⚠️ Consider LAVV3 instead |
-
-### Best Picks: STRONG_BUY + Uptrend + Quality
-
-| Rank | Ticker | Score | Composite | P/E | ROE | Div Yield | Trend |
-|------|--------|-------|-----------|-----|-----|-----------|-------|
-| 1 | PRIO3 | 104 | 84 | 4.8 | 38.7% | 0% | ↑ 95% |
-| 2 | TGMA3 | 102 | 82 | 9.7 | 28.0% | 10.9% | ↑ 80% |
-| 3 | GMAT3 | 102 | 82 | 6.8 | 18.6% | 4.4% | ↑ 82% |
-| 4 | CURY3 | 101 | 81 | 14.7 | 62.9% | 9.4% | ↑ 75% |
-| 5 | TECN3 | 100 | 80 | 8.1 | 15.6% | 4.6% | ↑ 86% |
-
----
-
-## 🔧 RECOMMENDATIONS
-
-### Code Improvements
-1. **Add NaN handling:** Filter out stocks with NaN scores before generating signals
-2. **Add data validation:** Verify BrAPI quotes before analysis
-3. **Add price check:** Flag stocks where quote price != fundamentals price
-
-### Recommendation Revision
-
-**REVISED TOP 5:**
-
-1. **PRIO3** - Best overall (quality + momentum)
-2. **CURY3** - Highest quality (ROE 62.9%)
-3. **TGMA3** - Best risk/reward balance
-4. **GMAT3** - Undervalued + uptrend
-5. **LAVV3** - Replace JHSF3 (better quality, 14.1% div)
-
-**Wait List:**
-- **VULC3** - Excellent fundamentals but in downtrend (wait for reversal)
-- **JHSF3** - Good value but lower quality ranking
-
----
-
-## 📊 FINAL SIGNAL DISTRIBUTION
-
-| Signal | Count | % |
-|--------|-------|---|
-| STRONG_BUY | 17 | 12% |
-| BUY | 43 | 31% |
-| HOLD | 65 | 47% |
-| SELL | 8 | 6% |
-| STRONG_SELL | 6 | 4% |
-| **Total** | **139** | **100%** |
-
----
-
-## ✅ CONCLUSION
-
-**Code is working correctly.** The system properly:
-- Scrapes fundamentals from Fundamentus
-- Fetches real-time prices from BrAPI
-- Calculates technical trends
-- Combines scores with 50/50 weighting
-- Generates appropriate signals
-
-**Recommendations are accurate.** My top 5 picks are all legitimate STRONG_BUY signals with solid fundamentals. Minor revision suggested: replace JHSF3 with LAVV3 or GMAT3 for better quality scores.
+To reach true production-grade resilience, the mathematical logic around the news sentiment multiplier needs an immediate fix, and the mocked features in `feature_engineering.py` should be fully implemented or removed to prevent false confidence in the model's outputs.
