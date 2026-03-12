@@ -64,11 +64,12 @@ def main():
     # ============================================================
     # PASS 2: News Sentiment for Top Candidates
     # ============================================================
-    print(f"\n📰 PASS 2: News Sentiment (top 20 candidates)")
+    print(f"\n📰 PASS 2: News Sentiment (top 10 candidates)")
     print("-" * 60)
     
-    # Get top 20 candidates for news analysis
-    top_candidates = [r for r in results if r.get('signal') in ['STRONG_BUY', 'BUY']][:20]
+    # Get top 10 candidates for news analysis (BUY + SELL, ranked by score)
+    actionable = [r for r in results if r.get('signal') in ['STRONG_BUY', 'BUY', 'SELL', 'STRONG_SELL']]
+    top_candidates = actionable[:10]
     
     if top_candidates:
         try:
@@ -77,7 +78,7 @@ def main():
             
             for i, result in enumerate(top_candidates, 1):
                 ticker = result.get('ticker', '')
-                print(f"   [{i}/20] {ticker}...", end=" ", flush=True)
+                print(f"   [{i}/{len(top_candidates)}] {ticker}...", end=" ", flush=True)
                 
                 try:
                     # Get sentiment (this fetches news and caches it)
