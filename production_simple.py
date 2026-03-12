@@ -442,26 +442,39 @@ class SimpleProductionRunner:
             print("SKIP")
         return result
     
-    def run(self, tickers: List[str] = None, parallel: bool = True):
+    def run(self, tickers: List[str] = None, parallel: bool = True, news_top_n: int = 10):
         """
-        Run analysis on all tickers.
+        Two-pass analysis pipeline.
+        
+        Pass 1: Technical + fundamental screening for ALL tickers (no news API calls).
+        Pass 2: Fetch news only for top N candidates, recalculate scores, output final top N.
         
         Args:
             tickers: List of tickers to analyze (default: all from validated_tickers.json)
             parallel: Use parallel processing (default: True, ~8x faster)
+            news_top_n: Number of top candidates to enrich with news (default: 10)
         """
         if tickers is None:
             tickers = load_tickers()
         
         print(f"\n{'='*70}")
-        print(f"🚀 PRODUÇÃO - {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+        print(f"🚀 PRODUÇÃO (Two-Pass) - {datetime.now().strftime('%Y-%m-%d %H:%M')}")
         print(f"📊 Analyzing {len(tickers)} tickers (IBOV + SMLL)")
+        print(f"{'='*70}")
+        
+        # ==================================================================
+        # PASS 1: Technical + Fundamental screening (no news)
+        # ==================================================================
+        print(f"\n📊 PASS 1: Technical + Fundamental screening (no news)")
         print(f"{'='*70}\n")
+        
+        # Temporarily disable news for Pass 1
+        saved_use_news = self.use_news
+        self.use_news = False
         
         results = []
         
         if parallel and len(tickers) > 1:
-            # Parallel processing (8x faster for 150 tickers)
             print(f"⚡ Parallel mode: {self.n_workers} workers\n")
             
             with Pool(self.n_workers) as pool:
@@ -469,7 +482,6 @@ class SimpleProductionRunner:
             
             results = [r for r in raw_results if r is not None]
         else:
-            # Sequential processing (for debugging or single ticker)
             for ticker in tickers:
                 print(f"📊 {ticker}...", end=" ")
                 result = self.analyze_ticker(ticker)
@@ -479,10 +491,76 @@ class SimpleProductionRunner:
                 else:
                     print("SKIP")
         
-        # Summary
-        self._print_summary(results)
+        # Restore news setting
+        self.use_news = saved_use_news
         
-        return results
+        if not results:
+            print("\n❌ No results from Pass 1")
+            return results
+        
+        # Rank by composite score (tech + fundamentals, no news yet)
+        results.sort(key=lambda x: abs(x.get('conviction', 0)), reverse=True)
+        
+        # Select top candidates for news enrichment
+        actionable = [r for r in results if r['signal'] in ('BUY', 'SELL', 'STRONG_BUY', 'STRONG_SELL')]
+        candidates = actionable[:news_top_n]
+        
+        print(f"\n✅ Pass 1 complete: {len(results)} analyzed, {len(actionable)} actionable")
+        print(f"   Top {len(candidates)} candidates selected for news enrichment")
+        
+        # ==================================================================
+        # PASS 2: News enrichment for top candidates only
+        # ==================================================================
+        if saved_use_news and candidates:
+            print(f"\n📰 PASS 2: News enrichment for top {len(candidates)} candidates")
+            print(f"{'='*70}\n")
+            
+            today = datetime.now().strftime("%Y-%m-%d")
+            
+            for i, candidate in enumerate(candidates, 1):
+                ticker = candidate['ticker']
+                print(f"   [{i}/{len(candidates)}] {ticker}...", end=" ", flush=True)
+                
+                try:
+                    news_data = self.get_news_sentiment(ticker)
+                    news_sentiment = news_data.get("sentiment", 0.0)
+                    news_articles = news_data.get("articles", [])
+                    candidate['news_sentiment'] = news_sentiment
+                    candidate['news_articles'] = news_articles
+                    
+                    # Recalculate position size with news boost
+                    if candidate['signal'] in ('BUY', 'STRONG_BUY') and abs(news_sentiment) > 0.1:
+                        sigmoid_boost = 0.5 + (1 / (1 + np.exp(-5 * news_sentiment)))
+                        candidate['position_size'] = min(0.80, candidate['position_size'] * sigmoid_boost)
+                        
+                        # Adjust conviction
+                        if news_sentiment > 0:
+                            candidate['conviction'] = min(1.0, candidate['conviction'] * 1.1)
+                        else:
+                            candidate['conviction'] = max(0.0, candidate['conviction'] * 0.9)
+                    
+                    print(f"sentiment: {news_sentiment:+.2f} ({len(news_articles)} articles)")
+                except Exception as e:
+                    print(f"ERROR: {e}")
+                    candidate['news_sentiment'] = 0.0
+                    candidate['news_articles'] = []
+            
+            # Re-sort candidates after news adjustment
+            candidates.sort(key=lambda x: abs(x.get('conviction', 0)), reverse=True)
+            
+            print(f"\n✅ Pass 2 complete: {len(candidates)} enriched with news")
+        
+        # ==================================================================
+        # Final output: merge enriched candidates back into full results
+        # ==================================================================
+        enriched_tickers = {c['ticker'] for c in candidates}
+        final_results = candidates + [r for r in results if r['ticker'] not in enriched_tickers]
+        final_results.sort(key=lambda x: abs(x.get('conviction', 0)), reverse=True)
+        
+        # Summary
+        self._print_summary(final_results)
+        
+        return final_results
     
     def _print_summary(self, results: List[Dict]):
         """Print final table with fundamental data"""
