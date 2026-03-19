@@ -168,7 +168,25 @@ class FundamentalIntegrator:
         )
         
         # Determine recommendation
-        recommendation = self._get_recommendation(composite, trend, fund_score)
+        # Load raw fundamental data for metrics and P/E validation
+        pe_ratio = None
+        pb_ratio = None
+        roe = None
+        div_yield = None
+        
+        raw_path = self.fundamentals_path.parent / 'fundamentals_cache.json'
+        if raw_path.exists():
+            with open(raw_path, 'r', encoding='utf-8') as f:
+                raw_data = json.load(f)
+            ticker_data = raw_data.get('data', {}).get(ticker.replace('.SA', ''), {})
+            pe_ratio = ticker_data.get('pe_ratio')
+            pb_ratio = ticker_data.get('pb_ratio')
+            roe = ticker_data.get('roe')
+            div_yield = ticker_data.get('div_yield')
+        
+        rec_data = {'pe_ratio': pe_ratio or (fund_data.get('pe_ratio') if fund_data else None),
+                     'value_score': value_score}
+        recommendation = self._get_recommendation(composite, trend, fund_score, rec_data)
         
         # Determine flags
         is_value_pick = self._is_value_pick(technical_score, value_score, quality_score)
@@ -185,23 +203,6 @@ class FundamentalIntegrator:
         # Combine strengths/weaknesses
         all_strengths = (strengths or []) + fund_strengths
         all_weaknesses = (weaknesses or []) + fund_weaknesses
-        
-        # Get key metrics from raw fundamental data if available
-        pe_ratio = None
-        pb_ratio = None
-        roe = None
-        div_yield = None
-        
-        # Load raw fundamental data for metrics
-        raw_path = self.fundamentals_path.parent / 'fundamentals_cache.json'
-        if raw_path.exists():
-            with open(raw_path, 'r', encoding='utf-8') as f:
-                raw_data = json.load(f)
-            ticker_data = raw_data.get('data', {}).get(ticker.replace('.SA', ''), {})
-            pe_ratio = ticker_data.get('pe_ratio')
-            pb_ratio = ticker_data.get('pb_ratio')
-            roe = ticker_data.get('roe')
-            div_yield = ticker_data.get('div_yield')
         
         return IntegratedScore(
             ticker=ticker,
@@ -255,12 +256,12 @@ class FundamentalIntegrator:
         return max(0, min(100, composite))
     
     def _get_recommendation(self, composite: float, trend: str, 
-                           fund_score: float) -> str:
+                           fund_score: float, data: Optional[Dict] = None) -> str:
         """Generate recommendation based on composite score."""
         # Base recommendation on composite
-        if composite >= 75:
+        if composite >= 80:  # Raised from 75 to require stronger fundamentals
             base_rec = 'STRONG_BUY'
-        elif composite >= 60:
+        elif composite >= 70:
             base_rec = 'BUY'
         elif composite >= 40:
             base_rec = 'HOLD'
@@ -271,10 +272,27 @@ class FundamentalIntegrator:
         
         # Adjust for fundamental concerns
         if fund_score < 30 and base_rec in ['STRONG_BUY', 'BUY']:
-            # Downgrade if fundamentals are very poor
             if base_rec == 'STRONG_BUY':
                 return 'BUY'
             else:
+                return 'HOLD'
+        
+        # P/E validation - don't recommend STRONG_BUY for expensive stocks
+        pe_ratio = None
+        value_score = None
+        if data is not None:
+            pe_ratio = data.get('pe_ratio')
+            value_score = data.get('value_score')
+        
+        if pe_ratio is not None and pe_ratio > 20:
+            if base_rec == 'STRONG_BUY':
+                return 'BUY'
+            elif base_rec == 'BUY':
+                if value_score is not None and value_score >= 80:
+                    base_rec = 'BUY'
+                else:
+                    base_rec = 'HOLD'
+            if base_rec == 'BUY' and pe_ratio > 25:
                 return 'HOLD'
         
         return base_rec

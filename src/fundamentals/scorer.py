@@ -380,6 +380,11 @@ class FundamentalScorer:
         """Calculate pure value score (0-100) based on valuation metrics."""
         score = graham.percentage  # Start with Graham percentage
         
+        # P/E penalty - stocks with high P/E shouldn't get perfect value scores
+        if data.pe_ratio is not None and data.pe_ratio > 15:
+            penalty = 15 if data.pe_ratio <= 20 else 30
+            score -= penalty
+        
         # Bonus for very low valuations
         if data.pe_ratio is not None:
             if data.pe_ratio < 8:
@@ -400,7 +405,7 @@ class FundamentalScorer:
             elif data.ev_ebitda < 8:
                 score += 5
         
-        return min(100, score)
+        return min(100, max(0, score))
     
     def calculate_quality_score(self, data) -> float:
         """Calculate quality score (0-100) based on profitability and financial health."""
@@ -535,7 +540,7 @@ class FundamentalScorer:
                 composite += lynch.score * weights['lynch']
                 total_weight += weights['lynch']
             else:
-                # Redistribute weight to Greenblatt
+                # Redistribute Lynch's weight to Graham (not Greenblatt)
                 composite += graham.percentage * weights['lynch']
                 total_weight += weights['lynch']
             
