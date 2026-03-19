@@ -284,16 +284,13 @@ class FundamentalIntegrator:
             pe_ratio = data.get('pe_ratio')
             value_score = data.get('value_score')
         
-        if pe_ratio is not None and pe_ratio > 20:
-            if base_rec == 'STRONG_BUY':
-                return 'BUY'
-            elif base_rec == 'BUY':
-                if value_score is not None and value_score >= 80:
-                    base_rec = 'BUY'
-                else:
-                    base_rec = 'HOLD'
-            if base_rec == 'BUY' and pe_ratio > 25:
-                return 'HOLD'
+        # If P/E > 20, downgrade STRONG_BUY to BUY
+        if pe_ratio is not None and pe_ratio > 20 and base_rec == 'STRONG_BUY':
+            base_rec = 'BUY'
+        
+        # If P/E > 25, downgrade BUY to HOLD
+        if pe_ratio is not None and pe_ratio > 25 and base_rec == 'BUY':
+            base_rec = 'HOLD'
         
         return base_rec
     
