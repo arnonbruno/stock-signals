@@ -455,5 +455,38 @@
     "sentiment": 0.0,
     "source": "pending",
     "articles": []
+  },
+  "ALPA4.SA": {
+    "sentiment": -0.009009353816509247,
+    "timestamp": "2026-03-19T14:31:30.709586",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Ita\u00fasa (ITSA4) divulga balan\u00e7o do 4T25 hoje; holding ou Ita\u00fa (ITUB4), qual escolher? - Estad\u00e3o E-Investidor",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMilgFBVV95cUxNbXZsUU1PTDA5aWJ1WGRBTXRzc3J3UDBMbklHWDZUN1I0dDRISE5idF95QmJvMDUtZDRFVnNfakMxRXpKWnB1TUJP",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNbXZsUU1PTDA5aWJ1WGRBTXRzc3J3UDBMbklHWDZUN1I0dDRISE5idF95QmJvMDUtZDRFVnNfakMxRXpKWnB1TUJPRW1DQS0weDlvQ2owdzZUTktJZUtlVHJhYURGdk1fcnBGQ2ZzenA5TUwzTnotTlVTek5NRlpHTG1kMVdGRXFPbGpOTTVBSVJ5UHJjTkHSAZsBQVVfeXFMTkkzaF81cm9KUjhrUlliMjBYRnVnc2s5MFBocFNFdE5kTEpCWDkxSDRrQmN5NUZjMjlyamJ6aklsa3VrQVBNb1AzelZsMTdCamhMMXR6NzVwaHJobXJVZjVRMkptUzNJdGR5R1VaNEM0SE1RQzl0NzBwQ3hpX1pNUzNhSS1CVUc3SVBVMXpZcDhXNktKQ1VleHR3RWM?oc=5"
+      }
+    ]
+  },
+  "QUAL3.SA": {
+    "sentiment": -0.32142808176577087,
+    "timestamp": "2026-03-19T14:31:34.502956",
+    "source": "google_news",
+    "articles": [
+      {
+        "title": "Justi\u00e7a condena Unimed Cuiab\u00e1 a pagar R$ 15 mil a idosa ap\u00f3s mudan\u00e7a unilateral em plano de sa\u00fade - O Documento",
+        "summary": "<a href=\"https://news.google.com/rss/articles/CBMiwAFBVV95cUxOTnp0eU1kSkJjX21hZmIzcW00X1RWWXJGZUl6Wm01aTRMamtTLURtcjQ2UUdOWUVyeEFJN19ONDVuUUtRcUFrczZT",
+        "source_publication": "Unknown",
+        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOTnp0eU1kSkJjX21hZmIzcW00X1RWWXJGZUl6Wm01aTRMamtTLURtcjQ2UUdOWUVyeEFJN19ONDVuUUtRcUFrczZTcTJGUjRwb3BzeUluaF90RDJILW12ZExPZmNNTk5udWlDRXkyQUZRTXhTV3BOcXBiMWRhVWQzYjRyYXdvc1d5eUJiMFp2XzNlQ0w5M2xIVVZ3dVRGUXAtZ0o0MXJ1dGMzQ2tYSDdvWG4xNDJRaDE5bWQtTE1pVmQ?oc=5"
+      }
+    ]
+  },
+  "DIRR3.SA": {
+    "pending": true,
+    "timestamp": "2026-03-19T14:31:34.504492",
+    "sentiment": 0.0,
+    "source": "pending",
+    "articles": []
   }
 }
