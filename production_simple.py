@@ -271,13 +271,13 @@ class SimpleProductionRunner:
             # Print trend details
             print(f"\n     [TREND] {consensus} @ {confidence:.1%} confidence")
             
-            # Map consensus to simple trend
+            # Map consensus to simple trend (UPPERCASE to match integration.py expectations)
             if consensus in ['uptrend', 'bull_pullback']:
-                trend = "uptrend"
+                trend = "UPTREND"
             elif consensus in ['downtrend', 'bear_bounce']:
-                trend = "downtrend"
+                trend = "DOWNTREND"
             else:
-                trend = "neutral"
+                trend = "SIDEWAYS"
             
             # News sentiment (if enabled)
             if self.use_news:
@@ -292,7 +292,6 @@ class SimpleProductionRunner:
             elif self.use_news:
                 print(f"⚠️  No articles found, sentiment: {news_sentiment:+.2f}")
             
-            # Improved signal logic with higher threshold and proportional sizing
             from src.config import get_config
             config = get_config()
             
@@ -301,10 +300,16 @@ class SimpleProductionRunner:
             conviction = 0.0
             technical_score = confidence * 100  # Convert to 0-100 scale
             
-            # Minimum confidence threshold from centralized config
-            MIN_CONFIDENCE = config.MIN_CONFIDENCE
+            # Regime-aware thresholds: map volatility regime to market regime
+            regime_map = {'low': 'bull', 'medium': 'sideways', 'high': 'bear'}
+            market_regime = regime_map.get(vol_regime, 'default')
+            thresholds = config.get_thresholds(market_regime)
+            MIN_CONFIDENCE = thresholds.buy_confidence
+            SELL_CONFIDENCE = thresholds.sell_confidence
             
-            if trend == "uptrend" and confidence >= MIN_CONFIDENCE:
+            print(f"     [REGIME] {market_regime} -> buy_conf={MIN_CONFIDENCE:.2f}, sell_conf={SELL_CONFIDENCE:.2f}")
+            
+            if trend == "UPTREND" and confidence >= MIN_CONFIDENCE:
                 signal = "BUY"
                 conviction = confidence
                 
@@ -320,13 +325,13 @@ class SimpleProductionRunner:
                     position_size *= sigmoid_boost  # Multiplicative scaling
                     
                     # Update conviction based on news agreement with trend
-                    if (news_sentiment > 0 and trend == "uptrend") or (news_sentiment < 0 and trend == "downtrend"):
+                    if (news_sentiment > 0 and trend == "UPTREND") or (news_sentiment < 0 and trend == "DOWNTREND"):
                         conviction = min(1.0, conviction * 1.1)  # 10% boost when aligned
                 
                 # Cap at 80% for safety
                 position_size = min(0.80, position_size)
                     
-            elif trend == "downtrend" and confidence >= MIN_CONFIDENCE:
+            elif trend == "DOWNTREND" and confidence >= SELL_CONFIDENCE:
                 signal = "SELL"
                 conviction = -confidence
                 position_size = 1.0  # Exit completely
@@ -478,6 +483,23 @@ class SimpleProductionRunner:
         
         # Summary
         self._print_summary(results)
+        
+        # Zero-signal monitoring: alert if no BUY/SELL signals generated
+        buy_signals = [r for r in results if r['signal'] in ('BUY', 'STRONG_BUY')]
+        sell_signals = [r for r in results if r['signal'] in ('SELL', 'STRONG_SELL')]
+        
+        if results and not buy_signals and not sell_signals:
+            print("\n" + "!" * 70)
+            print("🚨 ZERO-SIGNAL ALERT: No BUY or SELL signals generated!")
+            print(f"   Analyzed {len(results)} tickers, all returned HOLD.")
+            print("   Possible causes:")
+            print("   - Confidence thresholds too high for current regime")
+            print("   - Trend/case mismatch between modules")
+            print("   - Market in low-conviction sideways regime")
+            print("!" * 70 + "\n")
+        elif results and not buy_signals:
+            print(f"\n⚠️  MONITORING: 0 BUY signals out of {len(results)} tickers. "
+                  f"({len(sell_signals)} SELL)")
         
         return results
     
