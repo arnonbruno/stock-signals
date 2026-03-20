@@ -122,18 +122,77 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
         lines.append(f"    Price: R${r['price']:.2f}")
         lines.append(f"    └─ Drivers:")
         
-        # Trend
+        # Trend with technical indicators
         trend_conf = r.get('confidence', 0) * 100
         lines.append(f"       • Trend: {r['trend'].upper()} ({trend_conf:.0f}% confidence)")
         
-        # News
-        if r.get('news_sentiment'):
+        # Technical indicators
+        tech_indicators = r.get('technical_indicators', {})
+        if tech_indicators:
+            # RSI
+            if 'rsi' in tech_indicators:
+                rsi = tech_indicators['rsi']
+                if rsi > 70:
+                    lines.append(f"         📊 RSI: {rsi:.1f} (overbought - watch for reversal)")
+                elif rsi < 30:
+                    lines.append(f"         📊 RSI: {rsi:.1f} (oversold - buying opportunity)")
+                else:
+                    lines.append(f"         📊 RSI: {rsi:.1f}")
+            
+            # MACD
+            if 'macd' in tech_indicators:
+                macd = tech_indicators['macd']
+                macd_signal = tech_indicators.get('macd_signal', 0)
+                lines.append(f"         📊 MACD: {macd:+.3f} | Signal: {macd_signal:+.3f}")
+                if macd > macd_signal:
+                    lines.append(f"         ✅ Bullish MACD crossover")
+                else:
+                    lines.append(f"         ⚠️ Bearish MACD")
+            
+            # Volume
+            if 'volume_vs_avg' in tech_indicators:
+                vol_pct = tech_indicators['volume_vs_avg']
+                if vol_pct > 150:
+                    lines.append(f"         📊 Volume: +{vol_pct:.0f}% vs avg (high participation)")
+                elif vol_pct > 120:
+                    lines.append(f"         📊 Volume: +{vol_pct:.0f}% vs avg (above normal)")
+                elif vol_pct < 80:
+                    lines.append(f"         📊 Volume: {vol_pct:.0f}% vs avg (low participation)")
+                else:
+                    lines.append(f"         📊 Volume: {vol_pct:.0f}% vs avg (normal)")
+            
+            # Moving averages
+            if 'price_vs_50d' in tech_indicators:
+                ma50 = tech_indicators['price_vs_50d']
+                if ma50 > 0:
+                    lines.append(f"         📊 Above 50-day MA by +{ma50:.1f}%")
+                else:
+                    lines.append(f"         📊 Below 50-day MA by {ma50:.1f}%")
+            
+            if 'price_vs_20d' in tech_indicators:
+                ma20 = tech_indicators['price_vs_20d']
+                if ma20 > 0:
+                    lines.append(f"         📊 Above 20-day MA by +{ma20:.1f}%")
+                else:
+                    lines.append(f"         📊 Below 20-day MA by {ma20:.1f}%")
+        
+        # News with headlines
+        if r.get('news_sentiment') is not None:
             ns = r['news_sentiment']
             lines.append(f"       • News: {ns:+.2f} sentiment")
+            
+            # Show news headlines if available
+            headlines = r.get('news_headlines', [])
+            if headlines:
+                for headline in headlines[:2]:
+                    lines.append(f"         📰 {headline}")
+            
             if ns > 0.1:
-                lines.append(f"         ✅ Positive news boost")
+                lines.append(f"         ✅ Positive news impact (+{(ns*10):.0f}% position)")
             elif ns < -0.1:
-                lines.append(f"         ⚠️ Negative news headwind")
+                lines.append(f"         ⚠️ Negative news headwind ({(abs(ns)*10):.0f}% position reduction)")
+            else:
+                lines.append(f"         😐 Neutral news (no impact)")
         
         # Fundamentals
         if fund:
@@ -158,9 +217,47 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
         conviction_label = "VERY HIGH" if pos_pct > 50 else "HIGH" if pos_pct > 30 else "MEDIUM"
         lines.append(f"       • Position: {pos_pct:.0f}% ({conviction_label} conviction)")
         
-        # Action notes
+        # Entry/Stop/Target levels
+        price = r.get('price', 0)
+        position_size = r.get('position_size', 0)
+        
+        if price > 0 and position_size > 0:
+            # Calculate levels based on trend and position size
+            if r['signal'] in ['BUY', 'STRONG_BUY']:
+                # Stop loss: 8-12% below current price (tighter for high conviction)
+                stop_pct = 0.10 if position_size > 0.40 else 0.08
+                stop_loss = price * (1 - stop_pct)
+                
+                # Targets: 2:1 and 3:1 risk/reward
+                target1 = price + (price - stop_loss) * 2
+                target2 = price + (price - stop_loss) * 3
+                
+                lines.append(f"    └─ Levels:")
+                lines.append(f"       Entry: R${price:.2f} | Stop: R${stop_loss:.2f}")
+                lines.append(f"       Targets: R${target1:.2f} (2:1) | R${target2:.2f} (3:1)")
+        
+        # Action notes and reversal signals
         if fund and fund.get('action_notes'):
             lines.append(f"    └─ Watch for:")
+            
+            # Add reversal signals based on indicators
+            tech_indicators = r.get('technical_indicators', {})
+            
+            # RSI warnings
+            if 'rsi' in tech_indicators:
+                rsi = tech_indicators['rsi']
+                if rsi > 70:
+                    lines.append(f"       ⚠️ RSI breaks above 70 (overbought) → Take partial profits")
+                elif rsi < 30:
+                    lines.append(f"       ✅ RSI breaks above 40 (reversal) → Strong buy signal")
+            
+            # MA warnings
+            if 'price_vs_50d' in tech_indicators:
+                ma50 = tech_indicators['price_vs_50d']
+                if ma50 < -2:
+                    lines.append(f"       ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss")
+            
+            # Add action notes
             for note in fund['action_notes'][:2]:
                 lines.append(f"       {note}")
         

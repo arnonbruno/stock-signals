@@ -387,6 +387,55 @@ class SimpleProductionRunner:
                     'action_notes': integrated_score.action_notes,
                 }
             
+            # Calculate technical indicators for detailed reporting
+            technical_indicators = {}
+            
+            # RSI (14-period)
+            delta = data['Close'].diff()
+            gain = (delta.where(delta > 0, 0)).rolling(window=14).mean()
+            loss = (-delta.where(delta < 0, 0)).rolling(window=14).mean()
+            rs = gain / loss
+            rsi = 100 - (100 / (1 + rs))
+            if len(rsi) > 0:
+                technical_indicators['rsi'] = rsi.iloc[-1]
+            
+            # MACD
+            exp12 = data['Close'].ewm(span=12, adjust=False).mean()
+            exp26 = data['Close'].ewm(span=26, adjust=False).mean()
+            macd = exp12 - exp26
+            macd_signal = macd.ewm(span=9, adjust=False).mean()
+            if len(macd) > 0 and len(macd_signal) > 0:
+                technical_indicators['macd'] = macd.iloc[-1]
+                technical_indicators['macd_signal'] = macd_signal.iloc[-1]
+            
+            # Volume vs average (20-day)
+            avg_volume = data['Volume'].rolling(window=20).mean()
+            if len(avg_volume) > 0:
+                current_volume = data['Volume'].iloc[-1]
+                avg_vol = avg_volume.iloc[-1]
+                if avg_vol > 0:
+                    technical_indicators['volume_vs_avg'] = (current_volume / avg_vol) * 100
+            
+            # Price vs moving averages
+            ma50 = data['Close'].rolling(window=50).mean()
+            ma20 = data['Close'].rolling(window=20).mean()
+            if len(ma50) > 0 and len(ma20) > 0:
+                current_price = data['Close'].iloc[-1]
+                technical_indicators['price_vs_50d'] = ((current_price - ma50.iloc[-1]) / ma50.iloc[-1]) * 100
+                technical_indicators['price_vs_20d'] = ((current_price - ma20.iloc[-1]) / ma20.iloc[-1]) * 100
+            
+            # Extract news headlines
+            news_headlines = []
+            if news_articles:
+                for article in news_articles[:3]:
+                    title = article.get('title', '')
+                    source = article.get('source', '')
+                    if title:
+                        if source:
+                            news_headlines.append(f"{title} ({source})")
+                        else:
+                            news_headlines.append(title)
+            
             return {
                 "ticker": ticker,
                 "price": current_price,
@@ -394,11 +443,13 @@ class SimpleProductionRunner:
                 "confidence": confidence,  # Add confidence from trend detector
                 "news_sentiment": news_sentiment,
                 "news_articles": news_articles,
+                "news_headlines": news_headlines,  # Add headlines for reporting
                 "signal": signal,
                 "conviction": conviction,
                 "position_size": position_size,
                 "features": feature_summary,  # Add feature engineering data
                 "fundamentals": fundamental_data,  # Add fundamental data
+                "technical_indicators": technical_indicators,  # Add technical indicators
             }
             
         except Exception as e:
