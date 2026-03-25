@@ -17,10 +17,14 @@ from typing import Dict, List
 import json
 from pathlib import Path
 
+from dotenv import load_dotenv
+load_dotenv()
+
 from src.signals.trend_detector_v2 import TrendDetectorV2
 from src.news.free_news_client import FreeNewsClient
 from src.features.feature_engineering import get_feature_engineer
 from src.fundamentals.integration import FundamentalIntegrator, format_integrated_signal
+from src.brapi_client import BrAPIClient
 
 
 def load_tickers() -> List[str]:
@@ -67,6 +71,10 @@ class SimpleProductionRunner:
         max_workers = min(cpu_count(), 8)
         self.n_workers = min(n_workers, max_workers) if n_workers else max_workers
         
+        # BrAPI client for real-time prices (replaces yfinance stale prices)
+        self.brapi_client = BrAPIClient()
+        self._brapi_prices: Dict[str, float] = {}
+        
         if use_news:
             # Check if model already cached
             if 'news_client' not in self._model_cache:
@@ -77,7 +85,8 @@ class SimpleProductionRunner:
             self.fundamental_integrator = FundamentalIntegrator()
         
         print(f"✅ Sistema inicializado (news={'ON' if use_news else 'OFF'}, "
-              f"fundamentals={'ON' if use_fundamentals else 'OFF'}, workers={self.n_workers})")
+              f"fundamentals={'ON' if use_fundamentals else 'OFF'}, "
+              f"price_source=BrAPI, workers={self.n_workers})")
     
     def calculate_kelly_position(self, data: pd.DataFrame, confidence: float) -> float:
         """
@@ -232,9 +241,18 @@ class SimpleProductionRunner:
             if len(data) < 50:
                 return None
             
-            # Current price
-            price_val = data['Close'].iloc[-1]
-            current_price = float(price_val.item()) if hasattr(price_val, 'item') else float(price_val)
+            # Current price: prefer BrAPI real-time, fall back to yfinance close
+            clean_ticker = ticker.replace('.SA', '')
+            brapi_price = self._brapi_prices.get(clean_ticker)
+            if brapi_price is None:
+                brapi_price = self.brapi_client.get_price(clean_ticker)
+            
+            if brapi_price is not None:
+                current_price = brapi_price
+            else:
+                price_val = data['Close'].iloc[-1]
+                current_price = float(price_val.item()) if hasattr(price_val, 'item') else float(price_val)
+                print(f"     ⚠️ BrAPI unavailable for {clean_ticker}, using yfinance close")
             
             # Trend detection (core validated logic)
             trend_result = self.trend_detector.detect_trend(data)
@@ -510,6 +528,13 @@ class SimpleProductionRunner:
         print(f"🚀 PRODUÇÃO - {datetime.now().strftime('%Y-%m-%d %H:%M')}")
         print(f"📊 Analyzing {len(tickers)} tickers (IBOV + SMLL)")
         print(f"{'='*70}\n")
+        
+        # Pre-fetch all real-time prices from BrAPI in batches
+        clean_tickers = [t.replace('.SA', '') for t in tickers]
+        print(f"💰 Fetching real-time prices from BrAPI ({len(clean_tickers)} tickers)...")
+        self._brapi_prices = self.brapi_client.get_prices(clean_tickers)
+        cached_count = sum(1 for t in clean_tickers if t in self._brapi_prices)
+        print(f"   ✅ Got {cached_count}/{len(clean_tickers)} prices from BrAPI\n")
         
         results = []
         
