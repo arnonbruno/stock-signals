@@ -78,99 +78,13 @@ def _deduplicate_ticker_groups(results: List[Dict]) -> List[Dict]:
     return list(groups.values())
 
 
-# Sector mapping for Brazilian stocks
-SECTOR_MAP = {
-    # Imobiliário
-    'LAVV3': 'Imobiliário', 'CURY3': 'Imobiliário', 'JHSF3': 'Imobiliário', 
-    'MDNE3': 'Imobiliário', 'MRVE3': 'Imobiliário', 'CYRE3': 'Imobiliário',
-    'DIRR3': 'Imobiliário', 'TEND3': 'Imobiliário', 'PDGR3': 'Imobiliário',
-    # Varejo
-    'GMAT3': 'Varejo', 'PCAR3': 'Varejo', 'CRFB3': 'Varejo', 'AMAR3': 'Varejo',
-    'LREN3': 'Varejo', 'GUAR3': 'Varejo', 'SOMA3': 'Varejo', 'ARZZ3': 'Varejo',
-    # Energia
-    'NEOE3': 'Energia', 'CPFE3': 'Energia', 'CMIG4': 'Energia', 'CMIG3': 'Energia',
-    'ELET3': 'Energia', 'ELET6': 'Energia', 'ENGI11': 'Energia', 'EGIE3': 'Energia',
-    'TAEE11': 'Energia', 'TAEE3': 'Energia', 'TAEE4': 'Energia',
-    # Petróleo & Gás
-    'PRIO3': 'Petróleo', 'PETR3': 'Petróleo', 'PETR4': 'Petróleo', 
-    'RRRP3': 'Petróleo', 'ENAT3': 'Petróleo',
-    # Bancos
-    'BBAS3': 'Bancos', 'ITUB4': 'Bancos', 'BBDC4': 'Bancos', 'BBDC3': 'Bancos',
-    'SANB11': 'Bancos', 'SANB3': 'Bancos', 'SANB4': 'Bancos', 'BPAC11': 'Bancos',
-    # Mineração & Siderurgia
-    'VALE3': 'Mineração', 'CSNA3': 'Siderurgia', 'USIM5': 'Siderurgia', 
-    'GGBR4': 'Siderurgia', 'CMIN3': 'Mineração',
-    # Saneamento
-    'SBSP3': 'Saneamento', 'SAPR11': 'Saneamento', 'SAPR3': 'Saneamento', 
-    'SAPR4': 'Saneamento', 'CESP6': 'Saneamento', 'AMTB3': 'Saneamento',
-    # Tecnologia
-    'TECN3': 'Tecnologia', 'LINX3': 'Tecnologia', 'POSI3': 'Tecnologia',
-    # Celulose & Papel
-    'SUZB3': 'Celulose', 'KLBN11': 'Celulose', 'KLBN3': 'Celulose', 'KLBN4': 'Celulose',
-    # Shoppings
-    'MULT3': 'Shoppings', 'BRML3': 'Shoppings', 'IGTI11': 'Shoppings',
-    # Industrial
-    'WEGE3': 'Industrial', 'EMBR3': 'Industrial', 'RENT3': 'Industrial',
-    'GOAU4': 'Industrial', 'GRND3': 'Industrial',
-    # Saúde
-    'RDOR3': 'Saúde', 'FLRY3': 'Saúde', 'ODPV3': 'Saúde', 'HAPV3': 'Saúde',
-    # Seguros
-    'BBSE3': 'Seguros', 'SULA11': 'Seguros', 'PORT3': 'Seguros',
-    # Bebidas
-    'ABEV3': 'Bebidas', 'AMBEV3': 'Bebidas',
-    # Varejo Farmacêutico
-    'RADL3': 'Farmacêutico', 'RAIA3': 'Farmacêutico', 'DMVF3': 'Farmacêutico',
-    # Outros
-    'BBRK3': 'Outros', 'BRKM5': 'Química', 'BRAP3': 'Outros', 'BRAP4': 'Outros',
-}
-
-
-def get_sector(ticker: str) -> str:
-    """Get sector for a ticker, default to 'Outros'."""
-    return SECTOR_MAP.get(ticker.replace('.SA', ''), 'Outros')
-
-
-def diversify_by_sector(signals: List[Dict], max_per_sector: int = 2, top_n: int = 5) -> List[Dict]:
-    """
-    Diversify signals by sector, limiting exposure per sector.
-    
-    Args:
-        signals: List of signal dicts sorted by score
-        max_per_sector: Maximum stocks per sector in output
-        top_n: Total number of stocks to return
-    
-    Returns:
-        Diversified list of signals
-    """
-    sector_counts = {}
-    diversified = []
-    
-    for signal in signals:
-        ticker = signal.get('ticker', '').replace('.SA', '')
-        sector = get_sector(ticker)
-        
-        # Count stocks per sector
-        current_count = sector_counts.get(sector, 0)
-        
-        if current_count < max_per_sector:
-            diversified.append(signal)
-            sector_counts[sector] = current_count + 1
-        
-        # Stop when we have enough
-        if len(diversified) >= top_n:
-            break
-    
-    return diversified
-
-
-def generate_trading_alerts(results: List[Dict], top_n: int = 5, diversify: bool = True) -> str:
+def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
     """
     Generate formatted trading alerts for Telegram.
     
     Args:
         results: List of analysis results from production runner
         top_n: Number of top signals to include
-        diversify: Whether to apply sector diversification
     
     Returns:
         Formatted string for Telegram
@@ -178,8 +92,8 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5, diversify: bool
     if not results:
         return "📊 No trading signals at this time."
     
-    # Sort by composite score (better than conviction for ranking)
-    sorted_results = sorted(results, key=lambda x: x.get('composite_score', x.get('conviction', 0)), reverse=True)
+    # Sort by conviction
+    sorted_results = sorted(results, key=lambda x: abs(x.get('conviction', 0)), reverse=True)
     
     # Deduplicate ticker groups (PETR3/PETR4 -> keep best one)
     sorted_results = _deduplicate_ticker_groups(sorted_results)
@@ -188,14 +102,7 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5, diversify: bool
     sorted_results = sorted(sorted_results, key=lambda x: abs(x.get('conviction', 0)), reverse=True)
     
     # Filter to actionable signals
-    all_buy_signals = [r for r in sorted_results if r['signal'] in ['STRONG_BUY', 'BUY']]
-    
-    # Apply diversification if enabled
-    if diversify:
-        buy_signals = diversify_by_sector(all_buy_signals, max_per_sector=2, top_n=top_n)
-    else:
-        buy_signals = all_buy_signals[:top_n]
-    
+    buy_signals = [r for r in sorted_results if r['signal'] in ['STRONG_BUY', 'BUY']][:top_n]
     sell_signals = [r for r in sorted_results if r['signal'] in ['STRONG_SELL', 'SELL']][:3]
     
     lines = []
@@ -211,38 +118,81 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5, diversify: bool
         # Number emoji
         num_emoji = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣'][i-1]
         
-        ticker = r['ticker'].replace('.SA', '')
-        sector = get_sector(ticker)
-        
-        lines.append(f"{num_emoji}  {ticker} - {r['signal']} 🟢")
-        lines.append(f"    Sector: {sector} | Price: R${r['price']:.2f}")
+        lines.append(f"{num_emoji}  {r['ticker'].replace('.SA', '')} - {r['signal']} 🟢")
+        lines.append(f"    Price: R${r['price']:.2f}")
         lines.append(f"    └─ Drivers:")
         
-        # Trend
+        # Trend with technical indicators
         trend_conf = r.get('confidence', 0) * 100
         lines.append(f"       • Trend: {r['trend'].upper()} ({trend_conf:.0f}% confidence)")
         
-        # News
-        news_sentiment = r.get('news_sentiment', 0)
-        news_articles = r.get('news_articles', [])
+        # Technical indicators
+        tech_indicators = r.get('technical_indicators', {})
+        if tech_indicators:
+            # RSI
+            if 'rsi' in tech_indicators:
+                rsi = tech_indicators['rsi']
+                if rsi > 70:
+                    lines.append(f"         📊 RSI: {rsi:.1f} (overbought - watch for reversal)")
+                elif rsi < 30:
+                    lines.append(f"         📊 RSI: {rsi:.1f} (oversold - buying opportunity)")
+                else:
+                    lines.append(f"         📊 RSI: {rsi:.1f}")
+            
+            # MACD
+            if 'macd' in tech_indicators:
+                macd = tech_indicators['macd']
+                macd_signal = tech_indicators.get('macd_signal', 0)
+                lines.append(f"         📊 MACD: {macd:+.3f} | Signal: {macd_signal:+.3f}")
+                if macd > macd_signal:
+                    lines.append(f"         ✅ Bullish MACD crossover")
+                else:
+                    lines.append(f"         ⚠️ Bearish MACD")
+            
+            # Volume
+            if 'volume_vs_avg' in tech_indicators:
+                vol_pct = tech_indicators['volume_vs_avg']
+                if vol_pct > 150:
+                    lines.append(f"         📊 Volume: +{vol_pct:.0f}% vs avg (high participation)")
+                elif vol_pct > 120:
+                    lines.append(f"         📊 Volume: +{vol_pct:.0f}% vs avg (above normal)")
+                elif vol_pct < 80:
+                    lines.append(f"         📊 Volume: {vol_pct:.0f}% vs avg (low participation)")
+                else:
+                    lines.append(f"         📊 Volume: {vol_pct:.0f}% vs avg (normal)")
+            
+            # Moving averages
+            if 'price_vs_50d' in tech_indicators:
+                ma50 = tech_indicators['price_vs_50d']
+                if ma50 > 0:
+                    lines.append(f"         📊 Above 50-day MA by +{ma50:.1f}%")
+                else:
+                    lines.append(f"         📊 Below 50-day MA by {ma50:.1f}%")
+            
+            if 'price_vs_20d' in tech_indicators:
+                ma20 = tech_indicators['price_vs_20d']
+                if ma20 > 0:
+                    lines.append(f"         📊 Above 20-day MA by +{ma20:.1f}%")
+                else:
+                    lines.append(f"         📊 Below 20-day MA by {ma20:.1f}%")
         
-        if news_sentiment or news_articles:
-            lines.append(f"       • News: {news_sentiment:+.2f} sentiment")
-            if news_sentiment > 0.15:
-                lines.append(f"         ✅ Positive news boost (+{int(news_sentiment*10)}% score)")
-            elif news_sentiment < -0.15:
-                lines.append(f"         ⚠️ Negative news headwind ({int(news_sentiment*10)}% score)")
+        # News with headlines
+        if r.get('news_sentiment') is not None:
+            ns = r['news_sentiment']
+            lines.append(f"       • News: {ns:+.2f} sentiment")
+            
+            # Show news headlines if available
+            headlines = r.get('news_headlines', [])
+            if headlines:
+                for headline in headlines[:2]:
+                    lines.append(f"         📰 {headline}")
+            
+            if ns > 0.1:
+                lines.append(f"         ✅ Positive news impact (+{(ns*10):.0f}% position)")
+            elif ns < -0.1:
+                lines.append(f"         ⚠️ Negative news headwind ({(abs(ns)*10):.0f}% position reduction)")
             else:
                 lines.append(f"         😐 Neutral news (no impact)")
-            
-            # Show top 2 headlines
-            if news_articles:
-                lines.append(f"         📰 Headlines:")
-                for article in news_articles[:2]:
-                    headline = article.get('title', article.get('headline', ''))[:60]
-                    source = article.get('source', '')
-                    if headline:
-                        lines.append(f"            • {headline}{'...' if len(headline) == 60 else ''} ({source})")
         
         # Fundamentals
         if fund:
@@ -267,9 +217,47 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5, diversify: bool
         conviction_label = "VERY HIGH" if pos_pct > 50 else "HIGH" if pos_pct > 30 else "MEDIUM"
         lines.append(f"       • Position: {pos_pct:.0f}% ({conviction_label} conviction)")
         
-        # Action notes
+        # Entry/Stop/Target levels
+        price = r.get('price', 0)
+        position_size = r.get('position_size', 0)
+        
+        if price > 0 and position_size > 0:
+            # Calculate levels based on trend and position size
+            if r['signal'] in ['BUY', 'STRONG_BUY']:
+                # Stop loss: 8-12% below current price (tighter for high conviction)
+                stop_pct = 0.10 if position_size > 0.40 else 0.08
+                stop_loss = price * (1 - stop_pct)
+                
+                # Targets: 2:1 and 3:1 risk/reward
+                target1 = price + (price - stop_loss) * 2
+                target2 = price + (price - stop_loss) * 3
+                
+                lines.append(f"    └─ Levels:")
+                lines.append(f"       Entry: R${price:.2f} | Stop: R${stop_loss:.2f}")
+                lines.append(f"       Targets: R${target1:.2f} (2:1) | R${target2:.2f} (3:1)")
+        
+        # Action notes and reversal signals
         if fund and fund.get('action_notes'):
             lines.append(f"    └─ Watch for:")
+            
+            # Add reversal signals based on indicators
+            tech_indicators = r.get('technical_indicators', {})
+            
+            # RSI warnings
+            if 'rsi' in tech_indicators:
+                rsi = tech_indicators['rsi']
+                if rsi > 70:
+                    lines.append(f"       ⚠️ RSI breaks above 70 (overbought) → Take partial profits")
+                elif rsi < 30:
+                    lines.append(f"       ✅ RSI breaks above 40 (reversal) → Strong buy signal")
+            
+            # MA warnings
+            if 'price_vs_50d' in tech_indicators:
+                ma50 = tech_indicators['price_vs_50d']
+                if ma50 < -2:
+                    lines.append(f"       ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss")
+            
+            # Add action notes
             for note in fund['action_notes'][:2]:
                 lines.append(f"       {note}")
         
@@ -278,18 +266,6 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5, diversify: bool
     # Summary
     lines.append("=" * 70)
     lines.append(f"📊 Summary: {len(buy_signals)} BUY signals | {len(sell_signals)} SELL signals")
-    
-    # Sector breakdown
-    sectors_used = {}
-    for r in buy_signals:
-        ticker = r.get('ticker', '').replace('.SA', '')
-        sector = get_sector(ticker)
-        sectors_used[sector] = sectors_used.get(sector, 0) + 1
-    
-    if sectors_used:
-        sector_str = " | ".join([f"{s}: {c}" for s, c in sorted(sectors_used.items(), key=lambda x: -x[1])])
-        lines.append(f"🏗️ Sectors: {sector_str}")
-    
     lines.append("=" * 70)
     
     # SELL signals (compact)

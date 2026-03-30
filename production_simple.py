@@ -17,10 +17,14 @@ from typing import Dict, List
 import json
 from pathlib import Path
 
+from dotenv import load_dotenv
+load_dotenv()
+
 from src.signals.trend_detector_v2 import TrendDetectorV2
 from src.news.free_news_client import FreeNewsClient
 from src.features.feature_engineering import get_feature_engineer
 from src.fundamentals.integration import FundamentalIntegrator, format_integrated_signal
+from src.brapi_client import BrAPIClient
 
 
 def load_tickers() -> List[str]:
@@ -67,6 +71,10 @@ class SimpleProductionRunner:
         max_workers = min(cpu_count(), 8)
         self.n_workers = min(n_workers, max_workers) if n_workers else max_workers
         
+        # BrAPI client for real-time prices (replaces yfinance stale prices)
+        self.brapi_client = BrAPIClient()
+        self._brapi_prices: Dict[str, float] = {}
+        
         if use_news:
             # Check if model already cached
             if 'news_client' not in self._model_cache:
@@ -77,7 +85,8 @@ class SimpleProductionRunner:
             self.fundamental_integrator = FundamentalIntegrator()
         
         print(f"✅ Sistema inicializado (news={'ON' if use_news else 'OFF'}, "
-              f"fundamentals={'ON' if use_fundamentals else 'OFF'}, workers={self.n_workers})")
+              f"fundamentals={'ON' if use_fundamentals else 'OFF'}, "
+              f"price_source=BrAPI, workers={self.n_workers})")
     
     def calculate_kelly_position(self, data: pd.DataFrame, confidence: float) -> float:
         """
@@ -105,33 +114,30 @@ class SimpleProductionRunner:
             close_prices = data['Close'].squeeze()
             returns = close_prices.pct_change().dropna()
             
-            # Use backtest statistics instead of raw asset returns for a truer Kelly value
-            # Since we don't have real-time backtest data here, we use a proxy based on
-            # the trend detector's historical accuracy (roughly 55-60% win rate on strong signals)
-            # and a typical risk/reward ratio of 1.5 to 2.0.
-            
             # Need minimum data points for statistical significance
             if len(returns) < config.KELLY_MIN_DATA_POINTS:
                 return config.DEFAULT_POSITION_SIZE
             
-            # Base strategy edge assumptions (calibrated from backtesting)
-            base_win_rate = 0.55
-            base_payoff_ratio = 1.5
+            # Separate positive and negative returns
+            positive_returns = returns[returns > 0]
+            negative_returns = returns[returns < 0]
             
-            # Modulate win rate based on current signal confidence
-            # High confidence = higher expected win rate
-            p = base_win_rate + (confidence - 0.5) * 0.2  # range: ~0.45 to 0.65
-            p = max(0.3, min(0.8, p))
-            q = 1 - p
+            # Need both winning and losing trades to calculate Kelly
+            if len(positive_returns) == 0 or len(negative_returns) == 0:
+                return config.DEFAULT_POSITION_SIZE
             
-            # Modulate payoff ratio based on recent asset volatility
-            # High volatility = higher potential payoff but more risk
-            recent_volatility = returns.tail(20).std()
-            avg_volatility = returns.std()
-            vol_ratio = recent_volatility / avg_volatility if avg_volatility > 0 else 1.0
+            # Calculate Kelly parameters
+            p = len(positive_returns) / len(returns)  # Win probability
+            q = 1 - p  # Loss probability
             
-            # Adjust payoff ratio slightly based on volatility regime
-            b = base_payoff_ratio * max(0.8, min(1.2, vol_ratio))
+            avg_win = positive_returns.mean()  # Average winning return
+            avg_loss = abs(negative_returns.mean())  # Average losing return (absolute)
+            
+            # Payoff ratio (odds) - how much we win vs how much we lose
+            if avg_loss == 0:
+                return config.DEFAULT_POSITION_SIZE
+            
+            b = avg_win / avg_loss  # Payoff ratio
             
             # Kelly formula: f* = (bp - q) / b
             # This gives the optimal fraction of capital to risk
@@ -235,9 +241,18 @@ class SimpleProductionRunner:
             if len(data) < 50:
                 return None
             
-            # Current price
-            price_val = data['Close'].iloc[-1]
-            current_price = float(price_val.item()) if hasattr(price_val, 'item') else float(price_val)
+            # Current price: prefer BrAPI real-time, fall back to yfinance close
+            clean_ticker = ticker.replace('.SA', '')
+            brapi_price = self._brapi_prices.get(clean_ticker)
+            if brapi_price is None:
+                brapi_price = self.brapi_client.get_price(clean_ticker)
+            
+            if brapi_price is not None:
+                current_price = brapi_price
+            else:
+                price_val = data['Close'].iloc[-1]
+                current_price = float(price_val.item()) if hasattr(price_val, 'item') else float(price_val)
+                print(f"     ⚠️ BrAPI unavailable for {clean_ticker}, using yfinance close")
             
             # Trend detection (core validated logic)
             trend_result = self.trend_detector.detect_trend(data)
@@ -274,13 +289,13 @@ class SimpleProductionRunner:
             # Print trend details
             print(f"\n     [TREND] {consensus} @ {confidence:.1%} confidence")
             
-            # Map consensus to simple trend
+            # Map consensus to simple trend (UPPERCASE to match integration.py expectations)
             if consensus in ['uptrend', 'bull_pullback']:
-                trend = "uptrend"
+                trend = "UPTREND"
             elif consensus in ['downtrend', 'bear_bounce']:
-                trend = "downtrend"
+                trend = "DOWNTREND"
             else:
-                trend = "neutral"
+                trend = "SIDEWAYS"
             
             # News sentiment (if enabled)
             if self.use_news:
@@ -295,7 +310,6 @@ class SimpleProductionRunner:
             elif self.use_news:
                 print(f"⚠️  No articles found, sentiment: {news_sentiment:+.2f}")
             
-            # Improved signal logic with higher threshold and proportional sizing
             from src.config import get_config
             config = get_config()
             
@@ -304,32 +318,38 @@ class SimpleProductionRunner:
             conviction = 0.0
             technical_score = confidence * 100  # Convert to 0-100 scale
             
-            # Minimum confidence threshold from centralized config
-            MIN_CONFIDENCE = config.MIN_CONFIDENCE
+            # Regime-aware thresholds: map volatility regime to market regime
+            regime_map = {'low': 'bull', 'medium': 'sideways', 'high': 'bear'}
+            market_regime = regime_map.get(vol_regime, 'default')
+            thresholds = config.get_thresholds(market_regime)
+            MIN_CONFIDENCE = thresholds.buy_confidence
+            SELL_CONFIDENCE = thresholds.sell_confidence
             
-            if trend == "uptrend" and confidence >= MIN_CONFIDENCE:
+            print(f"     [REGIME] {market_regime} -> buy_conf={MIN_CONFIDENCE:.2f}, sell_conf={SELL_CONFIDENCE:.2f}")
+            
+            if trend == "UPTREND" and confidence >= MIN_CONFIDENCE:
                 signal = "BUY"
                 conviction = confidence
                 
                 # Kelly Criterion position sizing (volatility-adjusted)
                 position_size = self.calculate_kelly_position(data, confidence)
                 
-                # News boost: Scaled sigmoid (SOTA approach)
-                # Centers around 1.0. Positive sentiment boosts > 1.0, negative reduces < 1.0
+                # News boost: Sigmoid scaling (SOTA approach)
+                # Uses logistic function to prevent over-amplification
                 if self.use_news and abs(news_sentiment) > 0.1:
-                    # Shifted and scaled sigmoid: maps sentiment to roughly 0.5 (bad) to 1.5 (good)
-                    # When sentiment=0, multiplier=1.0. When sentiment=0.5, multiplier~1.23
-                    sigmoid_boost = 0.5 + (1 / (1 + np.exp(-5 * news_sentiment)))
+                    # Sigmoid scaling: maps sentiment to 0.5-1.5 range
+                    # This provides multiplicative boost instead of additive
+                    sigmoid_boost = 1 / (1 + np.exp(-5 * news_sentiment))  # 0.5 to 1.0
                     position_size *= sigmoid_boost  # Multiplicative scaling
                     
                     # Update conviction based on news agreement with trend
-                    if (news_sentiment > 0 and trend == "uptrend") or (news_sentiment < 0 and trend == "downtrend"):
+                    if (news_sentiment > 0 and trend == "UPTREND") or (news_sentiment < 0 and trend == "DOWNTREND"):
                         conviction = min(1.0, conviction * 1.1)  # 10% boost when aligned
                 
                 # Cap at 80% for safety
                 position_size = min(0.80, position_size)
                     
-            elif trend == "downtrend" and confidence >= MIN_CONFIDENCE:
+            elif trend == "DOWNTREND" and confidence >= SELL_CONFIDENCE:
                 signal = "SELL"
                 conviction = -confidence
                 position_size = 1.0  # Exit completely
@@ -385,6 +405,55 @@ class SimpleProductionRunner:
                     'action_notes': integrated_score.action_notes,
                 }
             
+            # Calculate technical indicators for detailed reporting
+            technical_indicators = {}
+            
+            # RSI (14-period)
+            delta = data['Close'].diff()
+            gain = (delta.where(delta > 0, 0)).rolling(window=14).mean()
+            loss = (-delta.where(delta < 0, 0)).rolling(window=14).mean()
+            rs = gain / loss
+            rsi = 100 - (100 / (1 + rs))
+            if len(rsi) > 0:
+                technical_indicators['rsi'] = rsi.iloc[-1]
+            
+            # MACD
+            exp12 = data['Close'].ewm(span=12, adjust=False).mean()
+            exp26 = data['Close'].ewm(span=26, adjust=False).mean()
+            macd = exp12 - exp26
+            macd_signal = macd.ewm(span=9, adjust=False).mean()
+            if len(macd) > 0 and len(macd_signal) > 0:
+                technical_indicators['macd'] = macd.iloc[-1]
+                technical_indicators['macd_signal'] = macd_signal.iloc[-1]
+            
+            # Volume vs average (20-day)
+            avg_volume = data['Volume'].rolling(window=20).mean()
+            if len(avg_volume) > 0:
+                current_volume = data['Volume'].iloc[-1]
+                avg_vol = avg_volume.iloc[-1]
+                if avg_vol > 0:
+                    technical_indicators['volume_vs_avg'] = (current_volume / avg_vol) * 100
+            
+            # Price vs moving averages
+            ma50 = data['Close'].rolling(window=50).mean()
+            ma20 = data['Close'].rolling(window=20).mean()
+            if len(ma50) > 0 and len(ma20) > 0:
+                current_price = data['Close'].iloc[-1]
+                technical_indicators['price_vs_50d'] = ((current_price - ma50.iloc[-1]) / ma50.iloc[-1]) * 100
+                technical_indicators['price_vs_20d'] = ((current_price - ma20.iloc[-1]) / ma20.iloc[-1]) * 100
+            
+            # Extract news headlines
+            news_headlines = []
+            if news_articles:
+                for article in news_articles[:3]:
+                    title = article.get('title', '')
+                    source = article.get('source', '')
+                    if title:
+                        if source:
+                            news_headlines.append(f"{title} ({source})")
+                        else:
+                            news_headlines.append(title)
+            
             return {
                 "ticker": ticker,
                 "price": current_price,
@@ -392,11 +461,13 @@ class SimpleProductionRunner:
                 "confidence": confidence,  # Add confidence from trend detector
                 "news_sentiment": news_sentiment,
                 "news_articles": news_articles,
+                "news_headlines": news_headlines,  # Add headlines for reporting
                 "signal": signal,
                 "conviction": conviction,
                 "position_size": position_size,
                 "features": feature_summary,  # Add feature engineering data
                 "fundamentals": fundamental_data,  # Add fundamental data
+                "technical_indicators": technical_indicators,  # Add technical indicators
             }
             
         except Exception as e:
@@ -442,39 +513,33 @@ class SimpleProductionRunner:
             print("SKIP")
         return result
     
-    def run(self, tickers: List[str] = None, parallel: bool = True, news_top_n: int = 10):
+    def run(self, tickers: List[str] = None, parallel: bool = True):
         """
-        Two-pass analysis pipeline.
-        
-        Pass 1: Technical + fundamental screening for ALL tickers (no news API calls).
-        Pass 2: Fetch news only for top N candidates, recalculate scores, output final top N.
+        Run analysis on all tickers.
         
         Args:
             tickers: List of tickers to analyze (default: all from validated_tickers.json)
             parallel: Use parallel processing (default: True, ~8x faster)
-            news_top_n: Number of top candidates to enrich with news (default: 10)
         """
         if tickers is None:
             tickers = load_tickers()
         
         print(f"\n{'='*70}")
-        print(f"🚀 PRODUÇÃO (Two-Pass) - {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+        print(f"🚀 PRODUÇÃO - {datetime.now().strftime('%Y-%m-%d %H:%M')}")
         print(f"📊 Analyzing {len(tickers)} tickers (IBOV + SMLL)")
-        print(f"{'='*70}")
-        
-        # ==================================================================
-        # PASS 1: Technical + Fundamental screening (no news)
-        # ==================================================================
-        print(f"\n📊 PASS 1: Technical + Fundamental screening (no news)")
         print(f"{'='*70}\n")
         
-        # Temporarily disable news for Pass 1
-        saved_use_news = self.use_news
-        self.use_news = False
+        # Pre-fetch all real-time prices from BrAPI in batches
+        clean_tickers = [t.replace('.SA', '') for t in tickers]
+        print(f"💰 Fetching real-time prices from BrAPI ({len(clean_tickers)} tickers)...")
+        self._brapi_prices = self.brapi_client.get_prices(clean_tickers)
+        cached_count = sum(1 for t in clean_tickers if t in self._brapi_prices)
+        print(f"   ✅ Got {cached_count}/{len(clean_tickers)} prices from BrAPI\n")
         
         results = []
         
         if parallel and len(tickers) > 1:
+            # Parallel processing (8x faster for 150 tickers)
             print(f"⚡ Parallel mode: {self.n_workers} workers\n")
             
             with Pool(self.n_workers) as pool:
@@ -482,6 +547,7 @@ class SimpleProductionRunner:
             
             results = [r for r in raw_results if r is not None]
         else:
+            # Sequential processing (for debugging or single ticker)
             for ticker in tickers:
                 print(f"📊 {ticker}...", end=" ")
                 result = self.analyze_ticker(ticker)
@@ -491,76 +557,27 @@ class SimpleProductionRunner:
                 else:
                     print("SKIP")
         
-        # Restore news setting
-        self.use_news = saved_use_news
-        
-        if not results:
-            print("\n❌ No results from Pass 1")
-            return results
-        
-        # Rank by composite score (tech + fundamentals, no news yet)
-        results.sort(key=lambda x: abs(x.get('conviction', 0)), reverse=True)
-        
-        # Select top candidates for news enrichment
-        actionable = [r for r in results if r['signal'] in ('BUY', 'SELL', 'STRONG_BUY', 'STRONG_SELL')]
-        candidates = actionable[:news_top_n]
-        
-        print(f"\n✅ Pass 1 complete: {len(results)} analyzed, {len(actionable)} actionable")
-        print(f"   Top {len(candidates)} candidates selected for news enrichment")
-        
-        # ==================================================================
-        # PASS 2: News enrichment for top candidates only
-        # ==================================================================
-        if saved_use_news and candidates:
-            print(f"\n📰 PASS 2: News enrichment for top {len(candidates)} candidates")
-            print(f"{'='*70}\n")
-            
-            today = datetime.now().strftime("%Y-%m-%d")
-            
-            for i, candidate in enumerate(candidates, 1):
-                ticker = candidate['ticker']
-                print(f"   [{i}/{len(candidates)}] {ticker}...", end=" ", flush=True)
-                
-                try:
-                    news_data = self.get_news_sentiment(ticker)
-                    news_sentiment = news_data.get("sentiment", 0.0)
-                    news_articles = news_data.get("articles", [])
-                    candidate['news_sentiment'] = news_sentiment
-                    candidate['news_articles'] = news_articles
-                    
-                    # Recalculate position size with news boost
-                    if candidate['signal'] in ('BUY', 'STRONG_BUY') and abs(news_sentiment) > 0.1:
-                        sigmoid_boost = 0.5 + (1 / (1 + np.exp(-5 * news_sentiment)))
-                        candidate['position_size'] = min(0.80, candidate['position_size'] * sigmoid_boost)
-                        
-                        # Adjust conviction
-                        if news_sentiment > 0:
-                            candidate['conviction'] = min(1.0, candidate['conviction'] * 1.1)
-                        else:
-                            candidate['conviction'] = max(0.0, candidate['conviction'] * 0.9)
-                    
-                    print(f"sentiment: {news_sentiment:+.2f} ({len(news_articles)} articles)")
-                except Exception as e:
-                    print(f"ERROR: {e}")
-                    candidate['news_sentiment'] = 0.0
-                    candidate['news_articles'] = []
-            
-            # Re-sort candidates after news adjustment
-            candidates.sort(key=lambda x: abs(x.get('conviction', 0)), reverse=True)
-            
-            print(f"\n✅ Pass 2 complete: {len(candidates)} enriched with news")
-        
-        # ==================================================================
-        # Final output: merge enriched candidates back into full results
-        # ==================================================================
-        enriched_tickers = {c['ticker'] for c in candidates}
-        final_results = candidates + [r for r in results if r['ticker'] not in enriched_tickers]
-        final_results.sort(key=lambda x: abs(x.get('conviction', 0)), reverse=True)
-        
         # Summary
-        self._print_summary(final_results)
+        self._print_summary(results)
         
-        return final_results
+        # Zero-signal monitoring: alert if no BUY/SELL signals generated
+        buy_signals = [r for r in results if r['signal'] in ('BUY', 'STRONG_BUY')]
+        sell_signals = [r for r in results if r['signal'] in ('SELL', 'STRONG_SELL')]
+        
+        if results and not buy_signals and not sell_signals:
+            print("\n" + "!" * 70)
+            print("🚨 ZERO-SIGNAL ALERT: No BUY or SELL signals generated!")
+            print(f"   Analyzed {len(results)} tickers, all returned HOLD.")
+            print("   Possible causes:")
+            print("   - Confidence thresholds too high for current regime")
+            print("   - Trend/case mismatch between modules")
+            print("   - Market in low-conviction sideways regime")
+            print("!" * 70 + "\n")
+        elif results and not buy_signals:
+            print(f"\n⚠️  MONITORING: 0 BUY signals out of {len(results)} tickers. "
+                  f"({len(sell_signals)} SELL)")
+        
+        return results
     
     def _print_summary(self, results: List[Dict]):
         """Print final table with fundamental data"""
