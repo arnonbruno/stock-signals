@@ -111,11 +111,27 @@ class SimpleProductionRunner:
         return data
 
     @staticmethod
-    def _align_integrated_signal_with_trend(trend: str, recommendation: str) -> str:
-        """Prevent fundamentals from flipping against a confirmed trend."""
+    def _align_integrated_signal_with_trend(trend: str, recommendation: str, market_regime: str = "sideways") -> str:
+        """
+        Align fundamental recommendation with technical trend.
+
+        In bull markets, trust the technical trend over fundamentals
+        (technicals capture momentum that fundamentals lag).
+        In bear/sideways, let fundamentals veto technical signals.
+        """
         trend = (trend or "").upper()
         recommendation = (recommendation or "HOLD").upper()
 
+        # Bull market: trust technicals — fundamentals lag behind rallies
+        if market_regime == "bull":
+            if trend == "UPTREND":
+                # Only upgrade, never downgrade a strong technical BUY in bull
+                if recommendation in {"BUY", "STRONG_BUY"}:
+                    return recommendation
+                return "BUY"  # Trust the uptrend over fundamental caution
+            return recommendation
+
+        # Bear / sideways: let fundamentals be the gatekeeper
         if trend == "UPTREND" and recommendation in {"SELL", "STRONG_SELL"}:
             return "HOLD"
         if trend == "DOWNTREND" and recommendation in {"BUY", "STRONG_BUY"}:
@@ -626,8 +642,17 @@ class SimpleProductionRunner:
             
             # Regime-aware thresholds: map volatility regime to market regime
             thresholds = config.get_thresholds(market_regime)
-            MIN_CONFIDENCE = max(0.60, thresholds.buy_confidence)
-            SELL_CONFIDENCE = thresholds.sell_confidence
+            
+            # KIPP IMPROVEMENT: aggressive in bull, conservative in bear
+            if market_regime == 'bull':
+                MIN_CONFIDENCE = 0.45  # Lower bar to catch rallies early
+                SELL_CONFIDENCE = 0.35  # Hold a bit longer before selling
+            elif market_regime == 'bear':
+                MIN_CONFIDENCE = max(0.65, thresholds.buy_confidence)  # Need strong signal
+                SELL_CONFIDENCE = thresholds.sell_confidence
+            else:  # sideways / default
+                MIN_CONFIDENCE = max(0.55, thresholds.buy_confidence)
+                SELL_CONFIDENCE = thresholds.sell_confidence
             
             print(f"     [REGIME] {market_regime} -> buy_conf={MIN_CONFIDENCE:.2f}, sell_conf={SELL_CONFIDENCE:.2f}")
             
@@ -667,10 +692,11 @@ class SimpleProductionRunner:
                     confidence=confidence
                 )
                 
-                # Preserve the technical regime when fundamentals disagree sharply.
+                # Align fundamentals with technical trend (regime-aware).
                 signal = self._align_integrated_signal_with_trend(
                     trend,
                     integrated_score.recommendation,
+                    market_regime=market_regime,
                 )
                 if signal in ["BUY", "STRONG_BUY"]:
                     conviction = integrated_score.composite_score / 100
@@ -785,9 +811,12 @@ class SimpleProductionRunner:
                         else:
                             news_headlines.append(title)
 
-            risk_levels = None
+            # KIPP IMPROVEMENT: trailing stop for active positions
+            trailing_stop = None
             if signal in ["BUY", "STRONG_BUY"]:
                 risk_levels = self._build_trade_levels(current_price, technical_indicators, market_regime)
+                # Trailing stop: 8% below current price for BUY signals
+                trailing_stop = round(current_price * 0.92, 2)
 
             signal, conviction, position_size = self._apply_liquidity_adjustment(
                 ticker, signal, conviction, position_size, liquidity_profile
@@ -817,6 +846,7 @@ class SimpleProductionRunner:
                 "fundamentals": fundamental_data,  # Add fundamental data
                 "technical_indicators": technical_indicators,  # Add technical indicators
                 "risk_levels": risk_levels,
+                "trailing_stop": trailing_stop,
                 "liquidity": liquidity_profile,
             }
             
