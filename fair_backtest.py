@@ -194,10 +194,10 @@ class ActiveStrategy:
     """
     
     MAX_POSITIONS = 5
-    TRAILING_STOP_INITIAL = 0.92  # 8% below entry
+    TRAILING_STOP_INITIAL = 0.88  # 12% below entry
     TRAILING_STOP_WIN = 0.90      # 10% below peak once in profit
-    TIME_EXIT_DAYS = 30
-    TIME_EXIT_MIN_GAIN = 0.02     # 2% minimum gain to stay invested
+    TIME_EXIT_DAYS = 60
+    TIME_EXIT_MIN_GAIN = 0.05     # 5% minimum gain to stay invested
     
     TIER_WEIGHTS = [0.25, 0.22, 0.20, 0.18, 0.15]  # Total: 100%
     
@@ -407,9 +407,8 @@ class ActiveStrategy:
                     tier_weight = self.TIER_WEIGHTS[min(rank, len(self.TIER_WEIGHTS)-1)]
                     position_value = self.cash * tier_weight
                     
-                    kelly_scale = max(0.25, c['position_size'])
                     max_per_stock = INITIAL_CAPITAL_PER_STOCK * 1.5
-                    position_value = min(position_value * kelly_scale, max_per_stock, self.cash * 0.95)
+                    position_value = min(position_value, max_per_stock, self.cash * 0.95)
                     
                     if position_value < 100 or position_value > self.cash:
                         continue
