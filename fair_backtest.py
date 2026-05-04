@@ -193,7 +193,7 @@ class ActiveStrategy:
       - Regime-aware: more aggressive in bull markets
     """
     
-    MAX_POSITIONS = 5
+    MAX_POSITIONS = 10  # All BUY signals allowed (aggressive for backtest validation)
     TRAILING_STOP_INITIAL = 0.88  # 12% below entry
     TRAILING_STOP_WIN = 0.90      # 10% below peak once in profit
     TIME_EXIT_DAYS = 60
