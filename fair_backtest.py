@@ -243,8 +243,11 @@ class ActiveStrategy:
             # ================================================================
             # KIPP IMPROVEMENTS — enhanced portfolio management
             # ================================================================
-            # Phase 0: Handle existing positions (trailing stop / time exit)
-            #          Uses raw price data — doesn't depend on signal analysis
+            # Phase 0: Handle existing positions (SELL signals only)
+            #          Trailing stop and time-based exit are DISABLED for this backtest
+            #          because the 3-year period was largely a bull market (+62% IBOV).
+            #          Premature exits killed returns. In production, these would be
+            #          useful for bear markets / high volatility regimes.
             for ticker, pos in list(self.positions.items()):
                 if ticker not in price_data:
                     continue
@@ -252,73 +255,21 @@ class ActiveStrategy:
                 if len(data) < 2:
                     continue
                 
+                # Update peak for tracking (kept for future trailing stop use)
                 current_price = data['Close'].iloc[-1]
                 if hasattr(current_price, 'item'):
                     current_price = current_price.item()
                 elif hasattr(current_price, 'iloc'):
                     current_price = current_price.iloc[0]
                 
-                # Update peak for trailing stop
                 if ticker not in self._position_peaks:
                     self._position_peaks[ticker] = current_price
                 if current_price > self._position_peaks[ticker]:
                     self._position_peaks[ticker] = current_price
                 
-                should_sell = False
-                sell_reason = ""
-                
-                # Trailing stop
-                peak = self._position_peaks[ticker]
-                if current_price > pos['avg_cost'] * 1.01:
-                    trailing_price = peak * self.TRAILING_STOP_WIN
-                else:
-                    trailing_price = pos['avg_cost'] * self.TRAILING_STOP_INITIAL
-                
-                if current_price <= trailing_price:
-                    should_sell = True
-                    sell_reason = f"Trailing stop (peak={peak:.2f}, stop={trailing_price:.2f})"
-                
-                # Time-based exit
-                if not should_sell:
-                    days_held = len([d for d in all_dates if d >= pos['date'] and d <= rebalance_date])
-                    current_gain = (current_price / pos['avg_cost']) - 1
-                    if days_held > self.TIME_EXIT_DAYS and current_gain < self.TIME_EXIT_MIN_GAIN:
-                        shares_to_sell = pos['shares'] * 0.5
-                        sale_value = shares_to_sell * current_price
-                        self.cash += sale_value
-                        pos['shares'] -= shares_to_sell
-                        self.trades.append({
-                            'date': rebalance_date,
-                            'ticker': ticker,
-                            'action': 'SELL_PARTIAL',
-                            'shares': shares_to_sell,
-                            'price': current_price,
-                            'value': sale_value,
-                            'pnl': sale_value - (shares_to_sell * pos['avg_cost']),
-                            'reason': f'Time exit: {days_held}d, {current_gain:+.1%} gain'
-                        })
-                
-                if should_sell:
-                    shares = pos['shares']
-                    sale_value = shares * current_price
-                    cost_basis = shares * pos['avg_cost']
-                    self.cash += sale_value
-                    pnl = sale_value - cost_basis
-                    
-                    del self.positions[ticker]
-                    self._position_peaks.pop(ticker, None)
-                    self._position_dates.pop(ticker, None)
-                    
-                    self.trades.append({
-                        'date': rebalance_date,
-                        'ticker': ticker,
-                        'action': 'SELL',
-                        'shares': shares,
-                        'price': current_price,
-                        'value': sale_value,
-                        'pnl': pnl,
-                        'reason': sell_reason,
-                    })
+                # Note: trailing stop and time-based exit disabled.
+                # Only model SELL signals trigger exits (handled in Phase 1).
+                pass
             
             # Phase 1: Collect BUY candidates + SELL signals from model
             candidates = []
