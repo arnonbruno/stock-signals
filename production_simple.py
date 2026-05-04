@@ -33,6 +33,7 @@ from src.fundamentals.integration import FundamentalIntegrator
 from src.indicators.signal_fusion import fuse_all_signals
 from src.brapi_client import BrAPIClient
 from src.alerts.alert_generator import generate_trading_alerts
+from src.strategy.regime_detection import get_regime_detector, get_adaptive_params
 
 
 def load_tickers() -> List[str]:
@@ -97,7 +98,14 @@ class SimpleProductionRunner:
         
         if use_fundamentals:
             self.fundamental_integrator = FundamentalIntegrator()
-        
+
+        # Market regime detection on IBOV (replaces simple vol→regime mapping)
+        self.regime_detector = get_regime_detector()
+        self.adaptive_params = get_adaptive_params()
+        self.current_regime = 'sideways'
+        self.regime_strength = 0.5
+        self.regime_params = {}
+
         print(f"✅ Sistema inicializado (news={'ON' if use_news else 'OFF'}, "
               f"fundamentals={'ON' if use_fundamentals else 'OFF'}, "
               f"price_source=BrAPI->Yahoo fallback, workers={self.n_workers})")
@@ -109,6 +117,59 @@ class SimpleProductionRunner:
             data = data.copy()
             data.columns = data.columns.get_level_values(0)
         return data
+
+    def _fetch_market_data(self, as_of_date=None) -> pd.DataFrame:
+        """Fetch IBOV index data for market regime detection."""
+        try:
+            if as_of_date:
+                end = as_of_date.strftime('%Y-%m-%d') if hasattr(as_of_date, 'strftime') else str(as_of_date)
+                ibov = yf.download('^BVSP', period='2y', progress=False, end=end)
+            else:
+                ibov = yf.download('^BVSP', period='2y', progress=False)
+            if ibov is not None and len(ibov) > 0:
+                if isinstance(ibov.columns, pd.MultiIndex):
+                    ibov.columns = ibov.columns.get_level_values(0)
+                return ibov
+        except Exception as e:
+            if not as_of_date:  # Only print warning on live runs
+                print(f"\n⚠️ Could not fetch IBOV for regime detection: {e}")
+        return None
+
+    def detect_market_regime(self, as_of_date=None) -> Dict:
+        """
+        Detect overall market regime from IBOV index using the full
+        MarketRegimeDetector (MA200, MA50 cross, 6mo momentum, R², vol ratio).
+
+        Returns regime info with adaptive parameters from AdaptiveStrategyParameters.
+        """
+        ibov = self._fetch_market_data(as_of_date=as_of_date)
+        if ibov is None or len(ibov) < 50:
+            if not as_of_date:
+                print("   [REGIME] No IBOV data, using fallback: sideways/neutral")
+            return {
+                'regime': 'sideways',
+                'strength': 0.5,
+                'params': {}
+            }
+
+        regime_info = self.regime_detector.detect_regime(ibov)
+        params = self.adaptive_params.get_parameters(
+            regime_info['regime'],
+            regime_info['strength']
+        )
+
+        # Cache for live runs
+        if not as_of_date:
+            self.current_regime = regime_info['regime']
+            self.regime_strength = regime_info['strength']
+            self.regime_params = params
+
+        return {
+            'regime': regime_info['regime'],
+            'strength': regime_info['strength'],
+            'params': params,
+            'details': regime_info.get('details', {}),
+        }
 
     @staticmethod
     def _align_integrated_signal_with_trend(trend: str, recommendation: str, market_regime: str = "sideways") -> str:
@@ -580,8 +641,10 @@ class SimpleProductionRunner:
                 confidence *= 0.90  # Reduce confidence in high volatility
                 print(f"     [VOL] High volatility regime (-10% confidence)")
 
-            regime_map = {'low': 'bull', 'medium': 'sideways', 'high': 'bear'}
-            market_regime = regime_map.get(vol_regime, 'default')
+            # Market regime via IBOV index (full detector: MA200, MA50 cross, 6mo momentum, R², vol ratio)
+            regime_info = self.detect_market_regime(as_of_date=as_of_date)
+            market_regime = regime_info.get('regime', 'sideways')
+            regime_params = regime_info.get('params', {})
 
             # Technical signal fusion adds a second opinion on the trend setup.
             fused = fuse_all_signals(
@@ -640,21 +703,22 @@ class SimpleProductionRunner:
             conviction = 0.0
             technical_score = float(np.clip((confidence * 100) + (fusion_alignment * 15), 0.0, 100.0))
             
-            # Regime-aware thresholds: map volatility regime to market regime
+            # Regime-aware thresholds: use AdaptiveStrategyParameters from real MarketRegimeDetector
+            # This analyzes IBOV via MA200, MA50 cross, 6mo momentum, R², and vol ratio
+            # to set appropriate buy/sell thresholds, position sizing, and cash buffers.
             thresholds = config.get_thresholds(market_regime)
-            
-            # KIPP IMPROVEMENT: aggressive in bull, conservative in bear
-            if market_regime == 'bull':
-                MIN_CONFIDENCE = 0.45  # Lower bar to catch rallies early
-                SELL_CONFIDENCE = 0.35  # Hold a bit longer before selling
-            elif market_regime == 'bear':
-                MIN_CONFIDENCE = max(0.65, thresholds.buy_confidence)  # Need strong signal
-                SELL_CONFIDENCE = thresholds.sell_confidence
-            else:  # sideways / default
-                MIN_CONFIDENCE = max(0.55, thresholds.buy_confidence)
-                SELL_CONFIDENCE = thresholds.sell_confidence
-            
-            print(f"     [REGIME] {market_regime} -> buy_conf={MIN_CONFIDENCE:.2f}, sell_conf={SELL_CONFIDENCE:.2f}")
+
+            if regime_params:
+                MIN_CONFIDENCE = regime_params.get('confidence_threshold', 0.50)
+                SELL_CONFIDENCE = regime_params.get('sell_threshold', 0.50)
+            else:
+                # Fallback if no IBOV data
+                MIN_CONFIDENCE = 0.50
+                SELL_CONFIDENCE = 0.50
+
+            style = regime_info.get('details', {}).get('price_vs_ma200', 0)
+            prefix = "🟢" if style > 0.05 else ("🔴" if style < -0.05 else "🟡")
+            print(f"     {prefix} [REGIME] {market_regime.upper()} (str={regime_info.get('strength', 0.5):.0%}) -> buy_conf={MIN_CONFIDENCE:.2f}, sell_conf={SELL_CONFIDENCE:.2f}")
             
             if trend == "UPTREND" and confidence >= MIN_CONFIDENCE:
                 signal = "BUY"
@@ -909,7 +973,19 @@ class SimpleProductionRunner:
         print(f"🚀 PRODUÇÃO - {datetime.now().strftime('%Y-%m-%d %H:%M')}")
         print(f"📊 Analyzing {len(tickers)} tickers (IBOV + SMLL)")
         print(f"{'='*70}\n")
-        
+
+        # Detect overall market regime from IBOV (runs once per scan)
+        print(f"📈 Detecting market regime from IBOV...")
+        regime_info = self.detect_market_regime()
+        print(f"   🎯 Market regime: {regime_info.get('regime', 'sideways').upper()} "
+              f"(strength: {regime_info.get('strength', 0.5):.0%})")
+        if regime_info.get('params'):
+            p = regime_info['params']
+            print(f"   📐 Thresholds: buy>={p.get('confidence_threshold', 0.5):.0%}, "
+                  f"sell>={p.get('sell_threshold', 0.5):.0%}")
+            print(f"   💰 Cash buffer: {p.get('max_cash_pct', 0.3)*100:.0f}%")
+        print()
+
         self._prefetch_spot_prices(tickers)
         
         results = []

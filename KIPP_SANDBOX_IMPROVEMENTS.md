@@ -101,10 +101,26 @@ Para ver o diff de cada commit: `git show <hash>`
 
 ---
 
+### 7. Integração com MarketRegimeDetector real (04/05/2026)
+**Arquivo:** `production_simple.py` — `__init__()`, `analyze_ticker()`, novos métodos
+
+**O que mudou:**
+- Substituiu o mapeamento vol→regime (`{'low':'bull','medium':'sideways','high':'bear'}`) pelo `MarketRegimeDetector` completo de `src/strategy/regime_detection.py`
+- O detector real analisa IBOV: MA200, MA50 cross, momentum 6m, R² de tendência, razão de volatilidade
+- Usa `AdaptiveStrategyParameters` para definir thresholds dinâmicos ao invés dos fixos 0.45/0.65/0.55
+- Métodos novos: `_fetch_market_data()`, `detect_market_regime()`
+- O backtest (`analyze_ticker(as_of_date=...)`) passa a data pro detector, detectando regime histórico
+
+**Resultado:**
+- Antes: mercado "bear" por volatilidade alta → buy_conf=0.65
+- Depois: BULL real (80% força) → buy_conf=0.38, sell_conf=0.40
+- Sinais saltaram de 1 BUY pra 4 BUY nos mesmos tickers
+- Cash buffer ajustado pra 20% (bull) vs 50% (bear) — mais capital em jogo
+
 ## Próximos Passos (Recomendação)
 
-1. **Aplicar as mudanças 1, 2, e 3 na produção** — são as que geraram ganho real
+1. **Aplicar as mudanças 1, 2, 3, e 7 na produção** — regime-aware + ranking sizing + detector real
 2. **Ativar trailing stop em regime bear** — o código está pronto, só falta um if
 3. **Testar com mais tickers (50+)** — o backtest usou só 10, que é amostra pequena
 4. **Adicionar custos reais** — corretagem, spread e IR vão reduzir o resultado
-5. **Testar em diferentes períodos** — o backtest pegou um bull market forte (+62%)
+5. **Rodar backtest com o detector real** — o backtest anterior usava vol→regime, agora com detector de verdade o alpha pode ter mudado
