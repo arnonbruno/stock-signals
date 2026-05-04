@@ -813,6 +813,7 @@ class SimpleProductionRunner:
 
             # KIPP IMPROVEMENT: trailing stop for active positions
             trailing_stop = None
+            risk_levels = None
             if signal in ["BUY", "STRONG_BUY"]:
                 risk_levels = self._build_trade_levels(current_price, technical_indicators, market_regime)
                 # Trailing stop: 8% below current price for BUY signals

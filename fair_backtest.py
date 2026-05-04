@@ -243,65 +243,22 @@ class ActiveStrategy:
             # ================================================================
             # KIPP IMPROVEMENTS — enhanced portfolio management
             # ================================================================
-            # Phase 1: Collect BUY candidates + handle exits for existing positions
-            candidates = []
-            
-            for ticker in self.tickers:
+            # Phase 0: Handle existing positions (trailing stop / time exit)
+            #          Uses raw price data — doesn't depend on signal analysis
+            for ticker, pos in list(self.positions.items()):
                 if ticker not in price_data:
                     continue
-                
-                # Get data up to this date (NO LOOK-AHEAD BIAS!)
                 data = price_data[ticker].loc[:rebalance_date].copy()
-                
-                if len(data) < 50:
+                if len(data) < 2:
                     continue
                 
-                # Analyze with trend detection
-                result = self.runner.analyze_ticker(ticker, data=data)
-                
-                if result is None:
-                    continue
-                
-                # Price-based sentiment proxy
-                sentiment = calculate_price_based_sentiment(data)
-                result['news_sentiment'] = sentiment
-                
-                # Get current price
                 current_price = data['Close'].iloc[-1]
                 if hasattr(current_price, 'item'):
                     current_price = current_price.item()
                 elif hasattr(current_price, 'iloc'):
                     current_price = current_price.iloc[0]
                 
-                signal = result['signal']
-                position_size = result['position_size']
-                confidence = result['confidence']
-                fused_score = result.get('fused_score', 0.0)
-                
-                # Adjust position size based on sentiment
-                if signal in ["BUY", "STRONG_BUY"] and abs(sentiment) > 0.1:
-                    sigmoid_boost = 1 / (1 + np.exp(-5 * sentiment))
-                    position_size *= sigmoid_boost
-                
-                # Collect BUY candidates for ranking
-                if signal in ["BUY", "STRONG_BUY"]:
-                    candidates.append({
-                        'ticker': ticker,
-                        'result': result,
-                        'confidence': confidence,
-                        'fused_score': fused_score,
-                        'position_size': position_size,
-                        'sentiment': sentiment,
-                        'current_price': current_price,
-                    })
-                
-                # ---- Handle EXISTING positions ----
-                if ticker not in self.positions:
-                    continue
-                
-                pos = self.positions[ticker]
-                
-                # Update peak for trailing stop tracking
+                # Update peak for trailing stop
                 if ticker not in self._position_peaks:
                     self._position_peaks[ticker] = current_price
                 if current_price > self._position_peaks[ticker]:
@@ -310,34 +267,26 @@ class ActiveStrategy:
                 should_sell = False
                 sell_reason = ""
                 
-                # 1. Model says SELL → exit
-                if signal in ["SELL", "STRONG_SELL"]:
+                # Trailing stop
+                peak = self._position_peaks[ticker]
+                if current_price > pos['avg_cost'] * 1.01:
+                    trailing_price = peak * self.TRAILING_STOP_WIN
+                else:
+                    trailing_price = pos['avg_cost'] * self.TRAILING_STOP_INITIAL
+                
+                if current_price <= trailing_price:
                     should_sell = True
-                    sell_reason = "SELL signal"
+                    sell_reason = f"Trailing stop (peak={peak:.2f}, stop={trailing_price:.2f})"
                 
-                # 2. Trailing stop: 8% below entry, tightens to 10% below peak in profit
-                if not should_sell:
-                    peak = self._position_peaks[ticker]
-                    if current_price > pos['avg_cost'] * 1.01:
-                        trailing_price = peak * self.TRAILING_STOP_WIN  # 10% from peak
-                    else:
-                        trailing_price = pos['avg_cost'] * self.TRAILING_STOP_INITIAL  # 8% from entry
-                    
-                    if current_price <= trailing_price:
-                        should_sell = True
-                        sell_reason = f"Trailing stop (peak={peak:.2f}, stop={trailing_price:.2f})"
-                
-                # 3. Time-based exit: >30 days with <2% gain → reduce 50%
+                # Time-based exit
                 if not should_sell:
                     days_held = len([d for d in all_dates if d >= pos['date'] and d <= rebalance_date])
                     current_gain = (current_price / pos['avg_cost']) - 1
                     if days_held > self.TIME_EXIT_DAYS and current_gain < self.TIME_EXIT_MIN_GAIN:
-                        # Sell half — free up capital for better opportunities
                         shares_to_sell = pos['shares'] * 0.5
                         sale_value = shares_to_sell * current_price
                         self.cash += sale_value
                         pos['shares'] -= shares_to_sell
-                        
                         self.trades.append({
                             'date': rebalance_date,
                             'ticker': ticker,
@@ -371,9 +320,80 @@ class ActiveStrategy:
                         'reason': sell_reason,
                     })
             
-            # ----------------------------------------------------------------
+            # Phase 1: Collect BUY candidates + SELL signals from model
+            candidates = []
+            
+            for ticker in self.tickers:
+                if ticker not in price_data:
+                    continue
+                
+                data = price_data[ticker].loc[:rebalance_date].copy()
+                if len(data) < 50:
+                    continue
+                
+                result = self.runner.analyze_ticker(ticker, data=data)
+                if result is None:
+                    continue
+                
+                sentiment = calculate_price_based_sentiment(data)
+                result['news_sentiment'] = sentiment
+                
+                current_price = data['Close'].iloc[-1]
+                if hasattr(current_price, 'item'):
+                    current_price = current_price.item()
+                elif hasattr(current_price, 'iloc'):
+                    current_price = current_price.iloc[0]
+                
+                signal = result['signal']
+                position_size = result['position_size']
+                confidence = result['confidence']
+                fused_score = result.get('fused_score', 0.0)
+                
+                if signal in ["BUY", "STRONG_BUY"] and abs(sentiment) > 0.1:
+                    sigmoid_boost = 1 / (1 + np.exp(-5 * sentiment))
+                    position_size *= sigmoid_boost
+                
+                # Model SELL signal for existing positions
+                if ticker in self.positions and signal in ["SELL", "STRONG_SELL"]:
+                    pos = self.positions[ticker]
+                    shares = pos['shares']
+                    sale_value = shares * current_price
+                    cost_basis = shares * pos['avg_cost']
+                    self.cash += sale_value
+                    pnl = sale_value - cost_basis
+                    
+                    del self.positions[ticker]
+                    self._position_peaks.pop(ticker, None)
+                    self._position_dates.pop(ticker, None)
+                    
+                    self.trades.append({
+                        'date': rebalance_date,
+                        'ticker': ticker,
+                        'action': 'SELL',
+                        'shares': shares,
+                        'price': current_price,
+                        'value': sale_value,
+                        'pnl': pnl,
+                        'reason': 'SELL signal',
+                    })
+                    continue
+                
+                if ticker in self.positions:
+                    continue
+                
+                # Collect BUY candidates for ranking
+                if signal in ["BUY", "STRONG_BUY"]:
+                    candidates.append({
+                        'ticker': ticker,
+                        'result': result,
+                        'confidence': confidence,
+                        'fused_score': fused_score,
+                        'position_size': position_size,
+                        'sentiment': sentiment,
+                        'current_price': current_price,
+                    })
+            
             # Phase 2: Enter NEW positions — top-5 ranked by fused_score
-            # ----------------------------------------------------------------
             if candidates and self.cash > 500:
                 candidates.sort(key=lambda x: x['fused_score'], reverse=True)
                 open_slots = self.MAX_POSITIONS - len(self.positions)
@@ -387,7 +407,6 @@ class ActiveStrategy:
                     tier_weight = self.TIER_WEIGHTS[min(rank, len(self.TIER_WEIGHTS)-1)]
                     position_value = self.cash * tier_weight
                     
-                    # Apply Kelly scaling then cap
                     kelly_scale = max(0.25, c['position_size'])
                     max_per_stock = INITIAL_CAPITAL_PER_STOCK * 1.5
                     position_value = min(position_value * kelly_scale, max_per_stock, self.cash * 0.95)
