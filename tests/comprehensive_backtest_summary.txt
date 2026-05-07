@@ -1,0 +1,34 @@
+COMPREHENSIVE BACKTEST SUMMARY
+======================================================================
+
+
+BULL_3Y:
+Strategy                 Return   Sharpe         DD      Vol
+------------------------------------------------------------
+PASSIVE                 +79.79%    4.82      0.00%   15.52%
+CONSERVADOR             +52.70%    1.85      0.30%   25.78%
+ATUAL                   +33.23%    1.54      2.24%   18.33%
+HIBRIDO                 +48.94%    1.85      4.33%   23.77%
+SMART_PASSIVE           +60.69%    3.90      0.89%   14.28%
+
+BEAR_COVID:
+Strategy                 Return   Sharpe         DD      Vol
+------------------------------------------------------------
+PASSIVE                 +17.46%    0.27     44.32%   46.97%
+CONSERVADOR             +26.43%    1.06      0.00%   20.16%
+ATUAL                   +21.92%    0.87      0.00%   19.37%
+HIBRIDO                 +20.94%    0.94      0.00%   16.94%
+SMART_PASSIVE           +35.36%    1.70      0.00%   17.89%
+
+
+BEST TICKERS (by fused_score):
+  1. USIM5 — BUY — fused=+0.38
+  2. GGBR4 — BUY — fused=+0.36
+  3. ABEV3 — HOLD — fused=+0.35
+  4. GOAU4 — BUY — fused=+0.33
+  5. PRIO3 — BUY — fused=+0.31
+  6. PETR4 — STRONG_BUY — fused=+0.31
+  7. PETR3 — STRONG_BUY — fused=+0.30
+  8. CPFE3 — BUY — fused=+0.20
+  9. RAIL3 — SELL — fused=+0.19
+  10. UGPA3 — BUY — fused=+0.18

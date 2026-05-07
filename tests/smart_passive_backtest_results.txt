@@ -1,0 +1,17 @@
+SMART PASSIVE BACKTEST — Full 50-ticker universe
+Período: 2023-05-07 → 2026-05-06
+Estratégia: Model picks top-10 by fused_score, equal weight, hold 6mo
+
+PASSIVE:
+  total_return: 44.98
+  volatility: 16.65
+  sharpe_ratio: 2.40
+  max_drawdown: 0.00
+
+SMART_PASSIVE:
+  total_return: 25.41
+  volatility: 15.66
+  sharpe_ratio: 1.30
+  max_drawdown: 9.69
+
+Alpha: -19.57%

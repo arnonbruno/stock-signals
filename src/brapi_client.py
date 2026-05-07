@@ -22,11 +22,11 @@ import yfinance as yf
 
 
 CACHE_FILE = Path(__file__).parent.parent / "price_cache.json"
-DEFAULT_TTL_SECONDS = 15 * 60  # 15 minutes
+DEFAULT_TTL_SECONDS = 60 * 60  # 60 minutes for free-tier resilience
 BRAZIL_TZ = ZoneInfo("America/Sao_Paulo")
 MARKET_OPEN = time(10, 0)
 MARKET_CLOSE = time(17, 15)
-FRESH_PRICE_SECONDS = 15 * 60
+FRESH_PRICE_SECONDS = 60 * 60  # 60 minutes to tolerate Yahoo delays during market hours
 
 logger = logging.getLogger(__name__)
 
@@ -425,14 +425,14 @@ class BrAPIClient:
                 logger.warning("Using stale Yahoo Finance fallback quote for %s (previous close)", ticker)
         return fallback_price
 
-    def get_prices(self, tickers: List[str], batch_size: int = 20) -> Dict[str, float]:
+    def get_prices(self, tickers: List[str], batch_size: int = 1) -> Dict[str, float]:
         """
         Fetch prices for multiple tickers, using cache where possible.
         Uses batch API to fetch multiple tickers per request (more efficient).
-
+        
         Args:
             tickers: List of stock tickers (without .SA suffix)
-            batch_size: Number of tickers per batch request (default 20 for rate limit safety)
+            batch_size: Number of tickers per batch request (default 1 for free-tier limit)
 
         Returns:
             Dict mapping ticker -> price
@@ -493,7 +493,7 @@ class BrAPIClient:
     def get_spot_price(self, ticker: str) -> Optional[float]:
         return self.get_price(ticker)
 
-    def get_batch_prices(self, tickers: List[str], batch_size: int = 20) -> Dict[str, float]:
+    def get_batch_prices(self, tickers: List[str], batch_size: int = 1) -> Dict[str, float]:
         return self.get_prices(tickers, batch_size=batch_size)
 
     def get_ticker_info(self, ticker: str) -> Optional[Dict]:

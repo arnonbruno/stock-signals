@@ -1,0 +1,66 @@
+{
+  "bull_3y": {
+    "total_return": 60.693622777026526,
+    "volatility": 14.282130090426689,
+    "sharpe_ratio": 3.8995319622776687,
+    "max_drawdown": 0.8865970400637526
+  },
+  "bear_covid": {
+    "total_return": 35.362248752498274,
+    "volatility": 17.886577368227076,
+    "sharpe_ratio": 1.6974879054520753,
+    "max_drawdown": 0.0
+  },
+  "best_tickers": [
+    {
+      "ticker": "USIM5",
+      "fused_score": 0.37857856004172563,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "GGBR4",
+      "fused_score": 0.3634090365443177,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "ABEV3",
+      "fused_score": 0.3530198687688813,
+      "signal": "HOLD"
+    },
+    {
+      "ticker": "GOAU4",
+      "fused_score": 0.33210198332935364,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "PRIO3",
+      "fused_score": 0.30753614013102215,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "PETR4",
+      "fused_score": 0.306837481078727,
+      "signal": "STRONG_BUY"
+    },
+    {
+      "ticker": "PETR3",
+      "fused_score": 0.3007096793857794,
+      "signal": "STRONG_BUY"
+    },
+    {
+      "ticker": "CPFE3",
+      "fused_score": 0.1968184809352761,
+      "signal": "BUY"
+    },
+    {
+      "ticker": "RAIL3",
+      "fused_score": 0.18790227249803024,
+      "signal": "SELL"
+    },
+    {
+      "ticker": "UGPA3",
+      "fused_score": 0.1794474902839507,
+      "signal": "BUY"
+    }
+  ]
+}

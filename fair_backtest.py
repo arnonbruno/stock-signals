@@ -282,7 +282,7 @@ class ActiveStrategy:
                 if len(data) < 50:
                     continue
                 
-                result = self.runner.analyze_ticker(ticker, data=data)
+                result = self.runner.analyze_ticker(ticker, data=data, as_of_date=rebalance_date)
                 if result is None:
                     continue
                 

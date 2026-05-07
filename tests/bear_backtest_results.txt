@@ -1,0 +1,16 @@
+🐻 BEAR MARKET BACKTEST — COVID 2020
+======================================================================
+
+PASSIVE STRATEGY (Buy & Hold):
+  total_return: 22.92
+  volatility: 19.39
+  sharpe_ratio: 0.92
+  max_drawdown: 40.81
+
+ACTIVE STRATEGY (KIPP Sandbox):
+  total_return: 7.06
+  volatility: 2.26
+  sharpe_ratio: 0.92
+  max_drawdown: 0.24
+
+Alpha: -15.86%
