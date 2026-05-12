@@ -35,6 +35,9 @@ from src.brapi_client import BrAPIClient
 from src.alerts.alert_generator import generate_trading_alerts
 from src.strategy.regime_detection import get_regime_detector, get_adaptive_params
 
+# Polymarket ajustador geopolítico/macro (final do fluxo)
+from polymarket_adjuster import PolymarketAdjuster
+
 
 def load_tickers() -> List[str]:
     """Load validated tickers from JSON file."""
@@ -77,7 +80,8 @@ class SimpleProductionRunner:
     MIN_SKIP_TURNOVER_BRL = 50_000
     MIN_DOWNGRADE_TURNOVER_BRL = 500_000
     
-    def __init__(self, use_news: bool = True, use_fundamentals: bool = True, n_workers: int = None):
+    def __init__(self, use_news: bool = True, use_fundamentals: bool = True, n_workers: int = None,
+                 use_polymarket: bool = True):
         self.trend_detector = TrendDetectorV2()
         self.use_news = use_news
         self.use_fundamentals = use_fundamentals
@@ -105,9 +109,14 @@ class SimpleProductionRunner:
         self.current_regime = 'sideways'
         self.regime_strength = 0.5
         self.regime_params = {}
+        
+        # Polymarket geopolitical/macro adjuster (runs at end of pipeline)
+        self.use_polymarket = use_polymarket
+        self.polymarket_adjuster = PolymarketAdjuster() if use_polymarket else None
 
         print(f"✅ Sistema inicializado (news={'ON' if use_news else 'OFF'}, "
               f"fundamentals={'ON' if use_fundamentals else 'OFF'}, "
+              f"polymarket={'ON' if use_polymarket else 'OFF'}, "
               f"price_source=BrAPI->Yahoo fallback, workers={self.n_workers})")
 
     @staticmethod
@@ -1029,6 +1038,27 @@ class SimpleProductionRunner:
             print(f"\n⚠️  MONITORING: 0 BUY signals out of {len(results)} tickers. "
                   f"({len(sell_signals)} SELL)")
         
+        # ── Polymarket adjustment (geopolitical + macro, final do fluxo) ──
+        if self.use_polymarket and self.polymarket_adjuster:
+            print(f"\n{'='*70}")
+            print(f"🛢️📊 Rodando PolymarketAdjuster (Hormuz + Macro)...")
+            print(f"{'='*70}")
+            try:
+                pm_result = self.polymarket_adjuster.adjust(results)
+                results = pm_result["results_ajustados"]
+                
+                # Print summary
+                from polymarket_adjuster import print_summary as pm_print
+                pm_print(pm_result)
+                
+                # Store alerts for Telegram delivery
+                self._polymarket_alerts = pm_result.get("alerts", [])
+            except Exception as e:
+                print(f"\n⚠️ PolymarketAdjuster error: {e}")
+                import traceback
+                traceback.print_exc()
+                self._polymarket_alerts = []
+        
         # Generate formatted alerts for Telegram delivery
         if buy_signals or sell_signals:
             print("\n" + "=" * 70)
@@ -1036,6 +1066,14 @@ class SimpleProductionRunner:
             print("=" * 70 + "\n")
             alert_message = generate_trading_alerts(results, top_n=5)
             print(alert_message)
+        
+        # Append polymarket alerts if any
+        if hasattr(self, '_polymarket_alerts') and self._polymarket_alerts:
+            print(f"\n{'='*70}")
+            print("🚨 ALERTAS POLYMARKET")
+            print(f"{'='*70}")
+            for a in self._polymarket_alerts:
+                print(f"  • {a}")
         
         return results
     
@@ -1208,12 +1246,14 @@ def main():
     parser.add_argument("--ticker", type=str, help="Single ticker (ex: PETR4.SA)")
     parser.add_argument("--no-news", action="store_true", help="Disable news (faster)")
     parser.add_argument("--no-fundamentals", action="store_true", help="Disable fundamentals (technical only)")
+    parser.add_argument("--no-polymarket", action="store_true", help="Disable Polymarket geopolitical adjuster")
     
     args = parser.parse_args()
     
     runner = SimpleProductionRunner(
         use_news=not args.no_news,
-        use_fundamentals=not args.no_fundamentals
+        use_fundamentals=not args.no_fundamentals,
+        use_polymarket=not args.no_polymarket,
     )
     
     if args.ticker:
