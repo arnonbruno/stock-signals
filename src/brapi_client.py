@@ -11,6 +11,7 @@ import json
 import logging
 import math
 import os
+import time as _time
 from datetime import datetime, time, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
@@ -242,17 +243,52 @@ class BrAPIClient:
         )
         return price, quote_time
 
-    def _request_brapi(self, tickers: str) -> Optional[Dict[str, Any]]:
+    def _request_brapi(self, tickers: str, retries: int = 3) -> Optional[Dict[str, Any]]:
+        """Fetch from BrAPI with retry + exponential backoff on 429."""
         url = self._build_url(tickers)
-        response = requests.get(url, timeout=self.timeout)
-        if not response.ok:
-            if self._is_quota_response(response):
-                self._set_quota_exceeded(True)
-                logger.warning("BrAPI quota exhausted for %s; switching to Yahoo Finance fallback", tickers)
-            response.raise_for_status()
+        for attempt in range(retries):
+            try:
+                response = requests.get(url, timeout=self.timeout)
+                if response.status_code == 429:
+                    self._set_quota_exceeded(True)
+                    if attempt < retries - 1:
+                        wait = 5 * (2 ** attempt)  # 5s, 10s, 20s
+                        logger.warning("BrAPI 429 for %s; retrying in %ds (attempt %d/%d)", tickers, wait, attempt + 1, retries)
+                        _time.sleep(wait)
+                        continue
+                    logger.warning("BrAPI quota exhausted for %s after %d retries; switching to Yahoo Finance fallback", tickers, retries)
+                    return None
 
-        self._set_quota_exceeded(False)
-        return response.json()
+                if response.status_code == 400:
+                    # Plan limit (e.g. free tier = 1 ticker per request) — no retry
+                    try:
+                        body = response.json()
+                        if body.get("code") == "QUOTES_PER_REQUEST_EXCEEDED":
+                            logger.error("BrAPI plan limit: %s", body.get("message", ""))
+                            return None
+                    except ValueError:
+                        pass
+                    response.raise_for_status()
+
+                if not response.ok:
+                    if self._is_quota_response(response):
+                        self._set_quota_exceeded(True)
+                        logger.warning("BrAPI quota exhausted for %s; switching to Yahoo Finance fallback", tickers)
+                    response.raise_for_status()
+
+                self._set_quota_exceeded(False)
+                return response.json()
+            except requests.exceptions.HTTPError:
+                raise
+            except Exception as exc:
+                if attempt < retries - 1:
+                    wait = 3 * (2 ** attempt)
+                    logger.warning("BrAPI error for %s: %s; retrying in %ds", tickers, exc, wait)
+                    _time.sleep(wait)
+                    continue
+                logger.warning("BrAPI error for %s after %d retries: %s", tickers, retries, exc)
+                return None
+        return None
 
     @staticmethod
     def _extract_latest_close(close_data: Any, yf_ticker: str) -> Tuple[Optional[float], Optional[datetime]]:
@@ -405,17 +441,16 @@ class BrAPIClient:
             return cached
 
         if not self.is_quota_exceeded():
-            try:
-                data = self._request_brapi(ticker)
-                if data and data.get("results"):
-                    price, quote_time = self._extract_brapi_quote(data["results"][0])
-                    if self._is_price_reasonable(price) and self._is_quote_fresh(self._parse_timestamp(quote_time)):
-                        self._cache_put(ticker, float(price), source="brapi", quote_ts=quote_time, is_stale=False)
-                        self._save_cache()
-                        return float(price)
-                    logger.warning("BrAPI returned invalid or stale quote for %s; using fallback", ticker)
-            except Exception as exc:
-                logger.warning("BrAPI error for %s: %s", ticker, exc)
+            data = self._request_brapi(ticker)
+            if data and data.get("results"):
+                price, quote_time = self._extract_brapi_quote(data["results"][0])
+                if self._is_price_reasonable(price) and self._is_quote_fresh(self._parse_timestamp(quote_time)):
+                    self._cache_put(ticker, float(price), source="brapi", quote_ts=quote_time, is_stale=False)
+                    self._save_cache()
+                    return float(price)
+                logger.warning("BrAPI returned invalid or stale quote for %s; using fallback", ticker)
+            elif self.is_quota_exceeded():
+                logger.warning("BrAPI quota exceeded for %s; using Yahoo Finance fallback", ticker)
 
         # When quota exceeded, accept stale quotes
         allow_stale = self.is_quota_exceeded()
@@ -425,14 +460,17 @@ class BrAPIClient:
                 logger.warning("Using stale Yahoo Finance fallback quote for %s (previous close)", ticker)
         return fallback_price
 
-    def get_prices(self, tickers: List[str], batch_size: int = 20) -> Dict[str, float]:
+    def get_prices(self, tickers: List[str], batch_size: int = 1) -> Dict[str, float]:
         """
         Fetch prices for multiple tickers, using cache where possible.
-        Uses batch API to fetch multiple tickers per request (more efficient).
+
+        BrAPI free tier allows only 1 ticker per request, so we fetch
+        individually with rate-limit-aware delays. batch_size is kept
+        for API compatibility but ignored on free tier.
 
         Args:
             tickers: List of stock tickers (without .SA suffix)
-            batch_size: Number of tickers per batch request (default 20 for rate limit safety)
+            batch_size: Ignored on free tier (always fetches 1 at a time)
 
         Returns:
             Dict mapping ticker -> price
@@ -451,33 +489,33 @@ class BrAPIClient:
         if not need_fetch:
             return prices
 
-        import time
-
         if not self.is_quota_exceeded():
-            for i in range(0, len(need_fetch), batch_size):
-                batch = need_fetch[i:i + batch_size]
-                batch_str = ",".join(batch)
-
-                try:
-                    data = self._request_brapi(batch_str)
-                    if data and data.get("results"):
-                        for result in data["results"]:
-                            ticker = result.get("symbol")
-                            price, quote_time = self._extract_brapi_quote(result)
-                            if not ticker or not self._is_price_reasonable(price):
-                                continue
-                            if not self._is_quote_fresh(self._parse_timestamp(quote_time)):
-                                logger.warning("BrAPI quote for %s is older than 15 minutes; ignoring it", ticker)
-                                continue
-                            prices[ticker] = float(price)
-                            self._cache_put(ticker, float(price), source="brapi", quote_ts=quote_time)
-                except Exception as exc:
-                    logger.warning("BrAPI batch failed for %s: %s", batch_str, exc)
-                    if self.is_quota_exceeded():
+            consecutive_429s = 0
+            for i, ticker in enumerate(need_fetch):
+                data = self._request_brapi(ticker)
+                if data is not None and data.get("results"):
+                    consecutive_429s = 0
+                    for result in data["results"]:
+                        sym = result.get("symbol")
+                        price, quote_time = self._extract_brapi_quote(result)
+                        if not sym or not self._is_price_reasonable(price):
+                            continue
+                        if not self._is_quote_fresh(self._parse_timestamp(quote_time)):
+                            logger.warning("BrAPI quote for %s is older than 15 minutes; ignoring it", sym)
+                            continue
+                        prices[sym] = float(price)
+                        self._cache_put(sym, float(price), source="brapi", quote_ts=quote_time)
+                elif self.is_quota_exceeded():
+                    consecutive_429s += 1
+                    # After 3 consecutive 429s, stop trying BrAPI
+                    if consecutive_429s >= 3:
+                        logger.warning("3 consecutive 429 responses; stopping BrAPI requests")
                         break
 
-                if i + batch_size < len(need_fetch):
-                    time.sleep(2)
+                # Rate-limit delay between individual requests (except last)
+                if i < len(need_fetch) - 1:
+                    delay = 4.0 if self.is_quota_exceeded() else 1.0
+                    _time.sleep(delay)
 
         missing = [ticker for ticker in need_fetch if ticker not in prices]
         if missing:
@@ -493,18 +531,14 @@ class BrAPIClient:
     def get_spot_price(self, ticker: str) -> Optional[float]:
         return self.get_price(ticker)
 
-    def get_batch_prices(self, tickers: List[str], batch_size: int = 20) -> Dict[str, float]:
+    def get_batch_prices(self, tickers: List[str], batch_size: int = 5) -> Dict[str, float]:
         return self.get_prices(tickers, batch_size=batch_size)
 
     def get_ticker_info(self, ticker: str) -> Optional[Dict]:
         """Get detailed ticker information."""
-        try:
-            data = self._request_brapi(self._strip_sa_suffix(ticker.upper()))
-            if data.get("results") and len(data["results"]) > 0:
-                return data["results"][0]
-        except Exception as e:
-            print(f"❌ BrAPI info error for {ticker}: {e}")
-
+        data = self._request_brapi(self._strip_sa_suffix(ticker.upper()))
+        if data and data.get("results") and len(data["results"]) > 0:
+            return data["results"][0]
         return None
 
 

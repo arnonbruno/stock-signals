@@ -106,25 +106,28 @@ class BrAPIClient:
         if not uncached_tickers:
             return results
         
-        # Fetch uncached tickers in smaller batches (5 for reliability)
-        batch_size = 5
-        batch_delay = 1.0  # Delay between batches to avoid rate limiting
-        
-        for i in range(0, len(uncached_tickers), batch_size):
-            batch = uncached_tickers[i:i+batch_size]
-            symbols = ','.join(batch)
-            
-            # Add delay between batches (except first batch)
+        # BrAPI free tier allows only 1 ticker per request
+        # Fetch individually with rate-limit-aware delays
+        for i, ticker in enumerate(uncached_tickers):
+            # Delay between requests (except first)
             if i > 0:
-                time.sleep(batch_delay)
+                time.sleep(1.0)
             
-            url = f"{self.BASE_URL}/quote/{symbols}"
+            url = f"{self.BASE_URL}/quote/{ticker}"
             
-            # Retry logic for server errors
+            # Retry logic for server/rate-limit errors
             max_retries = 3
             for attempt in range(max_retries):
                 try:
                     response = requests.get(url, headers=self._get_headers(), timeout=15)
+                    
+                    if response.status_code == 429:
+                        # Rate limited — exponential backoff
+                        if attempt < max_retries - 1:
+                            wait = 5 * (2 ** attempt)
+                            time.sleep(wait)
+                            continue
+                        # Give up on this ticker after retries
                     
                     if response.status_code == 502:
                         # Server error, retry with delay
@@ -132,15 +135,24 @@ class BrAPIClient:
                             time.sleep(1 + attempt)
                             continue
                     
+                    if response.status_code == 400:
+                        # Plan limit (e.g. free tier batch not allowed) — no retry
+                        try:
+                            body = response.json()
+                            if body.get("code") == "QUOTES_PER_REQUEST_EXCEEDED":
+                                break
+                        except ValueError:
+                            pass
+                    
                     response.raise_for_status()
                     data = response.json()
                     
                     for result in data.get('results', []):
-                        ticker = result.get('symbol')
-                        if ticker:
-                            results[ticker] = result
+                        sym = result.get('symbol')
+                        if sym:
+                            results[sym] = result
                             if use_cache:
-                                self._save_cache(f"quote_{ticker}", result)
+                                self._save_cache(f"quote_{sym}", result)
                     break  # Success
                     
                 except Exception as e:
